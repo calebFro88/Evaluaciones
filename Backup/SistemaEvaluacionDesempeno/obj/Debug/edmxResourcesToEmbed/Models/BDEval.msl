@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EvaluacionModelStoreContainer" CdmEntityContainer="EvaluacionEntities">
+    <EntitySetMapping Name="BITACORA">
+      <EntityTypeMapping TypeName="EvaluacionModel.BITACORA">
+        <MappingFragment StoreEntitySet="BITACORA">
+          <ScalarProperty Name="ID_LOG" ColumnName="ID_LOG" />
+          <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CALIFICACIONDERENDIMIENTO">
+      <EntityTypeMapping TypeName="EvaluacionModel.CALIFICACIONDERENDIMIENTO">
+        <MappingFragment StoreEntitySet="CALIFICACIONDERENDIMIENTO">
+          <ScalarProperty Name="ID_CalificacionDeRendimiento" ColumnName="ID_CalificacionDeRendimiento" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="NumeroCalificacion" ColumnName="NumeroCalificacion" />
+          <ScalarProperty Name="PalabraClave" ColumnName="PalabraClave" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMPETENCIA">
+      <EntityTypeMapping TypeName="EvaluacionModel.COMPETENCIA">
+        <MappingFragment StoreEntitySet="COMPETENCIA">
+          <ScalarProperty Name="ID_Competencia" ColumnName="ID_Competencia" />
+          <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+          <ScalarProperty Name="ID_PlantillaEvaluacionExcempt" ColumnName="ID_PlantillaEvaluacionExcempt" />
+          <ScalarProperty Name="ID_CalificacionDeRendimiento" ColumnName="ID_CalificacionDeRendimiento" />
+          <ScalarProperty Name="ID_Estatus_Evaluacion" ColumnName="ID_Estatus_Evaluacion" />
+          <ScalarProperty Name="Evaluador" ColumnName="Evaluador" />
+          <ScalarProperty Name="ID_ReEvaluacion" ColumnName="ID_ReEvaluacion" />
+          <ScalarProperty Name="ComentariosJefe" ColumnName="ComentariosJefe" />
+          <ScalarProperty Name="CalificacionJefe" ColumnName="CalificacionJefe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTADO_EVAL">
+      <EntityTypeMapping TypeName="EvaluacionModel.ESTADO_EVAL">
+        <MappingFragment StoreEntitySet="ESTADO_EVAL">
+          <ScalarProperty Name="ID_EstadoEval" ColumnName="ID_EstadoEval" />
+          <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="Objetivo" ColumnName="Objetivo" />
+          <ScalarProperty Name="Q1" ColumnName="Q1" />
+          <ScalarProperty Name="Q2" ColumnName="Q2" />
+          <ScalarProperty Name="Q3" ColumnName="Q3" />
+          <ScalarProperty Name="Q4" ColumnName="Q4" />
+          <ScalarProperty Name="QF" ColumnName="QF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EVALUACIONOBJETIVO">
+      <EntityTypeMapping TypeName="EvaluacionModel.EVALUACIONOBJETIVO">
+        <MappingFragment StoreEntitySet="EVALUACIONOBJETIVO">
+          <ScalarProperty Name="ID_EvalObj" ColumnName="ID_EvalObj" />
+          <ScalarProperty Name="ID_Objetivo" ColumnName="ID_Objetivo" />
+          <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+          <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NOTIFICACION">
+      <EntityTypeMapping TypeName="EvaluacionModel.NOTIFICACION">
+        <MappingFragment StoreEntitySet="NOTIFICACION">
+          <ScalarProperty Name="ID_Notificacion" ColumnName="ID_Notificacion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="No_Empleado" ColumnName="No_Empleado" />
+          <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+          <ScalarProperty Name="MomentoDeNotificacion" ColumnName="MomentoDeNotificacion" />
+          <ScalarProperty Name="EstadoDeNotificacion" ColumnName="EstadoDeNotificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OBJETIVO">
+      <EntityTypeMapping TypeName="EvaluacionModel.OBJETIVO">
+        <MappingFragment StoreEntitySet="OBJETIVO">
+          <ScalarProperty Name="ID_Objetivo" ColumnName="ID_Objetivo" />
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Peso" ColumnName="Peso" />
+          <ScalarProperty Name="EstadoDeObjetivo" ColumnName="EstadoDeObjetivo" />
+          <ScalarProperty Name="FechaDeCreacion" ColumnName="FechaDeCreacion" />
+          <ScalarProperty Name="FechaDeModificacion" ColumnName="FechaDeModificacion" />
+          <ScalarProperty Name="FechaLimiteEsperada" ColumnName="FechaLimiteEsperada" />
+          <ScalarProperty Name="FechaDeTerminacionDeObjetivo" ColumnName="FechaDeTerminacionDeObjetivo" />
+          <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+          <ScalarProperty Name="Firma" ColumnName="Firma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERIODO">
+      <EntityTypeMapping TypeName="EvaluacionModel.PERIODO">
+        <MappingFragment StoreEntitySet="PERIODO">
+          <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+          <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+          <ScalarProperty Name="Fecha_Final" ColumnName="Fecha_Final" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PLANTILLAEVALUACIONEXCEMPT">
+      <EntityTypeMapping TypeName="EvaluacionModel.PLANTILLAEVALUACIONEXCEMPT">
+        <MappingFragment StoreEntitySet="PLANTILLAEVALUACIONEXCEMPT">
+          <ScalarProperty Name="OrdenPlantilla" ColumnName="OrdenPlantilla" />
+          <ScalarProperty Name="ID_PlantillaEvaluacionExcempt" ColumnName="ID_PlantillaEvaluacionExcempt" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+          <ScalarProperty Name="ID_TipoDeCompetencia" ColumnName="ID_TipoDeCompetencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Re_Evaluacion">
+      <EntityTypeMapping TypeName="EvaluacionModel.Re_Evaluacion">
+        <MappingFragment StoreEntitySet="Re_Evaluacion">
+          <ScalarProperty Name="EvaluadorPM" ColumnName="EvaluadorPM" />
+          <ScalarProperty Name="EvaluadorRH" ColumnName="EvaluadorRH" />
+          <ScalarProperty Name="ComentariosGer" ColumnName="ComentariosGer" />
+          <ScalarProperty Name="ID_ReEvaluacion" ColumnName="ID_ReEvaluacion" />
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="FechaDeInicio" ColumnName="FechaDeInicio" />
+          <ScalarProperty Name="FechaDeTerminacion" ColumnName="FechaDeTerminacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="CalificacionFinal" ColumnName="CalificacionFinal" />
+          <ScalarProperty Name="ComentariosRh" ColumnName="ComentariosRh" />
+          <ScalarProperty Name="ComentariosPM" ColumnName="ComentariosPM" />
+          <ScalarProperty Name="TipoEvaluacion" ColumnName="TipoEvaluacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPODECOMPETENCIA">
+      <EntityTypeMapping TypeName="EvaluacionModel.TIPODECOMPETENCIA">
+        <MappingFragment StoreEntitySet="TIPODECOMPETENCIA">
+          <ScalarProperty Name="ID_TipoDeCompetencia" ColumnName="ID_TipoDeCompetencia" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="NombreTipoDePlantillaEvaluacion" ColumnName="NombreTipoDePlantillaEvaluacion" />
+          <ScalarProperty Name="OrdenReporte" ColumnName="OrdenReporte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ACTIVE_DIRECTORY">
+      <EntityTypeMapping TypeName="EvaluacionModel.ACTIVE_DIRECTORY">
+        <MappingFragment StoreEntitySet="ACTIVE_DIRECTORY">
+          <ScalarProperty Name="numberGerente" ColumnName="numberGerente" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userNumber" ColumnName="userNumber" />
+          <ScalarProperty Name="userMail" ColumnName="userMail" />
+          <ScalarProperty Name="Reminder" ColumnName="Reminder" />
+          <ScalarProperty Name="id_Reminder" ColumnName="id_Reminder" />
+          <ScalarProperty Name="FechaReminder" ColumnName="FechaReminder" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="FRUpdate" ColumnName="FRUpdate" />
+          <ScalarProperty Name="RHPM" ColumnName="RHPM" />
+          <ScalarProperty Name="RecordatorioSemanal" ColumnName="RecordatorioSemanal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REMINDERS">
+      <EntityTypeMapping TypeName="EvaluacionModel.REMINDERS">
+        <MappingFragment StoreEntitySet="REMINDERS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="valorReminder" ColumnName="valorReminder" />
+          <ScalarProperty Name="valorCorto" ColumnName="valorCorto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emp">
+      <EntityTypeMapping TypeName="EvaluacionModel.Emp">
+        <MappingFragment StoreEntitySet="Emp">
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="JEFE" ColumnName="JEFE" />
+          <ScalarProperty Name="Areay" ColumnName="Areay" />
+          <ScalarProperty Name="valorCorto" ColumnName="valorCorto" />
+          <ScalarProperty Name="FechaReminder" ColumnName="FechaReminder" />
+          <ScalarProperty Name="NIVEL1" ColumnName="NIVEL1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_Actualiza_EstadoReminder" FunctionName="EvaluacionModel.Store.sp_Actualiza_EstadoReminder" />
+    <FunctionImportMapping FunctionImportName="sp_Actualiza_EstadoSemanal" FunctionName="EvaluacionModel.Store.sp_Actualiza_EstadoSemanal" />
+    <FunctionImportMapping FunctionImportName="sp_CargaDepartamentos" FunctionName="EvaluacionModel.Store.sp_CargaDepartamentos" />
+    <FunctionImportMapping FunctionImportName="sp_CargaEmpleados" FunctionName="EvaluacionModel.Store.sp_CargaEmpleados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_CargaEmpleados_Result">
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Jefe" ColumnName="Jefe" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="valorCorto" ColumnName="valorCorto" />
+          <ScalarProperty Name="FechaReminder" ColumnName="FechaReminder" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CargaEmpleadosReporte" FunctionName="EvaluacionModel.Store.sp_CargaEmpleadosReporte">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_CargaEmpleadosReporte_Result">
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Jefe" ColumnName="Jefe" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="valorCorto" ColumnName="valorCorto" />
+          <ScalarProperty Name="FechaReminder" ColumnName="FechaReminder" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CargaJefes" FunctionName="EvaluacionModel.Store.sp_CargaJefes" />
+    <FunctionImportMapping FunctionImportName="sp_CargarCompetenciasGuardadas" FunctionName="EvaluacionModel.Store.sp_CargarCompetenciasGuardadas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_CargarCompetenciasGuardadas_Result">
+          <ScalarProperty Name="ID_Competencia" ColumnName="ID_Competencia" />
+          <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+          <ScalarProperty Name="ComentariosJefe" ColumnName="ComentariosJefe" />
+          <ScalarProperty Name="Evaluador" ColumnName="Evaluador" />
+          <ScalarProperty Name="ID_CalificacionDeRendimiento" ColumnName="ID_CalificacionDeRendimiento" />
+          <ScalarProperty Name="ID_Estatus_Evaluacion" ColumnName="ID_Estatus_Evaluacion" />
+          <ScalarProperty Name="ID_PlantillaEvaluacionExcempt" ColumnName="ID_PlantillaEvaluacionExcempt" />
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="CalificacionJefe" ColumnName="CalificacionJefe" />
+          <ScalarProperty Name="OrdenPlantilla" ColumnName="OrdenPlantilla" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CargarDatosReporte" FunctionName="EvaluacionModel.Store.sp_CargarDatosReporte">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_CargarDatosReporte_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="JEFE" ColumnName="JEFE" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="CalificacionFinal" ColumnName="CalificacionFinal" />
+          <ScalarProperty Name="TipoEvaluacion" ColumnName="TipoEvaluacion" />
+          <ScalarProperty Name="CalifAprox" ColumnName="CalifAprox" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CargarEmpleadoPrueba" FunctionName="EvaluacionModel.Store.sp_CargarEmpleadoPrueba">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_CargarEmpleadoPrueba_Result">
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="JEFE" ColumnName="JEFE" />
+          <ScalarProperty Name="Areay" ColumnName="Areay" />
+          <ScalarProperty Name="valorCorto" ColumnName="valorCorto" />
+          <ScalarProperty Name="FechaReminder" ColumnName="FechaReminder" />
+          <ScalarProperty Name="NIVEL1" ColumnName="NIVEL1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CargarPlantilla" FunctionName="EvaluacionModel.Store.sp_CargarPlantilla">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_CargarPlantilla_Result">
+          <ScalarProperty Name="ID_PlantillaEvaluacionExcempt" ColumnName="ID_PlantillaEvaluacionExcempt" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+          <ScalarProperty Name="TipoDeCompetencia" ColumnName="TipoDeCompetencia" />
+          <ScalarProperty Name="NombreTipoDePlantillaEvaluacion" ColumnName="NombreTipoDePlantillaEvaluacion" />
+          <ScalarProperty Name="OrdenPlantilla" ColumnName="OrdenPlantilla" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CargarReporte" FunctionName="EvaluacionModel.Store.sp_CargarReporte">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_CargarReporte_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+          <ScalarProperty Name="TipoDeCompetencia" ColumnName="TipoDeCompetencia" />
+          <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+          <ScalarProperty Name="ComentariosJefe" ColumnName="ComentariosJefe" />
+          <ScalarProperty Name="CalificacionEmpleado" ColumnName="CalificacionEmpleado" />
+          <ScalarProperty Name="CalificacionJefe" ColumnName="CalificacionJefe" />
+          <ScalarProperty Name="OrdenReporte" ColumnName="OrdenReporte" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CargaTipos" FunctionName="EvaluacionModel.Store.sp_CargaTipos" />
+    <FunctionImportMapping FunctionImportName="sp_CrearNuevoObjetivo" FunctionName="EvaluacionModel.Store.sp_CrearNuevoObjetivo" />
+    <FunctionImportMapping FunctionImportName="sp_CrearPeriodo" FunctionName="EvaluacionModel.Store.sp_CrearPeriodo" />
+    <FunctionImportMapping FunctionImportName="sp_DeterminarTipoEmpleado" FunctionName="EvaluacionModel.Store.sp_DeterminarTipoEmpleado" />
+    <FunctionImportMapping FunctionImportName="sp_EditarObjetivo" FunctionName="EvaluacionModel.Store.sp_EditarObjetivo" />
+    <FunctionImportMapping FunctionImportName="sp_EliminarMiObjetivo" FunctionName="EvaluacionModel.Store.sp_EliminarMiObjetivo" />
+    <FunctionImportMapping FunctionImportName="sp_EstatusTotalEvaluacion" FunctionName="EvaluacionModel.Store.sp_EstatusTotalEvaluacion" />
+    <FunctionImportMapping FunctionImportName="sp_EstatusTotalEvaluacionJefe" FunctionName="EvaluacionModel.Store.sp_EstatusTotalEvaluacionJefe" />
+    <FunctionImportMapping FunctionImportName="sp_EvaluarObjetivo" FunctionName="EvaluacionModel.Store.sp_EvaluarObjetivo" />
+    <FunctionImportMapping FunctionImportName="sp_EvImpresa" FunctionName="EvaluacionModel.Store.sp_EvImpresa" />
+    <FunctionImportMapping FunctionImportName="sp_FinalizaPM" FunctionName="EvaluacionModel.Store.sp_FinalizaPM" />
+    <FunctionImportMapping FunctionImportName="sp_FinEvaluacion" FunctionName="EvaluacionModel.Store.sp_FinEvaluacion" />
+    <FunctionImportMapping FunctionImportName="sp_GuardarEstadoDeCompetencia" FunctionName="EvaluacionModel.Store.sp_GuardarEstadoDeCompetencia" />
+    <FunctionImportMapping FunctionImportName="sp_GuardarYTerminarEvaluacion" FunctionName="EvaluacionModel.Store.sp_GuardarYTerminarEvaluacion" />
+    <FunctionImportMapping FunctionImportName="sp_ListarPendienteDeObjetivos" FunctionName="EvaluacionModel.Store.sp_ListarPendienteDeObjetivos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_ListarPendienteDeObjetivos_Result">
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="Jefe" ColumnName="Jefe" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ListaSendReminders" FunctionName="EvaluacionModel.Store.sp_ListaSendReminders">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_ListaSendReminders_Result">
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userNumber" ColumnName="userNumber" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="userMail" ColumnName="userMail" />
+          <ScalarProperty Name="jefe" ColumnName="jefe" />
+          <ScalarProperty Name="mailJefe" ColumnName="mailJefe" />
+          <ScalarProperty Name="mailRH" ColumnName="mailRH" />
+          <ScalarProperty Name="mailPM" ColumnName="mailPM" />
+          <ScalarProperty Name="valorCorto" ColumnName="valorCorto" />
+          <ScalarProperty Name="valorReminder" ColumnName="valorReminder" />
+          <ScalarProperty Name="id_Reminder" ColumnName="id_Reminder" />
+          <ScalarProperty Name="ComentariosRh" ColumnName="ComentariosRh" />
+          <ScalarProperty Name="ComentariosPM" ColumnName="ComentariosPM" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_LoadReminders" FunctionName="EvaluacionModel.Store.sp_LoadReminders" />
+    <FunctionImportMapping FunctionImportName="sp_MarcarNotificacionComoLeida" FunctionName="EvaluacionModel.Store.sp_MarcarNotificacionComoLeida" />
+    <FunctionImportMapping FunctionImportName="sp_misEmpleadosConEvaluacionPendiente" FunctionName="EvaluacionModel.Store.sp_misEmpleadosConEvaluacionPendiente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_misEmpleadosConEvaluacionPendiente_Result">
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaReminder" ColumnName="FechaReminder" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Recordatorio" ColumnName="Recordatorio" />
+          <ScalarProperty Name="id_Reminder" ColumnName="id_Reminder" />
+          <ScalarProperty Name="ComentariosGer" ColumnName="ComentariosGer" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_misEmpleadosSinCorreo" FunctionName="EvaluacionModel.Store.sp_misEmpleadosSinCorreo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_misEmpleadosSinCorreo_Result">
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="userMail" ColumnName="userMail" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="JEFE" ColumnName="JEFE" />
+          <ScalarProperty Name="Areay" ColumnName="Areay" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_MisNotificaciones" FunctionName="EvaluacionModel.Store.sp_MisNotificaciones">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_MisNotificaciones_Result">
+          <ScalarProperty Name="ID_Notificacion" ColumnName="ID_Notificacion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="No_Empleado" ColumnName="No_Empleado" />
+          <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+          <ScalarProperty Name="MomentoDeNotificacion" ColumnName="MomentoDeNotificacion" />
+          <ScalarProperty Name="EstadoDeNotificacion" ColumnName="EstadoDeNotificacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_MisObjetivos" FunctionName="EvaluacionModel.Store.sp_MisObjetivos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_MisObjetivos_Result">
+          <ScalarProperty Name="ID_Objetivo" ColumnName="ID_Objetivo" />
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Peso" ColumnName="Peso" />
+          <ScalarProperty Name="EstadoDeObjetivo" ColumnName="EstadoDeObjetivo" />
+          <ScalarProperty Name="FechaDeCreacion" ColumnName="FechaDeCreacion" />
+          <ScalarProperty Name="FechaDeModificacion" ColumnName="FechaDeModificacion" />
+          <ScalarProperty Name="FechaLimiteEsperada" ColumnName="FechaLimiteEsperada" />
+          <ScalarProperty Name="FechaDeTerminacionDeObjetivo" ColumnName="FechaDeTerminacionDeObjetivo" />
+          <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+          <ScalarProperty Name="Firma" ColumnName="Firma" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_MisObjetivosRealizados" FunctionName="EvaluacionModel.Store.sp_MisObjetivosRealizados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_MisObjetivosRealizados_Result">
+          <ScalarProperty Name="ID_Objetivo" ColumnName="ID_Objetivo" />
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Peso" ColumnName="Peso" />
+          <ScalarProperty Name="EstadoDeObjetivo" ColumnName="EstadoDeObjetivo" />
+          <ScalarProperty Name="FechaDeCreacion" ColumnName="FechaDeCreacion" />
+          <ScalarProperty Name="FechaDeModificacion" ColumnName="FechaDeModificacion" />
+          <ScalarProperty Name="FechaLimiteEsperada" ColumnName="FechaLimiteEsperada" />
+          <ScalarProperty Name="FechaDeTerminacionDeObjetivo" ColumnName="FechaDeTerminacionDeObjetivo" />
+          <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+          <ScalarProperty Name="Firma" ColumnName="Firma" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ObtenerCompetencia" FunctionName="EvaluacionModel.Store.sp_ObtenerCompetencia">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_ObtenerCompetencia_Result">
+          <ScalarProperty Name="ID_PlantillaEvaluacionExcempt" ColumnName="ID_PlantillaEvaluacionExcempt" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+          <ScalarProperty Name="ID_TipoDeCompetencia" ColumnName="ID_TipoDeCompetencia" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ObtenerUltimoPeriodo" FunctionName="EvaluacionModel.Store.sp_ObtenerUltimoPeriodo" />
+    <FunctionImportMapping FunctionImportName="sp_PendientesDeAprobacion" FunctionName="EvaluacionModel.Store.sp_PendientesDeAprobacion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_PendientesDeAprobacion_Result">
+          <ScalarProperty Name="ID_ReEvaluacion" ColumnName="ID_ReEvaluacion" />
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_RechazaPM" FunctionName="EvaluacionModel.Store.sp_RechazaPM" />
+    <FunctionImportMapping FunctionImportName="sp_rechazaRecursos" FunctionName="EvaluacionModel.Store.sp_rechazaRecursos" />
+    <FunctionImportMapping FunctionImportName="sp_RechazaRH" FunctionName="EvaluacionModel.Store.sp_RechazaRH" />
+    <FunctionImportMapping FunctionImportName="sp_regresaEvPM" FunctionName="EvaluacionModel.Store.sp_regresaEvPM" />
+    <FunctionImportMapping FunctionImportName="sp_TerminarDeFormularObjetivos" FunctionName="EvaluacionModel.Store.sp_TerminarDeFormularObjetivos" />
+    <FunctionImportMapping FunctionImportName="sp_validaRecursos" FunctionName="EvaluacionModel.Store.sp_validaRecursos" />
+    <FunctionImportMapping FunctionImportName="sp_ValidarEvaluacionExistente" FunctionName="EvaluacionModel.Store.sp_ValidarEvaluacionExistente" />
+    <FunctionImportMapping FunctionImportName="sp_ValidarNombreDeUsuario" FunctionName="EvaluacionModel.Store.sp_ValidarNombreDeUsuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_ValidarNombreDeUsuario_Result">
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="JEFE" ColumnName="JEFE" />
+          <ScalarProperty Name="NombreAD" ColumnName="NombreAD" />
+          <ScalarProperty Name="ApellidoAD" ColumnName="ApellidoAD" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ValidarUsuario" FunctionName="EvaluacionModel.Store.sp_ValidarUsuario" />
+    <FunctionImportMapping FunctionImportName="traeEmail" FunctionName="EvaluacionModel.Store.traeEmail" />
+    <FunctionImportMapping FunctionImportName="validaReminderEnviar" FunctionName="EvaluacionModel.Store.validaReminderEnviar" />
+    <FunctionImportMapping FunctionImportName="verificaSemana" FunctionName="EvaluacionModel.Store.verificaSemana">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.verificaSemana_Result">
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userNumber" ColumnName="userNumber" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="semanaRetrasada" ColumnName="semanaRetrasada" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="userMail" ColumnName="userMail" />
+          <ScalarProperty Name="jefe" ColumnName="jefe" />
+          <ScalarProperty Name="mailJefe" ColumnName="mailJefe" />
+          <ScalarProperty Name="mailRH" ColumnName="mailRH" />
+          <ScalarProperty Name="mailPM" ColumnName="mailPM" />
+          <ScalarProperty Name="valorReminder" ColumnName="valorReminder" />
+          <ScalarProperty Name="valorCorto" ColumnName="valorCorto" />
+          <ScalarProperty Name="id_Reminder" ColumnName="id_Reminder" />
+          <ScalarProperty Name="ComentariosRh" ColumnName="ComentariosRh" />
+          <ScalarProperty Name="ComentariosPM" ColumnName="ComentariosPM" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ApruebaPM" FunctionName="EvaluacionModel.Store.sp_ApruebaPM" />
+    <FunctionImportMapping FunctionImportName="sp_ApruebaRH" FunctionName="EvaluacionModel.Store.sp_ApruebaRH" />
+    <FunctionImportMapping FunctionImportName="sp_Carga_ValorReminders" FunctionName="EvaluacionModel.Store.sp_Carga_ValorReminders" />
+    <FunctionImportMapping FunctionImportName="sp_AsignarCorreoEmpleado" FunctionName="EvaluacionModel.Store.sp_AsignarCorreoEmpleado" />
+    <FunctionImportMapping FunctionImportName="sp_ActualizarEmpleadosAD" FunctionName="EvaluacionModel.Store.sp_ActualizarEmpleadosAD" />
+    <FunctionImportMapping FunctionImportName="sp_AprobarEv" FunctionName="EvaluacionModel.Store.sp_AprobarEv" />
+    <FunctionImportMapping FunctionImportName="sp_RetroalimentarEv" FunctionName="EvaluacionModel.Store.sp_RetroalimentarEv" />
+    <FunctionImportMapping FunctionImportName="sp_EstatusEvaluaciones" FunctionName="EvaluacionModel.Store.sp_EstatusEvaluaciones">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_EstatusEvaluaciones_Result">
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaReminder" ColumnName="FechaReminder" />
+          <ScalarProperty Name="ComentariosGer" ColumnName="ComentariosGer" />
+          <ScalarProperty Name="ComentariosRh" ColumnName="ComentariosRh" />
+          <ScalarProperty Name="ComentariosPM" ColumnName="ComentariosPM" />
+          <ScalarProperty Name="Recordatorio" ColumnName="Recordatorio" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="TipoReporte" ColumnName="TipoReporte" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetTipoEmpleado" FunctionName="EvaluacionModel.Store.sp_GetTipoEmpleado" />
+    <FunctionImportMapping FunctionImportName="sp_MiEvaluacion" FunctionName="EvaluacionModel.Store.sp_MiEvaluacion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_MiEvaluacion_Result">
+          <ScalarProperty Name="ID_ReEvaluacion" ColumnName="ID_ReEvaluacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="TipoEvaluacion" ColumnName="TipoEvaluacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_misEmpleadosConEvaluacionEnEspera" FunctionName="EvaluacionModel.Store.sp_misEmpleadosConEvaluacionEnEspera">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_misEmpleadosConEvaluacionEnEspera_Result">
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaReminder" ColumnName="FechaReminder" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="ComentariosGer" ColumnName="ComentariosGer" />
+          <ScalarProperty Name="Recordatorio" ColumnName="Recordatorio" />
+          <ScalarProperty Name="id_Reminder" ColumnName="id_Reminder" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_misEmpleadosConEvaluacionTerminada" FunctionName="EvaluacionModel.Store.sp_misEmpleadosConEvaluacionTerminada">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_misEmpleadosConEvaluacionTerminada_Result">
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaReminder" ColumnName="FechaReminder" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="ComentariosGer" ColumnName="ComentariosGer" />
+          <ScalarProperty Name="Recordatorio" ColumnName="Recordatorio" />
+          <ScalarProperty Name="id_Reminder" ColumnName="id_Reminder" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ListarCursosAsistidos" FunctionName="EvaluacionModel.Store.sp_ListarCursosAsistidos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_ListarCursosAsistidos_Result">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="EstatusEvaluacionesTerminadas" FunctionName="EvaluacionModel.Store.EstatusEvaluacionesTerminadas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.EstatusEvaluacionesTerminadas_Result">
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaReminder" ColumnName="FechaReminder" />
+          <ScalarProperty Name="ComentariosGer" ColumnName="ComentariosGer" />
+          <ScalarProperty Name="ComentariosRh" ColumnName="ComentariosRh" />
+          <ScalarProperty Name="ComentariosPM" ColumnName="ComentariosPM" />
+          <ScalarProperty Name="Recordatorio" ColumnName="Recordatorio" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="TipoReporte" ColumnName="TipoReporte" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

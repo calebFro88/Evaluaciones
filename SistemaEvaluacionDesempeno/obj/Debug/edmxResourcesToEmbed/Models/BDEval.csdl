@@ -1,0 +1,1091 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EvaluacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BITACORA">
+    <Key>
+      <PropertyRef Name="ID_LOG" />
+    </Key>
+    <Property Name="ID_LOG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Periodo" Type="Int32" Nullable="false" />
+    <Property Name="No_Emp" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PERIODO" Relationship="Self.FK_IDPeriodo_Periodo" FromRole="BITACORA" ToRole="PERIODO" />
+  </EntityType>
+  <EntityType Name="CALIFICACIONDERENDIMIENTO">
+    <Key>
+      <PropertyRef Name="ID_CalificacionDeRendimiento" />
+    </Key>
+    <Property Name="ID_CalificacionDeRendimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NumeroCalificacion" Type="Int32" Nullable="false" />
+    <Property Name="PalabraClave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="COMPETENCIA" Relationship="Self.FK_IDCalificacionDeRendimiento" FromRole="CALIFICACIONDERENDIMIENTO" ToRole="COMPETENCIA" />
+  </EntityType>
+  <EntityType Name="COMPETENCIA">
+    <Key>
+      <PropertyRef Name="ID_Competencia" />
+    </Key>
+    <Property Name="ID_Competencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Comentarios" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="No_Emp" Type="Int32" />
+    <Property Name="ID_Periodo" Type="Int32" />
+    <Property Name="ID_PlantillaEvaluacionExcempt" Type="Int32" />
+    <Property Name="ID_CalificacionDeRendimiento" Type="Int32" />
+    <Property Name="ID_Estatus_Evaluacion" Type="Int32" Nullable="false" />
+    <Property Name="Evaluador" Type="Int32" />
+    <Property Name="ID_ReEvaluacion" Type="Int32" Nullable="false" />
+    <Property Name="ComentariosJefe" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CalificacionJefe" Type="Double" />
+    <NavigationProperty Name="CALIFICACIONDERENDIMIENTO" Relationship="Self.FK_IDCalificacionDeRendimiento" FromRole="COMPETENCIA" ToRole="CALIFICACIONDERENDIMIENTO" />
+    <NavigationProperty Name="PERIODO" Relationship="Self.FK_C_ID_Periodo" FromRole="COMPETENCIA" ToRole="PERIODO" />
+    <NavigationProperty Name="PLANTILLAEVALUACIONEXCEMPT" Relationship="Self.FK_C_ID_PlantillaEvaluacionExcempt" FromRole="COMPETENCIA" ToRole="PLANTILLAEVALUACIONEXCEMPT" />
+    <NavigationProperty Name="Re_Evaluacion" Relationship="Self.FK_IDReEvaluacion" FromRole="COMPETENCIA" ToRole="Re_Evaluacion" />
+  </EntityType>
+  <EntityType Name="ESTADO_EVAL">
+    <Key>
+      <PropertyRef Name="ID_EstadoEval" />
+    </Key>
+    <Property Name="ID_EstadoEval" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Periodo" Type="Int32" Nullable="false" />
+    <Property Name="No_Emp" Type="Int32" Nullable="false" />
+    <Property Name="Objetivo" Type="Int32" Nullable="false" />
+    <Property Name="Q1" Type="Int32" Nullable="false" />
+    <Property Name="Q2" Type="Int32" Nullable="false" />
+    <Property Name="Q3" Type="Int32" Nullable="false" />
+    <Property Name="Q4" Type="Int32" Nullable="false" />
+    <Property Name="QF" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NOTIFICACION">
+    <Key>
+      <PropertyRef Name="ID_Notificacion" />
+    </Key>
+    <Property Name="ID_Notificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="No_Empleado" Type="Int32" Nullable="false" />
+    <Property Name="ID_Periodo" Type="Int32" Nullable="false" />
+    <Property Name="MomentoDeNotificacion" Type="Time" Precision="7" />
+    <Property Name="EstadoDeNotificacion" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PERIODO">
+    <Key>
+      <PropertyRef Name="ID_Periodo" />
+    </Key>
+    <Property Name="ID_Periodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha_Inicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Fecha_Final" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BITACORA" Relationship="Self.FK_IDPeriodo_Periodo" FromRole="PERIODO" ToRole="BITACORA" />
+    <NavigationProperty Name="COMPETENCIA" Relationship="Self.FK_C_ID_Periodo" FromRole="PERIODO" ToRole="COMPETENCIA" />
+    <NavigationProperty Name="PeriodoObjetivo" Relationship="EvaluacionModel.FK_ObjetivoPeriodoObj" FromRole="PERIODO" ToRole="PeriodoObjetivo" />
+    <NavigationProperty Name="Re_Objetivo" Relationship="EvaluacionModel.FK_Periodo" FromRole="PERIODO" ToRole="Re_Objetivo" />
+  </EntityType>
+  <EntityType Name="PLANTILLAEVALUACIONEXCEMPT">
+    <Key>
+      <PropertyRef Name="ID_PlantillaEvaluacionExcempt" />
+    </Key>
+    <Property Name="ID_PlantillaEvaluacionExcempt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ID_TipoDeCompetencia" Type="Int32" />
+    <NavigationProperty Name="COMPETENCIA" Relationship="Self.FK_C_ID_PlantillaEvaluacionExcempt" FromRole="PLANTILLAEVALUACIONEXCEMPT" ToRole="COMPETENCIA" />
+    <NavigationProperty Name="TIPODECOMPETENCIA" Relationship="Self.FK_IDTipoDeCompetencia" FromRole="PLANTILLAEVALUACIONEXCEMPT" ToRole="TIPODECOMPETENCIA" />
+    <Property Name="OrdenPlantilla" Type="Int16" />
+  </EntityType>
+  <EntityType Name="Re_Evaluacion">
+    <Key>
+      <PropertyRef Name="ID_ReEvaluacion" />
+    </Key>
+    <Property Name="ID_ReEvaluacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="No_Emp" Type="Int32" />
+    <Property Name="FechaDeInicio" Type="DateTime" Precision="0" />
+    <Property Name="FechaDeTerminacion" Type="DateTime" Precision="0" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CalificacionFinal" Type="Double" />
+    <Property Name="ComentariosRh" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ComentariosPM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TipoEvaluacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="COMPETENCIA" Relationship="Self.FK_IDReEvaluacion" FromRole="Re_Evaluacion" ToRole="COMPETENCIA" />
+    <Property Name="ComentariosGer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EvaluadorRH" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EvaluadorPM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AprovoPM" Type="DateTime" Precision="0" />
+    <Property Name="yearFiscal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TIPODECOMPETENCIA">
+    <Key>
+      <PropertyRef Name="ID_TipoDeCompetencia" />
+    </Key>
+    <Property Name="ID_TipoDeCompetencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NombreTipoDePlantillaEvaluacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OrdenReporte" Type="Byte" />
+    <NavigationProperty Name="PLANTILLAEVALUACIONEXCEMPT" Relationship="Self.FK_IDTipoDeCompetencia" FromRole="TIPODECOMPETENCIA" ToRole="PLANTILLAEVALUACIONEXCEMPT" />
+  </EntityType>
+  <EntityType Name="ACTIVE_DIRECTORY">
+    <Key>
+      <PropertyRef Name="userNumber" />
+    </Key>
+    <Property Name="userName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="userNumber" Type="Int32" Nullable="false" />
+    <Property Name="userMail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Reminder" Type="Boolean" />
+    <Property Name="id_Reminder" Type="Int32" />
+    <Property Name="FechaReminder" Type="DateTime" Precision="3" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FRUpdate" Type="DateTime" Precision="3" />
+    <Property Name="RHPM" Type="Boolean" />
+    <Property Name="RecordatorioSemanal" Type="DateTime" Precision="3" />
+    <Property Name="numberGerente" Type="Int32" />
+    <Property Name="FObjetivo" Type="DateTime" Precision="3" />
+    <Property Name="Reminder2" Type="Boolean" />
+    <Property Name="id_Reminder2" Type="Int32" />
+  </EntityType>
+  <EntityType Name="REMINDERS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="valorReminder" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="valorCorto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Emp">
+    <Key>
+      <PropertyRef Name="No_Emp" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="APELLIDO" />
+      <PropertyRef Name="NIVEL1" />
+    </Key>
+    <Property Name="No_Emp" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="APELLIDO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="DEPARTAMENTO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TipoEmpleado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="JEFE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Areay" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="valorCorto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaReminder" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="NIVEL1" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_IDPeriodo_Periodo">
+    <End Role="PERIODO" Type="Self.PERIODO" Multiplicity="1" />
+    <End Role="BITACORA" Type="Self.BITACORA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIODO">
+        <PropertyRef Name="ID_Periodo" />
+      </Principal>
+      <Dependent Role="BITACORA">
+        <PropertyRef Name="ID_Periodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IDCalificacionDeRendimiento">
+    <End Role="CALIFICACIONDERENDIMIENTO" Type="Self.CALIFICACIONDERENDIMIENTO" Multiplicity="0..1" />
+    <End Role="COMPETENCIA" Type="Self.COMPETENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CALIFICACIONDERENDIMIENTO">
+        <PropertyRef Name="ID_CalificacionDeRendimiento" />
+      </Principal>
+      <Dependent Role="COMPETENCIA">
+        <PropertyRef Name="ID_CalificacionDeRendimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_C_ID_Periodo">
+    <End Role="PERIODO" Type="Self.PERIODO" Multiplicity="0..1" />
+    <End Role="COMPETENCIA" Type="Self.COMPETENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIODO">
+        <PropertyRef Name="ID_Periodo" />
+      </Principal>
+      <Dependent Role="COMPETENCIA">
+        <PropertyRef Name="ID_Periodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_C_ID_PlantillaEvaluacionExcempt">
+    <End Role="PLANTILLAEVALUACIONEXCEMPT" Type="Self.PLANTILLAEVALUACIONEXCEMPT" Multiplicity="0..1" />
+    <End Role="COMPETENCIA" Type="Self.COMPETENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PLANTILLAEVALUACIONEXCEMPT">
+        <PropertyRef Name="ID_PlantillaEvaluacionExcempt" />
+      </Principal>
+      <Dependent Role="COMPETENCIA">
+        <PropertyRef Name="ID_PlantillaEvaluacionExcempt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IDReEvaluacion">
+    <End Role="Re_Evaluacion" Type="Self.Re_Evaluacion" Multiplicity="1" />
+    <End Role="COMPETENCIA" Type="Self.COMPETENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Re_Evaluacion">
+        <PropertyRef Name="ID_ReEvaluacion" />
+      </Principal>
+      <Dependent Role="COMPETENCIA">
+        <PropertyRef Name="ID_ReEvaluacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IDTipoDeCompetencia">
+    <End Role="TIPODECOMPETENCIA" Type="Self.TIPODECOMPETENCIA" Multiplicity="0..1" />
+    <End Role="PLANTILLAEVALUACIONEXCEMPT" Type="Self.PLANTILLAEVALUACIONEXCEMPT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPODECOMPETENCIA">
+        <PropertyRef Name="ID_TipoDeCompetencia" />
+      </Principal>
+      <Dependent Role="PLANTILLAEVALUACIONEXCEMPT">
+        <PropertyRef Name="ID_TipoDeCompetencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EvaluacionEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BITACORA" EntityType="Self.BITACORA" />
+    <EntitySet Name="CALIFICACIONDERENDIMIENTO" EntityType="Self.CALIFICACIONDERENDIMIENTO" />
+    <EntitySet Name="COMPETENCIA" EntityType="Self.COMPETENCIA" />
+    <EntitySet Name="ESTADO_EVAL" EntityType="Self.ESTADO_EVAL" />
+    <EntitySet Name="NOTIFICACION" EntityType="Self.NOTIFICACION" />
+    <EntitySet Name="PERIODO" EntityType="Self.PERIODO" />
+    <EntitySet Name="PLANTILLAEVALUACIONEXCEMPT" EntityType="Self.PLANTILLAEVALUACIONEXCEMPT" />
+    <EntitySet Name="Re_Evaluacion" EntityType="Self.Re_Evaluacion" />
+    <EntitySet Name="TIPODECOMPETENCIA" EntityType="Self.TIPODECOMPETENCIA" />
+    <EntitySet Name="ACTIVE_DIRECTORY" EntityType="Self.ACTIVE_DIRECTORY" />
+    <EntitySet Name="REMINDERS" EntityType="Self.REMINDERS" />
+    <EntitySet Name="Emp" EntityType="Self.Emp" />
+    <AssociationSet Name="FK_IDPeriodo_Periodo" Association="Self.FK_IDPeriodo_Periodo">
+      <End Role="PERIODO" EntitySet="PERIODO" />
+      <End Role="BITACORA" EntitySet="BITACORA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IDCalificacionDeRendimiento" Association="Self.FK_IDCalificacionDeRendimiento">
+      <End Role="CALIFICACIONDERENDIMIENTO" EntitySet="CALIFICACIONDERENDIMIENTO" />
+      <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_C_ID_Periodo" Association="Self.FK_C_ID_Periodo">
+      <End Role="PERIODO" EntitySet="PERIODO" />
+      <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_C_ID_PlantillaEvaluacionExcempt" Association="Self.FK_C_ID_PlantillaEvaluacionExcempt">
+      <End Role="PLANTILLAEVALUACIONEXCEMPT" EntitySet="PLANTILLAEVALUACIONEXCEMPT" />
+      <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IDReEvaluacion" Association="Self.FK_IDReEvaluacion">
+      <End Role="Re_Evaluacion" EntitySet="Re_Evaluacion" />
+      <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IDTipoDeCompetencia" Association="Self.FK_IDTipoDeCompetencia">
+      <End Role="TIPODECOMPETENCIA" EntitySet="TIPODECOMPETENCIA" />
+      <End Role="PLANTILLAEVALUACIONEXCEMPT" EntitySet="PLANTILLAEVALUACIONEXCEMPT" />
+    </AssociationSet>
+    <FunctionImport Name="sp_Actualiza_EstadoReminder">
+      <Parameter Name="noEmpleado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Actualiza_EstadoSemanal">
+      <Parameter Name="noEmpleado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CargaDepartamentos" ReturnType="Collection(String)" />
+    <FunctionImport Name="sp_CargaEmpleados" ReturnType="Collection(EvaluacionModel.sp_CargaEmpleados_Result)" />
+    <FunctionImport Name="sp_CargaEmpleadosReporte" ReturnType="Collection(EvaluacionModel.sp_CargaEmpleadosReporte_Result)" />
+    <FunctionImport Name="sp_CargaJefes" ReturnType="Collection(String)" />
+    <FunctionImport Name="sp_CargarCompetenciasGuardadas" ReturnType="Collection(EvaluacionModel.sp_CargarCompetenciasGuardadas_Result)">
+      <Parameter Name="TipoDeCompetencia" Mode="In" Type="String" />
+      <Parameter Name="NumEmp" Mode="In" Type="Int32" />
+      <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CargarDatosReporte" ReturnType="Collection(EvaluacionModel.sp_CargarDatosReporte_Result)">
+      <Parameter Name="NumEmp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CargarEmpleadoPrueba" ReturnType="Collection(EvaluacionModel.sp_CargarEmpleadoPrueba_Result)">
+      <Parameter Name="NumEmp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CargarPlantilla" ReturnType="Collection(EvaluacionModel.sp_CargarPlantilla_Result)">
+      <Parameter Name="NumEmp" Mode="In" Type="Int32" />
+      <Parameter Name="TipoDeCompetencia" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CargarReporte" ReturnType="Collection(EvaluacionModel.sp_CargarReporte_Result)">
+      <Parameter Name="NumEmp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CargaTipos" ReturnType="Collection(String)" />
+    <FunctionImport Name="sp_CrearNuevoObjetivo">
+      <Parameter Name="IDObj" Mode="In" Type="Int32" />
+      <Parameter Name="NumeroEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Valor" Mode="In" Type="Int32" />
+      <Parameter Name="Tipo" Mode="In" Type="String" />
+      <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+      <Parameter Name="Categoria" Mode="In" Type="Int32" />
+      <Parameter Name="PeriodoObj" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CrearPeriodo">
+      <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+      <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DeterminarTipoEmpleado" ReturnType="Collection(String)">
+      <Parameter Name="No_Emp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_EditarObjetivo">
+      <Parameter Name="IDObjetivo" Mode="In" Type="Int32" />
+      <Parameter Name="NumeroDeEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Peso" Mode="In" Type="Int32" />
+      <Parameter Name="Tipo" Mode="In" Type="String" />
+      <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+      <Parameter Name="PesoAnt" Mode="In" Type="Int32" />
+      <Parameter Name="DescAnt" Mode="In" Type="String" />
+      <Parameter Name="Categoria" Mode="In" Type="Int32" />
+      <Parameter Name="PeriodoObj" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_EliminarMiObjetivo">
+      <Parameter Name="NumEmp" Mode="In" Type="Int32" />
+      <Parameter Name="DescObjetivo" Mode="In" Type="String" />
+      <Parameter Name="intPeso" Mode="In" Type="Int32" />
+      <Parameter Name="Periodo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_EstatusTotalEvaluacion" ReturnType="Collection(Double)">
+      <Parameter Name="NumEmp" Mode="In" Type="Int32" />
+      <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_EstatusTotalEvaluacionJefe" ReturnType="Collection(Double)">
+      <Parameter Name="NumEmp" Mode="In" Type="Int32" />
+      <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_EvaluarObjetivo" ReturnType="Collection(String)">
+      <Parameter Name="IDObjetivo" Mode="In" Type="Int32" />
+      <Parameter Name="NumeroEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+      <Parameter Name="Comentarios" Mode="In" Type="String" />
+      <Parameter Name="Calificacion" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="sp_EvImpresa">
+      <Parameter Name="numero" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_FinalizaPM">
+      <Parameter Name="numero" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_FinEvaluacion">
+      <Parameter Name="numero" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GuardarEstadoDeCompetencia">
+      <Parameter Name="IDCompetencia" Mode="In" Type="Int32" />
+      <Parameter Name="NoEmp" Mode="In" Type="Int32" />
+      <Parameter Name="Periodo" Mode="In" Type="Int32" />
+      <Parameter Name="Comentarios" Mode="In" Type="String" />
+      <Parameter Name="CalificacionDeRendimiento" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="IDReEvaluacion" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GuardarYTerminarEvaluacion">
+      <Parameter Name="No_Emp" Mode="In" Type="Int32" />
+      <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+      <Parameter Name="No_Evaluador" Mode="In" Type="Int32" />
+      <Parameter Name="comentarios" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ListarPendienteDeObjetivos" ReturnType="Collection(EvaluacionModel.sp_ListarPendienteDeObjetivos_Result)" />
+    <FunctionImport Name="sp_ListaSendReminders" ReturnType="Collection(EvaluacionModel.sp_ListaSendReminders_Result)" />
+    <FunctionImport Name="sp_LoadReminders">
+      <Parameter Name="valorCorto" Mode="In" Type="String" />
+      <Parameter Name="numEmp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_MarcarNotificacionComoLeida">
+      <Parameter Name="No_Emp" Mode="In" Type="Int32" />
+      <Parameter Name="ID_Notificacion" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_misEmpleadosConEvaluacionPendiente" ReturnType="Collection(EvaluacionModel.sp_misEmpleadosConEvaluacionPendiente_Result)">
+      <Parameter Name="PrimerNombre" Mode="In" Type="String" />
+      <Parameter Name="PrimerApellido" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_misEmpleadosSinCorreo" ReturnType="Collection(EvaluacionModel.sp_misEmpleadosSinCorreo_Result)" />
+    <FunctionImport Name="sp_MisNotificaciones" ReturnType="Collection(EvaluacionModel.sp_MisNotificaciones_Result)">
+      <Parameter Name="NumEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_MisObjetivos" ReturnType="Collection(EvaluacionModel.sp_MisObjetivos_Result)">
+      <Parameter Name="NumeroDeEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="Periodo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_MisObjetivosRealizados" ReturnType="Collection(EvaluacionModel.sp_MisObjetivosRealizados_Result)">
+      <Parameter Name="NumeroDeEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="Periodo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ObtenerCompetencia" ReturnType="Collection(EvaluacionModel.sp_ObtenerCompetencia_Result)">
+      <Parameter Name="TipoDeCompetencia" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ObtenerUltimoPeriodo" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="sp_PendientesDeAprobacion" ReturnType="Collection(EvaluacionModel.sp_PendientesDeAprobacion_Result)">
+      <Parameter Name="No_Emp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RechazaPM">
+      <Parameter Name="numero" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_rechazaRecursos">
+      <Parameter Name="No_Emp" Mode="In" Type="Int32" />
+      <Parameter Name="Comentario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RechazaRH">
+      <Parameter Name="numero" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_regresaEvPM">
+      <Parameter Name="No_Emp" Mode="In" Type="Int32" />
+      <Parameter Name="Comentario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TerminarDeFormularObjetivos">
+      <Parameter Name="NumeroEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_validaRecursos">
+      <Parameter Name="No_Emp" Mode="In" Type="Int32" />
+      <Parameter Name="Comentario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ValidarEvaluacionExistente" ReturnType="Collection(String)">
+      <Parameter Name="NumEmp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ValidarNombreDeUsuario" ReturnType="Collection(EvaluacionModel.sp_ValidarNombreDeUsuario_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ValidarUsuario" ReturnType="Collection(String)">
+      <Parameter Name="NombreUsuarioActiveD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="traeEmail" ReturnType="Collection(String)">
+      <Parameter Name="user" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="validaReminderEnviar">
+      <Parameter Name="number" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="verificaSemana" ReturnType="Collection(EvaluacionModel.verificaSemana_Result)" />
+    <FunctionImport Name="sp_ApruebaPM">
+      <Parameter Name="numero" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ApruebaRH">
+      <Parameter Name="numero" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Carga_ValorReminders" ReturnType="Collection(String)" />
+    <FunctionImport Name="sp_AsignarCorreoEmpleado">
+      <Parameter Name="NombreUsuario" Mode="In" Type="String" />
+      <Parameter Name="No_Emp" Mode="In" Type="Int32" />
+      <Parameter Name="Correo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ActualizarEmpleadosAD" />
+    <FunctionImport Name="sp_AprobarEv">
+      <Parameter Name="NoEmp" Mode="In" Type="Int32" />
+      <Parameter Name="Comentarios" Mode="In" Type="String" />
+      <Parameter Name="TipoEmpleado" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RetroalimentarEv">
+      <Parameter Name="NoEmp" Mode="In" Type="Int32" />
+      <Parameter Name="Comentarios" Mode="In" Type="String" />
+      <Parameter Name="TipoEmpleado" Mode="In" Type="String" />
+      <Parameter Name="Evaluador" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CargarComentariosReporte" ReturnType="Collection(EvaluacionModel.sp_CargarComentariosReporte_Result)">
+      <Parameter Name="NumEmp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_EstatusEvaluaciones" ReturnType="Collection(EvaluacionModel.sp_EstatusEvaluaciones_Result)">
+      <Parameter Name="numero" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetTipoEmpleado" ReturnType="Collection(String)">
+      <Parameter Name="NumEmp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_MiEvaluacion" ReturnType="Collection(EvaluacionModel.sp_MiEvaluacion_Result)">
+      <Parameter Name="NoEmp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_misEmpleadosConEvaluacionEnEspera" ReturnType="Collection(EvaluacionModel.sp_misEmpleadosConEvaluacionEnEspera_Result)">
+      <Parameter Name="PrimerNombre" Mode="In" Type="String" />
+      <Parameter Name="PrimerApellido" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_misEmpleadosConEvaluacionTerminada" ReturnType="Collection(EvaluacionModel.sp_misEmpleadosConEvaluacionTerminada_Result)">
+      <Parameter Name="PrimerNombre" Mode="In" Type="String" />
+      <Parameter Name="PrimerApellido" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ListarCursosAsistidos" ReturnType="Collection(EvaluacionModel.sp_ListarCursosAsistidos_Result)">
+      <Parameter Name="NoEmp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="EstatusEvaluacionesTerminadas" ReturnType="Collection(EvaluacionModel.EstatusEvaluacionesTerminadas_Result)">
+      <Parameter Name="numero" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Bnivel" ReturnType="Collection(Int32)">
+      <Parameter Name="numero" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Objetivo1Set" EntityType="EvaluacionModel.Objetivo1" />
+    <EntitySet Name="PeriodoObjetivo" EntityType="EvaluacionModel.PeriodoObjetivo" />
+    <EntitySet Name="Re_Objetivo" EntityType="EvaluacionModel.Re_Objetivo" />
+    <AssociationSet Name="FK_ReObjetivo" Association="EvaluacionModel.FK_ReObjetivo">
+      <End Role="Re_Objetivo" EntitySet="Re_Objetivo" />
+      <End Role="Objetivo1" EntitySet="Objetivo1Set" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ObjetivoPeriodoObj" Association="EvaluacionModel.FK_ObjetivoPeriodoObj">
+      <End Role="PERIODO" EntitySet="PERIODO" />
+      <End Role="PeriodoObjetivo" EntitySet="PeriodoObjetivo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Periodo" Association="EvaluacionModel.FK_Periodo">
+      <End Role="PERIODO" EntitySet="PERIODO" />
+      <End Role="Re_Objetivo" EntitySet="Re_Objetivo" />
+    </AssociationSet>
+    <FunctionImport Name="sp_EstatusObjetivos" ReturnType="Collection(EvaluacionModel.sp_EstatusObjetivos_Result)">
+      <Parameter Name="numEmp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_FinalizaObjetivo">
+      <Parameter Name="numero" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GuardarEstadoDeObjetivo">
+      <Parameter Name="IDObjetivo" Mode="In" Type="Int32" />
+      <Parameter Name="NoEmp" Mode="In" Type="Int32" />
+      <Parameter Name="Periodo" Mode="In" Type="Int32" />
+      <Parameter Name="Comentarios" Mode="In" Type="String" />
+      <Parameter Name="IDReEvaluacion" Mode="In" Type="Int32" />
+      <Parameter Name="Avance" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ValidaObjetivoActual" ReturnType="Collection(String)">
+      <Parameter Name="numEmp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ValidarObjetivosExistente" ReturnType="Collection(String)">
+      <Parameter Name="NumEmp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CargaEmpleadosSalary" ReturnType="Collection(EvaluacionModel.sp_CargaEmpleadosSalary_Result)" />
+    <FunctionImport Name="sp_LoadObjetivos">
+      <Parameter Name="valorCorto" Mode="In" Type="String" />
+      <Parameter Name="numEmp" Mode="In" Type="Int32" />
+      <Parameter Name="Periodo" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="CategoriaObjetivos" EntityType="EvaluacionModel.CategoriaObjetivos" />
+    <AssociationSet Name="FK_CategoriaObjetivo" Association="EvaluacionModel.FK_CategoriaObjetivo">
+      <End Role="CategoriaObjetivos" EntitySet="CategoriaObjetivos" />
+      <End Role="Objetivo1" EntitySet="Objetivo1Set" />
+    </AssociationSet>
+    <FunctionImport Name="sp_RevisionObjetivosTerminados" ReturnType="Collection(EvaluacionModel.sp_RevisionObjetivosTerminados_Result)">
+      <Parameter Name="NumEmp" Mode="In" Type="Int32" />
+      <Parameter Name="Periodo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_misEmpleadosConObjetivosPendientes" ReturnType="Collection(EvaluacionModel.sp_misEmpleadosConObjetivosPendientes_Result)">
+      <Parameter Name="PrimerNombre" Mode="In" Type="String" />
+      <Parameter Name="PrimerApellido" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GuardarYTerminarObjetivos">
+      <Parameter Name="IDReObjetivo" Mode="In" Type="Int32" />
+      <Parameter Name="NoEmp" Mode="In" Type="Int32" />
+      <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+      <Parameter Name="RevisionActual" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_AprobarObj">
+      <Parameter Name="NoEmp" Mode="In" Type="Int32" />
+      <Parameter Name="Comentario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RechazaObjetivos">
+      <Parameter Name="numero" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RechazarObjetivo">
+      <Parameter Name="NoEmp" Mode="In" Type="Int32" />
+      <Parameter Name="Comentarios" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getPeriodos" ReturnType="Collection(EvaluacionModel.sp_getPeriodos_Result)" />
+    <FunctionImport Name="sp_setPeriodos">
+      <Parameter Name="Q1" Mode="In" Type="String" />
+      <Parameter Name="Q2" Mode="In" Type="String" />
+      <Parameter Name="Q3" Mode="In" Type="String" />
+      <Parameter Name="Q4" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="TiposObjetivos" EntityType="EvaluacionModel.TiposObjetivos" />
+    <FunctionImport Name="sp_ActualizaMeta">
+      <Parameter Name="meta" Mode="In" Type="String" />
+      <Parameter Name="numEmp" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GuardarEstadoDeObjetivoOnGoing">
+      <Parameter Name="IDObjetivo" Mode="In" Type="Int32" />
+      <Parameter Name="NoEmp" Mode="In" Type="Int32" />
+      <Parameter Name="Periodo" Mode="In" Type="Int32" />
+      <Parameter Name="Comentarios" Mode="In" Type="String" />
+      <Parameter Name="IDReEvaluacion" Mode="In" Type="Int32" />
+      <Parameter Name="Avance" Mode="In" Type="Int32" />
+      <Parameter Name="cuarto" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_MisObjetivosXD" ReturnType="Collection(EvaluacionModel.sp_MisObjetivosXD_Result)">
+      <Parameter Name="NumeroDeEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="Periodo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ActualizaMetaEdit">
+      <Parameter Name="meta" Mode="In" Type="String" />
+      <Parameter Name="numEmp" Mode="In" Type="Int32" />
+      <Parameter Name="idObjetivo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="yearFiscal" ReturnType="Collection(Int32)" />
+  </EntityContainer>
+  <ComplexType Name="sp_CargaEmpleados_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="93" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Departamento" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Jefe" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Area" Nullable="true" MaxLength="37" />
+    <Property Type="String" Name="valorCorto" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FechaReminder" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="sp_CargaEmpleadosReporte_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="61" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Departamento" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Jefe" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Area" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="FechaReminder" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="48" />
+    <Property Type="String" Name="Gerente" Nullable="true" />
+    <Property Type="String" Name="Tipo" Nullable="true" />
+    <Property Type="String" Name="yearFiscal" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="sp_CargarCompetenciasGuardadas_Result">
+    <Property Type="Int32" Name="ID_Competencia" Nullable="false" />
+    <Property Type="String" Name="Comentarios" Nullable="true" />
+    <Property Type="String" Name="ComentariosJefe" Nullable="true" />
+    <Property Type="Int32" Name="Evaluador" Nullable="true" />
+    <Property Type="Int32" Name="ID_CalificacionDeRendimiento" Nullable="true" />
+    <Property Type="Int32" Name="ID_Estatus_Evaluacion" Nullable="false" />
+    <Property Type="Int32" Name="ID_PlantillaEvaluacionExcempt" Nullable="true" />
+    <Property Type="Int32" Name="No_Emp" Nullable="true" />
+    <Property Type="Double" Name="CalificacionJefe" Nullable="true" />
+    <Property Type="Int16" Name="OrdenPlantilla" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_CargarDatosReporte_Result">
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="61" />
+    <Property Type="String" Name="JEFE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="Double" Name="CalificacionFinal" Nullable="true" />
+    <Property Type="String" Name="TipoEvaluacion" Nullable="true" />
+    <Property Type="Double" Name="CalifAprox" Nullable="true" />
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="DescripcionCalf" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="NombreGerente" Nullable="true" />
+    <Property Type="String" Name="EvaluadorRH" Nullable="true" />
+    <Property Type="String" Name="EvaluadorPM" Nullable="true" />
+    <Property Type="String" Name="AprovoPM" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_CargarEmpleadoPrueba_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="APELLIDO" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="DEPARTAMENTO" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="JEFE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Areay" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="valorCorto" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FechaReminder" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="NIVEL1" Nullable="false" MaxLength="6" />
+  </ComplexType>
+  <ComplexType Name="sp_CargarPlantilla_Result">
+    <Property Type="Int32" Name="ID_PlantillaEvaluacionExcempt" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="true" />
+    <Property Type="String" Name="Contenido" Nullable="true" />
+    <Property Type="String" Name="TipoDeCompetencia" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NombreTipoDePlantillaEvaluacion" Nullable="true" MaxLength="100" />
+    <Property Type="Int16" Name="OrdenPlantilla" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_CargarReporte_Result">
+    <Property Type="String" Name="Nombre" Nullable="true" />
+    <Property Type="String" Name="TipoDeCompetencia" Nullable="true" MaxLength="38" />
+    <Property Type="String" Name="Comentarios" Nullable="true" />
+    <Property Type="String" Name="ComentariosJefe" Nullable="true" />
+    <Property Type="String" Name="CalificacionEmpleado" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="CalificacionJefe" Nullable="true" MaxLength="30" />
+    <Property Type="Byte" Name="OrdenReporte" Nullable="true" />
+    <Property Type="String" Name="DescripcionContenido" Nullable="true" />
+    <Property Type="String" Name="NombreCalificacionJefe" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="NombreCalificacionEmp" Nullable="true" MaxLength="30" />
+    <Property Type="Int16" Name="OrdenPlantilla" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ListarPendienteDeObjetivos_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Departamento" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Jefe" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="sp_ListaSendReminders_Result">
+    <Property Type="String" Name="userName" Nullable="true" />
+    <Property Type="Int32" Name="userNumber" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="userMail" Nullable="true" />
+    <Property Type="String" Name="jefe" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="mailJefe" Nullable="true" />
+    <Property Type="String" Name="mailRH" Nullable="false" MaxLength="57" />
+    <Property Type="String" Name="mailPM" Nullable="false" MaxLength="21" />
+    <Property Type="String" Name="valorCorto" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="valorReminder" Nullable="true" />
+    <Property Type="Int32" Name="id_Reminder" Nullable="true" />
+    <Property Type="String" Name="ComentariosRh" Nullable="true" />
+    <Property Type="String" Name="ComentariosPM" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_misEmpleadosConEvaluacionPendiente_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Departamento" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="FechaReminder" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Recordatorio" Nullable="true" />
+    <Property Type="Int32" Name="id_Reminder" Nullable="true" />
+    <Property Type="String" Name="ComentariosGer" Nullable="true" />
+    <Property Type="String" Name="EstadoObj" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="ID_ReEvaluacion" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_misEmpleadosSinCorreo_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="APELLIDO" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="DEPARTAMENTO" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="userMail" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="userName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="JEFE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Areay" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="sp_MisNotificaciones_Result">
+    <Property Type="Int32" Name="ID_Notificacion" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="true" />
+    <Property Type="Int32" Name="No_Empleado" Nullable="false" />
+    <Property Type="Int32" Name="ID_Periodo" Nullable="false" />
+    <Property Type="Time" Name="MomentoDeNotificacion" Nullable="true" />
+    <Property Type="Int32" Name="EstadoDeNotificacion" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_MisObjetivos_Result">
+    <Property Type="Int32" Name="ID_Objetivo" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="Peso" Nullable="true" />
+    <Property Type="String" Name="Comentarios" Nullable="true" />
+    <Property Type="String" Name="Periodo" Nullable="true" MaxLength="5" />
+    <Property Type="Int32" Name="CategoryID" Nullable="true" />
+    <Property Type="Int32" Name="Avance" Nullable="true" />
+    <Property Type="String" Name="PeriodoActual" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="Tipo" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_MisObjetivosRealizados_Result">
+    <Property Type="Int32" Name="ID_Objetivo" Nullable="false" />
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="Int32" Name="ID_Periodo" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="Peso" Nullable="false" />
+    <Property Type="String" Name="EstadoDeObjetivo" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FechaDeCreacion" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaDeModificacion" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FechaLimiteEsperada" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FechaDeTerminacionDeObjetivo" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Comentarios" Nullable="true" />
+    <Property Type="String" Name="Firma" Nullable="true" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="sp_ObtenerCompetencia_Result">
+    <Property Type="Int32" Name="ID_PlantillaEvaluacionExcempt" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="true" />
+    <Property Type="String" Name="Contenido" Nullable="true" />
+    <Property Type="Int32" Name="ID_TipoDeCompetencia" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_PendientesDeAprobacion_Result">
+    <Property Type="Int32" Name="ID_ReEvaluacion" Nullable="false" />
+    <Property Type="Int32" Name="No_Emp" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="DEPARTAMENTO" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_ValidarNombreDeUsuario_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="userName" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="DEPARTAMENTO" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="JEFE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="NombreAD" Nullable="true" />
+    <Property Type="String" Name="ApellidoAD" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="verificaSemana_Result">
+    <Property Type="String" Name="userName" Nullable="true" />
+    <Property Type="Int32" Name="userNumber" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="semanaRetrasada" Nullable="true" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="userMail" Nullable="true" />
+    <Property Type="String" Name="jefe" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="mailJefe" Nullable="true" />
+    <Property Type="String" Name="mailRH" Nullable="false" MaxLength="57" />
+    <Property Type="String" Name="mailPM" Nullable="false" MaxLength="21" />
+    <Property Type="String" Name="valorReminder" Nullable="false" MaxLength="74" />
+    <Property Type="String" Name="valorCorto" Nullable="false" MaxLength="24" />
+    <Property Type="Int32" Name="id_Reminder" Nullable="true" />
+    <Property Type="String" Name="ComentariosRh" Nullable="true" />
+    <Property Type="String" Name="ComentariosPM" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_CargarComentariosReporte_Result">
+    <Property Type="String" Name="ComentariosGerente" Nullable="true" />
+    <Property Type="String" Name="ComentariosRH" Nullable="true" />
+    <Property Type="String" Name="ComentariosPM" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_EstatusEvaluaciones_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Departamento" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="FechaReminder" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="ComentariosGer" Nullable="true" />
+    <Property Type="String" Name="ComentariosRh" Nullable="true" />
+    <Property Type="String" Name="ComentariosPM" Nullable="true" />
+    <Property Type="String" Name="Recordatorio" Nullable="true" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="54" />
+    <Property Type="String" Name="TipoReporte" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_MiEvaluacion_Result">
+    <Property Type="Int32" Name="ID_ReEvaluacion" Nullable="false" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TipoEvaluacion" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_misEmpleadosConEvaluacionEnEspera_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Departamento" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="FechaReminder" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ComentariosGer" Nullable="true" />
+    <Property Type="String" Name="Recordatorio" Nullable="true" />
+    <Property Type="Int32" Name="id_Reminder" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_misEmpleadosConEvaluacionTerminada_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Departamento" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="FechaReminder" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ComentariosGer" Nullable="true" />
+    <Property Type="String" Name="Recordatorio" Nullable="true" />
+    <Property Type="Int32" Name="id_Reminder" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ListarCursosAsistidos_Result">
+    <Property Type="String" Name="Codigo" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+    <Property Type="Byte" Name="Calificacion" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="EstatusEvaluacionesTerminadas_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Departamento" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="FechaReminder" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="ComentariosGer" Nullable="true" />
+    <Property Type="String" Name="ComentariosRh" Nullable="true" />
+    <Property Type="String" Name="ComentariosPM" Nullable="true" />
+    <Property Type="String" Name="Recordatorio" Nullable="true" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="54" />
+    <Property Type="String" Name="TipoReporte" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="Objetivo1">
+    <Key>
+      <PropertyRef Name="ID_Objetivo" />
+    </Key>
+    <Property Name="ID_Objetivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_ReObjetivo" Type="Int32" Nullable="false" />
+    <Property Name="ID_CategoriaObjetivos" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Peso" Type="Int32" />
+    <Property Name="Tipo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ComentariosJefe" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Avance" Type="Int32" />
+    <NavigationProperty Name="Re_Objetivo" Relationship="EvaluacionModel.FK_ReObjetivo" FromRole="Objetivo1" ToRole="Re_Objetivo" />
+    <NavigationProperty Name="CategoriaObjetivos" Relationship="EvaluacionModel.FK_CategoriaObjetivo" FromRole="Objetivo1" ToRole="CategoriaObjetivos" />
+    <Property Name="TipObj" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TipoObjNum" Type="Int32" />
+    <Property Name="Meta" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Q1" Type="Int32" />
+    <Property Name="Q2" Type="Int32" />
+    <Property Name="Q3" Type="Int32" />
+    <Property Name="Q4" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PeriodoObjetivo">
+    <Key>
+      <PropertyRef Name="ID_PeriodoObjetivo" />
+    </Key>
+    <Property Name="ID_PeriodoObjetivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Periodo" Type="Int32" Nullable="false" />
+    <Property Name="Periodo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="FechaRevision" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="PERIODO1" Relationship="EvaluacionModel.FK_ObjetivoPeriodoObj" FromRole="PeriodoObjetivo" ToRole="PERIODO" />
+  </EntityType>
+  <EntityType Name="Re_Objetivo">
+    <Key>
+      <PropertyRef Name="ID_ReObjetivo" />
+    </Key>
+    <Property Name="ID_ReObjetivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Periodo" Type="Int32" Nullable="false" />
+    <Property Name="No_Emp" Type="Int32" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+    <Property Name="FechaTerminacion" Type="DateTime" Precision="0" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CalificacionFinal" Type="Double" />
+    <Property Name="ComentarioFinal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PeriodoActual" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Objetivo" Relationship="EvaluacionModel.FK_ReObjetivo" FromRole="Re_Objetivo" ToRole="Objetivo1" />
+    <NavigationProperty Name="PERIODO" Relationship="EvaluacionModel.FK_Periodo" FromRole="Re_Objetivo" ToRole="PERIODO" />
+  </EntityType>
+  <Association Name="FK_ReObjetivo">
+    <End Type="EvaluacionModel.Re_Objetivo" Role="Re_Objetivo" Multiplicity="1" />
+    <End Type="EvaluacionModel.Objetivo1" Role="Objetivo1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Re_Objetivo">
+        <PropertyRef Name="ID_ReObjetivo" />
+      </Principal>
+      <Dependent Role="Objetivo1">
+        <PropertyRef Name="ID_ReObjetivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ObjetivoPeriodoObj">
+    <End Type="EvaluacionModel.PERIODO" Role="PERIODO" Multiplicity="1" />
+    <End Type="EvaluacionModel.PeriodoObjetivo" Role="PeriodoObjetivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIODO">
+        <PropertyRef Name="ID_Periodo" />
+      </Principal>
+      <Dependent Role="PeriodoObjetivo">
+        <PropertyRef Name="ID_Periodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Periodo">
+    <End Type="EvaluacionModel.PERIODO" Role="PERIODO" Multiplicity="1" />
+    <End Type="EvaluacionModel.Re_Objetivo" Role="Re_Objetivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIODO">
+        <PropertyRef Name="ID_Periodo" />
+      </Principal>
+      <Dependent Role="Re_Objetivo">
+        <PropertyRef Name="ID_Periodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="sp_EstatusObjetivos_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Departamento" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="FechaReminder" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Recordatorio" Nullable="true" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="39" />
+    <Property Type="DateTime" Name="FechaInicio" Nullable="true" />
+    <Property Type="String" Name="EstadoObj" Nullable="true" MaxLength="74" />
+  </ComplexType>
+  <ComplexType Name="sp_CargaEmpleadosSalary_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="93" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Departamento" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Jefe" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Area" Nullable="true" MaxLength="37" />
+    <Property Type="String" Name="FechaReminder" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="35" />
+    <Property Type="String" Name="Periodo" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <EntityType Name="CategoriaObjetivos">
+    <Key>
+      <PropertyRef Name="ID_CategoriaObjetivos" />
+    </Key>
+    <Property Name="ID_CategoriaObjetivos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Valor" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Definicion" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Objetivo" Relationship="EvaluacionModel.FK_CategoriaObjetivo" FromRole="CategoriaObjetivos" ToRole="Objetivo1" />
+  </EntityType>
+  <Association Name="FK_CategoriaObjetivo">
+    <End Type="EvaluacionModel.CategoriaObjetivos" Role="CategoriaObjetivos" Multiplicity="1" />
+    <End Type="EvaluacionModel.Objetivo1" Role="Objetivo1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoriaObjetivos">
+        <PropertyRef Name="ID_CategoriaObjetivos" />
+      </Principal>
+      <Dependent Role="Objetivo1">
+        <PropertyRef Name="ID_CategoriaObjetivos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="sp_RevisionObjetivosTerminados_Result">
+    <Property Type="Double" Name="CalificacionFinal" Nullable="true" />
+    <Property Type="String" Name="Comentario" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_misEmpleadosConObjetivosPendientes_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Departamento" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="FechaReminder" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Comentario" Nullable="true" />
+    <Property Type="String" Name="PeriodoActual" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Recordatorio" Nullable="true" />
+    <Property Type="Int32" Name="id_Reminder2" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_getPeriodos_Result">
+    <Property Type="Int32" Name="ID_Periodo" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha_Inicio" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Fecha_Final" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="200" />
+  </ComplexType>
+  <EntityType Name="TiposObjetivos">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="valor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Definicion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="sp_MisObjetivosXD_Result">
+    <Property Type="Int32" Name="ID_Objetivo" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="true" />
+    <Property Type="Int32" Name="Peso" Nullable="true" />
+    <Property Type="String" Name="Comentarios" Nullable="true" />
+    <Property Type="String" Name="Periodo" Nullable="true" MaxLength="5" />
+    <Property Type="Int32" Name="CategoryID" Nullable="true" />
+    <Property Type="Int32" Name="Avance" Nullable="true" />
+    <Property Type="String" Name="PeriodoActual" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="Tipo" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Q1" Nullable="true" />
+    <Property Type="Int32" Name="Q2" Nullable="true" />
+    <Property Type="Int32" Name="Q3" Nullable="true" />
+    <Property Type="Int32" Name="Q4" Nullable="true" />
+    <Property Type="String" Name="Meta" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="CompletadoQ1" Nullable="true" />
+    <Property Type="String" Name="CompletadoQ2" Nullable="true" />
+    <Property Type="String" Name="CompletadoQ3" Nullable="true" />
+    <Property Type="String" Name="CompletadoQ4" Nullable="true" />
+  </ComplexType>
+</Schema>

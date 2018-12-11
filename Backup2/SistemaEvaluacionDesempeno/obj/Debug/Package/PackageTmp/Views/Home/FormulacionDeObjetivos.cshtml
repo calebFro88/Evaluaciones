@@ -1,0 +1,379 @@
+﻿
+@{
+    ViewBag.Title = "FormulacionDeObjetivos";
+    if (Session["Estado"] == null)
+    {
+        Response.Redirect(Url.Action("LogIn", "Home"));
+    }
+}
+
+<div class="right_col" role="main">
+    <div class="">
+
+        <div role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3> FORMULACION DE OBJETIVOS</h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <label>Periodo: </label><label>&nbsp;@DateTime.Now.Year - @(DateTime.Now.Year + 1)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>NUEVO OBJETIVO</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href="#">Settings 1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Settings 2</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <!--Tabla de objetivos pendientes-->
+                                @*<div class="row">
+                                        &nbsp;&nbsp;&nbsp;Periodo:
+                                        &nbsp;&nbsp;&nbsp;<button class="btn btn-primary">ENE-MAR</button><button class="btn btn-default">ABR-JUN</button><button class="btn btn-default">JUL-SEPT</button><button class="btn btn-default">OCT-DIC</button>
+                                    </div>*@
+                                <div id="tblFormulacionObjetivos"></div>
+                                <button type="button" class="btn btn-success" onclick="finalizarObjetivos()" id="btnFinalizarObjetivos"> <span class="glyphicon glyphicon-send"></span>  Finalizar Objetivos</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+          var miTabla;
+          var arreglo;
+          var IDPeriodo = @int.Parse(Session["IDPeriodo"].ToString());
+
+          //Al cargar pagina...
+          $(document).ready(function () {
+              //$("")
+              //$("#dtFechaLimiteEsperada").kendoDatePicker();
+              $("#intPeso").kendoNumericTextBox();
+              //Primero cersioramos si el Empleado ya ha finalizado sus objetivos, de ser asi no lo dejara agregar mas.
+              //Si no, estaran habilitados los controles necesarios para agregar objetivos, asi como el listado de sus objetivos en espera...
+              //cargarTabla();
+              @*miTabla =  $("#grid").kendoGrid({
+                  dataSource:{
+                      transport: {
+                          read: {
+                              //Direccion del metodo en controlador..
+                              url: "@Url.Action("getMisObjetivosPendientes", "Objetivos")",
+                              type: "post",
+                              dataType: "json",
+                              data: {
+                                  NumeroEmpleado: @Session["No_Empleado"],
+                                  Periodo: IDPeriodo
+                              }
+                          }
+                      },
+                      schema: {
+                          model: {
+                              id: "ID_Objetivo",
+                              fields: {
+                                  Descripcion: { validation: { required: true } },
+                                  Peso: { type: "number", validation: { required: true, min: 1 } },
+                                  FechaTerminacion: { type: "date" }
+                              }
+                          }
+                      },
+                      pageSize: 15,
+                  },
+                  pageable: true,
+                  height: 350,
+                  dataBound: onDataBound,
+                  columns: [
+                      {
+                          hidden: true,
+                          field: "ID_Objetivo"
+                      },
+                          "Descripcion",
+                      {
+                          field: "Peso", title: "Peso", width: "120px"
+                      },
+                      {
+                          field: "FechaLimiteEsperada",
+                          type: "date",
+                          title: "Finalizacion De Objetivo",
+                          format: "{0:dd/MM/yyyy}",
+                          width: "220px",
+                          template: "#= kendo.toString(kendo.parseDate(Fecha_Term, 'yyyy-MM-dd'), 'dd/MM/yyyy')#"
+                      }
+                      ,{
+                          title: "Editar",
+                          template: "<button class = 'btn btn-primary'> <span class='glyphicon glyphicon-edit'></span></button>",
+                          width: "70px",
+                      },{
+                          title: "Eliminar",
+                          template: "<button class = 'btn btn-danger' onclick='Eliminar(#= ID_Objetivo #)'> <span class='glyphicon glyphicon-remove'></span></button>",
+                          width: "70px",
+                      }
+                  ]
+              });*@
+
+              var numEmp = @Session["No_Empleado"];
+              var crudServiceBaseUrl = "https://demos.telerik.com/kendo-ui/service",
+                           dataSource = new kendo.data.DataSource({
+                               transport: {
+                                   read: {
+                                       type: "post",
+                                       url: "@Url.Action("getMisObjetivosPendientes", "Objetivos")",
+                                       dataType: "json",
+                                   },
+                                   update: {
+                                       url: "@Url.Action("setEditarObjetivo", "Objetivos")",
+                                       type: "post",
+                                       dataType: "json"
+                                   },
+                                   destroy: {
+                                       url: "@Url.Action("setEliminarObjetivo", "Objetivos")",
+                                       type: "post",
+                                       dataType: "json"
+                                   },
+                                   create: {
+                                       url: "@Url.Action("setNuevoObjetivo", "Objetivos")",
+                                       type: "post",
+                                       dataType: "json"
+                                   },
+                                   parameterMap: function (data, type) {
+                                       if (type != "read" && data.models) {
+                                           var fechaFormateada = kendo.toString(new Date(data.models[0].FechaLimiteEsperada), "dd/MM/yyyy");
+                                           //alert(data.models[0].FechaLimiteEsperada);
+                                           return { NumeroEmpleado: numEmp, DescObjetivo:data.models[0].Descripcion, intPeso: data.models[0].Peso, Periodo: IDPeriodo, FechaLimiteEsperada: fechaFormateada, ID_Objetivo: data.models[0].ID_Objetivo};
+                                       }
+
+                                       if (type == "read") {
+                                           return { NumeroEmpleado: numEmp, Periodo: IDPeriodo };
+                                       }
+                                   }
+                               },
+                               batch: true,
+                               pageSize: 20,
+                               schema: {
+                                   model: {
+                                       id: "ID_Objetivo",
+                                       fields: {
+                                           NumeroDeEmpleado: { validation: { required: true }},
+                                           Descripcion: { validation: { required: true } },
+                                           Peso: { validation: { required: true} },
+                                           FechaLimiteEsperada: {type: "date" }
+                                       }
+                                   }
+                               }
+                           });
+
+              $("#tblFormulacionObjetivos").kendoGrid({
+                  dataSource: dataSource,
+                  pageable: true,
+                  height: 550,
+
+                  toolbar: [{
+                      text: "<span class = 'glyphicon glyphicon-saved'></span>Crear Nuevo Objetivo",
+                      className: "k-button k-button-icontext k-grid-add",
+                      imageClass: "k-add",
+                  }],
+                  columns: [
+                      {
+                          hidden: true,
+                          field: "ID_Objetivo"
+                      },
+                      {
+                          hidden: true,
+                          field: "No_Emp",
+                          title: "Numero Empleado"
+                      },
+                      "Descripcion",
+                      {
+                          field: "Peso", title: "Peso", width: "120px"
+                      },
+                      {
+                          field: "FechaLimiteEsperada",
+                          type: "date",
+                          title: "Fecha Limite Esperada",
+                          format: "{0:MM/dd/yyyy}",
+                          width: "220px",
+                          template: "#= kendo.toString(kendo.parseDate(FechaLimiteEsperada, 'yyyy-MM-dd'), 'MM/dd/yyyy') #",
+                          //editor: dateTimeEditor
+                      },
+                        { command:
+                            [
+                            //    {
+                            //    text: "<span class = 'k-icon k-i-edit'></span> Editar",
+                            //    className: "k-button k-button-icontext k-grid-edit",
+                            //    imageClass: "k-add",
+                            //},{
+                            //    text: "<span class = 'glyphicon glyphicon-remove'></span> Eliminar",
+                            //    className: "k-button k-button-icontext k-grid-delete",
+                            //    imageClass: "k-add",
+                            //},
+                            "edit", "destroy"], title: "&nbsp;", width: "250px"
+                        }
+                      //, {
+                      //    title: "Editar",
+                      //    template: "<button class = 'btn btn-primary'> <span class='glyphicon glyphicon-edit'></span></button>",
+                      //    width: "70px",
+                      //}, {
+                      //    title: "Eliminar",
+                      //    template: "<button class = 'btn btn-danger' onclick='Eliminar(#= ID_Objetivo #)'> <span class='glyphicon glyphicon-remove'></span></button>",
+                      //    width: "70px",
+               //   }
+                  ],
+                  editable: "inline"
+
+              });
+          });
+
+          //function dateTimeEditor(container, options) {
+          //    $('<input data-text-field="' + options.field + '" data-value-field="' + options.field + '" data-bind="value:' + options.field + '" data-format="' + options.format + '"/>')
+          //            .appendTo(container)
+          //            .kendoDatePicker({format: "dd/MMM/yyyy"});
+          //}
+          //function customBoolEditor(container, options) {
+          //    $('<input class="k-checkbox" type="radio" name="Discontinued" data-type="boolean" data-bind="checked:Discontinued">').appendTo(container);
+          //    $('<label class="k-checkbox-label">&#8203;</label>').appendTo(container);
+          //}
+          function onDataBound(arg) {
+              if(arg.sender._data.length>=1){ //Si no existen objetivos, se bloquea la opcion para finalizar los objetivos.
+                  //$("#btnFinalizarObjetivos").attr("disabled");
+                  document.getElementById("btnFinalizarObjetivos").disabled = false;
+              }else{
+                  document.getElementById("btnFinalizarObjetivos").disabled = true;
+              }
+          }
+
+
+          function validarObj(){
+              $.ajax({
+                  type: "post",
+                  data: "{ NumeroEmpleado: " + @Session["No_Empleado"]+ ", Periodo: " + IDPeriodo + "}",
+                  url: "@Url.Action("getObjetivosPendientesDeValidar", "Objetivos")",
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  success:function (datos){
+                      if (datos == true){
+                          $("#txaDescripcionObjetivo").removeProp("disabled");
+                          document.getElementById("txaDescripcionObjetivo").removeAttribute("disabled");
+                          valorRetornado = true;
+                          num=1;
+                      }
+                      else
+                      {
+                          //cargarTabla();
+                          //$("#txaDescripcionObjetivo").removeAttr("disabled");
+                          // document.getElementById("txaDescripcionObjetivo").removeAttribute("disabled");
+                          valorRetornado = false;
+                          num=0;
+                      }
+                  },
+                  error: function (datos){
+                      alert(datos);
+                  }
+              });
+          }
+
+          function Eliminar(ID_Objetivo){
+              if(confirm('Desea eliminar objetivo ' + ID_Objetivo + '?')){
+                  $.ajax({
+                      type: "POST",
+                      data: "{ID_Objetivo: " + ID_Objetivo + "}",
+                      url: "@Url.Action("setEliminarObjetivo", "Objetivos")",
+                      contentType: "application/json; charset=utf-8",
+                      dataType: "json",
+                      success: function (datos){
+                          alert(datos);
+                          Refrescar();
+                      },
+                      error: function (error){
+                          alert(error);
+                      }
+                  });
+              }
+          }
+
+          function enviardatos() {
+              var descObjetivo = $("#txaDescripcionObjetivo").val();
+              var intPeso = parseInt($("#intPeso").val());
+              //var dtFechaFin = $("#dtFinalizacionObjetivo").val();
+
+              if(descObjetivo == "" || intPeso == NaN){
+                  alert("No deje campos vacios...");
+              }
+              else{
+                  $.ajax({
+                      type: "POST",
+                      data: "{No_Emp: "+ @Session["No_Empleado"] + ", DescObjetivo: '" + descObjetivo + "', intPeso: " + intPeso + ", Periodo: " + IDPeriodo + "}",
+                      url: "@Url.Action("setNuevoObjetivo", "Objetivos")",
+                      contentType: "application/json; charset=utf-8",
+                      dataType: "json",
+                      success: function (datos) {
+                          if (datos == false) {
+                              alert("false");
+                          } else {
+                              Refrescar();
+                          }
+                      }
+                  });
+              }
+          }
+
+          function finalizarObjetivos(){
+              var ok = miTabla;
+              if(confirm('Desea finalizar de formular sus objetivos, para que se firmen por su jefe directo?')){
+                  $.ajax({
+                      type: "POST",
+                      data: "{NumeroEmpleado: "+ @Session["No_Empleado"] + ", Periodo: " + IDPeriodo + "}",
+                      url: "@Url.Action("setTerminarDeFormularObjetivos", "Objetivos")",
+                      contentType: "application/json; charset=utf-8",
+                      dataType: "json",
+                      success: function (datos) {
+                          if (datos == false) {
+                              alert("false");
+                          } else {
+                              Refrescar();
+                              alert("Se han finalizado de formular los objetivos, han pasado a estado: Pendiente de revisar.");
+                              //location.reload();
+                          }
+                      }
+                  });
+              }
+          }
+
+          function Refrescar(){
+              $('#tblFormulacionObjetivos').data('kendoGrid').dataSource.read();
+              $('#tblFormulacionObjetivos').data('kendoGrid').refresh();
+              $("#txaDescripcionObjetivo").val('');
+              $("#intPeso").val('');
+              $("#dtFinalizacionObjetivo").val('');
+              $("#txaDescripcionObjetivo").focus();
+          }
+    </script>
+}

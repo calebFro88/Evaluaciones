@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "NoExisteObjetivo";
+}
+<div id="example">
+    <div id="dialog">
+
+    </div>
+</div>
+<div class="right_col" role="main">
+    <div class="">
+        <div role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3> Revision de Objetivos</h3>
+                    </div>
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <label>A&Ntilde;O FISCAL: </label><label>&nbsp;@DateTime.Now.Year</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function ()
+        {
+            cargarMensaje();
+        });
+
+        function cargarMensaje()
+        {
+            var dialog = $('#dialog'),
+            undo = $("#undo");
+
+            undo.click(function () {
+                dialog.data("kendoDialog").open();
+                undo.fadeOut();
+            });
+
+            function onClose() {
+                undo.fadeIn();
+                location.href = "@Url.Action("Index", "Home")";
+            }
+
+            dialog.kendoDialog({
+                width: "400px",
+                title: "OBJETIVO",
+                closable: false,
+                modal: false,
+                content: "<p>@Session["Mensaje"]<p>",
+                actions: [
+                    { text: 'Regresar A Inicio' }
+                ],
+                close: onClose
+            });
+        }
+
+    </script>
+}

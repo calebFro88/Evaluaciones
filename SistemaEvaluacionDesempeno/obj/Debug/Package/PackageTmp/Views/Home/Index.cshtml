@@ -1,0 +1,1086 @@
+﻿@{
+    ViewBag.Title = "Index";
+    if (Session["Estado"] == null) //Si no se encuentra iniciada la sesion se redirige a la pagina de inicio de sesion.
+    {
+        Response.Redirect(Url.Action("LogIn", "Home"));
+    }
+
+    var nivelJefe = Session["NivelJefe"];
+}
+
+<style type="text/css">
+    .panel-primary {
+        border-color: transparent;
+    }
+
+    .panel > .panel-heading {
+        background-image: none;
+        background-color: #2a3f54;
+        color: white;
+        border-color: transparent;
+    }
+</style>
+<!-- Modal Ayuda Evaluaciones Pendientes-->
+<div class="modal fade" id="mdlAyudaMiEv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ayuda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Esta secci&oacute;n indica las evaluaciones que tiene pendiente el usuario que inicio sesi&oacute;n en el sistema.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Entendido <span class="glyphicon glyphicon-ok"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="right_col" role="main">
+    <div class="">
+        <div role="main" id="">
+            <div class="">
+                <div class="row text-center">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2>Mi Evaluaci&oacute;n: @Session["Apellido"], @Session["Nombre"]<button class="btn btn-default pull-right" data-toggle="modal" data-target="#mdlAyudaMiEv"><span class="glyphicon glyphicon-question-sign"></span></button></h2>
+                            </div>
+                            <div class="panel-body">
+                                <div id="ContenidoMiEvaluacion" class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Estado</th>
+                                                <th>Tipo de evaluacion</th>
+                                                <th>Ver Detalles</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbMiEvaluacion" style="font-size:small;font-family:Arial;font-style:normal;"></tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2>Evaluaciones De Mis Empleados Pendientes De Revisi&oacute;n<button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-question-sign"></span></button></h2>
+                            </div>
+                            <div class="panel-body" style="height:520px;">
+                                <div id="contenidoEmpleadosPendRev">
+                                    <div class="row">
+                                        <div class="pull-right">
+                                            <label>Disponible Para Impresion: </label>&nbsp;<button class="btn btn-success"> <span class="glyphicon glyphicon-print"></span>&nbsp;</button>|
+                                            <label>Pendiente De Revisi&oacute;n: </label>&nbsp;<button class="btn btn-warning"> <span class="glyphicon glyphicon-pencil"></span>&nbsp;</button>|
+                                            <label>RetroAlimentada: </label>&nbsp;<button class="btn btn-danger"> <span class="glyphicon glyphicon-retweet"></span>&nbsp;</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover" id="tblEmpleadosPendRev" style="height:200px;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#Empleado</th>
+                                                        <th>Nombre</th>
+                                                        <th>Apellido</th>
+                                                        <th>Departamento</th>
+                                                        <th>Detalles</th>
+                                                        <th>Tipo De Empleado</th>
+                                                        <th>Estado</th>
+                                                        <th>Ver Detalles</th>
+                                                        <!--<th>Reporte PDF</th>-->
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tblListaDePendientes" style="font-size:small;font-family:Arial;font-style:normal;"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div id="contenido"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2>Evaluaciones Pendientes De Aprobaci&oacute;n<button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-question-sign"></span></button></h2>
+                            </div>
+                            <div class="panel-body" style="height:520px;">
+                                <div class="table-responsive">
+                                    <div id="contenidoPendientesDeAprobacion">
+                                        @if ("RecursosHumanos" == Session["TipoEmpleado"] || "PlantManager" == Session["TipoEmpleado"] || "Gerente" == Session["TipoEmpleado"])
+                                        {
+                                            <table class="table table-hover table-responsive" id="tblEmpleadosPendAprob" style="height:220px;">
+                                                <thead>
+                                                    <tr style="font-size:small; font-size-adjust:inherit">
+                                                        <th>#Empleado</th>
+                                                        <th>Nombre</th>
+                                                        <th>Apellido</th>
+                                                        <th>Depto.</th>
+                                                        <th>Detalles</th>
+                                                        <th>Tpo. Empleado</th>
+                                                        <th>RetroAlimentar</th>
+                                                        <!--<th>Rept PDF</th>-->
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tblListaDePendientesAprob" style="font-size:small;font-family:Arial;font-style:normal;"></tbody>
+                                            </table>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!---->
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2>Evaluaciones en espera<button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-question-sign"></span></button></h2>
+                            </div>
+                            <div class="panel-body" style="height:520px;">
+                                <div id="contenidoEmpleadosEspera">
+                                    @*<div class="row">
+                                            <div class="pull-right">
+                                                <label>Disponible Para Impresion: </label>&nbsp;<button class="btn btn-success"> <span class="glyphicon glyphicon-print"></span>&nbsp;</button>|
+                                                <label>Pendiente De Revisi&oacute;n: </label>&nbsp;<button class="btn btn-warning"> <span class="glyphicon glyphicon-pencil"></span>&nbsp;</button>|
+                                                <label>RetroAlimentada: </label>&nbsp;<button class="btn btn-danger"> <span class="glyphicon glyphicon-retweet"></span>&nbsp;</button>
+                                            </div>
+                                        </div>*@
+                                    <div class="row">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover" id="tblEmpleadosEspera">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#Empleado</th>
+                                                        <th>Nombre</th>
+                                                        <th>Apellido</th>
+                                                        <th>Departamento</th>
+                                                        <th>Detalles</th>
+                                                        <th>Tipo De Empleado</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tblEmpleadosEsperaAprob" style="font-size:small;font-family:Arial;font-style:normal;"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div id="contenido"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2>Evaluaciones terminadas<button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-question-sign"></span></button></h2>
+                            </div>
+                            <div class="panel-body" style="height:520px;">
+                                <div class="table-responsive">
+                                    <div id="contenidoEvaluacionesTerminadas">
+                                        @if ("RecursosHumanos" == Session["TipoEmpleado"] || "PlantManager" == Session["TipoEmpleado"] || "Gerente" == Session["TipoEmpleado"])
+                                        {
+                                            <table class="table table-hover table-responsive" id="tblEmpleadosConEvaluacionesTerminadas">
+                                                <thead>
+                                                    <tr style="font-size:small; font-size-adjust:inherit">
+                                                        <th>#Empleado</th>
+                                                        <th>Nombre</th>
+                                                        <th>Apellido</th>
+                                                        <th>Depto.</th>
+                                                        <th>Tpo. Empleado</th>
+                                                        <th>Rept PDF</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tblListaDeEvaluacionesTerminadas" style="font-size:small;font-family:Arial;font-style:normal;"></tbody>
+                                            </table>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!----------------------------------------------------------------------->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h2>Objetivos Pendientes de Revision<button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-question-sign"></span></button></h2>
+                        </div>
+                        <div class="panel-body" style="height:520px;">
+                            <div id="contenidoEmpleadosPendRev">
+                                    @*<div class="row">
+                                        <div class="pull-right">
+                                            <label>Disponible Para Impresion: </label>&nbsp;<button class="btn btn-success"> <span class="glyphicon glyphicon-print"></span>&nbsp;</button>|
+                                            <label>Pendiente De Revisi&oacute;n: </label>&nbsp;<button class="btn btn-warning"> <span class="glyphicon glyphicon-pencil"></span>&nbsp;</button>|
+                                            <label>RetroAlimentada: </label>&nbsp;<button class="btn btn-danger"> <span class="glyphicon glyphicon-retweet"></span>&nbsp;</button>
+                                        </div>
+                                    </div>*@
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover" id="tblEmpleadosObjPen" style="height:200px;">
+                                            <thead>
+                                                <tr>
+                                                    <th>#Empleado</th>
+                                                    <th>Nombre</th>
+                                                    <th>Apellido</th>
+                                                    <th>Departamento</th>
+                                                    <th>Detalles</th>
+                                                    <th>Tipo De Empleado</th>
+                                                    <th>Estado</th>
+                                                    <th>Ver Detalles</th>
+                                                    <!--<th>Reporte PDF</th>-->
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tblListaDePendientesObj" style="font-size:small;font-family:Arial;font-style:normal;"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="contenido"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--------------------------------------------------------------------------->
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="MensajeCorreo" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel1">
+    <div class="modal-dialog" role="document" style="width:1800px">
+        <div class="modal-content">
+            <div class="modal-header" style="text-align:center">
+                <label class="label" style="color:red;font-size:x-large">AVISO</label>
+            </div>
+            <div class="modal-body">
+                <!--<table id="BitacoraTable" data-source="@Url.Action("Bitacora")"></table>-->
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        //Se almacena la variable tipo empleado para poder validar que seccion se des`plegara dependiendo el usuario.
+        var TE = '@Session["TipoEmpleado"]';
+        var userName = '@Session["user"]';
+        $(document).ready(function () {
+            validaCorreo(userName);
+
+            //Funcion para cargar tabla de las evaluaciones pendientes (practicamente aplica para todos)...
+            EvaluacionDelUsuario(); //1
+            cargarmisEmpleadosConEvaluacionesPendientes();//2
+            cargarmisEmpleadosConEvaluacionEnEspera();//3
+            cargarmisEmpleadosConEvaluacionesTerminadas();//4
+            cargaEmpleadosConObjetivosPend();//5
+            $('#tblMiEval').DataTable({
+                "lengthMenu": [[3], [3, "All"]],
+                language: {
+                    search: "Buscar:",
+                    lengthMenu:    "Mostrando _MENU_ registros",
+                    paginate: {
+                        first:      "Principal",
+                        previous:   "Anterior",
+                        next:       "Siguiente"
+                        //,last:       "Dernier"
+                    },
+                    info:           "Mostrando  _START_  a _END_ de _TOTAL_ elementos",
+                    processing:"Trabajando en ello...",
+                    zeroRecords:    "No se encontraron coincidencias."
+                }
+            });
+
+
+            $('#tblEmpleadosPendRev').DataTable({
+                "lengthMenu": [[3], [3, "All"]],
+                language: {
+                    search: "Buscar:",
+                    lengthMenu:    "Mostrando _MENU_ registros",
+                    paginate: {
+                        first:      "Principal",
+                        previous:   "Anterior",
+                        next:       "Siguiente"
+                        //,last:       "Dernier"
+                    },
+                    info:           "Mostrando  _START_  a _END_ de _TOTAL_ elementos",
+                    processing:"Trabajando en ello...",
+                    zeroRecords:    "No se encontraron coincidencias."
+                }
+            });
+
+            $('#tblEmpleadosConEvaluacionesTerminadas').DataTable({
+                "lengthMenu": [[5], [5, "All"]],
+                language: {
+                    search: "Buscar:",
+                    lengthMenu: "Mostrando _MENU_ registros",
+                    paginate: {
+                        first: "Principal",
+                        previous: "Anterior",
+                        next: "Siguiente"
+                        //,last:       "Dernier"
+                    },
+                    info: "Mostrando  _START_  a _END_ de _TOTAL_ elementos",
+                    processing: "Trabajando en ello...",
+                    zeroRecords: "No se encontraron coincidencias."
+                }
+            });
+
+            $('#tblEmpleadosObjPen').DataTable({
+                "lengthMenu": [[3], [3, "All"]],
+                language: {
+                    search: "Buscar:",
+                    lengthMenu: "Mostrando _MENU_ registros",
+                    paginate: {
+                        first: "Principal",
+                        previous: "Anterior",
+                        next: "Siguiente"
+                        //,last:       "Dernier"
+                    },
+                    info: "Mostrando  _START_  a _END_ de _TOTAL_ elementos",
+                    processing: "Trabajando en ello...",
+                    zeroRecords: "No se encontraron coincidencias."
+                }
+             });
+          
+            //Esta validacion se realiza porque no todos pueden aprobar evaluaciones, solo gerente, recursos humanos o gerente de planta.
+            if (TE == "RecursosHumanos" || TE == "PlantManager" || TE == "Gerente")
+            {
+                cargarmisEmpleadosConEvaluacionesPendientesAprobacion();
+
+                //Solo si se cargan los empleeados pendientes de aprobacion se carga datatable en el grid de aprobacion.
+                $('#tblEmpleadosPendAprob').DataTable({
+                    "lengthMenu": [[3], [3, "All"]],
+                    language: {
+                        search: "Buscar:",
+                        lengthMenu:    "Mostrando _MENU_ registros",
+                        paginate: {
+                            first:      "Principal",
+                            previous:   "Anterior",
+                            next:       "Siguiente"
+                            //,last:       "Dernier"
+                        },
+                        info:           "Mostrando  _START_  a _END_ de _TOTAL_ elementos",
+                        processing:"Trabajando en ello...",
+                        zeroRecords:    "No se encontraron coincidencias."
+                    }
+                });
+            }
+                //Si no es de  rh, pm o gerente.
+            else{
+                $("#contenidoPendientesDeAprobacion").replaceWith("<div class='msgSinEv'>No tiene Empleados Con Evaluaciones Pendientes De Aprobación</div>");
+            }
+
+
+            $('#tblEmpleadosEspera').DataTable({
+                "lengthMenu": [[3], [3, "All"]],
+                language: {
+                    search: "Buscar:",
+                    lengthMenu:    "Mostrando _MENU_ registros",
+                    paginate: {
+                        first:      "Principal",
+                        previous:   "Anterior",
+                        next:       "Siguiente"
+                        //,last:       "Dernier"
+                    },
+                    info:           "Mostrando  _START_  a _END_ de _TOTAL_ elementos",
+                    processing:"Trabajando en ello...",
+                    zeroRecords:    "No se encontraron coincidencias."
+                }
+            });
+
+           
+
+
+            //setTimeout(console.clear(), 5000);
+        });
+
+        function  validaCorreo(usuario){
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ Correo:'" + usuario + "'}",
+                url: "@Url.Action("ValidarCorreo", "Home")",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (datos) {
+                    if (datos != true) {
+                        {
+                            setTimeout(function () {
+                                location.href = "/EvaluacionD/Home/CerrarSesion";
+                            }, 2000);
+                            //alert("Tiene correo");
+                            //  return datos;   retorna el correo
+                        }
+                    }
+                },
+                error: function (Exception) {
+                    console.log(Exception)
+                }
+            });
+        }
+
+
+        //Funcion para visualizar las evaluaciones que tenga en la tabla Re_Evaluacion
+        function EvaluacionDelUsuario() {
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{}",
+                url: "@Url.Action("CargarMiEvaluacionPend", "Competencias")",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (datos) {
+                    if (datos.length >= 1) {
+                        for (var i = 0; i < datos.length; i++) {
+                            var estilo = 'danger';
+                            var Detalles = 'MostrarReporteDeEvaluacion';
+                            tr = $("<tr id = '" + datos[i].ID_ReEvaluacion + "' class='" + estilo + "'>");
+
+                            tr.append("<td align='left'>" + datos[i].Estado + "</td>");
+                            tr.append("<td align='left'>" + datos[i].TipoEvaluacion + "</td>");
+                            //tr.append('<td align="left"><button class="btn btn-default" onclick="redirigir()"><span class="glyphicon glyphicon-eye-open"></span></button></td>');
+                            if (datos[i].TipoEvaluacion.includes('Objetivos')) {
+                                if (datos[i].Estado == "Obj_Esp")
+                                    tr.append('<td align="left"><button class="btn btn-default" onclick="' + Detalles + '()"><span class="glyphicon glyphicon-eye-open"></span></button></td>');
+                                else
+                                    tr.append('<td align="left"><button class="btn btn-default" onclick="redirigirObj()"><span class="glyphicon glyphicon-eye-open"></span></button></td>');
+                            }
+                            else {
+                                tr.append('<td align="left"><button class="btn btn-default" onclick="redirigir()"><span class="glyphicon glyphicon-eye-open"></span></button></td>');
+                            }
+
+                            $("#tbMiEvaluacion").append(tr);
+                        }
+                        //console.log(datos);
+                    }
+                    else {
+                        //$("#contenidoPendientesDeAprobacion").hide();
+                        $("#ContenidoMiEvaluacion").replaceWith("<div class='msgSinEv'>No tiene Evaluaciones pendientes <span class='glyphicon glyphicon-ok'></span><div>");
+                        //document.getElementById("contenido").innerHTML = "<h5>No tiene Empleados Con Evaluaciones Pendientes De Aprobacion</h5>";
+                        //$("#contenido").val("<h1>No tiene Empleados Con Evaluaciones Pendientes</h1>");
+                    }
+
+                },
+                error: function (Exception) {
+                    console.log(Exception)
+                }
+            });
+        }
+
+        function cargarmisEmpleadosConEvaluacionesPendientes() {
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ PrimerNombre: '@Session["Nombre"]', PrimerApellido: '@Session["Apellido"]'}",
+                url: "@Url.Action("getmisEmpleadosConEvaluacionesPendientesDeRevision", "Competencias")",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (datos) {
+                    if (datos.length>=1)
+                    {
+                        var tr;
+                        for (var i = 0; i < datos.length; i++) {
+                            var Detalles = 'MostrarDetallesEvaluacion';
+                            var estilo = 'default';
+                            let Icono;
+                            if (datos[i].EstadoObj == "Obj_Rev") {
+                                Detalles = 'MostrarObjetivosPendientes';
+                                estilo = 'warning';
+                            }
+                            if (datos[i].EstadoObj == "Obj_Form") {
+                                Detalles = 'RevisionFinalDeLosObjetivos';
+                                estilo = 'info';
+                            }
+
+                            var EvaluacionuObjetivo;
+                            if (datos[i].EstadoObj != null)
+                                EvaluacionuObjetivo = 'Objetivos';
+                            else
+                                EvaluacionuObjetivo = 'Evaluacion de Desempeño'
+
+                            //Retroalimentacion...
+                            //CASO 1: INICIO DE EVALUACION...
+                            if(datos[i].Recordatorio == "Favor de ingresar al Siguiente Link para Realizar la Evaluacion  de Desempeño."){
+                                datos[i].Recordatorio = "Tiene una evaluacion pendiente de revisión";
+                                estilo = "warning";
+                                Icono = "pencil";
+                            }
+
+                            //CASO 2: REVISION DE EVALUACION...
+                            if(datos[i].id_Reminder==12){
+                                estilo = "warning";
+                                Icono = "pencil";
+                            }
+
+                            //CASO 2: RETROALIMENTACION YA SEA POR PARTE DE HR O PM...
+                            if (datos[i].id_Reminder == 7 || datos[i].id_Reminder == 8){
+                                estilo = 'danger';
+                                Icono = "retweet";
+                            }
+
+                            //CASO 3:
+                            if (datos[i].Estado == 'HPend_Imp' || datos[i].Estado == 'SPend_Imp') {
+                                Detalles = 'MostrarReporte';
+                                estilo = 'success';
+                                Icono = "print";
+                            }
+
+                            if(datos[i].Estado == 'HPend_Imp' && datos[i].ComentariosGer != null || datos[i].Estado == 'SPend_Imp' && datos[i].ComentariosGer != null){
+                                Detalles = 'MostrarReporteSup';
+                                estilo = 'success';
+                                Icono = "pencil";
+                            }
+
+                            if (datos[i].Estado == 'HPend_Jefe' && datos[i].id_Reminder != 7 ||datos[i].Estado == 'HPend_Jefe' && datos[i].id_Reminder != 8  ) {
+                                Detalles = 'mostrarDetallesEvaluacionPendAprob';
+                                estilo = 'success';
+                            }
+                            tr = $("<tr id = '" + datos[i].No_Emp + "' class='" + estilo + "'>");
+                            tr.append("<td>" + datos[i].No_Emp + "</td>");
+                            tr.append("<td>" + datos[i].Nombre + "</td>");
+                            tr.append("<td>" + datos[i].Apellido + "</td>");
+                            tr.append("<td>" + datos[i].Departamento + "</td>");
+                            tr.append("<td>" + datos[i].Descripcion + "</td>");
+                            tr.append("<td>" + datos[i].TipoEmpleado + "</td>");
+                            tr.append("<td><button title='" + datos[i].Recordatorio + "' class='btn btn-" + estilo + "' disabled>&nbsp;<span class='glyphicon glyphicon-"+ Icono +"'></span></button></td>");
+                            tr.append('<td><button class="btn btn-default" onclick="' + Detalles + '(' + datos[i].No_Emp + ')"><span class="glyphicon glyphicon-eye-open"></span></button></td>');
+                            //tr.append('<td><button class="btn btn-default" id="btnReporteEv_' + (i+1) + '" onclick="MostrarReporteDeEvaluacion(' + datos[i].No_Emp + ')"><span class="glyphicon glyphicon-book"></span></button></td></tr>');
+
+                            //tr.append('<td><button class="btn btn-default" id="btnReporteEv_' + (i + 1) + '" onclick="MostrarReporteDeEvaluacion(' + datos[i].No_Emp + ')"><span class="glyphicon glyphicon-book"></span></button></td></tr>');
+
+
+
+                            $("#tblListaDePendientes").append(tr);
+
+                            if (datos[i].Estado == 'HPend_Imp' || datos[i].Estado == 'SPend_Imp')
+                            {
+                                //alert("sadas");
+                                $("#btnReporteEv_" + (i+1)).attr("disabled",true);
+                            }
+                        }
+                        //console.log(datos);
+                    }
+                    else{
+                        //$("#contenidoEmpleadosPendRev").hide();
+                        //document.getElementById("contenidoEmpleadosPendRev").outerHTML.value = "<p><h4>No tiene Empleados Con Evaluaciones Pendientes</h4></p>";
+                        $("#contenidoEmpleadosPendRev").replaceWith("<div class='msgSinEv'>No tiene empleados con evaluaciones pendientes de revisión.</div>");
+                        //$("#contenido").val("<h1>No tiene Empleados Con Evaluaciones Pendientes</h1>");
+                    }
+                },
+                error: function (Exception) {
+                    console.log(Exception);
+                }
+            });
+        }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        function cargaEmpleadosConObjetivosPend() {
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ PrimerNombre: '@Session["Nombre"]', PrimerApellido: '@Session["Apellido"]'}",
+                url: "@Url.Action("getmisEmpleadosConObjetivos", "Objetivos")",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (datos) {
+                if (datos.length>=1)
+                {
+                    var tr;
+                    for (var i = 0; i < datos.length; i++) {
+                        let Icono;
+                        if (datos[i].Estado == "Obj_Form") {
+                            Detalles = 'RevisionFinalDeLosObjetivos';
+                         var   estilo = 'info';
+                        }
+                        else if(datos[i].Estado == "Obj_Rev")
+                        {
+                            Detalles = 'MostrarObjetivosPendientes';
+                            var estilo = 'warning';
+                        }
+                        else {
+                            var estilo = 'info';
+                        }
+                        var EvaluacionuObjetivo;
+                        if (datos[i].Estado != null)
+                            EvaluacionuObjetivo = 'Objetivos';
+                        else
+                            EvaluacionuObjetivo = 'Evaluacion de Desempeño'
+                   
+
+                       
+                        tr = $("<tr id = '" + datos[i].No_Emp + "' class='" + estilo + "'>");
+                        tr.append("<td>" + datos[i].No_Emp + "</td>");
+                        tr.append("<td>" + datos[i].Nombre + "</td>");
+                        tr.append("<td>" + datos[i].Apellido + "</td>");
+                        tr.append("<td>" + datos[i].Departamento + "</td>");
+                        tr.append("<td>" + datos[i].Descripcion + "</td>");
+                        tr.append("<td>" + datos[i].TipoEmpleado + "</td>");
+                        tr.append("<td><button title='" + datos[i].Recordatorio + "' class='btn btn-" + estilo + "' disabled>&nbsp;<span class='glyphicon glyphicon-"+ Icono +"'></span></button></td>");
+                        tr.append('<td><button class="btn btn-default" onclick="' + Detalles + '(' + datos[i].No_Emp + ')"><span class="glyphicon glyphicon-eye-open"></span></button></td>');
+                        //tr.append('<td><button class="btn btn-default" id="btnReporteEv_' + (i+1) + '" onclick="MostrarReporteDeEvaluacion(' + datos[i].No_Emp + ')"><span class="glyphicon glyphicon-book"></span></button></td></tr>');
+
+                        //tr.append('<td><button class="btn btn-default" id="btnReporteEv_' + (i + 1) + '" onclick="MostrarReporteDeEvaluacion(' + datos[i].No_Emp + ')"><span class="glyphicon glyphicon-book"></span></button></td></tr>');
+                        $("#tblEmpleadosObjPen").append(tr);
+
+                        if (datos[i].Estado == 'HPend_Imp' || datos[i].Estado == 'SPend_Imp')
+                        {
+                            //alert("sadas");
+                            $("#btnReporteEv_" + (i+1)).attr("disabled",true);
+                        }
+                    }
+                }
+                else{
+                    //$("#contenidoEmpleadosPendRev").hide();
+                    //document.getElementById("contenidoEmpleadosPendRev").outerHTML.value = "<p><h4>No tiene Empleados Con Evaluaciones Pendientes</h4></p>";
+                    $("#tblEmpleadosObjPen").replaceWith("<div class='msgSinEv'>No tiene empleados con evaluaciones pendientes de revisión.</div>");
+                    //$("#contenido").val("<h1>No tiene Empleados Con Evaluaciones Pendientes</h1>");
+                }
+            },
+            error: function (Exception) {
+                console.log(Exception);
+            }
+        });
+        }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        function MostrarObjetivosPendientes(NumEmp) {
+            swal({
+                title: "¡Atención!",
+                text: "¿Desea Ver Los Objetivos de la revision?",
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+            }).then((enviar) => {
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    //data: "{ PrimerNombre: '@Session["Nombre"]', PrimerApellido: '@Session["Apellido"]', NumEmp: " + NumEmp + "}",
+                    data: '{ No_Emp: ' + NumEmp + ',Operacion: "Revision"}',
+                    url: "@Url.Action("cargarObjetivosPendientesDeRevision", "Objetivos")",
+                    contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (datos) {
+                    location.href = "@Url.Action("RevisarObjetivos","Home")";
+                },
+                });
+        });
+        }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        function cargarmisEmpleadosConEvaluacionEnEspera() {
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ PrimerNombre: '@Session["Nombre"]', PrimerApellido: '@Session["Apellido"]'}",
+                url: "@Url.Action("getmisEmpleadosConEvaluacionesEnEspera", "Competencias")",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (datos) {
+                    if (datos.length>=1)
+                    {
+
+                        //console.log(datos);
+                        var tr;
+                        for (var i = 0; i < datos.length; i++) {
+                            var Detalles = 'MostrarDetallesEvaluacion';
+                            var estilo = 'default';
+
+                            tr = $("<tr id = '" + datos[i].No_Emp + "' class='" + estilo + "'>");
+                            //$("#contenido-tabla").append("<tr>");
+                            tr.append("<td>" + datos[i].No_Emp + "</td>");
+                            tr.append("<td>" + datos[i].Nombre + "</td>");
+                            tr.append("<td>" + datos[i].Apellido + "</td>");
+                            tr.append("<td>" + datos[i].Departamento + "</td>");
+                            tr.append("<td>" + datos[i].Descripcion + "</td>");
+                            tr.append("<td>" + datos[i].TipoEmpleado + "</td></tr>");
+                            //tr.append('<td><button class="btn btn-default"><span class="glyphicon glyphicon-book"></span></button></td></tr>');
+
+                            $("#tblEmpleadosEsperaAprob").append(tr);
+                        }
+                        //console.log(datos);
+                    }
+                    else{
+                        //$("#contenidoEmpleadosPendRev").hide();
+                        //document.getElementById("contenidoEmpleadosPendRev").outerHTML.value = "<p><h4>No tiene Empleados Con Evaluaciones Pendientes</h4></p>";
+                        $("#contenidoEmpleadosEspera").replaceWith("<div class='msgSinEv'>No tiene Empleados Con Evaluaciones en Espera.</div>");
+                        //$("#contenido").val("<h1>No tiene Empleados Con Evaluaciones Pendientes</h1>");
+                    }
+                },
+                error: function (Exception) {
+                    console.log(Exception);
+                }
+            });
+        }
+
+
+        function cargarmisEmpleadosConEvaluacionesTerminadas() {
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ PrimerNombre: '@Session["Nombre"]', PrimerApellido: '@Session["Apellido"]'}",
+                url: "@Url.Action("getmisEmpleadosConEvaluacionesTerminadas", "Competencias")",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (datos) {
+                    if (datos.length >= 1) {
+                        var tr;
+                        for (var i = 0; i < datos.length; i++) {
+                            //console.log(datos);
+                            var estilo = 'success';
+                            Detalles = 'FinalizarEvaluacion';
+                            tr = $("<tr id = '" + datos[i].No_Emp + "' class='" + estilo + "'>");
+                            //$("#contenido-tabla").append("<tr>");
+                            tr.append("<td>" + datos[i].No_Emp + "</td>");
+                            tr.append("<td>" + datos[i].Nombre + "</td>");
+                            tr.append("<td>" + datos[i].Apellido + "</td>");
+                            tr.append("<td>" + datos[i].Departamento + "</td>");
+                            tr.append("<td>" + datos[i].TipoEmpleado + "</td>");
+                            tr.append('<td><button class="btn btn-default"  onclick="MostrarReporteDeEvaluacion(' + datos[i].No_Emp + ')"><span class="glyphicon glyphicon-book"></span></button></td></tr>');
+
+                            $("#tblListaDeEvaluacionesTerminadas").append(tr);
+                        }
+                        //console.log(datos);
+                    }
+                    else
+                    {
+                        //$("#contenidoPendientesDeAprobacion").hide();
+                        $("#contenidoEvaluacionesTerminadas").replaceWith("<div class='msgSinEv'>No tiene Empleados Con Evaluaciones Terminadas</div>");
+                        //document.getElementById("contenido").innerHTML = "<h5>No tiene Empleados Con Evaluaciones Pendientes De Aprobacion</h5>";
+                        //$("#contenido").val("<h1>No tiene Empleados Con Evaluaciones Pendientes</h1>");
+                    }
+                },
+                error: function (Exception) {
+                    console.log(Exception)
+                }
+            });
+        }
+
+        function RevisionFinalDeLosObjetivos(NumEmp) {
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: '{ No_Emp: ' + NumEmp + ',Operacion: "RevisionObj"}',
+                url: "@Url.Action("cargarObjetivosPendientesDeRevision", "Objetivos")",
+                contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (datos) {
+                location.href = "@Url.Action("RevisionFinalDeLosObjetivos", "Home")";
+            },
+            });
+        }
+
+
+        //Funcion para cargar el panel de evaluaciones pendientes de aprobacion (selo aplica para gerentes, recursos humanos o gerente de planta.)
+
+        function cargarmisEmpleadosConEvaluacionesPendientesAprobacion() { //Y luego que si el nombre esta largo xddd.
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ No_Emp: " + @Session["No_Empleado"] + "}",
+                url: "@Url.Action("lstEvPendientesDeAprobacion", "Competencias")",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (datos) {
+                    if (datos.length >= 1) {
+                        var tr;
+                        for (var i = 0; i < datos.length; i++) {
+                            //console.log(datos);
+                            var estilo = 'default';
+                            var Detalles = 'mostrarDetallesEvaluacionPendAprob';
+                            var Sup = '';
+                            if (datos[i].Estado == 'SPend_Gerente')
+                            {
+                                //Detalles = 'MostrarReporteSup';
+                                Sup = 'Si';
+                            }
+
+                            if ((datos[i].Estado == 'HPend_Rh' || datos[i].Estado == 'SPend_Rh') || (datos[i].Estado == 'SPend_Pm' || datos[i].Estado == 'HPend_Pm'))
+                                estilo = 'danger';
+
+                            if (datos[i].Estado == 'HPend_Imp' || datos[i].Estado == 'SPend_Imp')
+                            {
+                                estilo = 'warning';
+                            }
+                            //  AHORITA
+                            if (datos[i].Estado == 'HPend_Imp' && datos[i].ComentariosGer != null || datos[i].Estado == 'SPend_Imp' && datos[i].ComentariosGer != null) {
+                                estilo = 'warning';
+                                //Detalles = 'MostrarReporteSup';
+                                Sup = 'Si';
+                            }
+                            //
+                            if (datos[i].Estado == 'HPend_CierreEv' || datos[i].Estado == 'SPend_CierreEv')
+                            {
+                                estilo = 'success';
+                                Detalles = 'FinalizarEvaluacion';
+                            }
+
+                            tr = $("<tr id = '" + datos[i].No_Emp + "' class='" + estilo + "'>");
+                            //$("#contenido-tabla").append("<tr>");
+                            tr.append("<td>" + datos[i].No_Emp + "</td>");
+                            tr.append("<td>" + datos[i].Nombre + "</td>");
+                            tr.append("<td>" + datos[i].Apellido + "</td>");
+                            tr.append("<td>" + datos[i].DEPARTAMENTO + "</td>");
+                            tr.append("<td>" + datos[i].Descripcion + "</td>");
+                            tr.append("<td>" + datos[i].TipoEmpleado + "</td>");
+                            tr.append('<td><button class="btn btn-default" onclick="' + Detalles + '(' + datos[i].No_Emp + ')"><span class="glyphicon glyphicon-eye-open"></span></button></td>');
+                            //if (Sup == '')
+                            //{
+                            //    tr.append('<td><button class="btn btn-default"  onclick="MostrarReporteDeEvaluacion(' + datos[i].No_Emp + ')"><span class="glyphicon glyphicon-book"></span></button></td></tr>');
+                            //}
+                            //else {
+                            //    tr.append('<td><button class="btn btn-default"  onclick="MostrarReporteSup(' + datos[i].No_Emp + ')"><span class="glyphicon glyphicon-book"></span></button></td></tr>');
+                            //}
+                            $("#tblListaDePendientesAprob").append(tr);
+                        }
+
+                    }
+                    else
+                    {
+                        //$("#contenidoPendientesDeAprobacion").hide();
+                        $("#contenidoPendientesDeAprobacion").replaceWith("<div class='msgSinEv'>No tiene Empleados Con Evaluaciones Pendientes De Aprobación.</div>");
+                        //document.getElementById("contenido").innerHTML = "<h5>No tiene Empleados Con Evaluaciones Pendientes De Aprobacion</h5>";
+                        //$("#contenido").val("<h1>No tiene Empleados Con Evaluaciones Pendientes</h1>");
+                    }
+                },
+                error: function (Exception) {
+                    console.log(Exception)
+                }
+            });
+        }
+
+        //Muestra el reporte en pdf listo para su impresion.
+        function MostrarReporte(NumEmp) {
+            swal({
+                title: "¡Atención!",
+                text: "¿Mostrar Reporte De Evaluación Para Impresión?",
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+            }).then((enviar) => {
+                if (enviar)
+                   {
+                            $.ajax({
+                type: "POST",
+            async: false,
+            data: "{ No_Emp: " + NumEmp+ "}",
+            url: "@Url.Action("MarcarComoImpresa", "Competencias")",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (datos) {
+                if (datos == "Salary") {
+                    location.href = "@Url.Action("ReportSalary", "Home")";
+                }
+                else if (datos == "Hourly C") {
+                    location.href = "@Url.Action("ReporteHourly", "Home")";
+                }
+            },
+            error: function (Exception) {
+                console.log(Exception)
+            }
+        });
+        }
+        });
+        }
+
+        //Muestra el reporte en caso especial de ser supervisor el que evaluo al empleado.
+        //tengo que agregar esta funcion arriba //
+        function MostrarReporteSup(NumEmp)
+        {
+            swal({
+                title: "¡Atención!",
+                text: "¿Mostrar Reporte De Evaluación Para Impresión?",
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+            }).then((enviar) => {
+                if (enviar)
+                        {
+                                 $.ajax({
+                type: "POST",
+            async: false,
+            data: "{ No_Emp: " + NumEmp+ "}",
+            url: "@Url.Action("MarcarComoImpresa", "Competencias")",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (datos) {
+                if (datos == "Salary") {
+                    location.href = "@Url.Action("ReporteSalarySup", "Home")";
+                }
+                else if (datos == "Hourly C") {
+                    location.href = "@Url.Action("ReporteHourlySup", "Home")";
+                }
+            },
+            error: function (Exception) {
+                console.log(Exception)
+            }
+        });
+        }
+        });
+        }
+
+        function MostrarReporteDeEvaluacion(NumEmp)
+        {
+            swal({
+                title: "¡Atención!",
+                text: "¿Desea Ver El Reporte De La Evaluación Actual?",
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+            }).then((enviar) => {
+                if (enviar)
+                {
+                            $.ajax({
+                type: "POST",
+            async: false,
+            data: "{ No_Emp: " + NumEmp+ "}",
+            url: "@Url.Action("VerReporteDeEvaluacion", "Competencias")",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (datos) {
+                if (datos == "Salary") {
+
+                    location.href = "@Url.Action("ReportSalary", "Home")";
+                }
+                else if (datos == "Hourly C") {
+                    location.href = "@Url.Action("ReporteHourly", "Home")";
+                }
+            },
+            error: function (Exception) {
+                console.log(Exception)
+            }});
+        }
+        });
+        }
+
+
+        function FinalizarEvaluacion(NumEmpleado)
+        {
+            swal({
+                title: "¡Atención!",
+                text: "¿Dar por concluida la evaluación actual?",
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+            }).then((enviar) => {
+                if (enviar)
+                    {
+                        $.ajax({
+                type: "POST",
+            async: false,
+            data: "{ No_Emp: " + NumEmpleado + "}",
+            url: "@Url.Action("FinalizarEvaluacion", "Competencias")",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (datos) {
+                if (datos == true) {
+                    $("#tblListaDePendientesAprob").val("");
+                    cargarmisEmpleadosConEvaluacionesPendientesAprobacion();
+                    swal("Operacion Completada!", "Se ha concluido la evaluación actual.", "success");
+                }
+            },
+            error: function (Exception) {
+                console.log(Exception)
+            }});
+        }
+        });
+        }
+
+        function mostrarDetallesEvaluacionPendAprob(NumEmpleado) {
+            swal({
+                title: "¡Atención!",
+                text: "¿Desea Ver Los Detalles De La Evaluación?",
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+            }).then((enviar) => {
+                if (enviar)
+                {
+                    $.ajax({
+                type: "POST",
+            async: false,
+            data: "{ No_Emp: " + NumEmpleado + ", Operacion: 'Aprobacion'}",
+            url: "@Url.Action("CargarEvaluacionPendienteDeAprobacion", "Competencias")",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (datos) {
+                if (datos == "Salary") {
+                    location.href = "@Url.Action("EvaluacionDeEmpleadoSalary", "Home")";
+                }
+                else if (datos == "Hourly C") {
+                    location.href = "@Url.Action("RevisionHourly", "Home")";
+                }
+                else {
+                    alert("No ha sido posible cargar detalles, notifique con el personal de sistemas, gracias.");
+                    console.log(datos);
+                }
+            },
+            error: function (Exception) {
+                console.log(Exception)
+            }
+        });
+        }
+        });
+        }
+
+
+        function MostrarDetallesEvaluacion(NumEmpleado) {
+            swal({
+                title: "¡Atención!",
+                text: "¿Desea Ver Los Detalles De La Evaluación?",
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+            }).then((enviar) => {
+                if (enviar)
+                    {
+                        $.ajax({
+                type: "POST",
+            async: false,
+            data: "{ No_Emp: " + NumEmpleado + ", Operacion: 'Revision' }",
+            url: "@Url.Action("CargarEvaluacionPendienteDeAprobacion", "Competencias")",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (datos) {
+                if (datos == "Salary")
+                {
+                    location.href = "@Url.Action("EvaluacionDeEmpleadoSalary", "Home")";
+                }
+                else if (datos == "Hourly C") {
+                    location.href = "@Url.Action("EvaluacionDeEmpleadoHourly", "Home")";
+                }
+                else {
+                    alert("No ha sido posible cargar detalles, notifique con el personal de sistemas, gracias.");
+                    console.log(datos);
+                }
+            },
+            error: function (Exception) {
+                console.log(Exception)
+            }
+        });
+        }
+        }
+      );
+        }
+
+        function redirigir() {
+            location.href="@Url.Action("miEvaluacion", "Home")";
+        }
+        function redirigirObj() {
+            location.href="@Url.Action("miObjetivo", "Home")";
+        }
+
+    </script>
+}

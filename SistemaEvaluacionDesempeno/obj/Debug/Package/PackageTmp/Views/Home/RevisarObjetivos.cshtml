@@ -1,0 +1,516 @@
+﻿@{
+    ViewBag.Title = "Competencias";
+
+    if (Session["Estado"] == null)
+    {
+        Response.Redirect(Url.Action("LogIn", "Home"));
+    }
+    string TipoEmp = Session["TipoEmpleado"].ToString();
+    string TipoEmpPendiente = Session["EmpPendTipoEmpleado"].ToString();
+    string Operacion = Session["Operacion"].ToString();
+    string Usuario = Session["user"].ToString();
+    string varUs = Session["No_Empleado"].ToString();
+    //string No_Emp = Session["NumEmpleadoConEvPendiente"].ToString();
+}
+
+<link href="~/Content/alertify.css" rel="stylesheet" />
+<link href="~/Content/alertify.rtl.css" rel="stylesheet" />
+<script src="~/Scripts/alertify.min.js"></script>
+
+<style>
+    .Negritas {
+        /*font-weight: bold;*/
+    }
+
+    .Contenedor {
+        border: #4e8aa9 5px solid;
+    }
+
+    .nav-tabs {
+        background-color: #161616;
+    }
+
+    .tab-content {
+        background-color: #f2f2f2;
+        color: #000000;
+        padding: 5px;
+    }
+
+    .nav-tabs > li > a {
+        border: medium none;
+    }
+
+    .myContainer .k-dropdown {
+        width: 50px;
+    }
+
+    .ajs-message.ajs-custom {
+        color: #31708f;
+        background-color: #d9edf7;
+        border-color: #31708f;
+    }
+
+
+    .btnopEvaluaciones {
+        border: solid;
+        padding-left: 55%;
+        background: #31708f;
+        color: white;
+    }
+
+        .btnopEvaluaciones btn {
+            color: black;
+        }
+
+
+    /*.nav-tabs > li > a:hover{
+      background-color: #003399 !important;
+        border: medium none;
+        border-radius: 0;
+        color:#f2f2f2;
+    }*/
+</style>
+
+
+
+<div id="mensajes" class="modal fade" role="dialog">
+    <!--Mensaje de telerik.-->
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Aprobar Objetivos</h4>
+            </div>
+            <div class="modal-body">
+                <input placeholder="Comentarios (Opcional)" type="text" class="form-control" id="txtComentariosRh" name="comentarioAprob" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="RevisarObjetivos(txtComentariosRh)">Aprobar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--RECHAZAR EVALUACION...-->
+<div id="RechazarEv" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Rechazar Evaluaci&oacute;n</h4>
+            </div>
+            <div class="modal-body">
+
+                <textarea placeholder="Comentarios (Obligatorio)" type="text" class="form-control" id="txtComentariosRhRech" name="comentarioRech"></textarea>
+                <!--<textarea  class='form-control comentarios' rows='5' id='txtComentarios_pgoals_" +res[i].ID_PlantillaEvaluacionExcempt + "' tabindex='" + (i+1) +"' disabled></textarea>-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="RechazarEvaluacion(txtComentariosRhRech)">Rechazar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="right_col" role="main">
+    <div class="">
+        <div role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3> REVISI&Oacute;N ACTUAL DE LOS OBJETIVOS</h3>
+                    </div>
+
+                    <div class="">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <label>A&Ntilde;O FISCAL: </label><label id="lblPeriodo"></label>
+                            </div>
+                            @Html.Raw(TempData["Embed"])
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <center><strong>Estado general de los Objetivos De @Session["PendEvNombre"] @Session["PendEvApellido"] @*para el periodo <span id="spanPeriodo"></span>*@<br /></strong></center>
+                                <div class="clearfix"></div>
+                                <br />
+                            </div>
+
+
+                            <!--INICIO SECCIONES PPARA EVALUACION-->
+                            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <!-- <a href="#tab_content1" id="tbPGoals" role="tab" data-toggle="tab" aria-expanded="true">METAS Y OBJETIVOS DEL PLAN PERSONAL</a>-->
+                                        <a href="#tab_content1" id="tbPGoals" role="tab" data-toggle="tab" aria-expanded="true">Revision de Objetivos</a>
+                                    </li>
+                                </ul>
+
+                                <!--INICIO DE CONTENIDO DE TABS-->
+                                <div id="myTabContent" class="tab-content">
+                                    <!--CORE COMPETENCIES TABLE-->
+                                    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Objetivo  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                                    <th>Periodo para la revision</th>
+                                                    <th>Peso</th>
+                                                    <th>Categoria</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="contenido-pgoals"></tbody>
+                                        </table>
+                                        @*<button class="btn btn-primary pull-right" onclick="GuardarObjetivos()" id="btnGuardar"><span class="glyphicon glyphicon-send"></span> Guardar los comentarios</button>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            @*<div class="x_panel">
+                                    <div class="col-md-9">
+                                        <label>Comentarios Generales de los Objetivos: </label>
+                                        <textarea class='form-control comentarios' rows='5' id='txtComentariosGenerales'></textarea>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Calificacion: </label>
+                                        <input id="spnCalificacion" type="number" class="form-control" min="0" max="100" data-min="0" data-max="100"  />
+                                    </div>
+
+                                </div>*@
+                        </div>
+                        <button class="btn btn-success pull-right" id="btnAprobar"><span class="glyphicon glyphicon-save"></span>Aprobar</button>
+                        <button class="btn btn-danger pull-right" onclick="" id="btnRechazar"><span class="glyphicon glyphicon-save"></span>Rechazar</button>
+                        @*<button class="btn btn-success pull-right" onclick="guardarYEnviarObjetivos()" id="btnGuardarYterminarObj" ><span class="glyphicon glyphicon-save"></span>Guardar Y Terminar Objetivos</button>*@
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script type="text/javascript">
+        ////////////////////////////SECCION JQUERY////////////////////////////
+        //$("#spnCalificacion").on("keyup",function() {
+        //    var res = $(this).val();
+        //    if (res > 100)
+        //        $("#spnCalificacion").val(100);
+        //    else if (res < 0)
+        //        $("#spnCalificacion").val(0);
+        //});
+        //$("#myTabContent").bind('cut copy paste', function (e) {
+        //    e.preventDefault();
+        //});
+
+        ////////////////////////////SECCION JQUERY////////////////////////////
+
+        var NumeroEmpleado = @Session["NumEmpleadoConEvPendiente"];
+        var Periodo =  @Session["IDPeriodo"];
+        var Objetivos;
+        var IDObjetivos = [];
+        var bandera = true;
+
+      
+
+        $("#btnAprobar").click(function(e){
+            document.getElementsByName("comentarioAprob").value = "";
+            $("#mensajes").modal("toggle");
+        });
+
+        //function ValidarCalifyComentariosGen(Comentario, Calif) {
+
+        //    if (Comentario.trim() == '') {
+        //        $("#txtComentariosGenerales").css("border-color", 'red');
+        //        bandera = false;
+        //    }else
+        //        $("#txtComentariosGenerales").css("border-color", 'grey');
+
+        //    if (Calif == '') {
+        //        $("#spnCalificacion").css("border-color", 'red');
+        //        bandera = false;
+        //    }else
+        //        $("#spnCalificacion").css("border-color", 'grey');
+        //}
+
+        $(document).ready(function() {
+            getObjetivosFormulados();
+            CargarPeriodo();
+
+
+            $("#btnRechazar").click(function(e){
+                document.getElementsByName("comentarioRech").value = "";
+                $("#RechazarEv").modal("toggle");
+            });
+
+            //$("#btnGuardarYterminarObj").hover(function(){
+            //    var rowcount = $("table >tbody").get();
+
+            //    for (var i = 0; i < Objetivos.length; i++) {
+            //        var Res = rowcount[0].rows[i].cells[1].getElementsByTagName('textarea')[0];
+
+            //        ValidacionEnLaTabla(Res);
+            //    }
+            //    //var Comentario = $("#txtComentariosGenerales").val();
+            //    //var Calif = $("#spnCalificacion").val();
+
+            //    //ValidarCalifyComentariosGen(Comentario,Calif);
+
+            //    if (bandera) {
+            //        $( this).prop( "disabled", false );
+            //    }
+            //    else {
+            //        $( this ).prop( "disabled", true );
+            //    }
+
+            //}, function (){
+            //    $( this ).prop( "disabled", false );
+            //});
+
+        });
+
+        const ARRPERIODOS = [
+       {
+           ID: 0,
+           Periodo: 'Q1'
+       },
+       {
+           ID: 1,
+           Periodo: 'Q2'
+       },
+       {
+           ID: 2,
+           Periodo: 'Q3'
+       },
+       {
+           ID: 3,
+           Periodo: 'Q4'
+       },
+        ]
+
+        function getObjetivosFormulados(){
+
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ NumeroEmpleado: '" + NumeroEmpleado + "', Periodo: " + Periodo +" }",
+                url: "@Url.Action("getMisObjetivosPendientesXD", "Objetivos")",
+                contentType: "application/json; charset=utf-8;",
+                success: function (datos) {
+                    if (datos != false) {
+                        //$("#spanPeriodo").text(datos[0].Periodo);
+                        Objetivos = datos;
+                        var tr;
+                        for (var i = 0; i < datos.length; i++) {
+                            IDObjetivos.push(Objetivos[i].ID_Objetivo)
+                            var nombre = datos[i].Descripcion;
+                            if(nombre == null)
+                                nombre = '';
+                            else
+                                nombre = datos[i].Descripcion + ":";
+                            var res;
+                            if (datos[i].CategoryID == 1)
+                                res = 'Laboral'
+                            else
+                                res = 'Personal'
+                            var buscar = ARRPERIODOS.find(p => p.ID == datos[i].Periodo);
+
+
+                            tr = $("<tr id='"+ datos[i].ID_Objetivo+"' class='Contenedor'>");
+                            tr.append("<td><p>"+ nombre +"</p></td>");
+                            if(datos[i].Tipo != "OnGoing")
+                            {
+                                tr.append("<td><p>" + buscar.Periodo + "</p></td>" +
+                               "<td><p>" + datos[i].Peso +"</p></td>" +
+                               //"<td><p>" + ToJavaScriptDate(datos[i].FechaRevision) + "</p> </td>" +
+                               "<td><p> " + res + " </p></td>");
+                            }
+                            else
+                            {
+                                tr.append("<td><p>OnGoing --> <strong>Meta:</strong> "+datos[i].Meta +"</p></td>" +
+                                "<td><p>" + datos[i].Peso +"</p></td>" +
+                                //"<td><p>" + ToJavaScriptDate(datos[i].FechaRevision) + "</p> </td>" +
+                                "<td><p> " + res + " </p></td>");
+                            }
+                                
+                            //tr.append("<td>asdkjas</td>");
+                            $("#contenido-pgoals").append(tr);
+                        }
+
+                    }
+                }
+            });
+
+        }
+
+        @*function GuardarObjetivos() {
+
+            //$( "#btnGuardarYterminarObj" ).prop( "disabled", false );
+            //bandera = true;
+            var strComentarios = [];
+            for (var i = 0; i < Objetivos.length; i++) {
+                if ($("#txtComentarios_"+ Objetivos[i].ID_Objetivo).val().trim != "") {
+                    var comentarios = $("#txtComentarios_" + Objetivos[i].ID_Objetivo).val().trim();
+                    strComentarios.push(comentarios.trim());
+                }
+                else{
+                    strComentarios.push("");
+                }
+            }
+            //console.log(strComentarios);
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ Objetivos: ["+ IDObjetivos+"], NumEmp: " + NumeroEmpleado + ", Periodo: "+ Periodo + ", Comentarios: " + JSON.stringify(strComentarios)+ " }",
+                url: "@Url.Action("setGuardarEstadoObjetivo", "Objetivos")",
+                contentType: "application/json; charset=utf-8;",
+                success: function() {
+                    swal("¡Operación finalizada!", "Se han guardado los avances de los objetivos.");
+                },
+                error: function(datos) {
+                    console.log(datos);
+                }
+            });
+
+        }*@
+
+        @*function guardarYEnviarObjetivos() {
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ NumEmp: " + NumeroEmpleado + " }",
+                url: "@Url.Action("guardarYEnviarObjetivos", "Objetivos")",
+                contentType: "application/json; charset=utf-8;",
+                success: function(datos) {
+                    if (datos) {
+                        swal("Se han revisado los objetivos correctamente","","success");
+                        setTimeout(function(){
+                            location.href = "@Url.Action("Index", "Home")";
+                        }, 1500);
+                    }
+                    else{
+                        swal("Hubo un error","Favor de recargar la pagina","error");
+                    }
+                },
+                error: function(datos) {
+                    console.log(datos);
+                }
+            });
+        }*@
+
+        function RevisarObjetivos(txtComentariosRh){
+            var No_Evaluador = @Session["No_Empleado"].ToString();
+            if(txtComentariosRh.value == "")
+                coment = '';
+            else
+                coment = txtComentariosRh.value;
+            swal({
+                title: "¡Atención!",
+                text: "¿Desea Aprobar los objetivos?",
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+            }).then((accion) => {
+                if (accion) {
+                    $.ajax({
+                        type: "post",
+                        async: false,
+                        data: "{ NumEmp: " + NumeroEmpleado + ", Comentario: '"+ coment +"'}",
+                        url: "@Url.Action("Aprovar", "Objetivos")",
+                        contentType: "application/json; charset=utf-8;",
+                        success: function(datos) {
+                            if (datos) {
+                                swal("Se han aprobado los objetivos","","success");
+                                setTimeout(function(){
+                                    location.href = "@Url.Action("Index", "Home")";
+                                }, 1500);
+                            }
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+                }
+            });
+        }
+
+        function RechazarEvaluacion(txtComentariosRhRech){
+            var No_Evaluador = @Session["No_Empleado"].ToString();
+            var coment;
+            if(txtComentariosRhRech.value == "")
+            {
+                swal({
+                    title: "¡Cuidado!",
+                    text: "No deje comentarios vacíos.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
+                });
+            }
+            else {
+                coment = txtComentariosRhRech.value;
+                swal({
+                    title: "¡Atención!",
+                    text: "¿Desea rechazar los objetivos?",
+                    icon: "info",
+                    buttons: true,
+                    dangerMode: false,
+                }).then((accion) => {
+                    if (accion) {
+                        $.ajax({
+                            type: "post",
+                            async: false,
+                            data: "{ No_Emp: " + NumeroEmpleado + ", Comentario: '" + coment + "'}",
+                            url: "@Url.Action("rechaza", "Objetivos")",
+                            contentType: "application/json; charset=utf-8;",
+                            success: function(datos) {
+                                if (datos) {
+                                    swal({
+                                        title: "¡Operación Finalizada!",
+                                        text: "Ha terminado de retroalimentar la evaluación correctamente.",
+                                        icon: "success",
+                                        button: "OK",
+                                    }).then((ok) => { if(ok){location.href = "@Url.Action("index", "home")"; }});
+                                }
+                            },
+                            error: function(error) {
+                                console.log(error);
+                            }
+                        });
+                    }
+                });
+
+            }
+        }
+        function ToJavaScriptDate(value) {
+            var pattern = /Date\(([^)]+)\)/;
+            var results = pattern.exec(value);
+            var dt = new Date(parseFloat(results[1]));
+            return dt.getDate() + 1 + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear();
+        }
+
+        function CargarPeriodo(){
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{Periodo : '" + Periodo +"' }",
+                url: "@Url.Action("LoadSpecificFiscalYear", "Reminders")",
+                contentType: "application/json; charset=utf-8;",
+                success: function (datos) {
+
+                    $("#lblPeriodo").text(datos[0].Descripcion);
+                },
+            });
+        }
+
+    </script>
+}
+

@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "OpenPDF";
+    if (Session["Estado"] == null)
+    {
+        Response.Redirect(Url.Action("LogIn", "Home"));
+    }
+    //string TipoEmp = Session["TipoEmpleado"].ToString();
+    //string TipoEmpPendiente = Session["EmpPendTipoEmpleado"].ToString();
+    //int NumeroEmpleado = 0;
+    //NumeroEmpleado = int.Parse(Session["No_Empleado"].ToString());
+
+}
+
+<div class="right_col" role="main">
+    <div role="main">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+                <div class="page-title">
+                    <div class="text-center">
+                        @*<a href="~/Files/3333.pdf"><span class="glyphicon glyphicon-new-window"></span> Ver En Ventana Nueva</a>*@
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3>ASISTENCIAS</h3>
+                            </div>
+                            <div class="panel-body">
+                                <iframe type="application/pdf" alt="No existe" id="mipdf" class="iframepopup" width="100%" height="750" scrolling="auto"></iframe>
+                            </div>
+                        </div>
+                        <div id="divContainer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        cache: false;
+        try {
+            $.ajax({
+                type: "POST",
+                async: true,
+                data: "{ }",
+                url: "@Url.Action("CargarPERMISOS", "Home")",
+                contentType: "application/json; charset=utf-8;",
+                success: function (datos) {
+                    if (datos == "No se ha podido comprobar credenciales.") {
+                        swal("Favor de contactar a sistemas.", "Error", "error");
+                        console.log("Error: " + datos);
+                    }
+                    if (datos != false) {
+                        //console.log(datos);
+                        $("#mipdf").attr("src", "data:application/pdf;base64," + datos);
+                    }
+                    else {
+                        swal("No existen evaluaciones anteriores elaboradas.", "Atencion.", "error");
+                    }
+
+                    //console.log(datos);
+                },
+                error: function (request, status, errorThrown) {
+                    swal("Favor de contactar a sistemas.", "Error!", "Error");
+                    console.log(request);
+                    console.log(status);
+                    console.log(errorThrown);
+                }
+            });
+        }
+        catch (e) {
+            console.log(e.description + "\n" + e.message + "\n" + e);
+        }
+    });
+</script>
+
+
+
+

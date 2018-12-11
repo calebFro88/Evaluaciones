@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EvaluacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BITACORA">
+    <Key>
+      <PropertyRef Name="ID_LOG" />
+    </Key>
+    <Property Name="ID_LOG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Periodo" Type="Int32" Nullable="false" />
+    <Property Name="No_Emp" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="EMPLEADOS" Relationship="Self.FK_BITACORA_EMP" FromRole="BITACORA" ToRole="EMPLEADOS" />
+    <NavigationProperty Name="PERIODO" Relationship="Self.FK_IDPeriodo_Periodo" FromRole="BITACORA" ToRole="PERIODO" />
+  </EntityType>
+  <EntityType Name="EMPLEADOS">
+    <Key>
+      <PropertyRef Name="No_Emp" />
+    </Key>
+    <Property Name="No_Emp" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Ingreso" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NombreCompleto" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nivel4" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nivel6" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nivel1" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Activo" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha_Baja" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Jefe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Horario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HORARIO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BITACORA" Relationship="Self.FK_BITACORA_EMP" FromRole="EMPLEADOS" ToRole="BITACORA" />
+    <NavigationProperty Name="ESTADO_EVAL" Relationship="Self.FK_ESTADO_EMP" FromRole="EMPLEADOS" ToRole="ESTADO_EVAL" />
+    <NavigationProperty Name="OBJETIVO" Relationship="Self.FK_Obj_Empleado" FromRole="EMPLEADOS" ToRole="OBJETIVO" />
+  </EntityType>
+  <EntityType Name="ESTADO_EVAL">
+    <Key>
+      <PropertyRef Name="ID_EstadoEval" />
+    </Key>
+    <Property Name="ID_EstadoEval" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Periodo" Type="Int32" Nullable="false" />
+    <Property Name="No_Emp" Type="Int32" Nullable="false" />
+    <Property Name="Objetivo" Type="Int32" Nullable="false" />
+    <Property Name="Q1" Type="Int32" Nullable="false" />
+    <Property Name="Q2" Type="Int32" Nullable="false" />
+    <Property Name="Q3" Type="Int32" Nullable="false" />
+    <Property Name="Q4" Type="Int32" Nullable="false" />
+    <Property Name="QF" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EMPLEADOS" Relationship="Self.FK_ESTADO_EMP" FromRole="ESTADO_EVAL" ToRole="EMPLEADOS" />
+  </EntityType>
+  <EntityType Name="EVALUACIONOBJETIVO">
+    <Key>
+      <PropertyRef Name="ID_EvalObj" />
+    </Key>
+    <Property Name="ID_EvalObj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Objetivo" Type="Int32" Nullable="false" />
+    <Property Name="Comentarios" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Calificacion" Type="Double" Nullable="false" />
+    <NavigationProperty Name="OBJETIVO" Relationship="Self.FK_EvalObj_Objetivo" FromRole="EVALUACIONOBJETIVO" ToRole="OBJETIVO" />
+  </EntityType>
+  <EntityType Name="OBJETIVO">
+    <Key>
+      <PropertyRef Name="ID_Objetivo" />
+    </Key>
+    <Property Name="ID_Objetivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="No_Emp" Type="Int32" Nullable="false" />
+    <Property Name="ID_Periodo" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Peso" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EMPLEADOS" Relationship="Self.FK_Obj_Empleado" FromRole="OBJETIVO" ToRole="EMPLEADOS" />
+    <NavigationProperty Name="EVALUACIONOBJETIVO" Relationship="Self.FK_EvalObj_Objetivo" FromRole="OBJETIVO" ToRole="EVALUACIONOBJETIVO" />
+    <NavigationProperty Name="PERIODO" Relationship="Self.FK_Obj_periodo" FromRole="OBJETIVO" ToRole="PERIODO" />
+    <Property Name="EstadoDeObjetivo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaDeCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaDeModificacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaLimiteEsperada" Type="DateTime" Precision="3" />
+    <Property Name="FechaDeTerminacionDeObjetivo" Type="DateTime" Precision="3" />
+    <Property Name="Comentarios" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Firma" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PERIODO">
+    <Key>
+      <PropertyRef Name="ID_Periodo" />
+    </Key>
+    <Property Name="ID_Periodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha_Inicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Fecha_Final" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BITACORA" Relationship="Self.FK_IDPeriodo_Periodo" FromRole="PERIODO" ToRole="BITACORA" />
+    <NavigationProperty Name="OBJETIVO" Relationship="Self.FK_Obj_periodo" FromRole="PERIODO" ToRole="OBJETIVO" />
+  </EntityType>
+  <Association Name="FK_BITACORA_EMP">
+    <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="1" />
+    <End Role="BITACORA" Type="Self.BITACORA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLEADOS">
+        <PropertyRef Name="No_Emp" />
+      </Principal>
+      <Dependent Role="BITACORA">
+        <PropertyRef Name="No_Emp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IDPeriodo_Periodo">
+    <End Role="PERIODO" Type="Self.PERIODO" Multiplicity="1" />
+    <End Role="BITACORA" Type="Self.BITACORA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIODO">
+        <PropertyRef Name="ID_Periodo" />
+      </Principal>
+      <Dependent Role="BITACORA">
+        <PropertyRef Name="ID_Periodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ESTADO_EMP">
+    <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="1" />
+    <End Role="ESTADO_EVAL" Type="Self.ESTADO_EVAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLEADOS">
+        <PropertyRef Name="No_Emp" />
+      </Principal>
+      <Dependent Role="ESTADO_EVAL">
+        <PropertyRef Name="No_Emp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Obj_Empleado">
+    <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="1" />
+    <End Role="OBJETIVO" Type="Self.OBJETIVO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLEADOS">
+        <PropertyRef Name="No_Emp" />
+      </Principal>
+      <Dependent Role="OBJETIVO">
+        <PropertyRef Name="No_Emp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EvalObj_Objetivo">
+    <End Role="OBJETIVO" Type="Self.OBJETIVO" Multiplicity="1" />
+    <End Role="EVALUACIONOBJETIVO" Type="Self.EVALUACIONOBJETIVO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OBJETIVO">
+        <PropertyRef Name="ID_Objetivo" />
+      </Principal>
+      <Dependent Role="EVALUACIONOBJETIVO">
+        <PropertyRef Name="ID_Objetivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Obj_periodo">
+    <End Role="PERIODO" Type="Self.PERIODO" Multiplicity="1" />
+    <End Role="OBJETIVO" Type="Self.OBJETIVO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIODO">
+        <PropertyRef Name="ID_Periodo" />
+      </Principal>
+      <Dependent Role="OBJETIVO">
+        <PropertyRef Name="ID_Periodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EvaluacionEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BITACORA" EntityType="Self.BITACORA" />
+    <EntitySet Name="EMPLEADOS" EntityType="Self.EMPLEADOS" />
+    <EntitySet Name="ESTADO_EVAL" EntityType="Self.ESTADO_EVAL" />
+    <EntitySet Name="EVALUACIONOBJETIVO" EntityType="Self.EVALUACIONOBJETIVO" />
+    <EntitySet Name="OBJETIVO" EntityType="Self.OBJETIVO" />
+    <EntitySet Name="PERIODO" EntityType="Self.PERIODO" />
+    <AssociationSet Name="FK_BITACORA_EMP" Association="Self.FK_BITACORA_EMP">
+      <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+      <End Role="BITACORA" EntitySet="BITACORA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IDPeriodo_Periodo" Association="Self.FK_IDPeriodo_Periodo">
+      <End Role="PERIODO" EntitySet="PERIODO" />
+      <End Role="BITACORA" EntitySet="BITACORA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ESTADO_EMP" Association="Self.FK_ESTADO_EMP">
+      <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+      <End Role="ESTADO_EVAL" EntitySet="ESTADO_EVAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Obj_Empleado" Association="Self.FK_Obj_Empleado">
+      <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+      <End Role="OBJETIVO" EntitySet="OBJETIVO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EvalObj_Objetivo" Association="Self.FK_EvalObj_Objetivo">
+      <End Role="OBJETIVO" EntitySet="OBJETIVO" />
+      <End Role="EVALUACIONOBJETIVO" EntitySet="EVALUACIONOBJETIVO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Obj_periodo" Association="Self.FK_Obj_periodo">
+      <End Role="PERIODO" EntitySet="PERIODO" />
+      <End Role="OBJETIVO" EntitySet="OBJETIVO" />
+    </AssociationSet>
+    <FunctionImport Name="sp_CrearNuevoObjetivo">
+      <Parameter Name="NumeroEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Peso" Mode="In" Type="Int32" />
+      <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CrearPeriodo">
+      <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+      <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ListarPendienteDeObjetivos" ReturnType="Collection(EvaluacionModel.sp_ListarPendienteDeObjetivos_Result)" />
+    <FunctionImport Name="sp_MisObjetivos" ReturnType="Collection(EvaluacionModel.sp_MisObjetivos_Result)">
+      <Parameter Name="NumeroDeEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="Periodo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_EvaluarObjetivo" ReturnType="Collection(String)">
+      <Parameter Name="IDObjetivo" Mode="In" Type="Int32" />
+      <Parameter Name="NumeroEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+      <Parameter Name="Comentarios" Mode="In" Type="String" />
+      <Parameter Name="Calificacion" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TerminarDeFormularObjetivos">
+      <Parameter Name="NumeroEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_MisObjetivosRealizados" ReturnType="Collection(EvaluacionModel.sp_MisObjetivosRealizados_Result)">
+      <Parameter Name="NumeroDeEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="Periodo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_EliminarMiObjetivo">
+      <Parameter Name="IDObjetivo" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_ListarPendienteDeObjetivos_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha_Ingreso" Nullable="false" Precision="23" />
+    <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="80" />
+    <Property Type="String" Name="Nivel4" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="Nivel6" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Nivel1" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="Activo" Nullable="false" MaxLength="2" />
+    <Property Type="DateTime" Name="Fecha_Baja" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Departamento" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Jefe" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Area" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ID_Horario" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="HORARIO" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="sp_MisObjetivos_Result">
+    <Property Type="Int32" Name="ID_Objetivo" Nullable="false" />
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="Int32" Name="ID_Periodo" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="Peso" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha_Term" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_MisObjetivosRealizados_Result">
+    <Property Type="Int32" Name="ID_Objetivo" Nullable="false" />
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="Int32" Name="ID_Periodo" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="Peso" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha_Term" Nullable="false" Precision="23" />
+    <Property Type="String" Name="EstadoDeObjetivo" Nullable="false" MaxLength="50" />
+  </ComplexType>
+</Schema>

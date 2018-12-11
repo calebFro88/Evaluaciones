@@ -1,0 +1,580 @@
+﻿@{
+    ViewBag.Title = "Competencias";
+
+    if (Session["Estado"] == null)
+    {
+        Response.Redirect(Url.Action("LogIn", "Home"));
+    }
+    string TipoEmp = Session["TipoEmpleado"].ToString();
+    string TipoEmpPendiente = Session["EmpPendTipoEmpleado"].ToString();
+    string Operacion = Session["Operacion"].ToString();
+    string Usuario = Session["user"].ToString();
+    string varUs = Session["No_Empleado"].ToString();
+    //string No_Emp = Session["NumEmpleadoConEvPendiente"].ToString();
+}
+
+<link href="~/Content/alertify.css" rel="stylesheet" />
+<link href="~/Content/alertify.rtl.css" rel="stylesheet" />
+<script src="~/Scripts/alertify.min.js"></script>
+
+<style>
+    .Negritas {
+        /*font-weight: bold;*/
+    }
+
+    .Contenedor {
+        border: #4e8aa9 5px solid;
+    }
+
+    .nav-tabs {
+        background-color: #161616;
+    }
+
+    .tab-content {
+        background-color: #f2f2f2;
+        color: #000000;
+        padding: 5px;
+    }
+
+    .nav-tabs > li > a {
+        border: medium none;
+    }
+
+    .myContainer .k-dropdown {
+        width: 50px;
+    }
+
+    .ajs-message.ajs-custom {
+        color: #31708f;
+        background-color: #d9edf7;
+        border-color: #31708f;
+    }
+
+
+    .btnopEvaluaciones {
+        border: solid;
+        padding-left: 55%;
+        background: #31708f;
+        color: white;
+    }
+
+        .btnopEvaluaciones btn {
+            color: black;
+        }
+
+    .slider {
+        -webkit-appearance: none;
+        width: 50%;
+        height: 25px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+    input[type=range] {
+        width: 75%;
+    }
+    /*.nav-tabs > li > a:hover{
+      background-color: #003399 !important;
+        border: medium none;
+        border-radius: 0;
+        color:#f2f2f2;
+    }*/
+</style>
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3> REVISI&Oacute;N ACTUAL DE LOS OBJETIVOS</h3>
+                    </div>
+
+                    <div class="">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <label>A&Ntilde;O FISCAL: </label><label id="lblPeriodo"></label>
+                            </div>
+                            @Html.Raw(TempData["Embed"])
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <center><strong>Estado general de los Objetivos De @Session["PendEvNombre"] @Session["PendEvApellido"] para el periodo <span id="spanPeriodo"> @Session["PeriodoRevObjetivos"] </span><br /></strong></center>
+                                <div class="clearfix"></div>
+                                <br />
+                            </div>
+
+
+                            <!--INICIO SECCIONES PPARA EVALUACION-->
+                            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <!-- <a href="#tab_content1" id="tbPGoals" role="tab" data-toggle="tab" aria-expanded="true">METAS Y OBJETIVOS DEL PLAN PERSONAL</a>-->
+                                        <a href="#tab_content1" id="tbPGoals" role="tab" data-toggle="tab" aria-expanded="true">Revision de Objetivos</a>
+                                    </li>
+                                </ul>
+
+                                <!--INICIO DE CONTENIDO DE TABS-->
+                                <div id="myTabContent" class="tab-content">
+                                    <!--CORE COMPETENCIES TABLE-->
+                                    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Objetivo  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                                    <th>Comentarios</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="contenido-pgoals"></tbody>
+                                        </table>
+                                        <button class="btn btn-primary pull-right" onclick="GuardarObjetivos()" id="btnGuardar"><span class="glyphicon glyphicon-send"></span> Guardar los comentarios</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                          <button class="btn btn-success pull-right" onclick="guardarYEnviarObjetivos()" id="btnGuardarYterminarObj"><span class="glyphicon glyphicon-save"></span>Guardar Y Terminar Objetivos</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script type="text/javascript">
+        ////////////////////////////SECCION JQUERY////////////////////////////
+        $("#spnCalificacion").on("keyup",function() {
+            var res = $(this).val();
+            if (res > 100)
+                $("#spnCalificacion").val(100);
+            else if (res < 0)
+                $("#spnCalificacion").val(0);
+        });
+        $("#myTabContent").bind('cut copy paste', function (e) {
+            e.preventDefault();
+        });
+
+        ////////////////////////////SECCION JQUERY////////////////////////////
+
+        var NumeroEmpleado = @Session["NumEmpleadoConEvPendiente"];
+        var Periodo =  @Session["IDPeriodo"];
+        var Objetivos;
+        var IDObjetivos = [];
+        var bandera = true;
+        var QActual = '@Session["PeriodoRevObjetivos"]';
+        var QFinal;
+
+        function ValidacionEnLaTabla(Elem) {
+            if (Elem.value.trim() == '') {
+                Elem.style.borderColor = 'red';
+                bandera = false;
+            }else
+                Elem.style.borderColor = 'grey';
+        }
+
+        function ValidacionAvance(Avance) {
+            if (Avance.value > 0 ) {
+                if (Avance.value <= 100) {
+                    Avance.style.borderColor = 'grey';
+                }
+                else{
+                    Avance.style.borderColor = 'red';
+                    bandera = false;
+                }
+            }
+            else{
+                Avance.style.borderColor = 'red';
+                bandera = false;
+            }
+        }
+
+
+        $(document).ready(function() {
+            getObjetivosFormulados();
+            CargarPeriodo();
+            $("#btnGuardarYterminarObj").prop( "disabled", true );
+            swal("Revisión de los objetivos","Favor de llenar todos los campos correspondientes.","info");
+
+
+            $("#btnGuardarYterminarObj").hover(function(){
+                var rowcount = $("table >tbody").get();
+
+                if (QActual == QFinal) {
+                    for (var i = 0; i < Objetivos.length; i++) {
+                        var Res = rowcount[0].rows[i].cells[1].getElementsByTagName('textarea')[0];
+                        var Avance = rowcount[0].rows[i].cells[0].getElementsByTagName('input')[0]
+                        ValidacionEnLaTabla(Res);
+                        ValidacionAvance(Avance);
+                    }
+                }
+                //var Comentario = $("#txtComentariosGenerales").val();
+                //var Calif = $("#spnCalificacion").val();
+                //ValidarCalifyComentariosGen(Comentario,Calif);
+
+                if (bandera) {
+                    $( this).prop( "disabled", false );
+                }
+                else {
+                    $( this ).prop( "disabled", true );
+                }
+
+            }, function (){
+                $( this ).prop( "disabled", false );
+            });
+
+        });
+
+        $(".spinner").on('keyup', function(e) {
+            for (var i = 0; i < Objetivos.length; i++) {
+              //  console.log($(".spinner")[0].val());
+            }
+            var keyCode = (e.keyCode ? e.keyCode : e.which);
+            if (keyCode > 47 && keyCode < 58) {
+                e.preventDefault();
+            }
+        });
+
+
+        function getObjetivosFormulados(){
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ NumeroEmpleado: '" + NumeroEmpleado + "', Periodo: " + Periodo +" }",
+                url: "@Url.Action("getMisObjetivosPendientesXD", "Objetivos")",
+                contentType: "application/json; charset=utf-8;",
+                success: function (datos) {
+                    if (datos != false) {
+                        Objetivos = datos;
+                        var tr;
+                        for (var i = 0; i < datos.length; i++) {
+                            IDObjetivos.push(Objetivos[i].ID_Objetivo)
+                            var nombre = datos[i].Descripcion;
+                            var CompleteQ1 =  datos[i].CompletadoQ1;
+                            var CompleteQ2 =  datos[i].CompletadoQ2;
+                            var CompleteQ3 =  datos[i].CompletadoQ3;
+                            var CompleteQ4 =  datos[i].CompletadoQ4;
+
+                            var classe;
+                            if(nombre == null)
+                                nombre = '';
+                            else
+                                nombre = datos[i].Descripcion;
+                            var res;
+                            if (datos[i].CategoryID == 1)
+                                res = 'Laboral'
+                            else
+                                res = 'Personal'
+
+                            if(CompleteQ1 == "Completo")
+                            {
+                                classe1= "label label-success";
+                            }
+                            else{
+                                classe1= "label label-danger";
+                            }
+                            if(CompleteQ2 == "Completo")
+                            {
+                                classe2= "label label-success";
+                            }
+                            else{
+                                classe2= "label label-danger";
+                            }
+                            if(CompleteQ3 == "Completo")
+                            {
+                                classe3= "label label-success";
+                            }
+                            else{
+                                classe3= "label label-danger";
+                            }
+                            if(CompleteQ4 == "Completo")
+                            {
+                                classe4= "label label-success";
+                            }
+                            else{
+                                classe4= "label label-danger";
+                            }
+
+
+
+                            var buscar = ARRPERIODOS.find(p => p.ID == datos[i].Periodo);
+
+
+                            tr = $("<tr id='"+ datos[i].ID_Objetivo+"' class='Contenedor'>");
+
+                            if(datos[i].Tipo != "OnGoing")
+                            {
+                                tr.append("<td><p>"+ nombre +"</p>" +
+                               "<p>Peso: " + datos[i].Peso +" &nbsp;&nbsp; Periodo: " + buscar.Periodo +"</p><p>Objetivo de Categoria " + res +"</p>" +
+                               "<label for='spnAvance_"+datos[i].ID_Objetivo+"'>Avance del Objetivo" +
+                               "</label> <input id='spnAvance_"+datos[i].ID_Objetivo+"' name='value' type='number' min='0' max='100' class='spinner' value='" + datos[i].Avance +"' style='width:45px;' >  " +
+                               "</td>" +
+                               "<td> <textarea rows='5' class='form-control comentarios' id='txtComentarios_" + datos[i].ID_Objetivo + "' tabindex='" + (i+1) +"'>" + datos[i].Comentarios +"</textarea> </td>");
+                            }
+                            else{
+                                tr.append("<td><p>"+ nombre +"</p>" +
+                              "<p>Peso: " + datos[i].Peso +" &nbsp;&nbsp; Periodo: OnGoing</p><p>Objetivo de Categoria " + res +"</p>" +
+                              "<label for='spnAvance_"+datos[i].ID_Objetivo+"'>Meta del Objetivo: "+datos[i].Meta+"</br>" +
+                              //falta validar si esta en meta o no 
+                             // "<label for='spnAvance_"+datos[i].ID_Objetivo+"'>Avance del Objetivo: "+datos[i].Avance+"</label></br>"+
+                                //"<label for='spnAvance_"+datos[i].ID_Objetivo+"'>Estatus:<span class='"+classe+"'>"+datos[i].Completado+"</span></label>"+
+                                "</br><label><span class='"+classe1+"'>Q1:</span></label> <input id='spnAvance_"+datos[i].ID_Objetivo+"_Q1"+"' name='value' type='number' min='0' max='100' class='spinner' value='" + datos[i].Q1 +"' style='width:45px;' >  " +
+                               " <label><span class='"+classe2+"'>Q2:</span></label><input id='spnAvance_"+datos[i].ID_Objetivo+"_Q2"+"' name='value' type='number' min='0' max='100' class='spinner' value='" + datos[i].Q2 +"' style='width:45px;' >  " +
+                                " <label><span class='"+classe3+"'>Q3:</span></label><input id='spnAvance_"+datos[i].ID_Objetivo+"_Q3"+"' name='value' type='number' min='0' max='100' class='spinner' value='" + datos[i].Q3 +"' style='width:45px;' >  " +
+                                 " <label><span class='"+classe4+"'>Q4:</span></label><input id='spnAvance_"+datos[i].ID_Objetivo+"_Q4"+"' name='value' type='number' min='0' max='100' class='spinner' value='" + datos[i].Q4 +"' style='width:45px;' >  " +
+                              "</td>" +
+                              "<td> <textarea rows='5' class='form-control comentarios' id='txtComentarios_" + datos[i].ID_Objetivo + "' tabindex='" + (i+1) +"'>" + datos[i].Comentarios +"</textarea> </td>");
+                   
+                            }
+
+                            $("#contenido-pgoals").append(tr);
+                        }
+
+                    }
+                }
+            });
+
+        }
+
+        const ARRPERIODOS = [
+      {
+          ID: 0,
+          Periodo: 'Q1'
+      },
+      {
+          ID: 1,
+          Periodo: 'Q2'
+      },
+      {
+          ID: 2,
+          Periodo: 'Q3'
+      },
+      {
+          ID: 3,
+          Periodo: 'Q4'
+      },
+        ]
+
+
+        function GuardarObjetivos() {
+
+            $( "#btnGuardarYterminarObj" ).prop( "disabled", false );
+            bandera = true;
+            var strComentarios = [];
+            var intAvance = [];
+            var rowcount = $("table >tbody").get();
+            var onGoing = [];
+            var Going;
+
+            for (var i = 0; i < Objetivos.length; i++) {
+                if ($("#txtComentarios_"+ Objetivos[i].ID_Objetivo).val().trim != "") {
+                    var comentarios = $("#txtComentarios_" + Objetivos[i].ID_Objetivo).val().trim();
+                    strComentarios.push(comentarios.trim());
+                }
+                else{
+                    strComentarios.push("");
+                }
+               var Avance = rowcount[0].rows[i].cells[0].getElementsByTagName('input')[0]
+               intAvance.push(Avance.value);
+
+               if( Objetivos[i].Tipo == "OnGoing")
+               {
+                   //var numObj = Objetivos[i].ID_Objetivo+"_Q"+x;
+                   for(var x= 1; x<= 4; x++)
+                   {
+                       var numObj = Objetivos[i].ID_Objetivo+"_Q"+x;
+                       Going = {"Num": numObj,"valor": ""+$("#spnAvance_"+Objetivos[i].ID_Objetivo+"_Q"+x+"").val()+""};
+                       onGoing.push(Going);
+                   }
+               }//else{
+               //    onGoing.push("");
+               //}
+
+            }
+            var jsonvalues = JSON.stringify(onGoing);
+            //var otro = JSON.parse(jsonvalues);
+            jsonvalues =  jsonvalues.replace("[", "");
+            jsonvalues =  jsonvalues.replace("]", "");
+           // console.log(jsonvalues);
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ Objetivos: ["+ IDObjetivos+"], NumEmp: " + NumeroEmpleado + ", Periodo: "+ Periodo + ", Comentarios: " + JSON.stringify(strComentarios)+ ", Avance: [" + intAvance +"], onGoing:'"+ jsonvalues +"'}",
+                url: "@Url.Action("setGuardarEstadoObjetivo", "Objetivos")",
+                contentType: "application/json; charset=utf-8;",
+                success: function() {
+                    swal("¡Operación finalizada!", "Se han guardado los avances de los objetivos.");
+                    $("#contenido-pgoals tr").remove(); 
+                    getObjetivosFormulados();
+
+                },
+                error: function(datos) {
+                    swal("Favor de verificar todos los campos llenos");
+                }
+            });
+
+        }
+
+        function guardarYEnviarObjetivos() {
+            //var Comentario = $("#txtComentariosGenerales").val();
+            //var Calif = $("#spnCalificacion").val();
+
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ NumEmp: " + NumeroEmpleado + ", Periodo : '" + Periodo +"', Revision: '" + QActual +"'}",
+                url: "@Url.Action("guardarYEnviarObjetivos", "Objetivos")",
+                contentType: "application/json; charset=utf-8;",
+                success: function(datos) {
+                    if (datos) {
+                        swal("Se han revisado los objetivos correctamente","","success");
+                        setTimeout(function(){
+                            location.href = "@Url.Action("Index", "Home")";
+                        }, 1500);
+                    }
+                    else{
+                        swal("Hubo un error","Favor de recargar la pagina","error");
+                    }
+                },
+                error: function(datos) {
+                    console.log(datos);
+                }
+            });
+        }
+
+        @*function RevisarObjetivos(txtComentariosRh){
+            var No_Evaluador = @Session["No_Empleado"].ToString();
+            if(txtComentariosRh.value == "")
+                coment = '';
+            else
+                coment = txtComentariosRh.value;
+            swal({
+                title: "¡Atención!",
+                text: "¿Desea Aprobar los objetivos?",
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+            }).then((accion) => {
+                if (accion) {
+                    $.ajax({
+                        type: "post",
+                        async: false,
+                        data: "{ NumEmp: " + NumeroEmpleado + ", Comentario: '"+ coment +"'}",
+                        url: "@Url.Action("Aprovar", "Objetivos")",
+                        contentType: "application/json; charset=utf-8;",
+                        success: function(datos) {
+                            if (datos) {
+                                swal("Se han aprovado los objetivos","","success");
+                                setTimeout(function(){
+                                    location.href = "@Url.Action("Index", "Home")";
+                                }, 1500);
+                            }
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+                }
+            });
+        }
+
+        function RechazarEvaluacion(txtComentariosRhRech){
+            var No_Evaluador = @Session["No_Empleado"].ToString();
+            var coment;
+            if(txtComentariosRhRech.value == "")
+            {
+                swal({
+                    title: "¡Cuidado!",
+                    text: "No deje comentarios vacíos.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
+                });
+            }
+            else {
+                coment = txtComentariosRhRech.value;
+                swal({
+                    title: "¡Atención!",
+                    text: "¿Desea rechazar los objetivos?",
+                    icon: "info",
+                    buttons: true,
+                    dangerMode: false,
+                }).then((accion) => {
+                    if (accion) {
+                        $.ajax({
+                            type: "post",
+                            async: false,
+                            data: "{ No_Emp: " + NumeroEmpleado + ", Comentario: '" + coment + "'}",
+                            url: "@Url.Action("rechaza", "Objetivos")",
+                            contentType: "application/json; charset=utf-8;",
+                            success: function(datos) {
+                                if (datos) {
+                                    swal({
+                                        title: "¡Operación Finalizada!",
+                                        text: "Ha terminado de retroalimentar la evaluación correctamente.",
+                                        icon: "success",
+                                        button: "OK",
+                                    }).then((ok) => { if(ok){location.href = "@Url.Action("index", "home")"; }});
+                                }
+                            },
+                            error: function(error) {
+                                console.log(error);
+                            }
+                        });
+                    }
+                });
+
+            }
+        }*@
+        function ToJavaScriptDate(value) {
+            var pattern = /Date\(([^)]+)\)/;
+            var results = pattern.exec(value);
+            var dt = new Date(parseFloat(results[1]));
+            return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+        }
+
+        function CargarPeriodo(){
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{Periodo : '" + Periodo +"'}",
+                url: "@Url.Action("LoadSpecificFiscalYear", "Reminders")",
+                contentType: "application/json; charset=utf-8;",
+                success: function (datos) {
+                    QFinal = datos[0].Periodo;
+                    $("#lblPeriodo").text(datos[0].Descripcion);
+                },
+            });
+        }
+
+    </script>
+}
+

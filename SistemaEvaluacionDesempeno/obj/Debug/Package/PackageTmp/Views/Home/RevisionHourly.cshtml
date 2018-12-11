@@ -1,0 +1,514 @@
+﻿@{
+    ViewBag.Title = "Competencias";
+    if (Session["Estado"] == null)
+    {
+        Response.Redirect(Url.Action("LogIn", "Home"));
+    }
+
+    string Usuario = Session["user"].ToString();
+}
+<style>
+     .Contenedor{
+        border: #4e8aa9 5px solid;
+    }
+   
+    .nav-tabs {
+        background-color: #161616;
+    }
+
+    .tab-content {
+        background-color: #f2f2f2;
+        color: #000000;
+        padding: 5px;
+    }
+
+    .nav-tabs > li > a {
+        border: medium none;
+    }
+
+    .myContainer .k-dropdown {
+        width: 50px;
+    }
+    /*.nav-tabs > li > a:hover{
+      background-color: #003399 !important;
+        border: medium none;
+        border-radius: 0;
+        color:#f2f2f2;
+    }*/
+
+    .btnopEvaluaciones{
+          border:solid;
+          padding-left:65%;
+          background:#31708f;
+          color:white;
+      }
+
+    .comentarios{
+         resize:none;
+         
+    }
+</style>
+
+<!--APROBAR EVALUACION-->
+<div id="mensajes" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Aprobar Evaluaci&oacute;n</h4>
+            </div>
+            <div class="modal-body">
+                @if (Session["TipoEmpleado"] == "RecursosHumanos") 
+                { 
+                   <p>Al presionar el boton aprobar, se enviara la evaluaci&oacute;n a Plant Manager para su revisi&oacute;n.</p>
+                }
+                else if (Session["TipoEmpleado"] == "PlantManager")
+                {
+                    <p>Al presionar el boton aprobar, se finaliza la evaluaci&oacute;n.</p>
+                }
+                <input placeholder="Comentarios (Opcional)" type="text" class="form-control" id="txtComentariosRh" name="comentarioAprob"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="guardarYEnviarEvaluacion(txtComentariosRh)">Aprobar</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--RECHAZAR EVALUACION...-->
+<div id="RechazarEv" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Rechazar Evaluaci&oacute;n</h4>
+            </div>
+            <div class="modal-body">
+               @if (Session["TipoEmpleado"] == "RecursosHumanos")
+               { 
+                   <p>Al presionar el boton rechazar, se enviara la evaluaci&oacute;n a Supervisor para su revisi&oacute;n.</p>
+               }
+               else if (Session["TipoEmpleado"] == "PlantManager")
+               {
+                <p>Al presionar el boton rechazar, se enviara la evaluaci&oacute;n a Recursos Humanos para su revisi&oacute;n.</p>
+               }
+                <textarea placeholder="Comentarios (Obligatorio)" type="text" class="form-control" id="txtComentariosRhRech" name="comentarioRech" ></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="RechazarEvaluacion(txtComentariosRhRech)">Rechazar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="right_col" role="main">
+    <div class="">
+        <div role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3> REVISI&Oacute;N ANUAL DE DESEMPE&Ntilde;O</h3>
+                    </div>
+                    <div class="">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <label>A&Ntilde;O FISCAL: </label><label>&nbsp;@DateTime.Now.Year</label>
+                            </div>
+                            <div class="btnopEvaluaciones">
+                                <label>Ver Evaluaci&oacute;n Anterior:&nbsp;&nbsp;</label><a href='@Url.Action("OpenPDF", "Home", new { @No_Emp = Session["NumEmpleadoConEvPendiente"] })' target="_blank" class="btn btn-default"><span class="glyphicon glyphicon-book"></span></a>
+                                <label>Kardex:&nbsp;&nbsp;</label><a href='@Url.Action("OpenKARDEX", "Home", new { @No_Emp = Session["NumEmpleadoConEvPendiente"] })' target="_blank" class="btn btn-default"><span class="glyphicon glyphicon-book"></span></a>
+                                <label>Asistencias:&nbsp;&nbsp;</label><a href='@Url.Action("OpenPERMISOS", "Home", new { @No_Emp = Session["NumEmpleadoConEvPendiente"] })' target="_blank" class="btn btn-default"><span class="glyphicon glyphicon-book"></span></a>
+                            </div>
+                            @Html.Raw(TempData["Embed"])
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                @if (Usuario == "AABARR" || Usuario == "AACALD" || Usuario == "JJELYD")
+                                {
+                                    <center><strong>Estado general de la evaluaci&oacute;n De @Session["PendEvNombre"] @Session["PendEvApellido"] <br /> Jefe: @Session["JefeM"]</strong></center>
+                                }
+                                else
+                                {
+                                    <center><strong>Estado general de la evaluaci&oacute;n De @Session["PendEvNombre"] @Session["PendEvApellido"]<br /></strong></center>
+                                }
+
+                               <!--<center><strong>Estado general de la evaluaci&oacute;n: [@Session["PendEvNombre"] @Session["PendEvApellido"]]</strong></center>--> 
+                                <div class="clearfix"></div>
+                                <br />
+                                <div class="progress">
+                                    <div id="EstadoDeCompetenciasGeneral" role="progressbar" aria-valuenow="70"
+                                         aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                                        0% Complete
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Mensaje de modal-->
+                            <div id="example">
+                                <div id="dialog">
+
+                                </div>
+                            </div>
+
+                            <!--INICIO SECCIONES PPARA EVALUACION-->
+                            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="#tbFactoresRend" id="tabRend" role="tab" data-toggle="tab" aria-expanded="true">SECCION I.</a>
+                                    </li>
+                                    <li role="presentation" class="">
+                                        <a href="#tbVarios" id="tabVarias" role="tab" data-toggle="tab" aria-expanded="false">SECCION II.</a>
+                                    </li>
+                                </ul>
+
+                                <!--INICIO DE CONTENIDO DE TABS-->
+                                <div id="myTabContent" class="tab-content">
+                                    <!--CORE COMPETENCIES TABLE-->
+                                    <div role="tabpanel" class="tab-pane fade active in" id="tbFactoresRend" aria-labelledby="home-tab">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Rendimiento frente a FACTORES DE RENDIMIENTO</th>
+                                                    <th>Jefe/Supervisor</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="contenido-pgoals"></tbody>
+                                        </table>
+                                        @*<button class="btn btn-success pull-right" onclick="guardarYEnviarEvaluacion()" id="btnGuardarYterminarEv" disabled><span class="glyphicon glyphicon-save"></span> Guardar Y Terminar Evaluacion</button>*@
+                                        @*<button class="btn btn-primary pull-right" onclick="guardarMiEvaluacion('FACTORES DE RENDIMIENTO');"><span class="glyphicon glyphicon-send"></span> Guardar</button>*@
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane fade" id="tbVarios" aria-labelledby="profile-tab">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Varias</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="contenido-tabla"></tbody>
+                                        </table>
+                                        @*<button class="btn btn-success pull-right" onclick="guardarYEnviarEvaluacion()" id="btnGuardarYterminarEv" disabled><span class="glyphicon glyphicon-save"></span> Guardar Y Terminar Evaluacion</button>*@
+                                        
+                                        @*<button class="btn btn-primary pull-right" onclick="guardarMiEvaluacion('EXTRAS')"><span class="glyphicon glyphicon-send"></span> Guardar</button>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="popupEdit">
+                            <div id="dataContainer">
+                            </div>
+                        </div>
+
+                        <button class="btn btn-success pull-right" id="btnGuardarYterminarEv"><span class="glyphicon glyphicon-save"></span> Aprobar Evaluacion</button>
+                        <button class="btn btn-danger pull-right" id="btnRechazar"><span class="glyphicon glyphicon-save"></span> Rechazar Evaluacion</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+    var NumeroEmpleado = @Session["NumEmpleadoConEvPendiente"];
+    var Periodo =  @Session["IDPeriodo"];
+
+    var IDCompetencias = [];
+    var strComentarios = [];
+    var strCalificacion = [];
+
+    $(document).ready(function ()
+    {
+        //getCargarPlantilla();
+        $("#tabRend").click(); //Al cargar la plantilla se mostrara las competencias basicas...
+        $("#myTabContent").bind('cut copy paste', function (e) {
+            e.preventDefault();
+        });
+    });
+
+
+    function getEstatusGeneralDeCompetencia()
+    {
+        $("#EstadoDeCompetenciasGeneral").removeClass();
+
+        $.ajax({
+            type: "POST",
+            async: false,
+            data: "{ No_Emp: '" + NumeroEmpleado + "', Periodo: " + Periodo +" }",
+            url: "@Url.Action("getEstadoTotalDeCompetencias", "Competencias")",
+                contentType: "application/json; charset=utf-8;",
+                success: function (datos) {
+                    if (datos != null) {
+                        //$("#EstadoDeCompetenciasGeneral")
+                        var numero = Math.round(datos[0]);
+                        document.getElementById("EstadoDeCompetenciasGeneral").innerHTML = numero + "%";
+
+                        if(numero == 0)
+                        {
+                            cargarMensaje();
+                        }
+                        if(numero < 50)
+                        {
+                            $("#EstadoDeCompetenciasGeneral").addClass('progress-bar progress-bar-danger');
+                            //$("#EstadoDeCompetenciasGeneral").css("width", "+=" + numero + "%");
+                            document.getElementById("EstadoDeCompetenciasGeneral").style.width = numero + "%";
+                        }
+                        if(numero >= 50 && numero<=99)
+                        {
+                            $("#EstadoDeCompetenciasGeneral").addClass('progress-bar progress-bar-warning');
+                            //$("#EstadoDeCompetenciasGeneral").css("width", "+=" + numero + "%");
+                            document.getElementById("EstadoDeCompetenciasGeneral").style.width = numero + "%";
+                        }
+                        if(numero == 100)
+                        {
+                            $("#EstadoDeCompetenciasGeneral").addClass('progress-bar progress-bar-success');
+                            //$("#EstadoDeCompetenciasGeneral").css("width", "+=" + numero + "%");
+                            document.getElementById("EstadoDeCompetenciasGeneral").style.width = numero + "%";
+                            $("#btnGuardarYterminarEv").removeAttr("disabled");
+                        }
+                    } else {
+                        console.log("ha ocurrido un error durante la carga de la barra de estado general, buscar en la funcion 'getEstatusGeneralDeCompetencia()'");
+                    }
+                }
+            });
+        }
+        var pendnumemp = parseInt(@Session["NumEmpleadoConEvPendiente"]);
+
+        function getCargarPlantilla(competencieType)
+        {
+            var arrayCompetencia;
+
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ No_Emp: " + pendnumemp + ", CompetencieType: '" + competencieType + "' }",
+                url: "@Url.Action("getCargarPlantilla", "Competencias")",
+            contentType: "application/json; charset=utf-8;",
+            success: function (datos) {
+                if (datos != false) {
+                    arrayCompetencia = datos;
+                } else {
+                    arrayCompetencia = false;
+                }
+                console.log(datos);
+            }
+        });
+        return (arrayCompetencia);
+    }
+    //Revisar...
+    function getCargarDatosCompentenciasGuardadas(TipoCompetencia)
+    {
+        var opcion = TipoCompetencia;
+
+        var TipoDeComp;
+        if(TipoCompetencia == 'Rend')
+            TipoDeComp = 'FACTORES DE RENDIMIENTO';
+        if(TipoCompetencia == 'Extras')
+            TipoDeComp = 'EXTRAS';
+
+        opcion = TipoCompetencia;
+        $.ajax({
+            type: "POST",
+            async: false,
+            data: "{TipoDeCompetencia: '" + TipoDeComp + "', No_emp: " + NumeroEmpleado + ", IDPeriodo: " + Periodo + "}",
+            url: "@Url.Action("CargarCompetenciasGuardadas", "Competencias")",
+            contentType: "application/json; charset=utf-8;",
+            success: function(datos){
+                if(datos != false){
+                    var cantidadCompCompletas = 0;
+                    console.log(datos);
+                    for (var i = 0; i < IDCompetencias.length; i++) {
+                        $("#txtComentarios_" + opcion + "_" + IDCompetencias[i]).val(datos[i].ComentariosJefe);
+                        
+                        if(TipoCompetencia != "Extras")
+                        $("#califEmp_" + datos[i].ID_PlantillaEvaluacionExcempt + "_" + (i+1)).data('kendoDropDownList').value(datos[i].CalificacionJefe);
+
+                        if(datos[i].ComentariosJefe != ''){
+                            cantidadCompCompletas++;
+                        }
+                    }
+                    //Se utilizara para mostrar el estado en el tab ejemplo, si se termino de formular 4 competencias se
+                    //if(cantidadCompCompletas == datos.length){
+                    //    //console.log("Estan completas..");
+
+
+                    //}else{
+                    //    //console.log("Estan incompletas..");
+                    //}
+                }
+                console.log(datos);
+            },
+            error: function(Error){
+                console.log(Error);
+            }
+        });
+    }
+
+
+        $("#tabRend").click(function (e) {
+        //Se vacian los arrays y el contenido del tab.
+        IDCompetencias.length=0;
+        strComentarios.length=0;
+        strCalificacion.length=0;
+        getEstatusGeneralDeCompetencia(); //Carga de barra de estatus
+        $("#contenido-pgoals").text("");
+        var res = getCargarPlantilla("FACTORES DE RENDIMIENTO");
+        //getEstatusGeneralDeCompetencia();
+        //var res = getDatosCompetencia("METAS Y OBJETIVOS DEL PLAN PERSONAL");
+
+        if (res != false)
+        {
+            var tr;
+            for (var i = 0; i < res.length; i++)
+            {
+                var nombre = res[i].Nombre;
+                if(nombre == null)
+                    nombre = '';
+                else
+                    nombre = res[i].Nombre + ":";
+
+
+                tr = $("<tr id = '" +res[i].ID_PlantillaEvaluacionExcempt + "' Class='Contenedor'>");
+                tr.append("<td><b>" + nombre + res[i].Descripcion + "</b><p></p><p>" + res[i].Contenido + "</p>" +
+                          "<label>Comentarios: </label><textarea  class='form-control comentarios' rows='5' id='txtComentarios_Rend_" +res[i].ID_PlantillaEvaluacionExcempt + "' tabindex='" + (i+1) +"' disabled></textarea></td>");
+                tr.append('<td><input id="califEmp_' + res[i].ID_PlantillaEvaluacionExcempt + '_' + (i+1) +'" disabled></td>');
+                $("#contenido-pgoals").append(tr);
+                IDCompetencias.push(res[i].ID_PlantillaEvaluacionExcempt);
+                $("#califEmp_" + res[i].ID_PlantillaEvaluacionExcempt + "_" + (i+1)).width(50).kendoDropDownList({
+                    dataSource: ["0","1", "2", "3", "4", "5"],
+                    change: function (e) {
+                        var value = this.value();
+                        if (value != "---Seleccione Reminder---") {
+                            reminders = value;
+                        }
+                    }
+                });
+            }
+            getCargarDatosCompentenciasGuardadas("Rend");
+        }
+    });
+
+    //AL PRESIONAR EN EL TAB LA OPCION COMPETENCIAS BASICAS SE CARGARAN LOS DATOS, ASI COMO LOS DATOS PRECARGADOS SI ES QUE EXISTEN.
+
+      $("#tabVarias").click(function (e) {
+        IDCompetencias.length=0;
+        strComentarios.length=0;
+        strCalificacion.length=0;
+        $("#contenido-tabla").text("");
+        var res = getCargarPlantilla("EXTRAS");
+        if (res != false) {
+            var tr;
+            for (var i = 0; i < res.length; i++) {
+                tr = $("<tr id = '" +res[i].ID_PlantillaEvaluacionExcempt + "' Class='Contenedor'>");
+                tr.append("<td><b>" + res[i].Nombre + ": " + res[i].Descripcion + "</b><p></p><p>" + res[i].Contenido + "</p>" +
+                          "<label>Comentarios: </label><textarea  class='form-control comentarios' rows='5' id='txtComentarios_Extras_" +res[i].ID_PlantillaEvaluacionExcempt + "' tabindex='" + (i+1) +"' disabled></textarea></td></tr>");
+
+                $("#contenido-tabla").append(tr);
+                IDCompetencias.push(res[i].ID_PlantillaEvaluacionExcempt);
+            }
+            getCargarDatosCompentenciasGuardadas("Extras");
+        }
+    });
+        
+
+      $("#btnGuardarYterminarEv").click(function(e){
+          document.getElementsByName("comentarioAprob").value = "";
+          $("#mensajes").modal("toggle");
+      });
+      
+      $("#btnRechazar").click(function(e){
+          document.getElementsByName("comentarioRech").value = "";
+          $("#RechazarEv").modal("toggle");
+      });
+
+      function guardarYEnviarEvaluacion(txtComentariosRh)
+      {
+          var coment;
+
+          if(txtComentariosRh.value == "")
+              coment = '';
+          else
+              coment = txtComentariosRh.value;
+
+                  swal({
+                      title: "¡Atención!",
+                      text: "¿Desea aprobar evaluación actual?",
+                      icon: "info",
+                      buttons: true,
+                      dangerMode: true,
+                  }).then((willDelete) => {
+                      if (willDelete)
+                      {                         
+                                      $.ajax({
+                                          type: "post",
+                                      async: false,
+                                      data: "{ No_Emp: " + NumeroEmpleado + ", Comentario: '" + coment + "', No_Evaluador:" +  @Session["No_Empleado"] +"}",
+                                      url: "@Url.Action("revision", "competencias")",
+                                      contentType: "application/json; charset=utf-8;",
+                                      success: function (datos) {
+                                          if (datos != false) {
+                                              location.href = "@Url.Action("index", "home")";
+                                          } else {
+                                              //arraycompetencia = false;
+                                          }
+                                      },
+                                      error: function (datos){
+                                          console.log(datos);
+                                      }});
+                        }});
+        }
+
+
+        
+        function RechazarEvaluacion(txtComentariosRhRech)
+        {
+            var evaluador =@Session["No_Empleado"].ToString();
+            //$("#mensajes").modal("toggle");
+            var coment;
+            if(txtComentariosRhRech.value == "")
+                swal({title: "¡Atención!",text: "Favor de no dejar comentarios vacios.",icon: "info",buttons: true,dangerMode: true});
+
+            else
+            {
+                coment = txtComentariosRhRech.value;
+                swal({
+                    title: "¡Atención!",
+                    text: "¿Desea retroalimentar evaluación actual?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete)
+                    { 
+                            $.ajax({
+                                type: "post",
+                                async: false,
+                                data: "{ No_Emp: " + NumeroEmpleado + ", Comentario: '" + coment + "',Evaluador: '"+evaluador+"'}",
+                                url: "@Url.Action("rechaza", "competencias")",
+                                contentType: "application/json; charset=utf-8;",
+                                success: function (datos) {
+                                    if (datos != false) {
+                                        swal("¡Operación completada!","Se ha retroalimentado evaluación correctamente.", "success");
+                                        location.href = "@Url.Action("index", "home")";
+                                    } else {
+                                        //arraycompetencia = false;
+                                    }
+                                },
+                                error: function (datos){
+                                    console.log(datos);
+                                }
+                             });
+                     }});
+        }
+      }
+    </script>
+}

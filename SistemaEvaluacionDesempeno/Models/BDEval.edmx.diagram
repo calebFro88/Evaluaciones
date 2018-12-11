@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="24ae8e79b2884d7393963b60f0e33ab3" Name="Diagram1">
+        <EntityTypeShape EntityType="EvaluacionModel.BITACORA" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvaluacionModel.CALIFICACIONDERENDIMIENTO" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvaluacionModel.COMPETENCIA" Width="1.5" PointX="6" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvaluacionModel.ESTADO_EVAL" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvaluacionModel.NOTIFICACION" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvaluacionModel.PERIODO" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvaluacionModel.PLANTILLAEVALUACIONEXCEMPT" Width="1.5" PointX="3.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvaluacionModel.Re_Evaluacion" Width="1.5" PointX="3.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvaluacionModel.TIPODECOMPETENCIA" Width="1.5" PointX="1.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvaluacionModel.ACTIVE_DIRECTORY" Width="1.5" PointX="8.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvaluacionModel.REMINDERS" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvaluacionModel.Emp" Width="1.5" PointX="8.75" PointY="9" IsExpanded="true" />
+        <AssociationConnector Association="EvaluacionModel.FK_IDPeriodo_Periodo" ManuallyRouted="false" />
+        <AssociationConnector Association="EvaluacionModel.FK_IDCalificacionDeRendimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="EvaluacionModel.FK_C_ID_Periodo" ManuallyRouted="false" />
+        <AssociationConnector Association="EvaluacionModel.FK_C_ID_PlantillaEvaluacionExcempt" ManuallyRouted="false" />
+        <AssociationConnector Association="EvaluacionModel.FK_IDReEvaluacion" ManuallyRouted="false" />
+        <AssociationConnector Association="EvaluacionModel.FK_IDTipoDeCompetencia" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EvaluacionModel.Objetivo1" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="EvaluacionModel.PeriodoObjetivo" Width="1.5" PointX="3" PointY="24.375" />
+        <EntityTypeShape EntityType="EvaluacionModel.Re_Objetivo" Width="1.5" PointX="3" PointY="20.375" />
+        <AssociationConnector Association="EvaluacionModel.FK_ReObjetivo" />
+        <AssociationConnector Association="EvaluacionModel.FK_ObjetivoPeriodoObj" />
+        <AssociationConnector Association="EvaluacionModel.FK_Periodo" />
+        <EntityTypeShape EntityType="EvaluacionModel.CategoriaObjetivos" Width="1.5" PointX="0.75" PointY="9.875" />
+        <AssociationConnector Association="EvaluacionModel.FK_CategoriaObjetivo" />
+        <EntityTypeShape EntityType="EvaluacionModel.TiposObjetivos" Width="1.5" PointX="11.375" PointY="5.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

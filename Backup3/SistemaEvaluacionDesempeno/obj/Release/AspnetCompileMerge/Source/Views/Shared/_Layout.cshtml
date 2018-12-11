@@ -1,0 +1,471 @@
+﻿<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Evaluacion De Desempe&ntilde;o</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+    <link href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.blueopal.min.css" rel="stylesheet" type="text/css" />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--              -->
+    <!--<script src="https://kendo.cdn.telerik.com/2017.3.913/js/jquery.min.js"></script>-->
+    <script src="https://kendo.cdn.telerik.com/2017.3.913/js/jszip.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2017.3.913/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2017.3.913/js/kendo.aspnetmvc.min.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.bootstrap.min.js"></script>
+    <link href="~/Content/alertify.css" rel="stylesheet" />
+    <link href="~/Content/alertify.rtl.css" rel="stylesheet" />
+    <script src="~/Scripts/alertify.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <link href="~/Styles/main.css" rel="stylesheet" />
+    <style type="text/css">
+      
+        
+        #tblEmpleadosPendRev_filter label input, #tblMiEval_filter label input{
+            border:none;
+            border-bottom:solid .5px #2a3f54;
+            background-color:ActiveBorder;
+            transition: 1s;
+        }
+        
+         #tblEmpleadosPendRev_filter label input:hover,  #tblMiEval_filter label input:hover{
+            border:none;
+            border-bottom:solid .5px #2a3f54;
+            background-color:#eeeeee;
+        }
+
+        .panel-primary {
+            border-color: transparent;
+            transition:ease-in .5s;
+            text-align:center;
+        }
+
+        .panel-primary > .panel-heading{
+            text-align:center;
+        }
+
+        .panel-primary:hover{
+            box-shadow:
+            1px 1px #53a7ea,
+            2px 2px #53a7ea,
+            3px 3px #53a7ea;
+            -webkit-transform: translateX(-3px);
+            transform: translateX(-3px);
+        }
+
+        .panel-primary > .panel-body table{
+            text-align:left;
+        }
+
+        .panel > .panel-heading {
+            background-image: none;
+            background-color: #2a3f54;
+            color: white;
+            border-color: transparent;
+        }
+
+        
+        .profile_info, .pie{
+            font-style:italic;
+        }
+
+        .centrarbtns {
+            display: flex;
+            justify-content: center;
+            padding-bottom:20px;/*Espacio entre de distancia entre el contenido y los botones, se decidio dejar un pequeno espaciado para que no se muestre amontonado. :p*/
+        }
+
+        #tblEmpleadosPendRev {
+            overflow:no-display;
+        }
+
+      
+        .btnInformacion {
+            cursor: pointer;
+        }
+
+        td{
+           /*background-color: #ccc;*/
+           font-size:small;
+           transition: 1s;
+       }
+
+      td:hover{
+         /*background-color: #fff;*/
+       }
+
+      .swal-button--confirm{
+          background-color:#2a3f54;
+      }
+     
+       .swal-button--confirm:hover{
+          border-color:#53a7ea;
+      }
+
+       @@media screen and(max-width:1400px){
+        html{
+        -moz-transform: scale(0.80, 0.80); 
+        zoom: 0.80; 
+        zoom: 80%;
+        }
+        }
+
+        @@media screen and (min-resolution: 120dpi) { 
+         /*body {transform: scale(0.8);width: 125%;height: 125%;margin-left: -12.5%;}*/
+         body {transform: scale(0.8);transform-origin:top left;width: 125%;height: 125%;}
+}
+    </style>
+
+    <!--kendo.all.min.js can be used as well instead of the following custom Kendo UI subset-->
+    <script src="~/ReportViewer/js/telerikReportViewer-11.2.17.913.min.js"></script>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    @*<script src="~/ReportViewer/js/telerikReportViewer.kendo-11.2.17.913.min.js"></script>*@
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+    <script type="text/javascript">
+    // Opera 8.0+
+    var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+    // Firefox 1.0+
+    var isFirefox = typeof InstallTrigger !== 'undefined';
+    // Safari 3.0+ "[object HTMLElementConstructor]"
+    var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+    // Internet Explorer 6-11
+    var isIE = /*@@cc_on!@@*/false || !!document.documentMode;
+    // Edge 20+
+    var isEdge = !isIE && !!window.StyleMedia;
+    // Chrome 1+
+    var isChrome = !!window.chrome && !!window.chrome.webstore;
+    //var output = 'Detecting browsers by ducktyping:<hr>';
+    //output += 'isFirefox: ' + isFirefox + '<br>';
+    //output += 'isChrome: ' + isChrome + '<br>';
+    //output += 'isSafari: ' + isSafari + '<br>';
+    //output += 'isOpera: ' + isOpera + '<br>';
+    //output += 'isIE: ' + isIE + '<br>';
+    //output += 'isEdge: ' + isEdge + '<br>';
+    //document.body.innerHTML = output;
+
+    if(!isChrome && !isFirefox){
+        location.href = "@Url.Action("Error", "Home")";
+        //alert("Correcto");
+        //console.log("Navegador Chrome");
+    }
+    </script>
+</head>
+<body class="nav-md">
+        <div class="container body">
+            <div class="main_container">
+               @if (Session["Estado"] != null)
+               { 
+                <div class="col-md-3 left_col">
+                    <div class="left_col scroll-view">
+                        <div class="navbar nav_title" style="border: 0;">
+                            <a href="@Url.Action("Index","Home")" class="site_title"><i class="glyphicon glyphicon-book"></i> <span>E.D.L</span></a>
+                        </div><!--Titulo de el side bar layout principal...-->
+                        <div class="clearfix"></div>
+                        <!-- menu profile quick info -->
+                        <div class="profile clearfix">
+                            <div class="profile_pic">
+                                <img src="~/Content/icon.png" alt="..." class="img-circle profile_img">
+                            </div>
+                            <div class="profile_info">
+                                <span>Bienvenido(a),</span>
+                                <h2>@Session["Apellido"], @Session["Nombre"]</h2><br/>
+                      
+                             </div>
+                        </div>
+                        <!-- /menu profile quick info -->
+                        <br />
+                        <!-- sidebar menu -->
+                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                            <div class="menu_section">
+                                <h3>General</h3>
+                                <ul class="nav side-menu">
+                                    <li>
+                                        <a><i class="fa fa-home"></i> Inicio <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="@Url.Action("Index","Home")">Mis Evaluaciones</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><i class="fa fa-edit"></i> Objetivos <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            @*
+                                                @if(Session["TipoEmpleado"] == "RecursosHumanos")
+                                                {
+                                                      <li><a href="@Url.Action("RecordatorioObjetivos", "Home")">Status</a></li>
+                                                }
+                                            *@
+                                            <!--Esto de momento va a estar comentado-->
+                                            <!--<li><a href="@Url.Action("FormulacionDeObjetivos", "Home")">Formulacion</a></li>-->
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><i class="fa fa-desktop"></i>  Actividades<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="@Url.Action("miEvaluacion", "Home")">Mi Evaluaci&oacute;n</a></li>
+                                            <li><a href="@Url.Action("estatusEvaluaciones", "Home")">Estatus De Evaluaciones</a></li>
+                                       
+                                            @if ("RH"== Session["rol"].ToString()) //Solamente estara disponible para recursos humanos esta funcionalidad....
+                                            { 
+                                                  <li><a href="@Url.Action("DefinirPeriodo", "Home")">Definir Per&iacute;odo</a></li>
+                                                  <li><a href="@Url.Action("EnviarReminders", "Home")">Inicio Evaluaci&oacute;n De Empleados</a></li>
+                                                   <li><a href="@Url.Action("EmpleadosSinCorreo", "Home")">Asignaci&oacute;n De Correo Electronico</a></li>
+                                                    <li><a href="@Url.Action("ReporteGeneral", "Home")">Reporte General</a></li>
+                                            }
+                                        </ul>
+                                    </li>
+                                            @*@if(Session["TipoEmpleado"] == "RecursosHumanos")
+                                            {
+                                    <li>
+                                        <a><i class="fa fa-bar-chart-o"></i> Reportes <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="@Url.Action("ReporteHourly", "Home")">Reporte Hourly</a></li>
+                                            <li><a href="@Url.Action("ReportSalary", "Home")">Reporte Salary</a></li>
+                                        </ul>
+                                    </li>
+                                            }*@
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /sidebar menu -->
+                        <!-- /menu footer buttons -->
+                        <div class="sidebar-footer hidden-small">
+                            @*<a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="Lock">
+                                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                            </a>*@
+                            <a data-toggle="tooltip" data-placement="top" title="Logout" href="@Url.Action("CerrarSesion","Home")">
+                                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <!-- /menu footer buttons -->
+                    </div>
+                </div>
+
+                <!-- top navigation -->
+                <div class="top_nav">
+                    <div class="nav_menu">
+                        <nav>
+                            <div class="nav toggle">
+                                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                            </div>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="">
+                                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <img src="~/Content/icon.png" alt="">@Session["Nombre"]
+                                        <span class=" fa fa-angle-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                        <li><a href="@Url.Action("Index","Home")"> Perfil</a></li>
+                                        <li data-target="#ModalAyuda" data-toggle="modal"><a href="javascript:;">Ayuda</a></li>
+                                        <li></li>
+                                        <li><a href="@Url.Action("CerrarSesion","Home")"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesi&oacute;n</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!--
+                                <li role="presentation" class="dropdown">
+                                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false" onclick="marcarComoLeido()">
+                                        <i class="fa fa-envelope-o"></i>
+                                        <span class="badge bg-red" id="contNotificaciones"></span>
+                                    </a>
+                                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                    </ul>
+                                </li>
+                                    -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div> 
+                <!-- /top navigation -->
+                <!-- page content -->
+               }
+                <div class="modal fade" tabindex="-1" role="dialog" id="ModalAyuda">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Definiciones de los Indicadores de Rendimiento.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p align="justify">
+                                    <strong>Emerson Pressure Management, Fromex Nuevo Laredo,</strong> cree que es importante evaluar el desempeño de sus empleados de manera consistente.
+                                    Esta es una oportunidad para proporcionar a los empleados información significativa sobre su trabajo y ayuda en la toma de decisiones de personal
+                                    relacionadas con &aacute;reas tales como compensaci&oacute;n, retenci&oacute;n, asignaciones de trabajo, capacitaci&oacute;n, promoci&oacute;n y
+                                    planeaci&oacute;n a largo plazo de las operaciones. El apoyo de todos a este proceso es esencial para el &eacute;xito.
+                                </p>
+                                <p align="justify"><b>1 = Excepcional (E)</b></p>
+                                <p align="justify">
+                                    Desempeño que resulta en logros excepcionales con contribuciones muy significativas a los objetivos del departamento, unidad de negocio o empresa.
+                                    Consistentemente excede con mucho las expectativas del puesto, resultados y logro de objetivos.
+                                    Se puede dar un alto grado de confiabilidad a sus esfuerzos.
+                                    Se le reconoce una gran experiencia en su funci&oacute;n; con frecuencia los empleados buscan su consejo, conocimientos y autoridad.
+                                    A pesar de las circunstancias adversas, obtiene resultados de gran calidad y a tiempo.
+                                    Tiene iniciativa para identificar objetivos de reto y busca soluciones efectivas en la relaci&oacute;n costo-beneficio.
+                                    Muestra un conocimiento total de todos los aspectos de su funci&oacute;n.
+                                    Difícilmente igualado en exceder los requerimientos del puesto.
+                                    Hay clara evidencia del respeto de los dem&aacute;s con respecto a sus contribuciones a Fromex.
+                                </p>
+                                <p align="justify"><b>2 = Excede las expectativas (EX)</b></p>
+                                <p align="justify">
+                                    El desempeño siempre genera resultados superiores a los esperados de la posici&oacute;n.
+                                    Un alto grado de fiabilidad y confianza se puede colocar en el trabajo del individuo.
+                                    Requiere poco entrenamiento, constantemente muestra alta iniciativa, puede manejar tareas m&uacute;ltiples y produce trabajo de calidad.
+                                    El empleado demuestra un desempeño s&oacute;lido en sus resultados.
+                                    Excede en tiempo, calidad y alcance sus principales objetivos.
+                                    Toma la iniciativa para desarrollar e implementar tareas de reto.
+                                    Continuamente excede sus metas por sus esfuerzos extras. Requiere poca supervisi&oacute;n.
+                                    Sus decisiones y acciones dan valor agregado a los objetivos de Fromex.
+                                </p>
+                                <p align="justify"><b>3 = Cumple con las expectativas (CE)</b></p>
+                                <p align="justify">
+                                    El rendimiento satisface constantemente, y algunas veces excede los requisitos.
+                                    Todas las funciones de trabajo en general se completan de manera oportuna y se hace de manera consistente con buena calidad.
+                                    Buen rendimiento general y cumplimiento de los requisitos de posici&oacute;n.
+                                    Un alto grado de confiabilidad y confianza puede ser colocado en el trabajo del individuo.
+                                    Requiere s&iacute;lo de la supervisión y seguimientos normales.
+                                    Es un s&oacute;lido miembro del equipo.
+                                    Sus decisiones son generalmente buenas
+                                </p>
+                                <p align="justify"><b>4 = Necesita Mejora (NM)</b></p>
+                                <p align="justify">
+                                    Reúne el m&iacute;nimo de requerimientos para el puesto, pero no todos.
+                                    Necesita que lo empujen y le den seguimiento y logra hacer sus trabajos con una supervisi&oacute;n cercana.
+                                    A menudo reacciona a los problemas/oportunidades más que anticiparse a ellos.
+                                    Se puede esperar más de &eacute;l si permanece más tiempo en el puesto.
+                                    Frecuentemente, el empleado se queda corto de metas y plazos.
+                                    Requiere m&aacute;s de lo normal de supervisi&oacute;n y direcci&oacute;n.
+                                    Es necesario una mejora en el desarrollo y desempeño.
+                                </p>
+                                <p align="justify"><b>5 = Inaceptable (I)</b></p>
+                                <p align="justify">
+                                    Su desempeño y logros de los principales objetivos son claramente inaceptables.
+                                    Se duda a menudo de la calidad y oportunidad de sus resultados.
+                                    No capta los programas, proyectos y tareas sin repetidas explicaciones de su jefe inmediato.
+                                    Requiere mucha supervisi&oacute;n en relaci&oacute;n a los logros obtenidos.
+                                    Hay comentarios adversos acerca de su desempeño por parte de gente ajena a la función (ventas, distribuidores, proveedores, corporaci&oacute;n, etc.)
+                                    Generalmente reacciona a los problemas/oportunidades, m&aacute;s que adelantarse a ellos.
+                                    Deber&aacute; mostrar una mejora significativamente para que continu&eacute; en el puesto que tiene.
+                                    Se deber&aacute; documentar planes espec&iacute;ficos de seguimiento en esta evaluaci&oacute;n, y se har&aacute; un seguimiento formal y evaluaci&oacute;n de los pr&oacute;ximos seis meses.
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @RenderBody()
+
+                <!-- /page content -->
+                <!-- footer content -->
+               @if (Session["Estado"] != null)
+               {
+                <footer>
+                    <div class="pull-right pie">
+                         Sistema De Evaluacion De Desempe&ntilde;o Laboral. v1.2
+                    </div>
+                    <div class="clearfix"></div>
+                </footer>
+                }
+                <!-- /footer content -->
+            </div>
+        </div>
+    <script type="text/javascript">
+        console.log("LAYOUT.");
+        $(document).ready(function (e) {
+            // cargarNotificaciones();
+            setInterval("alert('La sesion caducara en 10 minutos, favor de guardar los cambios, si no guarda cambios se perderan...')", 3000000);
+            //setTimeout(console.clear(), 2000);
+        });
+
+        //FUNCIONES PARA LA NOTIFICACION...
+        @*function cargarNotificaciones() {
+
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ No_Emp: " + @Session["No_Empleado"] + ", Periodo: " + @Session["IDPeriodo"] + "}",
+                url: "@Url.Action("VerNotificaciones", "Competencias")",
+                contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (datos) {
+                if (datos != null) {
+                    {
+                        console.log(datos);
+                        //Cargamos cuantas notificaciones tenemos...
+                        var cantidadMensajes = 0;
+                        if (datos.length == 0) {
+                            $("#contNotificaciones").removeClass();
+                            //$("#contNotificaciones").addClass("badge bg-green");
+                            li = $("<li>");
+                            li.append("<a href='#'>" +
+                                             "<span><span>Administrador</span><span class='time'></span></span>" +
+                                             "<span class='message'>No tiene notificaciones pendientes aun.</span></a></li>");
+                            $("#menu1").append(li);
+                        }
+                        else {
+                            var li;
+                            var estado = '';
+
+                            for (var i = 0; i < datos.length; i++)
+                            {
+                                if (datos[i].EstadoDeNotificacion == 0){
+                                    cantidadMensajes++;
+                                    estado = 'No leido';
+                                }
+                                else{
+                                    $("#contNotificaciones").removeClass();
+                                    estado = 'Leido';
+                                }
+                                
+                                li = $("<li id = '" + datos[i].ID_Notificacion + "'>");
+                                li.append("<a href='@Url.Action("Index","Home")' onclick='marcarComoLeido(" + datos[i].ID_Notificacion + ")'>" +
+                                                 "<span><span>" + datos[i].Nombre + "</span><span class='time'>Hace " + (datos[i].MomentoDeNotificacion.Minutes + @DateTime.Now.Minute) + " Min.</span></span>" +
+                                                 "<span class='message'>" + datos[i].Descripcion + ".<br/>Estado: " + estado + "</span></li>");
+                                $("#menu1").append(li);
+                            }
+                        }
+                        document.getElementById("contNotificaciones").innerHTML = cantidadMensajes;
+                    }
+                }
+            },
+            error: function (Exception) {
+                console.log(Exception)
+            }
+        });
+        }
+
+        function marcarComoLeido(IdNotificacion){
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ No_Emp: " + @Session["No_Empleado"] + ", IDNotificacion: "+ IdNotificacion +"}",
+                url: "@Url.Action("MarcarNotificacionComoLeida", "Competencias")",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (datos) {
+                    if (datos != null) {
+                        cargarNotificaciones();
+                    }
+                }
+            });
+        }*@
+
+    </script>
+    <script src="~/Scripts/menu.js"></script>
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

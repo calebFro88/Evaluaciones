@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EvaluacionDesempenoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bitacora">
+    <Key>
+      <PropertyRef Name="ID_Bitacora" />
+    </Key>
+    <Property Name="ID_Bitacora" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="ID_Periodo" Type="int" Nullable="false" />
+    <Property Name="ID_NumeroDeEmpleado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="ID_NumeroDeEmpleado" />
+    </Key>
+    <Property Name="ID_NumeroDeEmpleado" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NombreCompleto" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
+    <Property Name="Departamento" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Jefe" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Area" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Horario" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="ID_Estado" />
+    </Key>
+    <Property Name="ID_Estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="ID_NumeroDeEmpleado" Type="int" />
+    <Property Name="ID_EvaluacionDeObjetivo" Type="int" />
+    <Property Name="Q1" Type="int" />
+    <Property Name="Q2" Type="int" />
+    <Property Name="Q3" Type="int" />
+    <Property Name="QF" Type="int" />
+  </EntityType>
+  <EntityType Name="EvaluacionDeObjetivo">
+    <Key>
+      <PropertyRef Name="ID_EvaluacionDeObjetivo" />
+    </Key>
+    <Property Name="ID_EvaluacionDeObjetivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Comentarios" Type="varchar(max)" Nullable="false" />
+    <Property Name="Calificacion" Type="float" Nullable="false" />
+    <Property Name="ID_Objetivo" Type="int" />
+  </EntityType>
+  <EntityType Name="Objetivo">
+    <Key>
+      <PropertyRef Name="ID_Objetivo" />
+    </Key>
+    <Property Name="ID_Objetivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Peso" Type="float" Nullable="false" />
+    <Property Name="FechaTerminacion" Type="datetime" Nullable="false" />
+    <Property Name="ID_NumeroDeEmpleado" Type="int" />
+    <Property Name="ID_Periodo" Type="int" />
+  </EntityType>
+  <EntityType Name="Periodo">
+    <Key>
+      <PropertyRef Name="ID_Periodo" />
+    </Key>
+    <Property Name="ID_Periodo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaInicial" Type="datetime" />
+    <Property Name="FechaFinal" Type="datetime" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_IDEvaluacionDeObjetivo">
+    <End Role="EvaluacionDeObjetivo" Type="Self.EvaluacionDeObjetivo" Multiplicity="0..1" />
+    <End Role="Estado" Type="Self.Estado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EvaluacionDeObjetivo">
+        <PropertyRef Name="ID_EvaluacionDeObjetivo" />
+      </Principal>
+      <Dependent Role="Estado">
+        <PropertyRef Name="ID_EvaluacionDeObjetivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IDNumeroDeEmpleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="Estado" Type="Self.Estado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="ID_NumeroDeEmpleado" />
+      </Principal>
+      <Dependent Role="Estado">
+        <PropertyRef Name="ID_NumeroDeEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IDObjetivo">
+    <End Role="Objetivo" Type="Self.Objetivo" Multiplicity="0..1" />
+    <End Role="EvaluacionDeObjetivo" Type="Self.EvaluacionDeObjetivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Objetivo">
+        <PropertyRef Name="ID_Objetivo" />
+      </Principal>
+      <Dependent Role="EvaluacionDeObjetivo">
+        <PropertyRef Name="ID_Objetivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IDPeriodo">
+    <End Role="Periodo" Type="Self.Periodo" Multiplicity="0..1" />
+    <End Role="Objetivo" Type="Self.Objetivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Periodo">
+        <PropertyRef Name="ID_Periodo" />
+      </Principal>
+      <Dependent Role="Objetivo">
+        <PropertyRef Name="ID_Periodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_PendienteDeObjetivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="EvaluacionDesempenoModelStoreContainer">
+    <EntitySet Name="Bitacora" EntityType="Self.Bitacora" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EvaluacionDeObjetivo" EntityType="Self.EvaluacionDeObjetivo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Objetivo" EntityType="Self.Objetivo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Periodo" EntityType="Self.Periodo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_IDEvaluacionDeObjetivo" Association="Self.FK_IDEvaluacionDeObjetivo">
+      <End Role="EvaluacionDeObjetivo" EntitySet="EvaluacionDeObjetivo" />
+      <End Role="Estado" EntitySet="Estado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IDNumeroDeEmpleado" Association="Self.FK_IDNumeroDeEmpleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Estado" EntitySet="Estado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IDObjetivo" Association="Self.FK_IDObjetivo">
+      <End Role="Objetivo" EntitySet="Objetivo" />
+      <End Role="EvaluacionDeObjetivo" EntitySet="EvaluacionDeObjetivo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IDPeriodo" Association="Self.FK_IDPeriodo">
+      <End Role="Periodo" EntitySet="Periodo" />
+      <End Role="Objetivo" EntitySet="Objetivo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

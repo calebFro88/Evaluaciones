@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EvaluacionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evaluacion.dbo.ACTIVE_DIRECTORY' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="ACTIVE_DIRECTORY">
+    <Key>
+      <PropertyRef Name="userNumber" />
+    </Key>
+    <Property Name="userName" Type="varchar(max)" />
+    <Property Name="userNumber" Type="int" Nullable="false" />
+    <Property Name="userMail" Type="varchar(max)" />
+    <Property Name="Reminder" Type="bit" />
+    <Property Name="id_Reminder" Type="int" />
+    <Property Name="FechaReminder" Type="datetime" />
+    <Property Name="Nombre" Type="varchar(max)" />
+    <Property Name="Apellido" Type="varchar(max)" />
+    <Property Name="FRUpdate" Type="datetime" />
+    <Property Name="RHPM" Type="bit" />
+    <Property Name="RecordatorioSemanal" Type="datetime" />
+    <Property Name="numberGerente" Type="int" />
+  </EntityType>
+  <EntityType Name="BITACORA">
+    <Key>
+      <PropertyRef Name="ID_LOG" />
+    </Key>
+    <Property Name="ID_LOG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Periodo" Type="int" Nullable="false" />
+    <Property Name="No_Emp" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CALIFICACIONDERENDIMIENTO">
+    <Key>
+      <PropertyRef Name="ID_CalificacionDeRendimiento" />
+    </Key>
+    <Property Name="ID_CalificacionDeRendimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="NumeroCalificacion" Type="int" Nullable="false" />
+    <Property Name="PalabraClave" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="COMPETENCIA">
+    <Key>
+      <PropertyRef Name="ID_Competencia" />
+    </Key>
+    <Property Name="ID_Competencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Comentarios" Type="varchar(max)" />
+    <Property Name="No_Emp" Type="int" />
+    <Property Name="ID_Periodo" Type="int" />
+    <Property Name="ID_PlantillaEvaluacionExcempt" Type="int" />
+    <Property Name="ID_CalificacionDeRendimiento" Type="int" />
+    <Property Name="ID_Estatus_Evaluacion" Type="int" Nullable="false" />
+    <Property Name="Evaluador" Type="int" />
+    <Property Name="ID_ReEvaluacion" Type="int" Nullable="false" />
+    <Property Name="ComentariosJefe" Type="varchar(max)" />
+    <Property Name="CalificacionJefe" Type="float" />
+  </EntityType>
+  <EntityType Name="ESTADO_EVAL">
+    <Key>
+      <PropertyRef Name="ID_EstadoEval" />
+    </Key>
+    <Property Name="ID_EstadoEval" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Periodo" Type="int" Nullable="false" />
+    <Property Name="No_Emp" Type="int" Nullable="false" />
+    <Property Name="Objetivo" Type="int" Nullable="false" />
+    <Property Name="Q1" Type="int" Nullable="false" />
+    <Property Name="Q2" Type="int" Nullable="false" />
+    <Property Name="Q3" Type="int" Nullable="false" />
+    <Property Name="Q4" Type="int" Nullable="false" />
+    <Property Name="QF" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EVALUACIONOBJETIVO">
+    <Key>
+      <PropertyRef Name="ID_EvalObj" />
+    </Key>
+    <Property Name="ID_EvalObj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Objetivo" Type="int" Nullable="false" />
+    <Property Name="Comentarios" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Calificacion" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NOTIFICACION">
+    <Key>
+      <PropertyRef Name="ID_Notificacion" />
+    </Key>
+    <Property Name="ID_Notificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar(max)" />
+    <Property Name="Descripcion" Type="varchar(max)" />
+    <Property Name="No_Empleado" Type="int" Nullable="false" />
+    <Property Name="ID_Periodo" Type="int" Nullable="false" />
+    <Property Name="MomentoDeNotificacion" Type="time" Precision="7" />
+    <Property Name="EstadoDeNotificacion" Type="int" />
+  </EntityType>
+  <EntityType Name="OBJETIVO">
+    <Key>
+      <PropertyRef Name="ID_Objetivo" />
+    </Key>
+    <Property Name="ID_Objetivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="No_Emp" Type="int" Nullable="false" />
+    <Property Name="ID_Periodo" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Peso" Type="int" Nullable="false" />
+    <Property Name="EstadoDeObjetivo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaDeCreacion" Type="datetime" Nullable="false" />
+    <Property Name="FechaDeModificacion" Type="datetime" />
+    <Property Name="FechaLimiteEsperada" Type="datetime" />
+    <Property Name="FechaDeTerminacionDeObjetivo" Type="datetime" />
+    <Property Name="Comentarios" Type="varchar(max)" />
+    <Property Name="Firma" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="PERIODO">
+    <Key>
+      <PropertyRef Name="ID_Periodo" />
+    </Key>
+    <Property Name="ID_Periodo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha_Inicio" Type="datetime" Nullable="false" />
+    <Property Name="Fecha_Final" Type="datetime" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PLANTILLAEVALUACIONEXCEMPT">
+    <Key>
+      <PropertyRef Name="ID_PlantillaEvaluacionExcempt" />
+    </Key>
+    <Property Name="ID_PlantillaEvaluacionExcempt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar(max)" />
+    <Property Name="Descripcion" Type="varchar(max)" />
+    <Property Name="Contenido" Type="varchar(max)" />
+    <Property Name="ID_TipoDeCompetencia" Type="int" />
+    <Property Name="OrdenPlantilla" Type="smallint" />
+  </EntityType>
+  <EntityType Name="Re_Evaluacion">
+    <Key>
+      <PropertyRef Name="ID_ReEvaluacion" />
+    </Key>
+    <Property Name="ID_ReEvaluacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="No_Emp" Type="int" />
+    <Property Name="FechaDeInicio" Type="date" />
+    <Property Name="FechaDeTerminacion" Type="date" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" />
+    <Property Name="CalificacionFinal" Type="float" />
+    <Property Name="ComentariosRh" Type="varchar(max)" />
+    <Property Name="ComentariosPM" Type="varchar(max)" />
+    <Property Name="TipoEvaluacion" Type="varchar(max)" />
+    <Property Name="ComentariosGer" Type="varchar(max)" />
+    <Property Name="EvaluadorRH" Type="varchar(max)" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evaluacion.dbo.REMINDERS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="REMINDERS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="valorReminder" Type="varchar(max)" />
+    <Property Name="valorCorto" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TIPODECOMPETENCIA">
+    <Key>
+      <PropertyRef Name="ID_TipoDeCompetencia" />
+    </Key>
+    <Property Name="ID_TipoDeCompetencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="varchar(max)" />
+    <Property Name="NombreTipoDePlantillaEvaluacion" Type="varchar" MaxLength="100" />
+    <Property Name="OrdenReporte" Type="tinyint" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Evaluacion.dbo.Emp' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Emp">
+    <Key>
+      <PropertyRef Name="No_Emp" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="APELLIDO" />
+      <PropertyRef Name="NIVEL1" />
+    </Key>
+    <Property Name="No_Emp" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="APELLIDO" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="30" />
+    <Property Name="DEPARTAMENTO" Type="varchar" MaxLength="30" />
+    <Property Name="TipoEmpleado" Type="varchar" MaxLength="11" />
+    <Property Name="JEFE" Type="varchar" MaxLength="30" />
+    <Property Name="Areay" Type="varchar" MaxLength="30" />
+    <Property Name="valorCorto" Type="varchar" MaxLength="50" />
+    <Property Name="FechaReminder" Type="varchar" MaxLength="11" />
+    <Property Name="NIVEL1" Type="char" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_C_ID_Periodo">
+    <End Role="PERIODO" Type="Self.PERIODO" Multiplicity="0..1" />
+    <End Role="COMPETENCIA" Type="Self.COMPETENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIODO">
+        <PropertyRef Name="ID_Periodo" />
+      </Principal>
+      <Dependent Role="COMPETENCIA">
+        <PropertyRef Name="ID_Periodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_C_ID_PlantillaEvaluacionExcempt">
+    <End Role="PLANTILLAEVALUACIONEXCEMPT" Type="Self.PLANTILLAEVALUACIONEXCEMPT" Multiplicity="0..1" />
+    <End Role="COMPETENCIA" Type="Self.COMPETENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PLANTILLAEVALUACIONEXCEMPT">
+        <PropertyRef Name="ID_PlantillaEvaluacionExcempt" />
+      </Principal>
+      <Dependent Role="COMPETENCIA">
+        <PropertyRef Name="ID_PlantillaEvaluacionExcempt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EvalObj_Objetivo">
+    <End Role="OBJETIVO" Type="Self.OBJETIVO" Multiplicity="1" />
+    <End Role="EVALUACIONOBJETIVO" Type="Self.EVALUACIONOBJETIVO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OBJETIVO">
+        <PropertyRef Name="ID_Objetivo" />
+      </Principal>
+      <Dependent Role="EVALUACIONOBJETIVO">
+        <PropertyRef Name="ID_Objetivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IDCalificacionDeRendimiento">
+    <End Role="CALIFICACIONDERENDIMIENTO" Type="Self.CALIFICACIONDERENDIMIENTO" Multiplicity="0..1" />
+    <End Role="COMPETENCIA" Type="Self.COMPETENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CALIFICACIONDERENDIMIENTO">
+        <PropertyRef Name="ID_CalificacionDeRendimiento" />
+      </Principal>
+      <Dependent Role="COMPETENCIA">
+        <PropertyRef Name="ID_CalificacionDeRendimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IDPeriodo_Periodo">
+    <End Role="PERIODO" Type="Self.PERIODO" Multiplicity="1" />
+    <End Role="BITACORA" Type="Self.BITACORA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIODO">
+        <PropertyRef Name="ID_Periodo" />
+      </Principal>
+      <Dependent Role="BITACORA">
+        <PropertyRef Name="ID_Periodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IDReEvaluacion">
+    <End Role="Re_Evaluacion" Type="Self.Re_Evaluacion" Multiplicity="1" />
+    <End Role="COMPETENCIA" Type="Self.COMPETENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Re_Evaluacion">
+        <PropertyRef Name="ID_ReEvaluacion" />
+      </Principal>
+      <Dependent Role="COMPETENCIA">
+        <PropertyRef Name="ID_ReEvaluacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IDTipoDeCompetencia">
+    <End Role="TIPODECOMPETENCIA" Type="Self.TIPODECOMPETENCIA" Multiplicity="0..1" />
+    <End Role="PLANTILLAEVALUACIONEXCEMPT" Type="Self.PLANTILLAEVALUACIONEXCEMPT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPODECOMPETENCIA">
+        <PropertyRef Name="ID_TipoDeCompetencia" />
+      </Principal>
+      <Dependent Role="PLANTILLAEVALUACIONEXCEMPT">
+        <PropertyRef Name="ID_TipoDeCompetencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Obj_periodo">
+    <End Role="PERIODO" Type="Self.PERIODO" Multiplicity="1" />
+    <End Role="OBJETIVO" Type="Self.OBJETIVO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIODO">
+        <PropertyRef Name="ID_Periodo" />
+      </Principal>
+      <Dependent Role="OBJETIVO">
+        <PropertyRef Name="ID_Periodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CalificacionTotalDeEvaluacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+    <Parameter Name="No_Empleado" Type="int" Mode="In" />
+    <Parameter Name="IDPeriodo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CantidadDeCompetencias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="No_Emp" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fn_ObtenerNumeroEmpleadoJefe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="NombreJefe" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="RetornaEmailjefe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+    <Parameter Name="nombre" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_Actualiza_EstadoReminder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="noEmpleado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Actualiza_EstadoSemanal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="noEmpleado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ActualizarEmpleadosAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_AprobarEv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NoEmp" Type="int" Mode="In" />
+    <Parameter Name="Comentarios" Type="varchar(max)" Mode="In" />
+    <Parameter Name="TipoEmpleado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ApruebaPM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numero" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ApruebaRH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numero" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_AsignarCorreoEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NombreUsuario" Type="varchar(max)" Mode="In" />
+    <Parameter Name="No_Emp" Type="int" Mode="In" />
+    <Parameter Name="Correo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Carga_ValorReminders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CargaDepartamentos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CargaEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CargaEmpleadosReporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CargaJefes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CargarCompetenciasGuardadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TipoDeCompetencia" Type="varchar" Mode="In" />
+    <Parameter Name="NumEmp" Type="int" Mode="In" />
+    <Parameter Name="IDPeriodo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CargarDatosReporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumEmp" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CargarEmpleadoPrueba" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumEmp" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CargarPlantilla" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumEmp" Type="int" Mode="In" />
+    <Parameter Name="TipoDeCompetencia" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_CargarReporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumEmp" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CargaTipos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CrearNuevoObjetivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumeroEmpleado" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Peso" Type="int" Mode="In" />
+    <Parameter Name="IDPeriodo" Type="int" Mode="In" />
+    <Parameter Name="FechaLimiteEsperada" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_CrearPeriodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFinal" Type="datetime" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_DeterminarTipoEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="No_Emp" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_EditarObjetivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Objetivo" Type="int" Mode="In" />
+    <Parameter Name="NumeroDeEmpleado" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Peso" Type="int" Mode="In" />
+    <Parameter Name="IDPeriodo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_EliminarMiObjetivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDObjetivo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_EstatusEvaluaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numero" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_EstatusTotalEvaluacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumEmp" Type="int" Mode="In" />
+    <Parameter Name="IDPeriodo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_EstatusTotalEvaluacionJefe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumEmp" Type="int" Mode="In" />
+    <Parameter Name="IDPeriodo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_EvaluarObjetivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDObjetivo" Type="int" Mode="In" />
+    <Parameter Name="NumeroEmpleado" Type="int" Mode="In" />
+    <Parameter Name="IDPeriodo" Type="int" Mode="In" />
+    <Parameter Name="Comentarios" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Calificacion" Type="float" Mode="In" />
+  </Function>
+  <Function Name="sp_EvImpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numero" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_FinalizaPM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numero" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_FinEvaluacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numero" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetTipoEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumEmp" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GuardarEstadoDeCompetencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDCompetencia" Type="int" Mode="In" />
+    <Parameter Name="NoEmp" Type="int" Mode="In" />
+    <Parameter Name="Periodo" Type="int" Mode="In" />
+    <Parameter Name="Comentarios" Type="varchar(max)" Mode="In" />
+    <Parameter Name="CalificacionDeRendimiento" Type="varchar" Mode="In" />
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="IDReEvaluacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GuardarYTerminarEvaluacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="No_Emp" Type="int" Mode="In" />
+    <Parameter Name="IDPeriodo" Type="int" Mode="In" />
+    <Parameter Name="No_Evaluador" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ListarCursosAsistidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NoEmp" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ListarPendienteDeObjetivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ListaSendReminders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_LoadReminders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="valorCorto" Type="varchar(max)" Mode="In" />
+    <Parameter Name="numEmp" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_MarcarNotificacionComoLeida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="No_Emp" Type="int" Mode="In" />
+    <Parameter Name="ID_Notificacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_MiEvaluacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NoEmp" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_misEmpleadosConEvaluacionEnEspera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PrimerNombre" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PrimerApellido" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_misEmpleadosConEvaluacionPendiente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PrimerNombre" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PrimerApellido" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_misEmpleadosConEvaluacionTerminada" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PrimerNombre" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PrimerApellido" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_misEmpleadosSinCorreo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_MisNotificaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumEmpleado" Type="int" Mode="In" />
+    <Parameter Name="IDPeriodo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_MisObjetivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumeroDeEmpleado" Type="int" Mode="In" />
+    <Parameter Name="Periodo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_MisObjetivosRealizados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumeroDeEmpleado" Type="int" Mode="In" />
+    <Parameter Name="Periodo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ObtenerCompetencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TipoDeCompetencia" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ObtenerUltimoPeriodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_PendientesDeAprobacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="No_Emp" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_RechazaPM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numero" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_rechazaRecursos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="No_Emp" Type="int" Mode="In" />
+    <Parameter Name="Comentario" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_RechazaRH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numero" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_regresaEvPM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="No_Emp" Type="int" Mode="In" />
+    <Parameter Name="Comentario" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_RetroalimentarEv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NoEmp" Type="int" Mode="In" />
+    <Parameter Name="Comentarios" Type="varchar(max)" Mode="In" />
+    <Parameter Name="TipoEmpleado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_TerminarDeFormularObjetivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumeroEmpleado" Type="int" Mode="In" />
+    <Parameter Name="IDPeriodo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_validaRecursos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="No_Emp" Type="int" Mode="In" />
+    <Parameter Name="Comentario" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_ValidarEvaluacionExistente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumEmp" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ValidarNombreDeUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_ValidarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NombreUsuarioActiveD" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="traeEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="traeMail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+    <Parameter Name="numero" Type="int" Mode="In" />
+  </Function>
+  <Function Name="validaReminderEnviar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="number" Type="int" Mode="In" />
+  </Function>
+  <Function Name="validaSemana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="numero" Type="int" Mode="In" />
+  </Function>
+  <Function Name="verificaJefe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+    <Parameter Name="noEmp" Type="int" Mode="In" />
+  </Function>
+  <Function Name="verificaSemana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="EvaluacionModelStoreContainer">
+    <EntitySet Name="BITACORA" EntityType="Self.BITACORA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CALIFICACIONDERENDIMIENTO" EntityType="Self.CALIFICACIONDERENDIMIENTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="COMPETENCIA" EntityType="Self.COMPETENCIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ESTADO_EVAL" EntityType="Self.ESTADO_EVAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EVALUACIONOBJETIVO" EntityType="Self.EVALUACIONOBJETIVO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NOTIFICACION" EntityType="Self.NOTIFICACION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OBJETIVO" EntityType="Self.OBJETIVO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PERIODO" EntityType="Self.PERIODO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PLANTILLAEVALUACIONEXCEMPT" EntityType="Self.PLANTILLAEVALUACIONEXCEMPT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Re_Evaluacion" EntityType="Self.Re_Evaluacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPODECOMPETENCIA" EntityType="Self.TIPODECOMPETENCIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ACTIVE_DIRECTORY" EntityType="Self.ACTIVE_DIRECTORY" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ACTIVE_DIRECTORY].[userName] AS [userName], 
+    [ACTIVE_DIRECTORY].[userNumber] AS [userNumber], 
+    [ACTIVE_DIRECTORY].[userMail] AS [userMail], 
+    [ACTIVE_DIRECTORY].[Reminder] AS [Reminder], 
+    [ACTIVE_DIRECTORY].[id_Reminder] AS [id_Reminder], 
+    [ACTIVE_DIRECTORY].[FechaReminder] AS [FechaReminder], 
+    [ACTIVE_DIRECTORY].[Nombre] AS [Nombre], 
+    [ACTIVE_DIRECTORY].[Apellido] AS [Apellido], 
+    [ACTIVE_DIRECTORY].[FRUpdate] AS [FRUpdate], 
+    [ACTIVE_DIRECTORY].[RHPM] AS [RHPM], 
+    [ACTIVE_DIRECTORY].[RecordatorioSemanal] AS [RecordatorioSemanal], 
+    [ACTIVE_DIRECTORY].[numberGerente] AS [numberGerente]
+    FROM [dbo].[ACTIVE_DIRECTORY] AS [ACTIVE_DIRECTORY]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="REMINDERS" EntityType="Self.REMINDERS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [REMINDERS].[ID] AS [ID], 
+    [REMINDERS].[valorReminder] AS [valorReminder], 
+    [REMINDERS].[valorCorto] AS [valorCorto]
+    FROM [dbo].[REMINDERS] AS [REMINDERS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Emp" EntityType="Self.Emp" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Emp].[No_Emp] AS [No_Emp], 
+    [Emp].[Nombre] AS [Nombre], 
+    [Emp].[APELLIDO] AS [APELLIDO], 
+    [Emp].[Descripcion] AS [Descripcion], 
+    [Emp].[DEPARTAMENTO] AS [DEPARTAMENTO], 
+    [Emp].[TipoEmpleado] AS [TipoEmpleado], 
+    [Emp].[JEFE] AS [JEFE], 
+    [Emp].[Areay] AS [Areay], 
+    [Emp].[valorCorto] AS [valorCorto], 
+    [Emp].[FechaReminder] AS [FechaReminder], 
+    [Emp].[NIVEL1] AS [NIVEL1]
+    FROM [dbo].[Emp] AS [Emp]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_C_ID_Periodo" Association="Self.FK_C_ID_Periodo">
+      <End Role="PERIODO" EntitySet="PERIODO" />
+      <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_C_ID_PlantillaEvaluacionExcempt" Association="Self.FK_C_ID_PlantillaEvaluacionExcempt">
+      <End Role="PLANTILLAEVALUACIONEXCEMPT" EntitySet="PLANTILLAEVALUACIONEXCEMPT" />
+      <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EvalObj_Objetivo" Association="Self.FK_EvalObj_Objetivo">
+      <End Role="OBJETIVO" EntitySet="OBJETIVO" />
+      <End Role="EVALUACIONOBJETIVO" EntitySet="EVALUACIONOBJETIVO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IDCalificacionDeRendimiento" Association="Self.FK_IDCalificacionDeRendimiento">
+      <End Role="CALIFICACIONDERENDIMIENTO" EntitySet="CALIFICACIONDERENDIMIENTO" />
+      <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IDPeriodo_Periodo" Association="Self.FK_IDPeriodo_Periodo">
+      <End Role="PERIODO" EntitySet="PERIODO" />
+      <End Role="BITACORA" EntitySet="BITACORA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IDReEvaluacion" Association="Self.FK_IDReEvaluacion">
+      <End Role="Re_Evaluacion" EntitySet="Re_Evaluacion" />
+      <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IDTipoDeCompetencia" Association="Self.FK_IDTipoDeCompetencia">
+      <End Role="TIPODECOMPETENCIA" EntitySet="TIPODECOMPETENCIA" />
+      <End Role="PLANTILLAEVALUACIONEXCEMPT" EntitySet="PLANTILLAEVALUACIONEXCEMPT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Obj_periodo" Association="Self.FK_Obj_periodo">
+      <End Role="PERIODO" EntitySet="PERIODO" />
+      <End Role="OBJETIVO" EntitySet="OBJETIVO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,274 @@
+﻿@{
+    ViewBag.Title = "Competencias";
+
+    if (Session["Estado"] == null)
+    {
+        Response.Redirect(Url.Action("LogIn", "Home"));
+    }
+    string TipoEmp = Session["TipoEmpleado"].ToString();
+
+    string Usuario = Session["user"].ToString();
+    string varUs = Session["No_Empleado"].ToString();
+    //string No_Emp = Session["NumEmpleadoConEvPendiente"].ToString();
+}
+
+<link href="~/Content/alertify.css" rel="stylesheet" />
+<link href="~/Content/alertify.rtl.css" rel="stylesheet" />
+<script src="~/Scripts/alertify.min.js"></script>
+
+<style>
+    .Negritas {
+        /*font-weight: bold;*/
+    }
+
+    .Contenedor {
+        border: #4e8aa9 5px solid;
+    }
+
+    .nav-tabs {
+        background-color: #161616;
+    }
+
+    .tab-content {
+        background-color: #f2f2f2;
+        color: #000000;
+        padding: 5px;
+    }
+
+    .nav-tabs > li > a {
+        border: medium none;
+    }
+
+    .myContainer .k-dropdown {
+        width: 50px;
+    }
+
+    .ajs-message.ajs-custom {
+        color: #31708f;
+        background-color: #d9edf7;
+        border-color: #31708f;
+    }
+
+
+    .btnopEvaluaciones {
+        border: solid;
+        padding-left: 55%;
+        background: #31708f;
+        color: white;
+    }
+
+        .btnopEvaluaciones btn {
+            color: black;
+        }
+
+
+    /*.nav-tabs > li > a:hover{
+      background-color: #003399 !important;
+        border: medium none;
+        border-radius: 0;
+        color:#f2f2f2;
+    }*/
+</style>
+
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3> REVISI&Oacute;N ACTUAL DE LOS OBJETIVOS</h3>
+                    </div>
+
+                    <div class="">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <label>A&Ntilde;O FISCAL: </label><label id="lblPeriodo"></label>
+                            </div>
+                            @Html.Raw(TempData["Embed"])
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                @if (Session["NumEmpleadoConEvPendiente"] == Session["No_Empleado"])
+                                {
+                                    <center><strong>Estado general de los Objetivos @*del periodo <span id="spanPeriodo"></span>*@<br /></strong></center>
+                                }
+                                else
+                                {
+                                    <center><strong>Estado general de los Objetivos De @Session["PendEvNombre"] @Session["PendEvApellido"] @*para el periodo <span id="spanPeriodo"></span>*@<br /></strong></center>
+                                }
+                                <div class="clearfix"></div>
+                                <br />
+                            </div>
+
+
+                            <!--INICIO SECCIONES PPARA EVALUACION-->
+                            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <!-- <a href="#tab_content1" id="tbPGoals" role="tab" data-toggle="tab" aria-expanded="true">METAS Y OBJETIVOS DEL PLAN PERSONAL</a>-->
+                                        <a href="#tab_content1" id="tbPGoals" role="tab" data-toggle="tab" aria-expanded="true">Revision de Objetivos</a>
+                                    </li>
+                                </ul>
+
+                                <!--INICIO DE CONTENIDO DE TABS-->
+                                <div id="myTabContent" class="tab-content">
+                                    <!--CORE COMPETENCIES TABLE-->
+                                    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Objetivo  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                                    <th>Periodo para la revision</th>
+                                                    <th>Comentarios</th>
+                                                    <th>Categoria</th>
+                                                    <th>Avance total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="contenido-pgoals"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script type="text/javascript">
+
+        $("#spnCalificacion").on("keyup",function() {
+            var res = $(this).val();
+            if (res > 100)
+                $("#spnCalificacion").val(100);
+            else if (res < 0)
+                $("#spnCalificacion").val(0);
+        });
+
+        //Agregar los comentarios y la calificacion
+
+
+        var NumeroEmpleado = @Session["NumEmpleadoConEvPendiente"];
+        var Periodo =  @Session["IDPeriodo"];
+
+        var IDObjetivos = [];
+
+
+
+        $(document).ready(function() {
+            getObjetivosFormulados();
+            CargarPeriodo();
+            //ObtenerComentariosyCalif();
+        });
+
+        const ARRPERIODOS = [
+            {
+                ID: 0,
+                Periodo: 'Q1'
+            },
+            {
+                ID: 1,
+                Periodo: 'Q2'
+            },
+            {
+                ID: 2,
+                Periodo: 'Q3'
+            },
+            {
+                ID: 3,
+                Periodo: 'Q4'
+            },
+        ]
+
+
+
+        function getObjetivosFormulados(){
+
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ NumeroEmpleado: '" + NumeroEmpleado + "', Periodo: " + Periodo +" }",
+                url: "@Url.Action("getMisObjetivosPendientes", "Objetivos")",
+                contentType: "application/json; charset=utf-8;",
+                success: function (datos) {
+                    if (datos != false) {
+                        //$("#spanPeriodo").text(datos[0].Periodo);
+                        Objetivos = datos;
+                        var tr;
+                        for (var i = 0; i < datos.length; i++) {
+                            IDObjetivos.push(Objetivos[i].ID_Objetivo)
+                            var nombre = datos[i].Descripcion;
+                            if(nombre == null)
+                                nombre = '';
+                            else
+                                nombre = datos[i].Descripcion ;
+                            var res;
+                            if (datos[i].CategoryID == 1)
+                                res = 'Laboral'
+                            else
+                                res = 'Personal'
+                            var buscar = ARRPERIODOS.find(p => p.ID == datos[i].Periodo);
+
+                            tr = $("<tr id='"+ datos[i].ID_Objetivo+"' class='Contenedor'>");
+                            tr.append("<td><p>"+ nombre +"</p><p style='max-width: 90%;'>" + datos[i].Comentarios +"</p></td>" +
+                                "<td><p>" + buscar.Periodo + "</p></td>" +
+                                "<td><p>" + datos[i].Peso +"</p></td>" +
+                                //"<td><p>" + ToJavaScriptDate(datos[i].FechaRevision) + "</p> </td>" +
+                                "<td><p> " + res + " </p></td>" +
+                                "<td><p> " + datos[i].Avance + " </p></td></tr>");
+                            //tr.append("<td>asdkjas</td>");
+                            $("#contenido-pgoals").append(tr);
+                        }
+
+                    }
+                }
+            });
+        }
+
+        @*function ObtenerComentariosyCalif() {
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ NumeroEmpleado: '" + NumeroEmpleado + "', Periodo: " + Periodo +" }",
+                url: "@Url.Action("getComentariosCalifJefe", "Objetivos")",
+                contentType: "application/json; charset=utf-8;",
+                success: function(datos) {
+                    $("#txtComentariosGenerales").val(datos[0].Comentario);
+                    $("#spnCalificacion").val(datos[0].CalificacionFinal);
+                },
+            });
+        }*@
+        function ToJavaScriptDate(value) {
+            var pattern = /Date\(([^)]+)\)/;
+            var results = pattern.exec(value);
+            var dt = new Date(parseFloat(results[1]));
+            return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+        }
+
+        function CargarPeriodo(){
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{Periodo : '" +Periodo +"' }",
+                url: "@Url.Action("LoadSpecificFiscalYear", "Reminders")",
+                contentType: "application/json; charset=utf-8;",
+                success: function (datos) {
+
+                    $("#lblPeriodo").text(datos[0].Descripcion);
+                },
+            });
+        }
+
+    </script>
+}
+

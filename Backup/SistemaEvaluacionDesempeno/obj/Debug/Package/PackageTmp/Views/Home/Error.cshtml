@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Navegador Incorrecto";
+}
+<br />
+<br />
+<center>
+    <div id="page-maintenance-1">
+        <div class="panda-wrapper panda-maintenance">
+            <div class="panda-content pull-left">
+                <h1 class="rs logo">
+                    <img src="~/Content/emerson-logo-data-404.png" alt="Emerson Logo" height="100" width="230">
+                </h1>
+                <h2 class="rs">Advertencia!</h2>
+                <p class="rs text-opacity text-min">
+                    Parece que cuentas con un navegador obsoleto,
+                    para poder utilizar la aplicacion es necesario utilizar el navegador <span class="text-underline">CHROME</span> .
+                </p>
+                <p class="rs text-min">En unos momentos se redirigira...</p>
+                <div class="panda-social pull-left">
+                    <a href="#"><i class="icon-facebook-squared"></i></a>
+                    <a href="#"><i class="icon-twitter-squared"></i></a>
+                    <a href="#"><i class="icon-linkedin-squared"></i></a>
+                    <a href="#"><i class="icon-pinterest-squared"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous"></script>
+<script type="text/javascript">
+    //function loadProg(path) {
+    //    var active = new ActiveXObject("WScript.Shell");
+    //    activeX = active.Run(path);
+    //}
+
+    //window.onload = function () {
+    //    //setTimeout(location.href = "\\mxnl-it01\Shared4all\abrechrome.bat", 3500);
+    //    var wshShell = new ActiveXObject("WScript.Shell");
+    //    wshShell.Run("\\mxnl-it01\Shared4all\abrechrome.bat");
+    //};
+
+    $(document).ready(function () {
+        @*try{
+            $.ajax({
+                type: "POST",
+                data: "{}",
+                url: "@Url.Action("AbrirChrome", "Home")",
+                contentType: "application/json; charset=utf-8;",
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        } catch (Error) {
+            console.log(Error);
+        }*@
+        //setTimeout("location.href= 'file://mxnl-it01/Shared4all/abrechrome.bat';", 1800);
+        var isChrome = !!window.chrome && !!window.chrome.webstore;
+        if (isChrome) {
+            location.href = "@Url.Action("Index", "Home")";
+            //alert("Correcto");
+            //console.log("Navegador Chrome");
+        }
+        else {
+            location.href = 'file://mxnl-it01/Shared4all/abrechrome.bat';
+            setTimeout("window.open('', '_self', ''); window.close();", 7500);
+        }
+    });
+</script>

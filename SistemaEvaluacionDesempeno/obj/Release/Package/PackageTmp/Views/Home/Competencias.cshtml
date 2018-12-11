@@ -1,0 +1,1190 @@
+﻿@{
+    ViewBag.Title = "Competencias";
+    if (Session["Estado"] == null)
+    {
+        Response.Redirect(Url.Action("LogIn", "Home"));
+    }
+
+    string TipoEmpleado = Session["TipoEmpleado"].ToString();
+    int tabEmp = 0;
+}
+
+<meta http-equiv="cache-control" content="no-cache" />
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
+<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/alertify.css" rel="stylesheet" />
+<link href="~/Content/alertify.rtl.css" rel="stylesheet" />
+<script src="~/Scripts/pdfobject.js"></script>
+<script src="~/Scripts/alertify.min.js"></script>
+
+<style>
+    .nav-tabs {
+        background-color: #161616;
+    }
+
+    .tab-content {
+        background-color: #f2f2f2;
+        color: #000000;
+        padding: 5px;
+    }
+
+    .nav-tabs > li > a {
+        border: medium none;
+    }
+
+    .myContainer .k-dropdown {
+        width: 50px;
+    }
+
+    .ajs-message.ajs-custom {
+        color: #31708f;
+        background-color: #d9edf7;
+        border-color: #31708f;
+    }
+
+
+    /*No se permiten los clicks sobre el tab...*/
+    .disabledTab {
+        cursor: not-allowed;
+    }
+
+    li.disabledTab > a[data-toggle="tab"] {
+        pointer-events: none;
+        filter: alpha(opacity=65);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        opacity: .65;
+    }
+
+
+    /*Tab1*/
+    .disabledTab {
+        cursor: not-allowed;
+    }
+
+
+    li.disabledTab > a[data-toggle="tab"] {
+        pointer-events: none;
+        filter: alpha(opacity=65);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        opacity: .65;
+    }
+
+
+    /*Tab2*/
+    .disabledTab2 {
+        cursor: not-allowed;
+    }
+
+    li.disabledTab2 > a[data-toggle="tab"] {
+        pointer-events: none;
+        filter: alpha(opacity=65);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        opacity: .65;
+    }
+
+    /*Tab3*/
+    .disabledTab3 {
+        cursor: not-allowed;
+    }
+
+    li.disabledTab3 > a[data-toggle="tab"] {
+        pointer-events: none;
+        filter: alpha(opacity=65);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        opacity: .65;
+    }
+    /*Tab4*/
+    .disabledTab4 {
+        cursor: not-allowed;
+    }
+
+    li.disabledTab4 > a[data-toggle="tab"] {
+        pointer-events: none;
+        filter: alpha(opacity=65);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        opacity: .65;
+    }
+
+    /*Tab5*/
+    .disabledTab5 {
+        cursor: not-allowed;
+    }
+
+    li.disabledTab5 > a[data-toggle="tab"] {
+        pointer-events: none;
+        filter: alpha(opacity=65);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        opacity: .65;
+    }
+
+
+    .btnopEvaluaciones {
+        border: solid;
+        padding-left: 55%;
+        background: #31708f;
+        color: white;
+    }
+
+    .btnopEvaluaciones btn {
+        color: black;
+    }
+</style>
+
+<!--ventana de ayuda  -->
+<div class="modal fade" tabindex="-1" role="dialog" id="ModalAyuda">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Definiciones de los Indicadores de Rendimiento.</h4>
+            </div>
+            <div class="modal-body">
+                <p align="justify">
+                    <strong>Emerson Pressure Management, Fromex Nuevo Laredo,</strong> cree que es importante evaluar el desempeño de sus empleados de manera consistente.
+                    Esta es una oportunidad para proporcionar a los empleados información significativa sobre su trabajo y ayuda en la toma de decisiones de personal
+                    relacionadas con &aacute;reas tales como compensaci&oacute;n, retenci&oacute;n, asignaciones de trabajo, capacitaci&oacute;n, promoci&oacute;n y
+                    planeaci&oacute;n a largo plazo de las operaciones. El apoyo de todos a este proceso es esencial para el &eacute;xito.
+                </p>
+                <p align="justify"><b>1 = Excepcional (E)</b></p>
+                <p align="justify">
+                    Desempeño que resulta en logros excepcionales con contribuciones muy significativas a los objetivos del departamento, unidad de negocio o empresa.
+                    Consistentemente excede con mucho las expectativas del puesto, resultados y logro de objetivos.
+                    Se puede dar un alto grado de confiabilidad a sus esfuerzos.
+                    Se le reconoce una gran experiencia en su funci&oacute;n; con frecuencia los empleados buscan su consejo, conocimientos y autoridad.
+                    A pesar de las circunstancias adversas, obtiene resultados de gran calidad y a tiempo.
+                    Tiene iniciativa para identificar objetivos de reto y busca soluciones efectivas en la relaci&oacute;n costo-beneficio.
+                    Muestra un conocimiento total de todos los aspectos de su funci&oacute;n.
+                    Difícilmente igualado en exceder los requerimientos del puesto.
+                    Hay clara evidencia del respeto de los dem&aacute;s con respecto a sus contribuciones a Fromex.
+                </p>
+                <p align="justify"><b>2 = Excede las expectativas (EX)</b></p>
+                <p align="justify">
+                    El desempeño siempre genera resultados superiores a los esperados de la posici&oacute;n.
+                    Un alto grado de fiabilidad y confianza se puede colocar en el trabajo del individuo.
+                    Requiere poco entrenamiento, constantemente muestra alta iniciativa, puede manejar tareas m&uacute;ltiples y produce trabajo de calidad.
+                    El empleado demuestra un desempeño s&oacute;lido en sus resultados.
+                    Excede en tiempo, calidad y alcance sus principales objetivos.
+                    Toma la iniciativa para desarrollar e implementar tareas de reto.
+                    Continuamente excede sus metas por sus esfuerzos extras. Requiere poca supervisi&oacute;n.
+                    Sus decisiones y acciones dan valor agregado a los objetivos de Fromex.
+                </p>
+                <p align="justify"><b>3 = Cumple con las expectativas (CE)</b></p>
+                <p align="justify">
+                    El rendimiento satisface constantemente, y algunas veces excede los requisitos.
+                    Todas las funciones de trabajo en general se completan de manera oportuna y se hace de manera consistente con buena calidad.
+                    Buen rendimiento general y cumplimiento de los requisitos de posici&oacute;n.
+                    Un alto grado de confiabilidad y confianza puede ser colocado en el trabajo del individuo.
+                    Requiere s&iacute;lo de la supervisión y seguimientos normales.
+                    Es un s&oacute;lido miembro del equipo.
+                    Sus decisiones son generalmente buenas
+                </p>
+                <p align="justify"><b>4 = Necesita Mejora (NM)</b></p>
+                <p align="justify">
+                    Reúne el m&iacute;nimo de requerimientos para el puesto, pero no todos.
+                    Necesita que lo empujen y le den seguimiento y logra hacer sus trabajos con una supervisi&oacute;n cercana.
+                    A menudo reacciona a los problemas/oportunidades más que anticiparse a ellos.
+                    Se puede esperar más de &eacute;l si permanece más tiempo en el puesto.
+                    Frecuentemente, el empleado se queda corto de metas y plazos.
+                    Requiere m&aacute;s de lo normal de supervisi&oacute;n y direcci&oacute;n.
+                    Es necesario una mejora en el desarrollo y desempeño.
+                </p>
+                <p align="justify"><b>5 = Inaceptable (I)</b></p>
+                <p align="justify">
+                    Su desempeño y logros de los principales objetivos son claramente inaceptables.
+                    Se duda a menudo de la calidad y oportunidad de sus resultados.
+                    No capta los programas, proyectos y tareas sin repetidas explicaciones de su jefe inmediato.
+                    Requiere mucha supervisi&oacute;n en relaci&oacute;n a los logros obtenidos.
+                    Hay comentarios adversos acerca de su desempeño por parte de gente ajena a la función (ventas, distribuidores, proveedores, corporaci&oacute;n, etc.)
+                    Generalmente reacciona a los problemas/oportunidades, m&aacute;s que adelantarse a ellos.
+                    Deber&aacute; mostrar una mejora significativamente para que continu&eacute; en el puesto que tiene.
+                    Se deber&aacute; documentar planes espec&iacute;ficos de seguimiento en esta evaluaci&oacute;n, y se har&aacute; un seguimiento formal y evaluaci&oacute;n de los pr&oacute;ximos seis meses.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--pdf-->
+<div id="pdf" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <div id="visor"></div>
+           </div>
+            <div class="modal-footer">
+                <!--<a href='@Url.Action("OpenPDF", "Home")'>PDF</a>-->
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Mensajes modal...-->
+<div id="mensajes" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Desea </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dialog" style="display: none"></div>
+
+<div class="right_col" role="main">
+    <div class="">
+        <div role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>REVISION ACTUAL DE DESEMPEÑO</h3>
+                    </div>
+                    <div class="">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <label>A&Ntilde;O FISCAL: </label><label>&nbsp;@DateTime.Now.Year</label>
+                            </div>
+                            <div class="btnopEvaluaciones">
+                                <label>Ver Evaluaci&oacute;n Anterior:&nbsp;&nbsp;</label><a href='@Url.Action("OpenPDF", "Home", new { @No_Emp = Session["No_Empleado"] })' target="_blank" class="btn btn-default"><span class="glyphicon glyphicon-book"></span></a>
+                                <label>Kardex:&nbsp;&nbsp;</label><a href='@Url.Action("OpenKARDEX", "Home", new { @No_Emp = Session["No_Empleado"] })' target="_blank" class="btn btn-default"><span class="glyphicon glyphicon-book"></span></a>
+                                <label>Asistencias:&nbsp;&nbsp;</label><a href='@Url.Action("OpenPERMISOS", "Home", new { @No_Emp = Session["No_Empleado"] })' target="_blank" class="btn btn-default"><span class="glyphicon glyphicon-book"></span></a>
+                                <label>Cursos Realizados:&nbsp;&nbsp;</label><a href='@Url.Action("CursosAsistidos","Home" , new { @No_Emp = Session["No_Empleado"] })' target="_blank" class="btn btn-default"><span class="glyphicon glyphicon-calendar"></span></a>
+                            </div>
+                            @Html.Raw(TempData["Embed"])
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <center><strong>Estado general de la evaluaci&oacute;n</strong></center>
+                                <div class="clearfix"></div>
+                                <br />
+                                <div class="progress">
+                                    <div id="EstadoDeCompetenciasGeneral" role="progressbar" aria-valuenow="70"
+                                         aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                                        0% Complete
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--INICIO SECCIONES PPARA EVALUACION-->
+                            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <!-- <a href="#tab_content1" id="tbPGoals" role="tab" data-toggle="tab" aria-expanded="true">METAS Y OBJETIVOS DEL PLAN PERSONAL</a>-->
+                                        <a href="#tab_content1" id="tbPGoals" role="tab" data-toggle="tab" aria-expanded="true">SECCION I.</a>
+                                    </li>
+                                    <li role="presentation" class="disabledTab2" id="tabbtnCore">
+                                        <!-- <a href="#tab_content2" id="tbCore" role="tab" data-toggle="tab" aria-expanded="false">COMPETENCIAS B&Aacute;SICAS</a>-->
+                                        <a href="#tab_content2" id="tbCore" role="tab" data-toggle="tab" aria-expanded="false">SECCION II.</a>
+                                    </li>
+                                    <li role="presentation" class="disabledTab3" id="tabbtnRole">
+                                        <!--<a href="#tab_content3" role="tab" id="tbRole" data-toggle="tab" aria-expanded="false">COMPETENCIAS ESPECIFICAS </a>-->
+                                        <a href="#tab_content3" role="tab" id="tbRole" data-toggle="tab" aria-expanded="false">SECCION III.</a>
+                                    </li>
+                                    @if (TipoEmpleado == "Gerente" || TipoEmpleado == "RecursosHumanos" || TipoEmpleado == "PlantManager" || TipoEmpleado == "Supervisor")
+                                    {
+                                        tabEmp = 1;
+
+                                        <li role="presentation" class="disabledTab4" id="tabbtnManagerial">
+                                            <!-- <a href="#tab_content4" role="tab" id="tbManagerial" data-toggle="tab" aria-expanded="false">COMPETENCIAS DE SUPERVISOR / GERENTE</a>-->
+                                            <a href="#tab_content4" role="tab" id="tbManagerial" data-toggle="tab" aria-expanded="false">SECCION IV.</a>
+                                        </li>
+                                    }
+                                    <li role="presentation" class="disabledTab5" id="tabbtnVarias">
+                                        <!-- <a href="#tbVarios" id="tabVarias" role="tab" data-toggle="tab" aria-expanded="false">VARIAS</a>-->
+                                        <a href="#tbVarios" id="tabVarias" role="tab" data-toggle="tab" aria-expanded="false">SECCION V.</a>
+                                    </li>
+                                    <li role="presentation" class="disabledTab">
+                                        <!-- <a href="#tbVarios" id="tabVarias" role="tab" data-toggle="tab" aria-expanded="false">VARIAS</a>-->
+                                        <a><strong><span style="color:#d00707;font-size:small;">*Favor De Guardar Los Cambios Antes De Cambiar De Secci&oacute;n.</span></strong></a>
+                                    </li>
+                                </ul>
+
+                                <!--INICIO DE CONTENIDO DE TABS-->
+                                <div id="myTabContent" class="tab-content">
+                                    <!--CORE COMPETENCIES TABLE-->
+                                    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>METAS Y OBJETIVOS DEL PLAN PERSONAL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                                    <th>Empleado</th>
+                                                    <th>Ayuda</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="contenido-pgoals"></tbody>
+                                        </table>
+                                        @*<button class="btn btn-success pull-right" onclick="guardarYEnviarEvaluacion()" id="btnGuardarYterminarEv" disabled><span class="glyphicon glyphicon-save"></span> Guardar Y Terminar Evaluacion</button>*@
+                                        <button class="btn btn-primary pull-right" onclick="guardarMiEvaluacion('METAS Y OBJETIVOS DEL PLAN PERSONAL');" id="btnGuardar"><span class="glyphicon glyphicon-send"></span> Guardar</button>
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Desempeño frente a las COMPETENCIAS B&Aacute;SICAS de @Session["Nombre"] @Session["Apellido"]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn" id="helpp" data-target="#ModalAyuda" data-toggle="modal"><span class="glyphicon glyphicon-question-sign"></span></button></th>
+                                                    <th>Empleado</th>
+                                                    <th>Ayuda</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="contenido-tabla"></tbody>
+                                        </table>
+                                        @*<button class="btn btn-success pull-right" onclick="guardarYEnviarEvaluacion()" id="btnGuardarYterminarEv" disabled><span class="glyphicon glyphicon-save"></span> Guardar Y Terminar Evaluacion</button>*@
+                                        <button class="btn btn-primary pull-right" onclick="guardarMiEvaluacion('Basicas')" id="btnGuardar"><span class="glyphicon glyphicon-send"></span> Guardar</button>
+                                    </div>
+
+                                    <!--ROLE COMPETENCIES TABLE-->
+                                    <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Desempeño frente a las COMPETENCIAS ESPECIFICAS de @Session["Nombre"] @Session["Apellido"]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn" id="helpp" data-target="#ModalAyuda" data-toggle="modal"><span class="glyphicon glyphicon-question-sign"></span></button></th>
+                                                    <th>Empleado</th>
+                                                    <th>Ayuda</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="contenido-role-competencies"></tbody>
+                                        </table>
+
+                                        @*<button class="btn btn-success pull-right" onclick="guardarYEnviarEvaluacion()" id="btnGuardarYterminarEv" disabled><span class="glyphicon glyphicon-save"></span> Guardar Y Terminar Evaluacion</button>*@
+                                        <button class="btn btn-primary pull-right" onclick="guardarMiEvaluacion('Especificas')" id="btnGuardar"><span class="glyphicon glyphicon-send"></span> Guardar</button>
+                                    </div>
+                                    @if (TipoEmpleado == "Gerente" || TipoEmpleado == "RecursosHumanos" || TipoEmpleado == "PlantManager" || TipoEmpleado == "Supervisor")
+                                    {
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Desempeño frente a las COMPETENCIAS GERENCIALES Y/O DE SUPERVISION de @Session["Nombre"] @Session["Apellido"]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn" id="helpp" data-target="#ModalAyuda" data-toggle="modal"><span class="glyphicon glyphicon-question-sign"></span></button></th>
+                                                        <th>Empleado</th>
+                                                        <th>Ayuda</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="contenido-role-managerial"></tbody>
+                                            </table>
+
+
+                                            @*<button class="btn btn-success pull-right" onclick="guardarYEnviarEvaluacion()" id="btnGuardarYterminarEv" disabled><span class="glyphicon glyphicon-save"></span> Guardar Y Terminar Evaluacion</button>*@
+                                            <button class="btn btn-primary pull-right" onclick="guardarMiEvaluacion('Gerenciales')" id="btnGuardar"><span class="glyphicon glyphicon-send"></span> Guardar</button>
+                                        </div>
+                                    }
+                                    <div role="tabpanel" class="tab-pane fade" id="tbVarios" aria-labelledby="profile-tab">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Varias</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="contenido-varias"></tbody>
+                                        </table>
+                                        @*<button class="btn btn-success pull-right" onclick="guardarYEnviarEvaluacion()" id="btnGuardarYterminarEv" disabled><span class="glyphicon glyphicon-save"></span> Guardar Y Terminar Evaluacion</button>*@
+                                        <button class="btn btn-primary pull-right" onclick="guardarMiEvaluacion('EXTRAS')" id="btnGuardar"><span class="glyphicon glyphicon-send"></span> Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <button class="btn btn-success pull-right" onclick="guardarYEnviarEvaluacion()" id="btnGuardarYterminarEv" disabled><span class="glyphicon glyphicon-save"></span> Guardar Y Terminar Evaluacion</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        var NumeroEmpleado = @Session["No_Empleado"];
+        var Periodo =  @Session["IDPeriodo"];
+        var TipoEmpleado = "@TipoEmpleado.ToString()";
+        var IDCompetencias = [];
+        var strComentarios = [];
+        var strCalificacion = [];
+        var estatusTotal=0;
+        var cantTabs = 4 + @tabEmp;
+
+        $(document).ready(function ()
+        {
+            $("#tbPGoals").click(); //Al cargar la plantilla se mostrara las competencias basicas...
+            swal("¡Atención!","Favor de guardar los cambios antes de continuar con una seccion distinta.","info");
+            //Desactivamos los tabs...
+            $('a[data-toggle="tab"]').on('click', function(){
+                if ($(this).parent('li').hasClass('disabled')) {
+                    return false;
+                };
+            });
+
+        });
+
+        //$("#btnPDF").click(function(e){
+        //    document.getElementsByName("comentarioAprob").value = "";
+        //    $("#pdf").modal("toggle");
+        //     PDFObject.embed("//mxnl-fs01/siteexe/CalebAlamos/Expedientes/3333.pdf", "#visor");
+        // });
+
+        var c = 0;//Para mostrar una sola vez el mensaje de inicio de evaluacion...
+        function getEstatusGeneralDeCompetencia()
+        {
+            $("#EstadoDeCompetenciasGeneral").removeClass();
+
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ No_Emp: '" + NumeroEmpleado + "', Periodo: " + Periodo +" }",
+                url: "@Url.Action("getEstadoTotalDeCompetencias", "Competencias")",
+                contentType: "application/json; charset=utf-8;",
+                success: function (datos) {
+                    if (datos != null) {
+                        //$("#EstadoDeCompetenciasGeneral")
+                        var numero = Math.round(datos[0]);
+                        document.getElementById("EstadoDeCompetenciasGeneral").innerHTML = numero + "%";
+
+                        if(numero == 0)
+                        {
+                            if(c==0)
+                                swal("Bienvenido(a)", "Favor de realizar su evaluacion correctamente.\nEvaluación De @Session["Nombre"], @Session["Apellido"] ");
+
+                            estatusTotal = numero;
+                            c++;
+                        }
+                        if(numero < 50)
+                        {
+                            $("#EstadoDeCompetenciasGeneral").addClass('progress-bar progress-bar-danger');
+                            //$("#EstadoDeCompetenciasGeneral").css("width", "+=" + numero + "%");
+                            document.getElementById("EstadoDeCompetenciasGeneral").style.width = numero + "%";
+                            estatusTotal = numero;
+                        }
+                        if(numero >= 50 && numero<=99)
+                        {
+                            $("#EstadoDeCompetenciasGeneral").addClass('progress-bar progress-bar-warning');
+                            //$("#EstadoDeCompetenciasGeneral").css("width", "+=" + numero + "%");
+                            document.getElementById("EstadoDeCompetenciasGeneral").style.width = numero + "%";
+                            estatusTotal = numero;
+                        }
+                        if(numero == 100)
+                        {
+                            $("#EstadoDeCompetenciasGeneral").addClass('progress-bar progress-bar-success');
+                            //$("#EstadoDeCompetenciasGeneral").css("width", "+=" + numero + "%");
+                            document.getElementById("EstadoDeCompetenciasGeneral").style.width = numero + "%";
+                            $("#btnGuardarYterminarEv").removeAttr("disabled");
+                            estatusTotal = numero;
+                        }
+                    } else {
+                        console.log("ha ocurrido un error durante la carga de la barra de estado general, buscar en la funcion 'getEstatusGeneralDeCompetencia()'");
+                    }
+                }
+            });
+        }
+
+
+        function validarSiEvaluacionEstaCompleta(TipoCompetencia, datos){
+
+            var opcion = TipoCompetencia;
+            var TipoDeComp;
+            if(TipoCompetencia == 'pgoals')
+                TipoDeComp = 'METAS Y OBJETIVOS DEL PLAN PERSONAL';
+            if(TipoCompetencia == 'core')
+                TipoDeComp = 'BÁSICAS';
+            if(TipoCompetencia == 'role')
+                TipoDeComp = 'ESPECIFICAS';
+            if(TipoCompetencia == 'managerial')
+                TipoDeComp = 'DE GESTION';
+            if(TipoCompetencia == 'Extras')
+                TipoDeComp = 'Extras';
+
+            //if(estatusTotal == 100){
+            //    for (var i = 0; i < IDCompetencias.length; i++)
+            //    {
+            //        $("#txtComentarios_" + opcion + "_" + IDCompetencias[i]).attr("disabled", true);
+            //        $("#califEmp_" + datos[i].ID_PlantillaEvaluacionExcempt + "_" + (i+1)).data('kendoDropDownList').value(datos[i].ID_CalificacionDeRendimiento);
+            //    }
+
+            //    $("#btnGuardar").attr("disabled",true);
+            //}
+        }
+
+        function getDatosCompetencia(TipoCompetencia)
+        {
+            var arrayCompetencia;
+
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ No_Emp: " + NumeroEmpleado + ", CompetencieType: '" + TipoCompetencia + "' }",
+                url: "@Url.Action("getCargarPlantilla", "Competencias")",
+                contentType: "application/json; charset=utf-8;",
+                success: function (datos) {
+                    if (datos != false) {
+                        arrayCompetencia = datos;
+                    } else {
+                        arrayCompetencia = false;
+                    }
+                }
+            });
+            return (arrayCompetencia);
+        }
+
+        function getCargarDatosCompentenciasGuardadas(TipoCompetencia)
+        {
+            var opcion = TipoDeComp;
+            var TipoDeComp;
+            if(TipoCompetencia == 'pgoals')
+                TipoDeComp = 'METAS Y OBJETIVOS DEL PLAN PERSONAL';
+            if(TipoCompetencia == 'core')
+                TipoDeComp = 'BÁSICAS';
+            if(TipoCompetencia == 'role')
+                TipoDeComp = 'ESPECIFICAS';
+            if(TipoCompetencia == 'managerial')
+                TipoDeComp = 'DE GESTION';
+            if(TipoCompetencia == 'Extras')
+                TipoDeComp = 'Extras';
+            opcion = TipoCompetencia;
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{TipoDeCompetencia: '" + TipoDeComp + "', No_emp: " + NumeroEmpleado + ", IDPeriodo: " + Periodo + "}",
+                url: "@Url.Action("CargarCompetenciasGuardadas", "Competencias")",
+                contentType: "application/json; charset=utf-8;",
+                success: function(datos){
+                    if(datos != false){
+                        var cantidadCompCompletas = 0;
+                        for (var i = 0; i < IDCompetencias.length; i++) {
+                            $("#txtComentarios_" + opcion + "_" + IDCompetencias[i]).val(datos[i].Comentarios);
+
+                            if(TipoCompetencia != "Extras")
+                                $("#califEmp_" + datos[i].ID_PlantillaEvaluacionExcempt + "_" + (i+1)).data('kendoDropDownList').value(datos[i].ID_CalificacionDeRendimiento);
+
+                            if(datos[i].Comentarios != '')
+                            {
+                                cantidadCompCompletas++;
+                            }
+                        }
+                        //Se utilizara para mostrar el estado en el tab ejemplo, si se termino de formular 4 competencias se
+                        //if(cantidadCompCompletas == datos.length){
+                        //    //console.log("Estan completas..");
+
+
+                        //}else{
+                        //    //console.log("Estan incompletas..");
+                        //}
+                    }
+                },
+                error: function(Error){
+                    console.log(Error);
+                }
+            });
+        }
+
+
+        $("#tbPGoals").click(function (e) {
+            //Se vacian los arrays y el contenido del tab.
+            IDCompetencias.length=0;
+            strComentarios.length=0;
+            strCalificacion.length=0;
+            $("#contenido-pgoals").text("");
+            getEstatusGeneralDeCompetencia();
+            var res = getDatosCompetencia("METAS Y OBJETIVOS DEL PLAN PERSONAL");
+
+            if (res != false)
+            {
+                //console.log(res);
+                var tr;
+                for (var i = 0; i < res.length; i++)
+                {
+                    var nombre = res[i].Nombre;
+                    if(nombre == '' || nombre == null)
+                        nombre = '';
+                    else
+                        nombre = res[i].Nombre + ":";
+
+
+                    tr = $("<tr id = '" +res[i].ID_PlantillaEvaluacionExcempt + "'>");
+                    tr.append("<td><b>" + nombre + res[i].Descripcion + "</b><p></p><p>" + res[i].Contenido + "</p>" +
+                              "<label>Comentarios: </label><textarea  class='form-control' id='txtComentarios_pgoals_" +res[i].ID_PlantillaEvaluacionExcempt + "' tabindex='" + (i+1) +"' onkeypress='return validarComillas(event)'></textarea></td>");
+                    tr.append('<td><input id="califEmp_' + res[i].ID_PlantillaEvaluacionExcempt + '_' + (i+1) +'"></td>');
+                    tr.append('<td><button class="btn" id="helpp" data-target="#ModalAyuda" data-toggle="modal"><span class="glyphicon glyphicon-question-sign"></span></button></td></tr>');
+                    $("#contenido-pgoals").append(tr);
+                    IDCompetencias.push(res[i].ID_PlantillaEvaluacionExcempt);
+                    $("#califEmp_" + res[i].ID_PlantillaEvaluacionExcempt + "_" + (i+1)).width(50).kendoDropDownList({
+                        dataSource: ["0","1", "2", "3", "4", "5"],
+                        change: function (e) {
+                            var value = this.value();
+                            if (value != "---Seleccione Reminder---") {
+                                reminders = value;
+
+                                if (value == 1)
+                                {
+                                    var notification = alertify.notify('Cal: Excepcional (E)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+                                if(value == 2)
+                                {
+                                    var notification = alertify.notify('Excede las expectativas(EX)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+                                if(value == 3)
+                                {
+
+                                    var notification = alertify.notify('Cumple con las expectativas(CE)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+                                if (value == 4)
+                                {
+                                    var notification = alertify.notify('Necesita Mejora(NM)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+
+                                if (value ==5)
+                                {
+                                    var  notification= alertify.notify('Inaceptable(I)', 'custom', 5, function(){console.log('dismissed');});
+                                }
+                            }
+                        }
+                    });
+
+                    //$("#califSup_" + res[i].ID_PlantillaEvaluacionExcempt + "_" + (i+1)).kendoDropDownList({
+                    //    dataSource: ["1", "2", "3", "4", "5"],
+                    //    change: function (e) {
+                    //        var value = this.value();
+                    //        if (value != "---Seleccione Reminder---") {
+                    //            reminders = value;
+                    //        }
+                    //    }
+                    //});
+                }
+                getCargarDatosCompentenciasGuardadas("pgoals");
+                validarSiEvaluacionEstaCompleta("pgoals", res);
+            }
+        });
+
+        //AL PRESIONAR EN EL TAB LA OPCION COMPETENCIAS BASICAS SE CARGARAN LOS DATOS, ASI COMO LOS DATOS PRECARGADOS SI ES QUE EXISTEN.
+
+        $("#tbCore").click(function (e) {
+            IDCompetencias.length=0;
+            strComentarios.length=0;
+            strCalificacion.length=0;
+            $("#contenido-tabla").text("");
+            getEstatusGeneralDeCompetencia(); //Carga de barra de estatus
+            var res = getDatosCompetencia("BÁSICAS");
+            if (res != false) {
+                var tr;
+                for (var i = 0; i < res.length; i++) {
+                    tr = $("<tr id = '" +res[i].ID_PlantillaEvaluacionExcempt + "'>");
+                    tr.append("<td><b>" + res[i].Nombre + ":</b><br> " + res[i].Descripcion + "<p></p><p>" + res[i].Contenido + "</p>" +
+                              "<label>Comentarios: </label><textarea  class='form-control' id='txtComentarios_core_" +res[i].ID_PlantillaEvaluacionExcempt + "' tabindex='" + (i+1) +"'></textarea></td>");
+                    tr.append('<td><input id="califEmp_' + res[i].ID_PlantillaEvaluacionExcempt + '_' + (i+1) +'"></td>');
+                    tr.append('<td><button class="btn" id="helpp" data-target="#ModalAyuda" data-toggle="modal"><span class="glyphicon glyphicon-question-sign"></span></button></td></tr>');
+
+
+                    $("#contenido-tabla").append(tr);
+                    IDCompetencias.push(res[i].ID_PlantillaEvaluacionExcempt);
+                    $("#califEmp_" + res[i].ID_PlantillaEvaluacionExcempt + "_" + (i+1)).width(50).kendoDropDownList({
+                        dataSource: ["0","1", "2", "3", "4", "5"],
+                        change: function (e) {
+                            var value = this.value();
+                            if (value != "---Seleccione Reminder---") {
+                                reminders = value;
+                                if (value == 1)
+                                {
+                                    var notification = alertify.notify('Cal: Excepcional (E)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+                                if(value == 2)
+                                {
+                                    var notification = alertify.notify('Excede las expectativas(EX)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+                                if(value == 3)
+                                {
+
+                                    var notification = alertify.notify('Cumple con las expectativas(CE)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+                                if (value == 4)
+                                {
+                                    var notification = alertify.notify('Necesita Mejora(NM)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+
+                                if (value ==5)
+                                {
+                                    var  notification= alertify.notify('Inaceptable(I)', 'custom', 5, function(){console.log('dismissed');});
+                                }
+                            }
+                        }
+                    });
+                }
+                getCargarDatosCompentenciasGuardadas("core");
+                validarSiEvaluacionEstaCompleta("core", res);
+            }
+        });
+
+        $("#tbRole").click(function (e) {
+            IDCompetencias.length=0;
+            strComentarios.length=0;
+            strCalificacion.length=0;
+            $("#contenido-role-competencies").text("");
+            getEstatusGeneralDeCompetencia(); //Carga de barra de estatus
+            var res = getDatosCompetencia("ESPECIFICAS");
+            if (res != false) {
+                var tr;
+                for (var i = 0; i < res.length; i++) {
+                    tr = $("<tr id = '" + res[i].ID_PlantillaEvaluacionExcempt + "'>");
+                    //$("#contenido-tabla").append("<tr>");
+                    tr.append("<td><b>" + res[i].Nombre +"</b><br>"+ res[i].Descripcion + "<p></p><p>" + res[i].Contenido + "</p>" +
+                              "<label>Comentarios: </label><textarea  class='form-control' id='txtComentarios_role_" + res[i].ID_PlantillaEvaluacionExcempt + "'></textarea></td>");
+                    tr.append('<td><input id="califEmp_' + res[i].ID_PlantillaEvaluacionExcempt + '_' + (i+1) +'"></td>');
+                    tr.append('<td><button class="btn" id="helpp" data-target="#ModalAyuda" data-toggle="modal"><span class="glyphicon glyphicon-question-sign"></span></button></td></tr>');
+                    $("#contenido-role-competencies").append(tr);
+                    IDCompetencias.push(res[i].ID_PlantillaEvaluacionExcempt);
+
+
+
+                    $("#califEmp_" + res[i].ID_PlantillaEvaluacionExcempt + "_" + (i+1)).width(50).kendoDropDownList({
+                        dataSource: ["0","1", "2", "3", "4", "5"],
+                        change: function (e) {
+                            var value = this.value();
+                            if (value != "---Seleccione Reminder---") {
+                                reminders = value;
+                                if (value == 1)
+                                {
+                                    var notification = alertify.notify('Cal: Excepcional (E)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+                                if(value == 2)
+                                {
+                                    var notification = alertify.notify('Excede las expectativas(EX)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+                                if(value == 3)
+                                {
+
+                                    var notification = alertify.notify('Cumple con las expectativas(CE)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+                                if (value == 4)
+                                {
+                                    var notification = alertify.notify('Necesita Mejora(NM)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+
+                                if (value ==5)
+                                {
+                                    var  notification= alertify.notify('Inaceptable(I)', 'custom', 5, function(){console.log('dismissed');});
+                                }
+                            }
+                        }
+                    });
+
+                    //$("#califSup_" + res[i].ID_PlantillaEvaluacionExcempt + "_" + (i+1)).kendoDropDownList({
+                    //    dataSource: ["1", "2", "3", "4", "5"],
+                    //    change: function (e) {
+                    //        var value = this.value();
+                    //        if (value != "---Seleccione Reminder---") {
+                    //            reminders = value;
+                    //        }
+                    //    }
+                    //});
+                }
+
+                getCargarDatosCompentenciasGuardadas("role");
+                validarSiEvaluacionEstaCompleta("role", res);
+            }
+        });
+
+        $("#tbManagerial").click(function (e) {
+            IDCompetencias.length=0;
+            strComentarios.length=0;
+            strCalificacion.length=0;
+            $("#contenido-role-managerial").text("");
+            getEstatusGeneralDeCompetencia();
+            var res = getDatosCompetencia("DE GESTION");
+            if (res != false) {
+
+                var tr;
+                for (var i = 0; i < res.length; i++) {
+                    tr = $("<tr id = " + res[i].ID_PlantillaEvaluacionExcempt + ">");
+                    //$("#contenido-tabla").append("<tr>");
+                    tr.append("<td><b>" + res[i].Nombre + ":</b><br> " + res[i].Descripcion + " <p></p><p>" + res[i].Contenido + "</p>" +
+                              "<label>Comentarios: </label><textarea  class='form-control' id='txtComentarios_managerial_" + res[i].ID_PlantillaEvaluacionExcempt + "'></textarea></td>");
+                    tr.append('<td><select class="select" id="califEmp_' + res[i].ID_PlantillaEvaluacionExcempt + '_' + (i+1) +'"><option value ="E">1</option><option value="EX">2</option><option value="CE">3</option><option value="NM">4</option><option value="I">5</option></select></td>');
+                    tr.append('<td><button class="btn" id="helpp" data-target="#ModalAyuda" data-toggle="modal"><span class="glyphicon glyphicon-question-sign"></span></button></td></tr>');
+                    $("#contenido-role-managerial").append(tr);
+                    IDCompetencias.push(res[i].ID_PlantillaEvaluacionExcempt);
+
+
+
+                    $("#califEmp_" + res[i].ID_PlantillaEvaluacionExcempt + "_" + (i+1)).width(50).kendoDropDownList({
+                        dataSource: ["0","1", "2", "3", "4", "5"],
+                        change: function (e) {
+                            var value = this.value();
+                            if (value != "---Seleccione Reminder---") {
+                                reminders = value;
+                                if (value == 1)
+                                {
+                                    var notification = alertify.notify('Cal: Excepcional (E)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+                                if(value == 2)
+                                {
+                                    var notification = alertify.notify('Excede las expectativas(EX)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+                                if(value == 3)
+                                {
+
+                                    var notification = alertify.notify('Cumple con las expectativas(CE)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+                                if (value == 4)
+                                {
+                                    var notification = alertify.notify('Necesita Mejora(NM)', 'custom', 5, function(){  console.log('dismissed'); });
+                                }
+
+                                if (value ==5)
+                                {
+                                    var  notification= alertify.notify('Inaceptable(I)', 'custom', 5, function(){console.log('dismissed');});
+                                }
+                            }
+                        }
+                    });
+
+
+                    //$("#califSup_" + res[i].ID_PlantillaEvaluacionExcempt + "_" + (i+1)).kendoDropDownList({
+                    //    dataSource: ["1", "2", "3", "4", "5"],
+                    //    change: function (e) {
+                    //        var value = this.value();
+                    //        if (value != "---Seleccione Reminder---") {
+                    //            reminders = value;
+                    //        }
+                    //    }
+                    //});
+                }
+                //console.log(res);
+                getCargarDatosCompentenciasGuardadas("managerial");
+                validarSiEvaluacionEstaCompleta("managerial", res);
+            }
+        });
+
+        $("#tabVarias").click(function (e) {
+            IDCompetencias.length=0;
+            strComentarios.length=0;
+            strCalificacion.length=0;
+            $("#contenido-varias").text("");
+            var res = getDatosCompetencia("EXTRAS");
+            if (res != false) {
+                var tr;
+                for (var i = 0; i < res.length; i++) {
+                    tr = $("<tr id = '" +res[i].ID_PlantillaEvaluacionExcempt + "'>");
+                    tr.append("<td><b>" + res[i].Nombre + ": " + res[i].Descripcion + "</b><p></p><p>" + res[i].Contenido + "</p>" +
+                              "<label>Comentarios: </label><textarea  class='form-control' id='txtComentarios_Extras_" +res[i].ID_PlantillaEvaluacionExcempt + "' tabindex='" + (i+1) +"'></textarea></td></tr>");
+                    //tr.append('<td><input id="califEmp_' + res[i].ID_PlantillaEvaluacionExcempt + '_' + (i+1) +'"></td>');
+
+
+                    $("#contenido-varias").append(tr);
+                    IDCompetencias.push(res[i].ID_PlantillaEvaluacionExcempt);
+                    //$("#califEmp_" + res[i].ID_PlantillaEvaluacionExcempt + "_" + (i+1)).width(50).kendoDropDownList({
+                    //    dataSource: ["0","1", "2", "3", "4", "5"],
+                    //    change: function (e) {
+                    //        var value = this.value();
+                    //        if (value != "---Seleccione Reminder---") {
+                    //            reminders = value;
+                    //            if (value == 1)
+                    //            {
+                    //                var notification = alertify.notify('Cal: Excepcional (E)', 'custom', 5, function(){  console.log('dismissed'); });
+                    //            }
+                    //            if(value == 2)
+                    //            {
+                    //                var notification = alertify.notify('Excede las expectativas(EX)', 'custom', 5, function(){  console.log('dismissed'); });
+                    //            }
+                    //            if(value == 3)
+                    //            {
+
+                    //                var notification = alertify.notify('Cumple con las expectativas(CE)', 'custom', 5, function(){  console.log('dismissed'); });
+                    //            }
+                    //            if (value == 4)
+                    //            {
+                    //                var notification = alertify.notify('Necesita Mejora(NM)', 'custom', 5, function(){  console.log('dismissed'); });
+                    //            }
+
+                    //            if (value ==5)
+                    //            {
+                    //                var  notification= alertify.notify('Inaceptable(I)', 'custom', 5, function(){console.log('dismissed');});
+                    //            }
+                    //        }
+                    //    }
+                    //});
+
+                    //$("#califSup_" + res[i].ID_PlantillaEvaluacionExcempt + "_" + (i+1)).kendoDropDownList({
+                    //    dataSource: ["0","1", "2", "3", "4", "5"],
+                    //    change: function (e) {
+                    //        var value = this.value();
+                    //        if (value != "---Seleccione Reminder---") {
+                    //            reminders = value;
+                    //            if (value == 1)
+                    //            {
+                    //                var notification = alertify.notify('Cal: Excepcional (E)', 'custom', 5, function(){  console.log('dismissed'); });
+                    //            }
+                    //            if(value == 2)
+                    //            {
+                    //                var notification = alertify.notify('Excede las expectativas(EX)', 'custom', 5, function(){  console.log('dismissed'); });
+                    //            }
+                    //            if(value == 3)
+                    //            {
+
+                    //                var notification = alertify.notify('Cumple con las expectativas(CE)', 'custom', 5, function(){  console.log('dismissed'); });
+                    //            }
+                    //            if (value == 4)
+                    //            {
+                    //                var notification = alertify.notify('Necesita Mejora(NM)', 'custom', 5, function(){  console.log('dismissed'); });
+                    //            }
+
+                    //            if (value ==5)
+                    //            {
+                    //                var  notification= alertify.notify('Inaceptable(I)', 'custom', 5, function(){console.log('dismissed');});
+                    //            }
+                    //        }
+                    //    }
+                    //});
+                }
+                getCargarDatosCompentenciasGuardadas("Extras");
+                validarSiEvaluacionEstaCompleta("Extras", res);
+            }
+        });
+
+        function guardarMiEvaluacion(TipoDeCompetencia) {
+            strComentarios = [];
+            var txtopcion = '';
+            if(TipoDeCompetencia == 'METAS Y OBJETIVOS DEL PLAN PERSONAL')
+                txtopcion = 'pgoals'
+            if(TipoDeCompetencia == 'Basicas')
+                txtopcion = 'core'
+            if(TipoDeCompetencia == 'Gerenciales')
+                txtopcion = 'managerial'
+            if(TipoDeCompetencia == 'Especificas')
+                txtopcion = 'role'
+            if(TipoDeCompetencia == 'EXTRAS')
+                txtopcion = 'Extras'
+
+            for (var i = 0; i < IDCompetencias.length; i++) {
+                if($("#txtComentarios_" + txtopcion +"_" + IDCompetencias[i]).val().trim() != ""){
+                    var comentarios = $("#txtComentarios_" + txtopcion + "_" + IDCompetencias[i]).val().trim();
+                    strComentarios.push(comentarios.trim());
+                }
+                else{
+                    strComentarios.push(''); //Si no tiene comentarios se guardara como vacio el campo...
+                }
+            }
+
+            var idRevis = [];
+            var opcion = [];
+            for (var i = 0; i < IDCompetencias.length; i++) {
+                if(TipoDeCompetencia == "EXTRAS")
+                    opcion.push(0);
+                else
+                    opcion.push(parseInt($("#califEmp_" + IDCompetencias[i] + "_" + (i+1)).val()));
+            }
+
+            var cont = 0;
+            //for (var i = 0; i < IDCompetencias.length; i++) {
+            //    if($("#califEmp_" + IDCompetencias[i] + "_" + (i+1)).val() == "0")
+            //        cont++;
+            //}
+
+            if(cont == 0)
+            {
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    data: "{ idCompetencia: [" + IDCompetencias + "], No_emp: " + NumeroEmpleado + ", Periodo: " + Periodo + ", Comentarios: " + JSON.stringify(strComentarios) + ", Calificacion: [" + opcion + "]}",
+                    url: "@Url.Action("setGuardarEstadoCompetencia", "Competencias")",
+                    contentType: "application/json; charset=utf-8;",
+                    success: function (datos) {
+                        if (datos != false) {
+                            arrayCompetencia = datos;
+                            swal("¡Operación completada!","Se han guardado los avances de su evaluación.", "success");
+
+                            if(TipoEmpleado == "Gerente" || TipoEmpleado == "Recursoshumanos" || TipoEmpleado == "Plantmanager" || TipoEmpleado == "Supervisor")
+                            {
+                                if(cantTabs == 5){ //Quiere decir que estan todas sin cambios...
+                                    $("#tabbtnCore").removeClass("disabledTab2"); //Se desactiva el segundo tab...
+                                }
+                                if(cantTabs == 4)
+                                {
+                                    $("#tabbtnRole").removeClass("disabledTab3"); //Se desactiva el segundo tab...
+                                }
+                                if(cantTabs == 3)
+                                {
+                                    $("#tabbtnManagerial").removeClass("disabledTab4"); //Se desactiva el segundo tab
+                                }
+                                if(cantTabs == 2)
+                                {
+                                    $("#tabbtnVarias").removeClass("disabledTab5"); //Se desactiva el segundo tab...
+                                }
+                                cantTabs--;
+                            }
+                            else
+                            {
+                                if(cantTabs == 4){ //Quiere decir que estan todas sin cambios...
+                                    $("#tabbtnCore").removeClass("disabledTab2"); //Se desactiva el segundo tab...
+                                }
+                                if(cantTabs == 3)
+                                {
+                                    $("#tabbtnRole").removeClass("disabledTab3"); //Se desactiva el segundo tab...
+                                }
+                                if(cantTabs == 2)
+                                {
+                                    $("#tabbtnVarias").removeClass("disabledTab5"); //Se desactiva el segundo tab...
+                                }
+
+                                cantTabs--;
+                            }
+                        } else {
+                            arrayCompetencia = false;
+                        }
+                    },
+                    error: function (datos){
+                        console.log(datos);
+                    }
+                });
+            }else{
+                //alert("Favor de seleccionar calificacion correctamente,\nasegurese de no dejar la seccion de comentarios vacia.");
+                swal("¡Error al guardar!", "Favor de seleccionar calificación correctamente,\nasegúrese de no dejar la sección de comentarios vacía.", "warning");
+            }
+            getEstatusGeneralDeCompetencia();
+        }
+
+        function guardarYEnviarEvaluacion(){
+            swal({
+                title: "Atencion!",
+                text: "¿Aprobar Evaluación?",
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+            }).then((enviar) => {
+                if (enviar)
+                 {
+                        $.ajax({
+                type: "POST",
+            async: false,
+            data: "{ No_emp: " + NumeroEmpleado + ", Periodo: " + Periodo + ", No_Evaluador: " + @Session["No_Empleado"] + "}",
+            url: "@Url.Action("GuardarYEnviarMiEvaluacionParaRevision", "Competencias")",
+            contentType: "application/json; charset=utf-8;",
+            success: function (datos) {
+                if (datos != false) {
+                    swal({
+                        title: "¡Operación Finalizada!",
+                        text: "Ha terminado su evaluación.",
+                        icon: "success",
+                        button: "OK",
+                    }).then((ok) => { if(ok){location.href = "@Url.Action("index", "home")"; }});
+            //swal("Ha terminado su evaluacion.")
+        }
+        },
+        error: function (datos){
+            console.log(datos);
+        }});
+        }
+        });
+        }
+
+        function validarComillas(e)
+        {
+            tecla = (document.all) ? e.keyCode : e.which;
+            patron = /[\x5C'"]/;
+            te = String.fromCharCode(tecla);
+            return !patron.test(te);
+        }
+
+
+
+
+        @*//////////////////////////////////////////////
+        function verPDF(numero)
+        {
+            cache: false;
+
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ Numero:'" + numero  +"'}",
+                url: "@Url.Action("OpenPDFF", "Home")",
+                contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (datos) {
+                if (datos)
+                {
+                    location.href = "@Url.Action("OpenPDF", "Home")";
+                }
+            },
+            error: function (Exception) {
+                console.log(Exception)
+            }
+        });
+        }
+
+        /////////////////////////////////////////////////////////////////////
+        function verKardex(numero)
+        {
+            var minum = numero;
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ Numero:" + numero  +"}",
+                url: "@Url.Action("OpenKARDEXX", "Home")",
+                contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (datos) {
+                if (datos)
+                {
+                    location.href = "@Url.Action("OpenKARDEX", "Home")";
+                }
+            },
+            error: function (Exception) {
+                console.log(Exception)
+            }
+        });
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////
+        function verPermisos(numero)
+        {
+            var minum = numero;
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: "{ Numero:" + numero  +"}",
+                url: "@Url.Action("OpenPERMISOSS", "Home")",
+                contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (datos) {
+                if (datos)
+                {
+                    location.href = "@Url.Action("OpenPERMISOS", "Home")";
+                }
+            },
+            error: function (Exception) {
+                console.log(Exception)
+            }
+        });
+        }*@
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    </script>
+}

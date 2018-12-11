@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="_UpgradeWizard_Files\UpgradeWizardLog.xslt"?>
+<log>
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno.csproj" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" name="Hourly.resx" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Hourly.resx" />
+  <event action="Analyze" type="Success" name="HourlySup.resx" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\HourlySup.resx" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\packages.config" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Project_Readme.html" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Project_Readme.html" />
+  <event action="Analyze" type="Success" name="Project_Readme.html" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Project_Readme.html" />
+  <event action="Analyze" type="Success" name="ReporteHourly.resx" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Reports\ReporteHourly.resx" />
+  <event action="Analyze" type="Success" name="telerikReportViewer-11.2.17.1025.min.js" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\ReportViewer\js\telerikReportViewer-11.2.17.1025.min.js" />
+  <event action="Analyze" type="Success" name="telerikReportViewer.kendo-11.2.17.1025.min.js" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\ReportViewer\js\telerikReportViewer.kendo-11.2.17.1025.min.js" />
+  <event action="Analyze" type="Success" name="Salary.resx" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Salary.resx" />
+  <event action="Analyze" type="Success" name="SalarySup.resx" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\SalarySup.resx" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\_ViewStart.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\_ViewStart.cshtml" />
+  <event action="Analyze" type="Success" name="_ViewStart.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\_ViewStart.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\_ExternalLoginsListPartial.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\_ExternalLoginsListPartial.cshtml" />
+  <event action="Analyze" type="Success" name="_ExternalLoginsListPartial.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\_ExternalLoginsListPartial.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ConfirmEmail.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ConfirmEmail.cshtml" />
+  <event action="Analyze" type="Success" name="ConfirmEmail.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ConfirmEmail.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ExternalLoginConfirmation.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ExternalLoginConfirmation.cshtml" />
+  <event action="Analyze" type="Success" name="ExternalLoginConfirmation.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ExternalLoginConfirmation.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ExternalLoginFailure.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ExternalLoginFailure.cshtml" />
+  <event action="Analyze" type="Success" name="ExternalLoginFailure.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ExternalLoginFailure.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ForgotPassword.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ForgotPassword.cshtml" />
+  <event action="Analyze" type="Success" name="ForgotPassword.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ForgotPassword.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ForgotPasswordConfirmation.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ForgotPasswordConfirmation.cshtml" />
+  <event action="Analyze" type="Success" name="ForgotPasswordConfirmation.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ForgotPasswordConfirmation.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\Login.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\Login.cshtml" />
+  <event action="Analyze" type="Success" name="Login.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\Login.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\Register.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\Register.cshtml" />
+  <event action="Analyze" type="Success" name="Register.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\Register.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ResetPassword.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ResetPassword.cshtml" />
+  <event action="Analyze" type="Success" name="ResetPassword.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ResetPassword.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ResetPasswordConfirmation.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ResetPasswordConfirmation.cshtml" />
+  <event action="Analyze" type="Success" name="ResetPasswordConfirmation.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\ResetPasswordConfirmation.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\SendCode.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\SendCode.cshtml" />
+  <event action="Analyze" type="Success" name="SendCode.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\SendCode.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\VerifyCode.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\VerifyCode.cshtml" />
+  <event action="Analyze" type="Success" name="VerifyCode.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Account\VerifyCode.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\About.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\About.cshtml" />
+  <event action="Analyze" type="Success" name="About.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\About.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\Competencias.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\Competencias.cshtml" />
+  <event action="Analyze" type="Success" name="Competencias.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\Competencias.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\Contact.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\Contact.cshtml" />
+  <event action="Analyze" type="Success" name="Contact.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\Contact.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\CursosAsistidos.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\CursosAsistidos.cshtml" />
+  <event action="Analyze" type="Success" name="CursosAsistidos.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\CursosAsistidos.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\DefinirPeriodo.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\DefinirPeriodo.cshtml" />
+  <event action="Analyze" type="Success" name="DefinirPeriodo.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\DefinirPeriodo.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EmpleadosSinCorreo.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EmpleadosSinCorreo.cshtml" />
+  <event action="Analyze" type="Success" name="EmpleadosSinCorreo.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EmpleadosSinCorreo.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EnviarObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EnviarObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="EnviarObjetivos.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EnviarObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EnviarReminders.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EnviarReminders.cshtml" />
+  <event action="Analyze" type="Success" name="EnviarReminders.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EnviarReminders.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\Error.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\Error.cshtml" />
+  <event action="Analyze" type="Success" name="Error.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\Error.cshtml" />
+  <event action="Analyze" type="Success" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ErrorPage.html" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ErrorPage.html" />
+  <event action="Analyze" type="Success" name="ErrorPage.html" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ErrorPage.html" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EstatusEvaluaciones.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EstatusEvaluaciones.cshtml" />
+  <event action="Analyze" type="Success" name="EstatusEvaluaciones.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EstatusEvaluaciones.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EstatusObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EstatusObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="EstatusObjetivos.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EstatusObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EvaluacionDeEmpleadoHourly.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EvaluacionDeEmpleadoHourly.cshtml" />
+  <event action="Analyze" type="Success" name="EvaluacionDeEmpleadoHourly.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EvaluacionDeEmpleadoHourly.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EvaluacionDeEmpleadoSalary.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EvaluacionDeEmpleadoSalary.cshtml" />
+  <event action="Analyze" type="Success" name="EvaluacionDeEmpleadoSalary.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EvaluacionDeEmpleadoSalary.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EvaluacionesTerminadas.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EvaluacionesTerminadas.cshtml" />
+  <event action="Analyze" type="Success" name="EvaluacionesTerminadas.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\EvaluacionesTerminadas.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\FormulacionDeObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\FormulacionDeObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="FormulacionDeObjetivos.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\FormulacionDeObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\Index.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\Index.cshtml" />
+  <event action="Analyze" type="Success" name="Index.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\Index.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\LogIn.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\LogIn.cshtml" />
+  <event action="Analyze" type="Success" name="LogIn.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\LogIn.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\NoExisteEvaluacion.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\NoExisteEvaluacion.cshtml" />
+  <event action="Analyze" type="Success" name="NoExisteEvaluacion.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\NoExisteEvaluacion.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\NoExisteObjetivo.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\NoExisteObjetivo.cshtml" />
+  <event action="Analyze" type="Success" name="NoExisteObjetivo.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\NoExisteObjetivo.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ObjetivoTerminado.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ObjetivoTerminado.cshtml" />
+  <event action="Analyze" type="Success" name="ObjetivoTerminado.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ObjetivoTerminado.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\OpenKARDEX.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\OpenKARDEX.cshtml" />
+  <event action="Analyze" type="Success" name="OpenKARDEX.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\OpenKARDEX.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\OpenPDF.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\OpenPDF.cshtml" />
+  <event action="Analyze" type="Success" name="OpenPDF.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\OpenPDF.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\OpenPERMISOS.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\OpenPERMISOS.cshtml" />
+  <event action="Analyze" type="Success" name="OpenPERMISOS.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\OpenPERMISOS.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\RecordatorioObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\RecordatorioObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="RecordatorioObjetivos.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\RecordatorioObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ReporteGeneral.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ReporteGeneral.cshtml" />
+  <event action="Analyze" type="Success" name="ReporteGeneral.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ReporteGeneral.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ReporteHourly.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ReporteHourly.cshtml" />
+  <event action="Analyze" type="Success" name="ReporteHourly.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ReporteHourly.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ReporteHourlySup.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ReporteHourlySup.cshtml" />
+  <event action="Analyze" type="Success" name="ReporteHourlySup.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ReporteHourlySup.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ReporteSalarySup.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ReporteSalarySup.cshtml" />
+  <event action="Analyze" type="Success" name="ReporteSalarySup.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ReporteSalarySup.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ReportSalary.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ReportSalary.cshtml" />
+  <event action="Analyze" type="Success" name="ReportSalary.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\ReportSalary.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\RevisarObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\RevisarObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="RevisarObjetivos.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\RevisarObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\RevisionFinalDeLosObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\RevisionFinalDeLosObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="RevisionFinalDeLosObjetivos.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\RevisionFinalDeLosObjetivos.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\RevisionHourly.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\RevisionHourly.cshtml" />
+  <event action="Analyze" type="Success" name="RevisionHourly.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Home\RevisionHourly.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\AddPhoneNumber.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\AddPhoneNumber.cshtml" />
+  <event action="Analyze" type="Success" name="AddPhoneNumber.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\AddPhoneNumber.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\ChangePassword.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\ChangePassword.cshtml" />
+  <event action="Analyze" type="Success" name="ChangePassword.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\ChangePassword.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\Index.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\Index.cshtml" />
+  <event action="Analyze" type="Success" name="Index.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\Index.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\ManageLogins.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\ManageLogins.cshtml" />
+  <event action="Analyze" type="Success" name="ManageLogins.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\ManageLogins.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\SetPassword.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\SetPassword.cshtml" />
+  <event action="Analyze" type="Success" name="SetPassword.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\SetPassword.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\VerifyPhoneNumber.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\VerifyPhoneNumber.cshtml" />
+  <event action="Analyze" type="Success" name="VerifyPhoneNumber.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Manage\VerifyPhoneNumber.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\_Layout.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\_Layout.cshtml" />
+  <event action="Analyze" type="Success" name="_Layout.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\_Layout.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\_LoginPartial.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\_LoginPartial.cshtml" />
+  <event action="Analyze" type="Success" name="_LoginPartial.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\_LoginPartial.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Boolean.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Boolean.cshtml" />
+  <event action="Analyze" type="Success" name="Boolean.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Boolean.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Currency.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Currency.cshtml" />
+  <event action="Analyze" type="Success" name="Currency.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Currency.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Date.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Date.cshtml" />
+  <event action="Analyze" type="Success" name="Date.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Date.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\DateTime.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\DateTime.cshtml" />
+  <event action="Analyze" type="Success" name="DateTime.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\DateTime.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Email.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Email.cshtml" />
+  <event action="Analyze" type="Success" name="Email.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Email.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+  <event action="Analyze" type="Success" name="EmailAddress.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+  <event action="Analyze" type="Success" name="GridForeignKey.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Integer.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Integer.cshtml" />
+  <event action="Analyze" type="Success" name="Integer.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Integer.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Number.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Number.cshtml" />
+  <event action="Analyze" type="Success" name="Number.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Number.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Password.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Password.cshtml" />
+  <event action="Analyze" type="Success" name="Password.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Password.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\String.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\String.cshtml" />
+  <event action="Analyze" type="Success" name="String.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\String.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Time.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Time.cshtml" />
+  <event action="Analyze" type="Success" name="Time.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Time.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Url.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Url.cshtml" />
+  <event action="Analyze" type="Success" name="Url.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\EditorTemplates\Url.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\Error.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\Error.cshtml" />
+  <event action="Analyze" type="Success" name="Error.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\Error.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\Lockout.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\Lockout.cshtml" />
+  <event action="Analyze" type="Success" name="Lockout.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Shared\Lockout.cshtml" />
+  <event action="Analyze" type="Success" name="Register Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Sweet\Alert.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly Directives" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Sweet\Alert.cshtml" />
+  <event action="Analyze" type="Success" name="Alert.cshtml" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Sweet\Alert.cshtml" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Web.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Web.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Web.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Web.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Web.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Web.config" />
+  <event action="Analyze" type="Success" name="Web.config" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Views\Web.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.config" />
+  <event action="Analyze" type="Success" name="Web.config" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.Debug.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.Debug.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.Debug.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.Debug.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.Debug.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.Debug.config" />
+  <event action="Analyze" type="Success" name="Web.Debug.config" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.Debug.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.Release.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.Release.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.Release.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.Release.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.Release.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.Release.config" />
+  <event action="Analyze" type="Success" name="Web.Release.config" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\Web.Release.config" />
+  <event action="Analyze" type="Success" name="SistemaEvaluacionDesempeno" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno.csproj" />
+  <event action="Analyze" type="Success" name="SistemaEvaluacionDesempeno" path="C:\Users\ccalam\Desktop\newED\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno.sln" />
+</log>

@@ -1,0 +1,131 @@
+﻿@{
+    if (Session["Estado"] == null) //Si no se encuentra iniciada la sesion se redirige a la pagina de inicio de sesion.
+    {
+        Response.Redirect(Url.Action("LogIn", "Home"));
+    }
+}
+<style>
+    #reportViewer1 {
+        position: absolute;
+        left: 13%;
+        right: 5px;
+        top: 7%;
+        bottom: 5px;
+        overflow: visible;
+        font-family: Verdana, Arial;
+    }
+</style>
+
+<div class="right_col" role="main">
+    <div class="">
+        <div role="main">
+            <div class="">
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<ceter>
+    <div id="reportViewer1">
+        Cargando...
+    </div>
+</ceter>
+
+
+
+    <script>
+
+        $(document).ready(function () {
+            verReporte();
+
+        });
+        function verReporte() {
+            var minumemp = @Session["EmpPendImp"];
+            //alert(numemp);
+            //  console.log(numemp);
+            // Funcionprueba();
+            $("#reportViewer1")
+                .telerik_ReportViewer({
+
+                    // The URL of the service which will serve reports.
+                    // The URL corresponds to the name of the controller class (ReportsController).
+                    // For more information on how to configure the service please check http://www.telerik.com/help/reporting/telerik-reporting-rest-conception.html.
+                   // serviceUrl: "/api/reports",
+                    //esto de aqui lo comente
+                    reportServer: {
+                        url: "http://mxnl-ejcant:83",
+                        username: null,
+                        password: null
+                    },
+                    // The URL for custom report viewer template. The template can be edited -
+                    // new functionalities can be added and unneeded ones can be removed.
+                    // For more information please check http://www.telerik.com/help/reporting/html5-report-viewer-templates.html.
+                    //
+
+                    //ReportSource - report description
+                    reportSource: {
+                        // The report can be set to a report file name (trdx report definition)
+                        // or CLR type name (report class definition).
+                        //report: "../Reports/Reporte Salary.trdp",
+                        //esto de abajo lo comente
+                        report: "ReportesEvaluacion/Reporte Salary3",
+                        parameters: { NumEmp: minumemp }
+
+                    },
+
+
+                    // Specifies whether the viewer is in interactive or print preview mode.
+                    // PRINT_PREVIEW - Displays the paginated report as if it is printed on paper. Interactivity is not enabled.
+                    // INTERACTIVE - Displays the report in its original width and height without paging. Additionally interactivity is enabled.
+                    viewMode: telerikReportViewer.ViewModes.INTERACTIVE,
+
+                    // Sets the scale mode of the viewer.
+                    // Three modes exist currently:
+                    // FIT_PAGE - The whole report will fit on the page (will zoom in or out), regardless of its width and height.
+                    // FIT_PAGE_WIDTH - The report will be zoomed in or out so that the width of the screen and the width of the report match.
+                    // SPECIFIC - Uses the scale to zoom in and out the report.
+                    scaleMode: telerikReportViewer.ScaleModes.SPECIFIC,
+
+                    // Zoom in and out the report using the scale
+                    // 1.0 is equal to 100%, i.e. the original size of the report
+                    scale: 1.0,
+                    enableAccessibility: false,
+
+                    //ready: function () {
+                    //    this.refreshReport();
+                    //},
+                });
+        }
+       
+                       
+
+                        //function Funcionprueba(){
+                        //    $.ajax({
+                        //        type: "POST",
+                        //        async: false,
+                        //        url: "Home/EnviarParametrosReporte",
+                        //        contentType: "application/json",
+                        //        data: "{}",
+                        //        contentType: "application/json; charset=utf-8",
+                        //        dataType: "json",
+                        //    success: function (datos) {
+
+                        //        if (datos) {
+                        //            console.log(datos.d);
+                        //        }
+                        //    },
+                        //    error: function (err) {
+                        //        alert("Error: " + err);
+                        //        console.log(err);
+                        //    }
+                        //});
+                        //}
+
+    </script>
+}

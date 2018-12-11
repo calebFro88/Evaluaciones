@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "CursosAsistidos";
+}
+
+<div class="right_col">
+    <div role="main">
+        <div class="container container-fluid">
+            <br />
+            <div class="TextoCentrado">
+                <h1 class="panel-heading">Cursos Asistidos</h1>
+            </div>
+            <br />
+
+            <table class="table table-hover" id="MisCursos">
+                <thead>
+                    <tr>
+                        <th>Fecha del curso (MM/DD/YYYY)</th>
+                        <th>Descripci&oacute;n del curso</th>
+                        <th>Aprovado </th>
+                        <th>No Aprovado</th>
+                        <th>No Asistio</th>
+                    </tr>
+                </thead>
+                <tfoot id="tbfAsistencia"></tfoot>
+                <tbody id="tblListaCursos" style="font-size:small;font-family:Arial;font-style:normal;"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+    @section scripts{
+        <script type="text/javascript">
+        $(document).ready(function () {
+            ListarCursos();
+
+            //$("#MisCursos").DataTable({
+            //    "lengthMenu": [[4, 8, -1], [4, 8, "Todas"]],
+            //    language: {
+            //        search: "Buscar:",
+            //        lengthMenu: "Mostrando _MENU_ registros",
+            //        paginate: {
+            //            first: "Principal",
+            //            previous: "Anterior",
+            //            next: "Siguiente"
+            //        },
+            //        info: "Mostrando  _START_  a _END_ de _TOTAL_ elementos",
+            //        processing: "Trabajando en ello...",
+            //        zeroRecords: "No se encontraron coincidencias."
+            //    },
+            //    columnDefs: [
+            //        { type: 'date-uk', targets: 10 }//specify your date column number,starting from 0
+            //    ]
+            //});
+
+
+        });
+
+            //para acomodar la fecha por medio de DataTable
+        ////If your date format is mm/dd//yyyy.
+        //jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+        //    "date-uk-pre": function (a) {
+        //        if (a == null || a == "") {
+        //            return 0;
+        //        }
+        //        var ukDatea = a.split('/');
+        //        return (ukDatea[2] + ukDatea[0] + ukDatea[1]) * 1;
+        //    },
+        //    "date-uk-asc": function (a, b) {
+        //        return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+        //    },
+        //    "date-uk-desc": function (a, b) {
+        //        return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+        //    }
+        //});
+
+        function ListarCursos() {
+
+
+            $.ajax({
+                type: 'POST',
+                async: false,
+                data: "{ }",
+                url: "@Url.Action("ListarCursosAsistidos", "Home")",
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (datos) {
+                    if (datos.length >= 1) {
+                        //
+                        var Asistencia = 0; var Promedio = 0; var CursosTot = 0;
+                        //Ciclo para insertar cada renglon a la tabla #tblListaCursos
+                        for (var i = 0; i < datos.length; i++) {
+                            //Declaracion y
+                            tr = $("<tr id='" + datos[i].Codigo + "' class='default'>");
+                            if (datos[i].Fecha == null) {
+                                tr.append("<td>Curso no Asistido</td>");
+                            }
+                            else {
+                                tr.append("<td>" + ToJavaScriptDate(datos[i].Fecha) + "</td>");
+                            }
+
+                            tr.append("<td>" + datos[i].Descripcion + "</td>");
+                            if (datos[i].Calificacion == null) {
+                                tr.append("<td>----</td><td>----</td><td>  <span class='glyphicon glyphicon-question-sign miIcono'></span>  </td></tr>");
+                            }
+                            else {
+                                Promedio = Promedio + datos[i].Calificacion;
+                                Asistencia++;
+                                if (datos[i].Calificacion >= 75) {
+                                    tr.append("<td>" + datos[i].Calificacion + " <br> <span class='glyphicon glyphicon-ok miIcono'></span></td><td>----</td><td>----</td></tr>");
+                                }
+                                else if (datos[i].Calificacion < 75) {
+                                    tr.append("<td>----</td><td>" + datos[i].Calificacion + "<br> <span class='glyphicon glyphicon-remove miIcono'></span> </td><td>----</td></tr>");
+                                }
+                            }
+                            $("#tblListaCursos").append(tr);
+                            CursosTot++;
+                        }
+                        //tfoot = $("<tr><th colspan='2'>Cursos totales = 11</th><th colspan='2'>Cursos Asistidos = " + Asistencia + "</th>");
+                        tfoot = $("<tr><th colspan='2'>Cursos totales = " + CursosTot + "  <br>Cursos Asistidos = " + Asistencia + "</th>");
+                        tfoot.append("<th colspan='2'>Calificacion Total<br> = " + (Promedio / Asistencia).toFixed(2) + "</th></tr>");
+                        tfoot.append("<th>% de la Asistencia = " + ((Asistencia / 11) * 100).toFixed(2) + "</th>");
+                       $("#tbfAsistencia").append(tfoot);
+
+                       
+
+                    }
+                    else {
+                        $("#tblListaCursos").replaceWith("<div class='msgSinEv'>No tiene ningun curso. Verifique la informacion</div>");
+                        console.log(datos);
+                    }
+                },
+                error: function (datos) {
+                    console.log(datos);
+                }
+            });
+        }
+
+
+            //Convierte la fecha '/Date(1493355600000)/' a un DateTime
+            function ToJavaScriptDate(value) {
+                var pattern = /Date\(([^)]+)\)/;
+                var results = pattern.exec(value);
+                var dt = new Date(parseFloat(results[1]));
+                return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+            }
+
+        </script>
+    }
+

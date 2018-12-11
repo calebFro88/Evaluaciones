@@ -1,0 +1,187 @@
+﻿
+@{
+    ViewBag.Title = "EmpleadosSinCorreo";
+    if (Session["Estado"] == null)
+    {
+        Response.Redirect(Url.Action("LogIn", "Home"));
+    }
+    
+    if (Session["TipoEmpleado"] != "RecursosHumanos") 
+    { 
+        Response.Redirect(Url.Action("Index", "Home"));
+    }
+}
+<div class="right_col" role="main">
+    <div class="">
+        <div role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>Empleados Pendientes De Asignaci&oacute;n De Correo</h3>
+                    </div>
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <label>A&Ntilde;O FISCAL: </label><label>&nbsp;@DateTime.Now.Year</label>&nbsp;&nbsp;|&nbsp;
+                                <button class="btn btn-default" onclick="ActualizarEmpleadosAD()" id="btnActualizar"><span class="glyphicon glyphicon-refresh"></span> Actualizar Empleados</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+
+
+                            <div id="tblFormulacionObjetivos">
+                            </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var crudServiceBaseUrl = "https://demos.telerik.com/kendo-ui/service",
+                          dataSource = new kendo.data.DataSource({
+                              transport: {
+                                  read: {
+                                      type: "post",
+                                      url: "@Url.Action("getMisEmpleadosSinCorreo", "Competencias")",
+                                      dataType: "json",
+                                      cache: false
+                                  },
+                                  update: {
+                                      type: "post",
+                                      url: "@Url.Action("setCorreoDeEmpleado", "Competencias")",
+                                      dataType: "json"
+                                      },
+                                  create: {
+                                      url: "@Url.Action("setCorreoDeEmpleado", "Competencias")",
+                                      type: "post",
+                                      dataType: "json"
+                                  },
+                                  parameterMap: function (data, type) {
+                                      if (type != "read" && data.models) {
+                                          //var fechaFormateada = kendo.toString(new Date(data.models[0].FechaLimiteEsperada), "dd/MM/yyyy");
+                                          //$("#tblFormulacionObjetivos").data("kendoGrid").dataSource.read();
+                                          swal("Operacion Completada!", "Se han actualizado los empleados correctamente.", "success");
+                                          //$("#btnActualizar").click();
+                                          return { NumeroEmpleado: data.models[0].No_Emp, Correo: data.models[0].userMail, NombreUsuario: data.models[0].userName };
+                                      }                                      
+                                  }
+                              },
+                              batch: true,
+                              pageSize: 20,
+                              schema: {
+                                  model: {
+                                      id: "No_Emp",
+                                      fields: {
+                                          No_Emp: { validation: { required: true } },
+                                          Nombre: { validation: { required: true } },
+                                          APELLIDO: { type: "string" },
+                                          DEPARTAMENTO: {},
+                                          Descripcion: {},
+                                          TipoEmpleado: {},
+                                          userMail: {},
+                                          userName: {},
+                                          JEFE: {},
+                                          Areay: {}
+                                      }
+                                  }
+                              }
+                          });
+
+             $("#tblFormulacionObjetivos").kendoGrid({
+                dataSource: dataSource,
+                //pageable: true,
+                groupable: true,
+                sortable: true,
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    buttonCount: 5
+                },
+                height: 550,
+
+                //toolbar: [{
+                //    text: "<span class = 'glyphicon glyphicon-saved'></span>Crear Nuevo Objetivo",
+                //    className: "k-button k-button-icontext k-grid-add",
+                //    imageClass: "k-add",
+                //}],
+                columns: [
+                    {
+                        //hidden: true,
+                        field: "No_Emp",
+                        title: "Numero Empleado", width: "120px", filterable:true
+                    },
+                    {
+                        field: "Nombre", title: "Nombre", width: "120px"
+                    },
+                    {
+                        field: "APELLIDO", title: "Apellido", width: "120px"
+                    },
+                    {
+                        field: "DEPARTAMENTO", title: "Departamento", width: "120px"
+                    },
+                    {
+                        field: "Descripcion", title: "Descripcion", width: "120px"
+                    },
+                    {
+                        field: "TipoEmpleado", title: "Tipo De Empleado", width: "120px"
+                    },
+                    {
+                        field: "userMail", title: "Correo", width: "120px"
+                    },
+                    {
+                        field: "userName", title: "Nombre De Usuario", width: "120px"
+                    },
+                    {
+                        field: "JEFE", title: "Jefe", width: "120px"
+                    },
+                    {
+                        field: "Areay", title: "Area", width: "120px"
+                    },
+
+                    //{
+                    //    field: "FechaLimiteEsperada",
+                    //    type: "date",
+                    //    title: "Fecha Limite Esperada",
+                    //    format: "{0:MM/dd/yyyy}",
+                    //    width: "220px",
+                    //    template: "#= kendo.toString(kendo.parseDate(FechaLimiteEsperada, 'yyyy-MM-dd'), 'MM/dd/yyyy') #",
+                    //    //editor: dateTimeEditor
+                    //},
+                      {
+                          command:["edit"], title: "&nbsp;", width: "250px"
+                      }
+                ],
+                editable: "inline"
+            });
+        });
+
+        $("#btnActualizar").click(function (data) {
+                $.ajax({
+                    type: "post",
+                    data: "{}",
+                    url: "@Url.Action("setActualizarEmpleadosAD", "Competencias")",
+                    contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (datos) {
+                    if (datos == true) {
+                        swal("Operacion Completada!", "Se han actualizado los empleados correctamente.", "success");
+                        $("#tblFormulacionObjetivos").data("kendoGrid").dataSource.read();
+                    }
+                }
+              });
+        });
+
+    </script>
+}

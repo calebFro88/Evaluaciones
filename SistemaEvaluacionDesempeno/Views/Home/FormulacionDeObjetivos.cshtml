@@ -1,0 +1,600 @@
+﻿
+@{
+    ViewBag.Title = "FormulacionDeObjetivos";
+    if (Session["Estado"] == null)
+    {
+        Response.Redirect(Url.Action("LogIn", "Home"));
+    }
+}
+
+<div class="right_col" role="main">
+    <div class="">
+
+        <div role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3> FORMULACION DE OBJETIVOS</h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <label>Periodo: </label><label id="lblPeriodo"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>NUEVO OBJETIVO</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href="#">Settings 1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Settings 2</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <!--Tabla de objetivos pendientes-->
+                                @*<div class="row">
+                                        &nbsp;&nbsp;&nbsp;Periodo:
+                                        &nbsp;&nbsp;&nbsp;<button class="btn btn-primary">ENE-MAR</button><button class="btn btn-default">ABR-JUN</button><button class="btn btn-default">JUL-SEPT</button><button class="btn btn-default">OCT-DIC</button>
+                                    </div>*@
+                                <div id="tblFormulacionObjetivos"></div>
+                                <p>El valor maximo que puede ingresar es: <span id="spanValor"></span></p>
+                                <button type="button" class="btn btn-success" onclick="finalizarObjetivos()" id="btnFinalizarObjetivos"> <span class="glyphicon glyphicon-send"></span>  Finalizar Objetivos</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        var NumEmp = @Session["No_Empleado"];
+        var IDPeriodo = @int.Parse(Session["IDPeriodo"].ToString());
+
+        var intValorMaximo = 0;
+        var CantidadFaltante = 0;
+
+        function RestaurarNumeros(){
+            intValorMaximo = 0;
+            CantidadFaltante = 0;
+        }
+        function ValorMaximoIngresar(){
+            RestaurarNumeros();
+            for (var i = 0; i < Objetivos.length; i++) {
+                intValorMaximo += Objetivos[i].Peso;
+            }
+            CantidadFaltante = 100 - intValorMaximo;
+            $("#spanValor").text(CantidadFaltante);
+        }
+
+        function ObtenerObj() {
+            RestaurarNumeros();
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: '{ "NumeroEmpleado": '+ NumEmp + ', "Periodo": ' + IDPeriodo + '}',
+                url: "@Url.Action("getMisObjetivosPendientes", "Objetivos")",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (datos) {
+                    Objetivos = datos;
+                    //console.log(datos[0].Tipo);
+                    ValorMaximoIngresar();
+                  //Para el ID de los objetivos
+                },
+                error: function (Exception) {
+                    console.log(Exception)
+                }
+           });
+        }
+
+          //Al cargar pagina...
+        $(document).ready(function () {
+            ObtenerObj();
+            CargarCategoriaCompetencias();
+            CargarTipos();
+            CargarPeriodo();
+              $("#intPeso").kendoNumericTextBox();
+
+
+
+              var crudServiceBaseUrl = "https://demos.telerik.com/kendo-ui/service",
+                           dataSource = new kendo.data.DataSource({
+                               transport: {
+                                   read: {
+                                        url: "@Url.Action("getMisObjetivosPendientes", "Objetivos")",
+                                        type: "post",
+                                        dataType: "json",
+                                        cache: false
+                                    },
+                                    create: {
+                                        url: "@Url.Action("setNuevoObjetivo", "Objetivos")",
+                                        type: "post",
+                                        dataType: "json",
+                                    },
+                                    update: {
+                                        url: "@Url.Action("setEditarObjetivo", "Objetivos")",
+                                        type: "post",
+                                        dataType: "json",
+                                        cache: true,
+                                    },
+                                    destroy: {
+                                        url: "@Url.Action("setEliminarObjetivo", "Objetivos")",
+                                        type: "post",
+                                        dataType: "json",
+                                    },
+                                   parameterMap: function (data, operation) {
+                                       if (operation == "read" ) {
+                                           return {NumeroEmpleado: NumEmp, Periodo: IDPeriodo}
+                                       }
+                                       else if (operation == 'create'){
+                                           var buscar = Objetivos.find( o => o.Descripcion == data.Descripcion);
+                                           if (buscar === undefined) {
+                                               //Significa que se acaba de agregar
+                                               if ((data.Peso + intValorMaximo) <= 100) {
+                                                   $("#spanValor").text(100 - (data.Peso + intValorMaximo));
+                                                   Objetivos.push(data);
+
+                                                   //poner if para ver si es onGoing
+                                                   console.log(data.Tipo);
+                                                   if(data.Tipo == "OnGoing")
+                                                   {
+                                                       swal("Escriba la meta refiriendose al objetivo escrito: ejemplo >25", {
+                                                           content: "input",
+                                                       })
+                                                          .then((value) => {
+                                                              swal(`Su meta guardada es: ${value}`);
+                                                              /////////////////////////////////////////////
+                                                           //solo letras y numeros   value = filtro
+                                                                  var out = '';
+                                                                  //Se añaden las letras validas
+                                                                  var filtro = '><=!1234567890';//Caracteres validos
+	
+                                                                  for (var i=0; i<value.length; i++)
+                                                                  {
+                                                                      if (filtro.indexOf(value.charAt(i)) != -1) 
+                                                                          out += value.charAt(i);
+                                                                  }
+                                                                   
+                                                                  out = out.replace(" ", "");
+                                                              $.ajax({
+                                                                  type: "POST",
+                                                                  async: false,
+                                                                  data: '{ "Meta": "' + out + '", "NumEmp": ' + NumEmp +'}',
+                                                                  url: "@Url.Action("updateMeta", "Objetivos")",
+                                                                  contentType: "application/json; charset=utf-8",
+                                                              dataType: "json",
+                                                              success: function (datos) {
+                                                                  // TIP = datos;
+                                                              },
+                                                              error: function (Exception) {
+                                                                  console.log(Exception)
+                                                              }
+                                                          });
+                                                   });
+
+                                                   }
+                                                  
+                                                 ///////////////////////////////////////////////////////////////////////
+                                                   return {
+                                                       IDObj: 0,
+                                                       NumEmp: NumEmp,
+                                                       DescObjetivo: data.Descripcion,
+                                                       intPeso: data.Peso,
+                                                       Tipo: data.Tipo,
+                                                       Periodo: IDPeriodo,
+                                                       Categoria: data.CategoryID,
+                                                       PeriodoObj: data.Periodo,
+                                                   }
+                                                   
+                                               }
+                                               else{
+                                                   swal("Verifique el valor maximo a ingresar","Debe ser menos de 100 la suma de los valores de los objetivos","info");
+                                                   ObtenerObj()
+                                               }
+                                           }
+                                           else {
+                                               if (Objetivos.length < 5) {
+                                                   return {
+                                                       IDObj: 0,
+                                                       NumEmp: NumEmp,
+                                                       DescObjetivo: data.Descripcion,
+                                                       intPeso: data.Peso,
+                                                       Tipo: data.Tipo,
+                                                       Periodo: IDPeriodo,
+                                                       Categoria: data.CategoryID,
+                                                       PeriodoObj: data.Periodo,
+                                                   }
+                                               } else {
+                                                   swal("Cuidado","Solo se pueden crear maximo 5 objetivos","info");
+                                                   //$("#TEST").data("kendoGrid").cancelChanges();
+                                                   setTimeout(function() {
+                                                       location.reload(true);
+                                                   }, 1500);
+                                               }
+                                           }
+                                       }
+                                       else if (operation == 'destroy'){
+                                           for (var i = 0; i < Objetivos.length; i++) {
+                                               if (Objetivos[i].Peso == data.Peso && Objetivos[i].Descripcion == data.Descripcion) {
+                                                   Objetivos.splice(i,1);
+                                               }
+                                           }
+                                           console.log("Aqui es el update");
+                                           ActualizarCantMaxima(data);
+                                           return {
+                                               NumEmp: NumEmp,
+                                               DescObjetivo: data.Descripcion,
+                                               intPeso: data.Peso,
+                                               Periodo: IDPeriodo,
+                                               Tipo: data.Tipo,
+                                           }
+                                       } else {
+
+                                           if (data.ID_Objetivo == null) {
+                                               swal("Favor de recargar la pagina","Se actualizaran los datos","info");
+                                               //$("#TEST").data("kendoGrid").cancelChanges();
+
+                                               setTimeout(function() {
+                                                   location.reload(true);
+                                               }, 1500);
+                                           }
+                                           else{
+                                               //Cargado desde la base de datos
+                                               /// console.log("aqui voy");
+                                               //swal("Aqui debo de volver a pedir la meta");
+                                               if(data.Tipo == "OnGoing")
+                                               {
+                                                   swal("Escriba la meta refiriendose al objetivo escrito: ejemplo >25", {
+                                                       content: "input",
+                                                   })
+                                                            .then((value) => {
+                                                                swal(`Su meta guardada es: ${value}`);
+                                                                console.log(data.ID_Objetivo);
+                                                                //solo letras y numeros   value = filtro
+                                                                var out = '';
+                                                                //Se añaden las letras validas
+                                                                var filtro = '><=!1234567890';//Caracteres validos
+	
+                                                                for (var i=0; i<value.length; i++)
+                                                                {
+                                                                    if (filtro.indexOf(value.charAt(i)) != -1) 
+                                                                        out += value.charAt(i);
+                                                                }
+                                                                out = out.replace(" ", "");
+                                                                $.ajax({
+                                                                    //aqui tengo que mandar la meta a guardar.
+                                                                    type: "POST",
+                                                                    async: false,
+                                                                    data: '{ "Meta": "' + out + '", "NumEmp": ' + NumEmp +',"idObjetivo":'+data.ID_Objetivo+'}',
+                                                                    url: "@Url.Action("updateMetaEdit", "Objetivos")",
+                                                                    contentType: "application/json; charset=utf-8",
+                                                                dataType: "json",
+                                                                success: function (datos) {
+                                                                    // TIP = datos;
+                                                                },
+                                                                error: function (Exception) {
+                                                                    console.log(Exception)
+                                                                }
+                                                            });
+                                                     });
+
+                                               
+                                               }
+
+
+                                               //////////////////////////////////////////////////////
+                                               ActualizarCantMaxima(data);
+                                               if (intValorMaximo <= 100){
+                                                   for (var i = 0; i < Objetivos.length; i++) {
+                                                       if (data.ID_Objetivo == Objetivos[i].ID_Objetivo ) {
+                                                           //aqui debe de agregar donde pida la meta deseada
+
+                                                           return {
+                                                               IDObj: data.ID_Objetivo,
+                                                               NumEmp: NumEmp,
+                                                               DescObjetivo: data.Descripcion,
+                                                               intPeso: data.Peso,
+                                                               Tipo: data.Tipo,
+                                                               Periodo: IDPeriodo,
+                                                               PesoAnt: 0,
+                                                               DescAnt: '',
+                                                               Categoria: data.CategoryID,
+                                                               PeriodoObj: data.Periodo,
+                                                           }
+                                                       }
+                                                   }
+                                               }
+                                               else{
+                                                   swal("Verifique el valor maximo a ingresar","Debe ser menos de 100 la suma de los valores de los objetivos","info");
+                                                   ObtenerObj();
+                                               }
+                                           }
+                                           //operation: 'destroy'
+                                       }
+                                   }
+                               },
+                               batch: false,
+                               pageSize: 20,
+                               schema: {
+                                   model: {
+                                       id: "ID_Objetivo",
+                                       fields: {
+                                           ID_Objetivo: { editable: false, nullable: true,hidden: true },
+                                           Descripcion: { validation: { required: true } },
+                                           //FechaLimite: { editable: false, },
+                                           Peso: {type: "number", validation: { required: true, min: 1 }  },
+                                           Tipo: {editable: true, validation: {required: true}},
+                                           Periodo: {editable: true, validation: {required: true}},
+                                           //FechaRevision: {type: "date", editable: false,},
+                                           CategoryID: {field: "CategoryID", validation:{required: true}},
+                                       },
+                                   },
+                               },
+                           });
+
+              $("#tblFormulacionObjetivos").kendoGrid({
+                  dataSource: dataSource,
+                  pageable: true,
+                  height: 550,
+
+                  toolbar: [{
+                      text: "<span class = 'glyphicon glyphicon-saved'></span>Crear Nuevo Objetivo",
+                      className: "k-button k-button-icontext k-grid-add",
+                      imageClass: "k-add",
+                  }],
+                  columns: [
+                      {
+                          field: "ID_Objetivo",title: "ID Objetivo" ,hidden: true,
+                      },
+
+                      {
+                          field: "Descripcion", title: "Descripcion del objetivo"
+                      },
+                      {
+                          field: "Peso", title: "Valor", width: "120px"
+                      },
+                      {
+                          field: "Tipo", title: "Tipo", width: "120px",
+                          editor: TipoDropDownEditor,
+                          template: "#=getNombreTipo(Tipo)#"
+                      },
+                      {
+                          field: "Periodo", title: "Periodo", width: "85px",
+                          editor: PeriodoDropDownEditor,
+                          template: "#=getNombrePeriodo(Periodo)#"
+                      },
+                      //{
+                      //    field: "FechaRevision", title: "Fecha para la Revision", format: "{0:dd-MM-yyyy}"//format:"{0:yyyy-MM-dd}"
+                      //},
+                      {
+                          field: "CategoryID", title: "Categoria",
+                          editor: categoryDropDownEditor,
+                          template: "#=getCategoryName(CategoryID)#"
+                      },
+                      //{
+                      //    field: "Meta", title: "Meta",enable: false
+                      //},
+
+                        { command:
+                            [
+                            "edit", "destroy"], title: "&nbsp;", width: "250px"
+                        }
+                  ],
+                  editable: "inline",// {confirmation: function(){return "Esta seguro que desea eliminar el objetivo??"}}
+                  save: function(e) {
+                      ObtenerObj();
+                      setTimeout(function(){
+                         $("#tblFormulacionObjetivos").data('kendoGrid').dataSource.read();
+                      }, 500);
+                  },
+                  edit: function(e) {
+                      e.container.find("input[name='Periodo']").attr('maxlength', '2');
+                      if (!e.model.isNew()) {
+                          //console.log(e);
+                      }
+                      else if (e.model.ID_Objetivo == null) {
+                          //Se acaba de agreagar
+                          ObtenerObj()
+                          for (var i = 0; i < Objetivos.length; i++) {
+                              if (e.model.Descripcion == Objetivos[i].Descripcion && e.model.Peso == Objetivos[i].Peso) {
+                                  e.model.ID_Objetivo = Objetivos[i].ID_Objetivo;
+                              }
+
+                          }
+                      }
+                  },
+
+              });
+        });
+
+
+        var TipoDescripcion = [];
+        const PER = [
+            {ID: 0, Periodo : 'Q1'},
+            {ID: 1, Periodo : 'Q2'},
+            {ID: 2, Periodo : 'Q3'},
+            {ID: 3, Periodo : 'Q4'},
+        ]
+
+        var TIP= [];
+           // {ID: 0, Tipo : 'Secuencial'},
+          //  {ID: 1, Tipo : 'On Going'},
+
+
+        function CargarCategoriaCompetencias() {
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: {},
+                url: "@Url.Action("CargarCategorias", "Objetivos")",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (datos) {
+                    TipoDescripcion = datos;
+                },
+                error: function (Exception) {
+                    console.log(Exception)
+                }
+            });
+        }
+
+        function CargarTipos() {
+            $.ajax({
+                type: "POST",
+                async: false,
+                data: {},
+                url: "@Url.Action("CargarTipos", "Objetivos")",
+                contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (datos) {
+                TIP = datos;
+            },
+            error: function (Exception) {
+                console.log(Exception)
+            }
+        });
+        }
+        //////////////
+        function categoryDropDownEditor(container, options) {
+            $('<input data-bind="value:' + options.field + '"/>')
+              .appendTo(container)
+              .kendoDropDownList({
+                  dataTextField: "Tipo",
+                  dataValueField: "CategoryID",
+                  dataSource: TipoDescripcion
+              });
+        }
+
+        function getCategoryName(categoryID) {
+
+            for (var idx = 0, length = TipoDescripcion.length; idx < length; idx++) {
+                if (TipoDescripcion[idx].CategoryID === categoryID) {
+                    return TipoDescripcion[idx].Tipo;
+                }
+            }
+        }
+
+        function TipoDropDownEditor (container, options){
+            $('<input data-bind="value:' + options.field + '"/>')
+              .appendTo(container)
+              .kendoDropDownList({
+                  dataTextField: "Tipo",
+                  dataValueField: "ID",
+                  dataSource: TIP
+              });
+        }
+
+        function PeriodoDropDownEditor (container, options){
+            $('<input data-bind="value:' + options.field + '"/>')
+              .appendTo(container)
+              .kendoDropDownList({
+                  dataTextField: "Periodo",
+                  dataValueField: "ID",
+                  dataSource: PER
+              });
+        }
+
+        function getNombreTipo(tipo) {
+
+            for (var idx = 0, length = TIP.length; idx < length; idx++) {
+                if (TIP[idx].Tipo == tipo) {
+                    return TIP[idx].Tipo;
+                }
+            }
+        }
+
+        function getNombrePeriodo(periodo) {
+            for (var idx = 0, length = PER.length; idx < length; idx++) {
+                if (PER[idx].ID == periodo) {
+                    return PER[idx].Periodo;
+                }
+            }
+        }
+        /////
+
+        function ActualizarCantMaxima(datos) {
+            RestaurarNumeros();
+            for (var i = 0; i < Objetivos.length; i++) {
+                if (datos.ID_Objetivo == Objetivos[i].ID_Objetivo)
+                    intValorMaximo += datos.Peso;
+                else
+                    intValorMaximo+= Objetivos[i].Peso;
+            }
+            CantidadFaltante = 100 - intValorMaximo;
+            $("#spanValor").text(CantidadFaltante);
+
+        }
+
+        function finalizarObjetivos() {
+            var rowcount = $("table >tbody >tr").length;
+            if (rowcount >= 3 && rowcount <= 5) {
+                ObtenerObj();
+                if (intValorMaximo == 100) {
+                    $.ajax({
+                        type: "POST",
+                        async: false,
+                        data: '{ "NumeroEmpleado": ' + NumEmp + ', "Periodo": ' + IDPeriodo +'}',
+                        url: "@Url.Action("setTerminarDeFormularObjetivos", "Objetivos")",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (datos) {
+                            swal("Se ha realizado los objetivos","","success");
+                            setTimeout(function(){
+                                location.href = "@Url.Action("Index", "Home")";
+                            }, 1500);
+                        },
+                        error: function (Exception) {
+                            console.log(Exception);
+                            swal("Hubo un error","Recargue la pagina y si persiste el error contacte al departamento de sistemas","error")
+                        }
+                    });
+                }
+                else
+                    swal("Verifique el valor de los Objetivos","Debe ser la suma de los objetivos a 100 para poder terminar de formular los objetivos","info");
+
+            }else {
+                swal("Favor de ingresar los objetivos","Deben ser minimo 3 y maximo 5 objetivos","info");
+            }
+        }
+        function CargarPeriodo(){
+             $.ajax({
+                type: "POST",
+                async: false,
+                data: "{Periodo : '" +IDPeriodo +"' }",
+                url: "@Url.Action("LoadSpecificFiscalYear", "Reminders")",
+                contentType: "application/json; charset=utf-8;",
+                success: function (datos) {
+
+                    $("#lblPeriodo").text(datos[0].Descripcion);
+                },
+            });
+        }
+
+
+
+    </script>
+}

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EvaluacionDesempenoModelStoreContainer" CdmEntityContainer="EvaluacionDesempenoEntities">
+    <EntitySetMapping Name="Bitacora">
+      <EntityTypeMapping TypeName="EvaluacionDesempenoModel.Bitacora">
+        <MappingFragment StoreEntitySet="Bitacora">
+          <ScalarProperty Name="ID_Bitacora" ColumnName="ID_Bitacora" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+          <ScalarProperty Name="ID_NumeroDeEmpleado" ColumnName="ID_NumeroDeEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado">
+      <EntityTypeMapping TypeName="EvaluacionDesempenoModel.Empleado">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="ID_NumeroDeEmpleado" ColumnName="ID_NumeroDeEmpleado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Jefe" ColumnName="Jefe" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Horario" ColumnName="Horario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estado">
+      <EntityTypeMapping TypeName="EvaluacionDesempenoModel.Estado">
+        <MappingFragment StoreEntitySet="Estado">
+          <ScalarProperty Name="ID_Estado" ColumnName="ID_Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ID_NumeroDeEmpleado" ColumnName="ID_NumeroDeEmpleado" />
+          <ScalarProperty Name="ID_EvaluacionDeObjetivo" ColumnName="ID_EvaluacionDeObjetivo" />
+          <ScalarProperty Name="Q1" ColumnName="Q1" />
+          <ScalarProperty Name="Q2" ColumnName="Q2" />
+          <ScalarProperty Name="Q3" ColumnName="Q3" />
+          <ScalarProperty Name="QF" ColumnName="QF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EvaluacionDeObjetivo">
+      <EntityTypeMapping TypeName="EvaluacionDesempenoModel.EvaluacionDeObjetivo">
+        <MappingFragment StoreEntitySet="EvaluacionDeObjetivo">
+          <ScalarProperty Name="ID_EvaluacionDeObjetivo" ColumnName="ID_EvaluacionDeObjetivo" />
+          <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+          <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+          <ScalarProperty Name="ID_Objetivo" ColumnName="ID_Objetivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Objetivo">
+      <EntityTypeMapping TypeName="EvaluacionDesempenoModel.Objetivo">
+        <MappingFragment StoreEntitySet="Objetivo">
+          <ScalarProperty Name="ID_Objetivo" ColumnName="ID_Objetivo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Peso" ColumnName="Peso" />
+          <ScalarProperty Name="FechaTerminacion" ColumnName="FechaTerminacion" />
+          <ScalarProperty Name="ID_NumeroDeEmpleado" ColumnName="ID_NumeroDeEmpleado" />
+          <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Periodo">
+      <EntityTypeMapping TypeName="EvaluacionDesempenoModel.Periodo">
+        <MappingFragment StoreEntitySet="Periodo">
+          <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+          <ScalarProperty Name="FechaInicial" ColumnName="FechaInicial" />
+          <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_PendienteDeObjetivos" FunctionName="EvaluacionDesempenoModel.Store.sp_PendienteDeObjetivos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionDesempenoModel.sp_PendienteDeObjetivos_Result">
+          <ScalarProperty Name="ID_NumeroDeEmpleado" ColumnName="ID_NumeroDeEmpleado" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Jefe" ColumnName="Jefe" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Horario" ColumnName="Horario" />
+          <ScalarProperty Name="DescripcionObjetivo" ColumnName="DescripcionObjetivo" />
+          <ScalarProperty Name="Peso" ColumnName="Peso" />
+          <ScalarProperty Name="FechaTerminacion" ColumnName="FechaTerminacion" />
+          <ScalarProperty Name="ID_Periodo_" ColumnName="ID_Periodo " />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

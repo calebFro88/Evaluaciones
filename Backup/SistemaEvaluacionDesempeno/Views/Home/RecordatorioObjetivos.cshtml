@@ -1,0 +1,272 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    if (Session["Estado"] == null)
+    {
+        Response.Redirect(Url.Action("LogIn", "Home"));
+    }
+}
+<style type="text/css">
+    .customer-photo {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-size: 32px 35px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 32px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-left: 5px;
+    }
+
+    .customer-name {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 32px;
+        padding-left: 3px;
+    }
+</style>
+
+<div class="right_col" role="main">
+    <div class="">
+
+        <div role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3> OBJETIVOS</h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <label>Periodo: </label><label>&nbsp;@DateTime.Now.Year - @(DateTime.Now.Year + 1)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Empleados Pendiente De Objetivos</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <!-- Modal -->
+                                <div id="myModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Fecha De Envio De Notificacion</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>@DateTime.Now.ToShortDateString()</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!--Tabla de objetivos pendientes-->
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                    <label>Pendiente: &nbsp;&nbsp;</label><button class="btn btn-danger">&nbsp;&nbsp;</button>
+                                    <label>En Proceso: &nbsp;&nbsp;</label><button class="btn btn-warning">&nbsp;&nbsp;</button>
+                                    <label>Completada: &nbsp;&nbsp;</label><button class="btn btn-success">&nbsp;&nbsp;</button>
+                                <div id="tblListadoEmpleados"></div>
+                                <button class="btn btn-primary pull-right" onclick="EnviarRecordatorio()"><span class="glyphicon glyphicon-send"></span> Enviar Recordatorio</button>
+                                <button class="btn btn-primary pull-right" onclick="BuscarCorreo()"><span class="glyphicon glyphicon-send"></span> Buscar correo</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        //Variables globales..
+    var EmpleadosPendientes; //type: array
+
+    $(document).ready(function (e) {
+        var tblListadoEmpleados = $("#tblListadoEmpleados").kendoGrid({
+            toolbar: ["excel"],
+            excel: {
+                fileName: "ObjetivosPendientes.xlsx",
+                proxyURL: "https://demos.telerik.com/kendo-ui/service/export",
+                filterable: true
+            },
+            dataSource: {
+                transport: {
+                    read: {
+                        //Direccion del metodo en controlador..
+                        url: "@Url.Action("getObjetivosPendientes", "Objetivos")",
+                        //Tipo de solicitud al controller..
+                        type: "post",
+                        //Tipo de dato que retorna la url.
+                        dataType: "json"
+                        //data: {
+                        //    //Parametros a enviar...
+                        //    Dato1: 2
+                        //}
+                    }
+                },
+                schema: {
+                    model: {
+                        id: "No_Emp",
+                        Departamento: "Departamento"
+                    }
+                },
+                pageSize: 8,
+                //serverPaging: true,
+                //serverFiltering: true
+            },
+            height: 580,
+            //filterable: {
+            //    mode: "row"
+            //},
+            groupable: true,
+            sortable: true,
+            //selectable: "multiple",
+            pageable: {
+                refresh: true,
+                //pageSize: 50,
+                pageSizes: true,
+                buttonCount: 5
+            },
+            persistSelection: true,
+            change: onChange,
+            columns: [
+                 {
+                     selectable: true, width: "50px"
+                 },
+                {
+                    template: "<div class='customer-photo'" +
+                                    "style='background-image: url(@Url.Content("~/Content/icon.png"));'></div>" +
+                                "<div class='customer-name'>#: NombreCompleto #</div>",
+                    field: "NombreCompleto",
+                    title: "Nombre Completo",
+                    width: 250
+                }, {
+                    field: "No_Emp",
+                    title: "#Empleado",
+                    width: 100,
+                }, {
+                    field: "Departamento",
+                    title: "Departamento",
+                    width: 100
+                }, {
+                    field: "Descripcion",
+                    title: "Descripcion",
+                    width: 100
+                }, {
+                    field: "Jefe",
+                    title: "Jefe",
+                    width: 100
+                }, {
+                    field: "Area",
+                    title: "Area",
+                    width: 100
+                }, {
+                    field: "HORARIO",
+                    title: "Horario",
+                    width: 100
+                },
+                {
+                    title: "Edo.Objetivos",
+                    template: "<center><button class ='btn btn-danger' id='EstadoDeObjetivo' onclick='FechaObjetivo()'>&nbsp;&nbsp;</button></center>",
+                    width: 80
+                }, {
+                    title: "Q1",
+                    template: "<center><input type='radio' value='radio' onDblClick='uncheckRadio(this)' />",
+                    width: 40
+                }, {
+                    title: "Q2",
+                    template: "<input type='radio' value='radio' onDblClick='uncheckRadio(this)' />",
+                    width: 40
+                }, {
+                    title: "Q3",
+                    template: "<input type='radio' value='radio' onDblClick='uncheckRadio(this)'/>",
+                    width: 40
+                }, {
+                    title: "Q4",
+                    template: "<input type='radio' value='radio' onDblClick='uncheckRadio(this)'/>",
+                    width: 40
+                },
+                {
+                    title: "EF",
+                    template: "<input type='radio' value='radio' />",
+                    width: 40
+                }
+            ]
+        });
+        //console.log(tblListadoEmpleados);
+    });
+        //esta funcion sirve para deselecccionar  los radios //
+        function uncheckRadio(rbutton) {
+            rbutton.checked = (rbutton.checked) ? false : true;
+        }
+        //------------------------------------------------->
+        function FechaObjetivo() {
+            $("#myModal").modal();
+        }
+
+    function onChange(arg) {
+        //alert("Cantidad De Empleados con objetivos pendientes: " + this.selectedKeyNames().length)
+        //console.log(this.selectedKeyNames());
+        EmpleadosPendientes = this.selectedKeyNames();
+    }
+
+    function EnviarRecordatorio() {
+        if (EmpleadosPendientes != null || EmpleadosPendientes != undefined) {
+            if (EmpleadosPendientes.length != 0) {
+                if (confirm("Desea enviar un recordatorio para formular objetivos\na los empleados seleccionados?")) {
+                    BuscarCorreo();
+                }
+            } else {
+                alert("Seleccione por lo menos un empleado");
+            }
+        } else {
+            alert("Seleccione por lo menos un empleado");
+        }
+    }
+
+    function BuscarCorreo() {
+        $.ajax({
+            type: "POST",
+            async: false,
+            data: "{ Nombre: 'Edgar Ramirez'}",
+            url: "@Url.Action("RecordatorioObjetivosEmpleado", "HumanResources")",
+            contentType: "application/json; charset=utf-8;",
+            success: function (datos) {
+                if (datos != false) {
+                    alert(datos);
+                    alert("Se ha enviado recordatorio");
+                } else {
+                    alert("false");
+                }
+            }
+        });
+    }
+
+    </script>
+}

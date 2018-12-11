@@ -1,0 +1,460 @@
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\SistemaEvaluacionDesempeno.dll.config
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\SistemaEvaluacionDesempeno.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\SistemaEvaluacionDesempeno.pdb
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Antlr3.Runtime.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.SqlServer.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Kendo.Mvc.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Newtonsoft.Json.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Owin.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Net.Http.Formatting.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Helpers.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.WebHost.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Mvc.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Optimization.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Razor.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Deployment.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Razor.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.Services.WebApi.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.XpsRendering.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.ReportViewer.Mvc.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\WebGrease.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Kendo.Mvc.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Newtonsoft.Json.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Net.Http.Formatting.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.WebHost.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Helpers.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Mvc.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Optimization.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Razor.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Deployment.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Razor.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.pdb
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.Services.WebApi.pdb
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.Services.WebApi.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.XpsRendering.pdb
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.XpsRendering.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.ReportViewer.Mvc.pdb
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.ReportViewer.Mvc.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Antlr3.Runtime.pdb
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.SqlServer.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\bg-BG\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\cs-CZ\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\da-DK\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\de-DE\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es-ES\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\fr-CA\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\fr-FR\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\he-IL\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\it-IT\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\nl-NL\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\pl-PL\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\pt-BR\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\pt-PT\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\ro-RO\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\ru-RU\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\sk-SK\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\sv-SE\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\tr-TR\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\uk-UA\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\zh-CN\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Helpers.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Mvc.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Optimization.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Razor.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.WebPages.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\EntityFramework.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\EntityFramework.SqlServer.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.AspNet.Identity.Owin.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Host.SystemWeb.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.Facebook.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.Google.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\obj\Release\SistemaEvaluacionDesempeno.dll
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\obj\Release\SistemaEvaluacionDesempeno.pdb
+C:\Users\eorami\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\obj\Release\SistemaEvaluacionDesempeno.csprojResolveAssemblyReference.cache
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\SistemaEvaluacionDesempeno.dll.config
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\SistemaEvaluacionDesempeno.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\SistemaEvaluacionDesempeno.pdb
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Antlr3.Runtime.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.SqlServer.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Kendo.Mvc.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Core.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Owin.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Host.SystemWeb.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Cookies.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Facebook.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Google.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.OAuth.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Twitter.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Web.Infrastructure.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Newtonsoft.Json.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Owin.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Net.Http.Formatting.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Helpers.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.WebHost.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Mvc.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Optimization.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Razor.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Deployment.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Razor.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.Services.WebApi.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.XpsRendering.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.ReportViewer.Mvc.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\WebGrease.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Kendo.Mvc.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Newtonsoft.Json.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Net.Http.Formatting.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.WebHost.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Helpers.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Mvc.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Optimization.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Razor.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Deployment.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Razor.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.pdb
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.Services.WebApi.pdb
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.Services.WebApi.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.XpsRendering.pdb
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.XpsRendering.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.ReportViewer.Mvc.pdb
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.ReportViewer.Mvc.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Antlr3.Runtime.pdb
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.SqlServer.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Core.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Owin.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Host.SystemWeb.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Facebook.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Cookies.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.OAuth.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Google.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Twitter.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\bg-BG\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\cs-CZ\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\da-DK\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\de-DE\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es-ES\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\fr-CA\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\fr-FR\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\he-IL\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\it-IT\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\nl-NL\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\pl-PL\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\pt-BR\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\pt-PT\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\ro-RO\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\ru-RU\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\sk-SK\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\sv-SE\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\tr-TR\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\uk-UA\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\zh-CN\Kendo.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Helpers.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Mvc.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Optimization.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Razor.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.WebPages.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.WebPages.Deployment.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.WebPages.Razor.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\EntityFramework.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\EntityFramework.SqlServer.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.AspNet.Identity.Owin.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Host.SystemWeb.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.Facebook.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.Google.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\obj\Release\SistemaEvaluacionDesempeno.csprojResolveAssemblyReference.cache
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\obj\Release\SistemaEvaluacionDesempeno.dll
+\\mxnl-ccalamlt\c$\Users\ccalam\Desktop\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\obj\Release\SistemaEvaluacionDesempeno.pdb
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\SistemaEvaluacionDesempeno.dll.config
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\SistemaEvaluacionDesempeno.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\SistemaEvaluacionDesempeno.pdb
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Antlr3.Runtime.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.SqlServer.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\itextsharp.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Kendo.Mvc.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Newtonsoft.Json.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Owin.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\RazorPDF.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Net.Http.Formatting.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Helpers.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.WebHost.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Mvc.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Optimization.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Razor.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Deployment.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Razor.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.Services.WebApi.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.XpsRendering.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.ReportViewer.Mvc.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\WebGrease.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Kendo.Mvc.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Newtonsoft.Json.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Net.Http.Formatting.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.WebHost.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Helpers.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Mvc.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Optimization.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Razor.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Deployment.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Razor.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.pdb
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.Services.WebApi.pdb
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.Services.WebApi.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.XpsRendering.pdb
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.XpsRendering.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.ReportViewer.Mvc.pdb
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.ReportViewer.Mvc.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Antlr3.Runtime.pdb
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.SqlServer.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\bg-BG\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\cs-CZ\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\da-DK\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\de-DE\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es-ES\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\fr-CA\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\fr-FR\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\he-IL\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\it-IT\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\nl-NL\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\pl-PL\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\pt-BR\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\pt-PT\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\ro-RO\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\ru-RU\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\sk-SK\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\sv-SE\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\tr-TR\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\uk-UA\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\zh-CN\Kendo.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Helpers.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Mvc.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Optimization.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Razor.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.WebPages.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\EntityFramework.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\EntityFramework.SqlServer.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.AspNet.Identity.Owin.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Host.SystemWeb.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.Facebook.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.Google.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\obj\Release\SistemaEvaluacionDesempeno.csprojResolveAssemblyReference.cache
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\obj\Release\SistemaEvaluacionDesempeno.dll
+C:\Users\eorami\Desktop\Evaluacion xD\Original\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\obj\Release\SistemaEvaluacionDesempeno.pdb
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\SistemaEvaluacionDesempeno.dll.config
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\SistemaEvaluacionDesempeno.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\SistemaEvaluacionDesempeno.pdb
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Antlr3.Runtime.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.SqlServer.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\itextsharp.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Kendo.Mvc.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Newtonsoft.Json.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Owin.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\RazorPDF.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Net.Http.Formatting.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Helpers.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.WebHost.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Mvc.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Optimization.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Razor.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Deployment.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Razor.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.Services.WebApi.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.XpsRendering.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.ReportViewer.Mvc.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\WebGrease.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Kendo.Mvc.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Newtonsoft.Json.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Net.Http.Formatting.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Http.WebHost.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Helpers.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Mvc.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Optimization.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.Razor.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Deployment.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\System.Web.WebPages.Razor.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.pdb
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.Services.WebApi.pdb
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.Services.WebApi.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.XpsRendering.pdb
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.Reporting.XpsRendering.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.ReportViewer.Mvc.pdb
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Telerik.ReportViewer.Mvc.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Antlr3.Runtime.pdb
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\EntityFramework.SqlServer.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\bg-BG\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\cs-CZ\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\da-DK\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\de-DE\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es-ES\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\fr-CA\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\fr-FR\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\he-IL\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\it-IT\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\nl-NL\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\pl-PL\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\pt-BR\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\pt-PT\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\ro-RO\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\ru-RU\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\sk-SK\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\sv-SE\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\tr-TR\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\uk-UA\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\zh-CN\Kendo.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Helpers.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Mvc.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Optimization.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.Razor.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.WebPages.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\EntityFramework.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\EntityFramework.SqlServer.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.AspNet.Identity.Owin.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Host.SystemWeb.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.Facebook.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.Google.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\obj\Release\SistemaEvaluacionDesempeno.csprojResolveAssemblyReference.cache
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\obj\Release\SistemaEvaluacionDesempeno.dll
+C:\Users\eorami\Source\Workspaces\Evaluacion\SistemaEvaluacionDesempeno\SistemaEvaluacionDesempeno\obj\Release\SistemaEvaluacionDesempeno.pdb
