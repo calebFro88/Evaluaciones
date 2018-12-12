@@ -154,7 +154,7 @@
     //output += 'isEdge: ' + isEdge + '<br>';
     //document.body.innerHTML = output;
 
-    if(!isChrome && !isFirefox){
+    if ((!isChrome || !isFirefox) && isEdge == true) {
         location.href = "@Url.Action("Error", "Home")";
         //alert("Correcto");
         //console.log("Navegador Chrome");
