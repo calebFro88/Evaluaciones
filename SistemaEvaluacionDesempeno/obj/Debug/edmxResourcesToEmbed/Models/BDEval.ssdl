@@ -385,6 +385,7 @@ warning 6002: The table/view 'Evaluacion.dbo.Emp' does not have a primary key de
     <Parameter Name="NoEmp" Type="int" Mode="In" />
     <Parameter Name="Comentarios" Type="varchar(max)" Mode="In" />
     <Parameter Name="TipoEmpleado" Type="varchar" Mode="In" />
+    <Parameter Name="idEv" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_AprobarObj" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NoEmp" Type="int" Mode="In" />
@@ -395,6 +396,7 @@ warning 6002: The table/view 'Evaluacion.dbo.Emp' does not have a primary key de
   </Function>
   <Function Name="sp_ApruebaRH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="numero" Type="int" Mode="In" />
+    <Parameter Name="idEvaluacion" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_AsignarCorreoEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NombreUsuario" Type="varchar(max)" Mode="In" />
@@ -414,6 +416,7 @@ warning 6002: The table/view 'Evaluacion.dbo.Emp' does not have a primary key de
     <Parameter Name="TipoDeCompetencia" Type="varchar" Mode="In" />
     <Parameter Name="NumEmp" Type="int" Mode="In" />
     <Parameter Name="IDPeriodo" Type="int" Mode="In" />
+    <Parameter Name="IDeva" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_CargarDatosReporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NumEmp" Type="int" Mode="In" />
@@ -474,10 +477,12 @@ warning 6002: The table/view 'Evaluacion.dbo.Emp' does not have a primary key de
   <Function Name="sp_EstatusTotalEvaluacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NumEmp" Type="int" Mode="In" />
     <Parameter Name="IDPeriodo" Type="int" Mode="In" />
+    <Parameter Name="idEvaluacion" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_EstatusTotalEvaluacionJefe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NumEmp" Type="int" Mode="In" />
     <Parameter Name="IDPeriodo" Type="int" Mode="In" />
+    <Parameter Name="idReEvaluacion2" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_EvaluarObjetivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IDObjetivo" Type="int" Mode="In" />
@@ -494,6 +499,7 @@ warning 6002: The table/view 'Evaluacion.dbo.Emp' does not have a primary key de
   </Function>
   <Function Name="sp_FinalizaPM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="numero" Type="int" Mode="In" />
+    <Parameter Name="idEv" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_FinEvaluacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="numero" Type="int" Mode="In" />
@@ -533,6 +539,7 @@ warning 6002: The table/view 'Evaluacion.dbo.Emp' does not have a primary key de
     <Parameter Name="IDPeriodo" Type="int" Mode="In" />
     <Parameter Name="No_Evaluador" Type="int" Mode="In" />
     <Parameter Name="comentarios" Type="varchar(max)" Mode="In" />
+    <Parameter Name="idReEvaluacion" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_GuardarYTerminarObjetivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IDReObjetivo" Type="int" Mode="In" />

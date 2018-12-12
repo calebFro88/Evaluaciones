@@ -392,6 +392,7 @@
         var validarClick = 0;
         var TipoEmp = "@TipoEmp.ToString()";
         var Operacion = '@Operacion.ToString()';
+        var idreEvaluacion = @Session["ID_ReEvaluacion"];
 
         $(document).ready(function ()
         {
@@ -663,7 +664,7 @@
             $.ajax({
                 type: "POST",
                 async: false,
-                data: "{TipoDeCompetencia: '" + TipoDeComp + "', No_emp: " + NumeroEmpleado + ", IDPeriodo: " + Periodo + "}",
+                data: "{TipoDeCompetencia: '" + TipoDeComp + "', No_emp: " + NumeroEmpleado + ", IDPeriodo: " + Periodo + ", idEvaluacion: "+idreEvaluacion+"}",
                 url: "@Url.Action("CargarCompetenciasGuardadas", "Competencias")",
                 contentType: "application/json; charset=utf-8;",
                 success: function(datos){
@@ -1195,7 +1196,7 @@
                     $.ajax({
                 type: "post",
             async: false,
-            data: "{ No_Emp: " + NumeroEmpleado + ", Comentario: '" + coment + "', No_Evaluador: " + No_Evaluador + "}",
+            data: "{ No_Emp: " + NumeroEmpleado + ", Comentario: '" + coment + "', No_Evaluador: " + No_Evaluador + ", idEvaluacion: "+idreEvaluacion+"}",
             url: "@Url.Action("revision", "competencias")",
             contentType: "application/json; charset=utf-8;",
             success: function (datos) {
@@ -1262,7 +1263,7 @@
                         $.ajax({
                     type: "post",
                 async: false,
-                data: "{ No_Emp: " + NumeroEmpleado + ", Comentario: '" + coment + "',Evaluador: '"+evaluador+"'}",
+                data: "{ No_Emp: " + NumeroEmpleado + ", Comentario: '" + coment + "',Evaluador: '"+evaluador+"', idEvaluacion: "+idreEvaluacion+"}",
                 url: "@Url.Action("rechaza", "competencias")",
                 contentType: "application/json; charset=utf-8;",
                 success: function (datos) {
@@ -1305,7 +1306,7 @@
                       $.ajax({
                           type: "POST",
                           async: false,
-                          data: "{ No_emp: " + NumeroEmpleado + ", Periodo: " + Periodo +", No_Evaluador: '" + Evaluador + "'}",
+                          data: "{ No_emp: " + NumeroEmpleado + ", Periodo: " + Periodo +", No_Evaluador: '" + Evaluador + "', idEvaluacion: '"+idreEvaluacion+"'}",
                           url: "@Url.Action("GuardarYEnviarMiEvaluacionParaRevision", "Competencias")",
                           contentType: "application/json; charset=utf-8;",
                           success: function (datos) {

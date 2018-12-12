@@ -435,6 +435,7 @@
         var strCalificacion = [];
         var estatusTotal=0;
         var cantTabs = 4 + @tabEmp;
+        var idreEvaluacion = @Session["ID_ReEvaluacion"];
 
         $(document).ready(function ()
         {
@@ -449,11 +450,6 @@
 
         });
 
-        //$("#btnPDF").click(function(e){
-        //    document.getElementsByName("comentarioAprob").value = "";
-        //    $("#pdf").modal("toggle");
-        //     PDFObject.embed("//mxnl-fs01/siteexe/CalebAlamos/Expedientes/3333.pdf", "#visor");
-        // });
 
         var c = 0;//Para mostrar una sola vez el mensaje de inicio de evaluacion...
         function getEstatusGeneralDeCompetencia()
@@ -463,7 +459,7 @@
             $.ajax({
                 type: "POST",
                 async: false,
-                data: "{ No_Emp: '" + NumeroEmpleado + "', Periodo: " + Periodo +" }",
+                data: "{ No_Emp: '" + NumeroEmpleado + "', Periodo: " + Periodo +",idEvaluacion: "+idreEvaluacion+" }",
                 url: "@Url.Action("getEstadoTotalDeCompetencias", "Competencias")",
                 contentType: "application/json; charset=utf-8;",
                 success: function (datos) {
@@ -559,6 +555,8 @@
 
         function getCargarDatosCompentenciasGuardadas(TipoCompetencia)
         {
+           
+
             var opcion = TipoDeComp;
             var TipoDeComp;
             if(TipoCompetencia == 'pgoals')
@@ -575,7 +573,7 @@
             $.ajax({
                 type: "POST",
                 async: false,
-                data: "{TipoDeCompetencia: '" + TipoDeComp + "', No_emp: " + NumeroEmpleado + ", IDPeriodo: " + Periodo + "}",
+                data: "{TipoDeCompetencia: '" + TipoDeComp + "', No_emp: " + NumeroEmpleado + ", IDPeriodo: " + Periodo + ", idEvaluacion: "+idreEvaluacion+"}",
                 url: "@Url.Action("CargarCompetenciasGuardadas", "Competencias")",
                 contentType: "application/json; charset=utf-8;",
                 success: function(datos){
@@ -588,30 +586,30 @@
                             {
 
                                 $("#txtComentarios_" + TipoCompetencia + "_" + IDCompetencias[i]).val(datos[i].Comentarios);
-                              
+
                                 $("#califEmp_" + datos[i].ID_PlantillaEvaluacionExcempt + "_" + (value)).data('kendoDropDownList').value(datos[i].ID_CalificacionDeRendimiento);
-                               
+
 
                             }
                             else if(TipoCompetencia == 'pgoals' && (i == 2 || i == 3) || TipoCompetencia == 'Extras' )
                             {
                               $("#txtComentarios_" + TipoCompetencia + "_" + IDCompetencias[i]).val(datos[i].Comentarios);
                             }
-                      
+
                             else{
                                 $("#txtComentarios_" + TipoCompetencia + "_" + IDCompetencias[i]).val(datos[i].Comentarios);
                                 $("#califEmp_" + datos[i].ID_PlantillaEvaluacionExcempt + "_" + (value)).data('kendoDropDownList').value(datos[i].ID_CalificacionDeRendimiento);
                             }
-                           
-                         
-                              
+
+
+
 
                             if(datos[i].Comentarios != '')
                             {
                                 cantidadCompCompletas++;
                             }
                         }
-                      
+
                     }
                 },
                 error: function(Error){
@@ -632,7 +630,7 @@
 
             if (res != false)
             {
-                //console.log(res);
+               console.log(res);
                 var tr;
                 for (var i = 0; i < res.length; i++)
                 {
@@ -698,9 +696,9 @@
                     //        }
                     //    });
                     }
-                    
 
-                   
+
+
                 }
                 getCargarDatosCompentenciasGuardadas("pgoals");
                 validarSiEvaluacionEstaCompleta("pgoals", res);
@@ -1030,7 +1028,7 @@
                 {
                     opcion.push(parseInt($("#califEmp_" + IDCompetencias[i] + "_" + (i+1)).val()));
                 }
-                   
+
             }
 
             var cont = 0;
@@ -1115,7 +1113,7 @@
                         $.ajax({
                 type: "POST",
             async: false,
-            data: "{ No_emp: " + NumeroEmpleado + ", Periodo: " + Periodo + ", No_Evaluador: " + @Session["No_Empleado"] + "}",
+            data: "{ No_emp: " + NumeroEmpleado + ", Periodo: " + Periodo + ", No_Evaluador: " + @Session["No_Empleado"] + ", idEvaluacion: "+@Session["ID_ReEvaluacion"]+"}",
             url: "@Url.Action("GuardarYEnviarMiEvaluacionParaRevision", "Competencias")",
             contentType: "application/json; charset=utf-8;",
             success: function (datos) {

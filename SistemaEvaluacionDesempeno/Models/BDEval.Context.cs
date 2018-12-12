@@ -83,7 +83,7 @@ namespace SistemaEvaluacionDesempeno.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_CargaJefes");
         }
     
-        public virtual ObjectResult<sp_CargarCompetenciasGuardadas_Result> sp_CargarCompetenciasGuardadas(string tipoDeCompetencia, Nullable<int> numEmp, Nullable<int> iDPeriodo)
+        public virtual ObjectResult<sp_CargarCompetenciasGuardadas_Result> sp_CargarCompetenciasGuardadas(string tipoDeCompetencia, Nullable<int> numEmp, Nullable<int> iDPeriodo, Nullable<int> iDeva)
         {
             var tipoDeCompetenciaParameter = tipoDeCompetencia != null ?
                 new ObjectParameter("TipoDeCompetencia", tipoDeCompetencia) :
@@ -97,7 +97,11 @@ namespace SistemaEvaluacionDesempeno.Models
                 new ObjectParameter("IDPeriodo", iDPeriodo) :
                 new ObjectParameter("IDPeriodo", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CargarCompetenciasGuardadas_Result>("sp_CargarCompetenciasGuardadas", tipoDeCompetenciaParameter, numEmpParameter, iDPeriodoParameter);
+            var iDevaParameter = iDeva.HasValue ?
+                new ObjectParameter("IDeva", iDeva) :
+                new ObjectParameter("IDeva", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CargarCompetenciasGuardadas_Result>("sp_CargarCompetenciasGuardadas", tipoDeCompetenciaParameter, numEmpParameter, iDPeriodoParameter, iDevaParameter);
         }
     
         public virtual ObjectResult<sp_CargarDatosReporte_Result> sp_CargarDatosReporte(Nullable<int> numEmp)
@@ -274,7 +278,7 @@ namespace SistemaEvaluacionDesempeno.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EliminarMiObjetivo", numEmpParameter, descObjetivoParameter, intPesoParameter, periodoParameter);
         }
     
-        public virtual ObjectResult<Nullable<double>> sp_EstatusTotalEvaluacion(Nullable<int> numEmp, Nullable<int> iDPeriodo)
+        public virtual ObjectResult<Nullable<double>> sp_EstatusTotalEvaluacion(Nullable<int> numEmp, Nullable<int> iDPeriodo, Nullable<int> idEvaluacion)
         {
             var numEmpParameter = numEmp.HasValue ?
                 new ObjectParameter("NumEmp", numEmp) :
@@ -284,10 +288,14 @@ namespace SistemaEvaluacionDesempeno.Models
                 new ObjectParameter("IDPeriodo", iDPeriodo) :
                 new ObjectParameter("IDPeriodo", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<double>>("sp_EstatusTotalEvaluacion", numEmpParameter, iDPeriodoParameter);
+            var idEvaluacionParameter = idEvaluacion.HasValue ?
+                new ObjectParameter("idEvaluacion", idEvaluacion) :
+                new ObjectParameter("idEvaluacion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<double>>("sp_EstatusTotalEvaluacion", numEmpParameter, iDPeriodoParameter, idEvaluacionParameter);
         }
     
-        public virtual ObjectResult<Nullable<double>> sp_EstatusTotalEvaluacionJefe(Nullable<int> numEmp, Nullable<int> iDPeriodo)
+        public virtual ObjectResult<Nullable<double>> sp_EstatusTotalEvaluacionJefe(Nullable<int> numEmp, Nullable<int> iDPeriodo, Nullable<int> idReEvaluacion2)
         {
             var numEmpParameter = numEmp.HasValue ?
                 new ObjectParameter("NumEmp", numEmp) :
@@ -297,7 +305,11 @@ namespace SistemaEvaluacionDesempeno.Models
                 new ObjectParameter("IDPeriodo", iDPeriodo) :
                 new ObjectParameter("IDPeriodo", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<double>>("sp_EstatusTotalEvaluacionJefe", numEmpParameter, iDPeriodoParameter);
+            var idReEvaluacion2Parameter = idReEvaluacion2.HasValue ?
+                new ObjectParameter("idReEvaluacion2", idReEvaluacion2) :
+                new ObjectParameter("idReEvaluacion2", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<double>>("sp_EstatusTotalEvaluacionJefe", numEmpParameter, iDPeriodoParameter, idReEvaluacion2Parameter);
         }
     
         public virtual ObjectResult<string> sp_EvaluarObjetivo(Nullable<int> iDObjetivo, Nullable<int> numeroEmpleado, Nullable<int> iDPeriodo, string comentarios, Nullable<double> calificacion)
@@ -334,13 +346,17 @@ namespace SistemaEvaluacionDesempeno.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EvImpresa", numeroParameter);
         }
     
-        public virtual int sp_FinalizaPM(Nullable<int> numero)
+        public virtual int sp_FinalizaPM(Nullable<int> numero, Nullable<int> idEv)
         {
             var numeroParameter = numero.HasValue ?
                 new ObjectParameter("numero", numero) :
                 new ObjectParameter("numero", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_FinalizaPM", numeroParameter);
+            var idEvParameter = idEv.HasValue ?
+                new ObjectParameter("idEv", idEv) :
+                new ObjectParameter("idEv", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_FinalizaPM", numeroParameter, idEvParameter);
         }
     
         public virtual int sp_FinEvaluacion(Nullable<int> numero)
@@ -385,7 +401,7 @@ namespace SistemaEvaluacionDesempeno.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_GuardarEstadoDeCompetencia", iDCompetenciaParameter, noEmpParameter, periodoParameter, comentariosParameter, calificacionDeRendimientoParameter, userNameParameter, iDReEvaluacionParameter);
         }
     
-        public virtual int sp_GuardarYTerminarEvaluacion(Nullable<int> no_Emp, Nullable<int> iDPeriodo, Nullable<int> no_Evaluador, string comentarios)
+        public virtual int sp_GuardarYTerminarEvaluacion(Nullable<int> no_Emp, Nullable<int> iDPeriodo, Nullable<int> no_Evaluador, string comentarios, Nullable<int> idReEvaluacion)
         {
             var no_EmpParameter = no_Emp.HasValue ?
                 new ObjectParameter("No_Emp", no_Emp) :
@@ -403,7 +419,11 @@ namespace SistemaEvaluacionDesempeno.Models
                 new ObjectParameter("comentarios", comentarios) :
                 new ObjectParameter("comentarios", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_GuardarYTerminarEvaluacion", no_EmpParameter, iDPeriodoParameter, no_EvaluadorParameter, comentariosParameter);
+            var idReEvaluacionParameter = idReEvaluacion.HasValue ?
+                new ObjectParameter("idReEvaluacion", idReEvaluacion) :
+                new ObjectParameter("idReEvaluacion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_GuardarYTerminarEvaluacion", no_EmpParameter, iDPeriodoParameter, no_EvaluadorParameter, comentariosParameter, idReEvaluacionParameter);
         }
     
         public virtual ObjectResult<sp_ListarPendienteDeObjetivos_Result> sp_ListarPendienteDeObjetivos()
@@ -651,13 +671,17 @@ namespace SistemaEvaluacionDesempeno.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ApruebaPM", numeroParameter);
         }
     
-        public virtual int sp_ApruebaRH(Nullable<int> numero)
+        public virtual int sp_ApruebaRH(Nullable<int> numero, Nullable<int> idEvaluacion)
         {
             var numeroParameter = numero.HasValue ?
                 new ObjectParameter("numero", numero) :
                 new ObjectParameter("numero", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ApruebaRH", numeroParameter);
+            var idEvaluacionParameter = idEvaluacion.HasValue ?
+                new ObjectParameter("idEvaluacion", idEvaluacion) :
+                new ObjectParameter("idEvaluacion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ApruebaRH", numeroParameter, idEvaluacionParameter);
         }
     
         public virtual ObjectResult<string> sp_Carga_ValorReminders()
@@ -687,7 +711,7 @@ namespace SistemaEvaluacionDesempeno.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ActualizarEmpleadosAD");
         }
     
-        public virtual int sp_AprobarEv(Nullable<int> noEmp, string comentarios, string tipoEmpleado)
+        public virtual int sp_AprobarEv(Nullable<int> noEmp, string comentarios, string tipoEmpleado, Nullable<int> idEv)
         {
             var noEmpParameter = noEmp.HasValue ?
                 new ObjectParameter("NoEmp", noEmp) :
@@ -701,7 +725,11 @@ namespace SistemaEvaluacionDesempeno.Models
                 new ObjectParameter("TipoEmpleado", tipoEmpleado) :
                 new ObjectParameter("TipoEmpleado", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_AprobarEv", noEmpParameter, comentariosParameter, tipoEmpleadoParameter);
+            var idEvParameter = idEv.HasValue ?
+                new ObjectParameter("idEv", idEv) :
+                new ObjectParameter("idEv", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_AprobarEv", noEmpParameter, comentariosParameter, tipoEmpleadoParameter, idEvParameter);
         }
     
         public virtual int sp_RetroalimentarEv(Nullable<int> noEmp, string comentarios, string tipoEmpleado, string evaluador)

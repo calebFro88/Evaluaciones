@@ -295,6 +295,7 @@
       <Parameter Name="TipoDeCompetencia" Mode="In" Type="String" />
       <Parameter Name="NumEmp" Mode="In" Type="Int32" />
       <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+      <Parameter Name="IDeva" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_CargarDatosReporte" ReturnType="Collection(EvaluacionModel.sp_CargarDatosReporte_Result)">
       <Parameter Name="NumEmp" Mode="In" Type="Int32" />
@@ -349,10 +350,12 @@
     <FunctionImport Name="sp_EstatusTotalEvaluacion" ReturnType="Collection(Double)">
       <Parameter Name="NumEmp" Mode="In" Type="Int32" />
       <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+      <Parameter Name="idEvaluacion" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_EstatusTotalEvaluacionJefe" ReturnType="Collection(Double)">
       <Parameter Name="NumEmp" Mode="In" Type="Int32" />
       <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+      <Parameter Name="idReEvaluacion2" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_EvaluarObjetivo" ReturnType="Collection(String)">
       <Parameter Name="IDObjetivo" Mode="In" Type="Int32" />
@@ -366,6 +369,7 @@
     </FunctionImport>
     <FunctionImport Name="sp_FinalizaPM">
       <Parameter Name="numero" Mode="In" Type="Int32" />
+      <Parameter Name="idEv" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_FinEvaluacion">
       <Parameter Name="numero" Mode="In" Type="Int32" />
@@ -384,6 +388,7 @@
       <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
       <Parameter Name="No_Evaluador" Mode="In" Type="Int32" />
       <Parameter Name="comentarios" Mode="In" Type="String" />
+      <Parameter Name="idReEvaluacion" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_ListarPendienteDeObjetivos" ReturnType="Collection(EvaluacionModel.sp_ListarPendienteDeObjetivos_Result)" />
     <FunctionImport Name="sp_ListaSendReminders" ReturnType="Collection(EvaluacionModel.sp_ListaSendReminders_Result)" />
@@ -462,6 +467,7 @@
     </FunctionImport>
     <FunctionImport Name="sp_ApruebaRH">
       <Parameter Name="numero" Mode="In" Type="Int32" />
+      <Parameter Name="idEvaluacion" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_Carga_ValorReminders" ReturnType="Collection(String)" />
     <FunctionImport Name="sp_AsignarCorreoEmpleado">
@@ -474,6 +480,7 @@
       <Parameter Name="NoEmp" Mode="In" Type="Int32" />
       <Parameter Name="Comentarios" Mode="In" Type="String" />
       <Parameter Name="TipoEmpleado" Mode="In" Type="String" />
+      <Parameter Name="idEv" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_RetroalimentarEv">
       <Parameter Name="NoEmp" Mode="In" Type="Int32" />

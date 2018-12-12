@@ -33,10 +33,12 @@ namespace SistemaEvaluacionDesempeno.Controllers
 
 
         [HttpPost]
-        public JsonResult CargarCompetenciasGuardadas(string TipoDeCompetencia, int No_Emp, int IDPeriodo)
+        public JsonResult CargarCompetenciasGuardadas(string TipoDeCompetencia, int No_Emp, int IDPeriodo, int idEvaluacion)
         {
+            //aqui debe de ir el idEvaluacion 
+
             Session["No_EmpleadoPDF"] = No_Emp;
-            var precargarMisCompetencias = BDEv.sp_CargarCompetenciasGuardadas(TipoDeCompetencia, No_Emp, IDPeriodo).OrderBy(m=>m.OrdenPlantilla).ToList();
+            var precargarMisCompetencias = BDEv.sp_CargarCompetenciasGuardadas(TipoDeCompetencia, No_Emp, IDPeriodo, idEvaluacion).OrderBy(m=>m.OrdenPlantilla).ToList();
             if (precargarMisCompetencias.Count()>=1)
                 return Json(precargarMisCompetencias);
             else
@@ -52,7 +54,7 @@ namespace SistemaEvaluacionDesempeno.Controllers
             {
                 List<string> lstCalificacion = new List<string>();
                 string userName = Session["user"].ToString();
-                Session["ID_ReEvaluacion"] = (from tbl in BDEv.Re_Evaluacion where tbl.No_Emp == No_emp select tbl.ID_ReEvaluacion).ToList().Last();
+                //Session["ID_ReEvaluacion"] = (from tbl in BDEv.Re_Evaluacion where tbl.No_Emp == No_emp select tbl.ID_ReEvaluacion).ToList().Last();
                 int IDReEvaluacion = int.Parse(Session["ID_ReEvaluacion"].ToString());
 
                 for (int i = 0; i < Calificacion.Count(); i++)
@@ -96,16 +98,17 @@ namespace SistemaEvaluacionDesempeno.Controllers
 
         //funcion para cargar la barra de estatus total.
         [HttpPost]
-        public JsonResult getEstadoTotalDeCompetencias(int No_emp, int Periodo)
+        public JsonResult getEstadoTotalDeCompetencias(int No_emp, int Periodo, int idEvaluacion)
         {
-            var query = BDEv.sp_EstatusTotalEvaluacion(No_emp, Periodo);
+            var query = BDEv.sp_EstatusTotalEvaluacion(No_emp, Periodo, idEvaluacion);
             return Json(query);
         }
 
         [HttpPost]
         public JsonResult getEstadoTotalDeCompetenciasJefe(int No_emp, int Periodo)//Cuando el jefe revisa (para cargar la barra durante la evaluacion del empleado por parte del jefe).
         {
-            var query = BDEv.sp_EstatusTotalEvaluacionJefe(No_emp, Periodo);
+            int idEv = int.Parse(Session["ID_ReEvaluacion"].ToString());
+            var query = BDEv.sp_EstatusTotalEvaluacionJefe(No_emp, Periodo, idEv);
             return Json(query);
         }
 
@@ -117,17 +120,19 @@ namespace SistemaEvaluacionDesempeno.Controllers
         }
 
         [HttpPost]
-        public JsonResult GuardarYEnviarMiEvaluacionParaRevision(int No_emp, int Periodo,string No_Evaluador)
+        public JsonResult GuardarYEnviarMiEvaluacionParaRevision(int No_emp, int Periodo,string No_Evaluador, string idEvaluacion)
         {
-            var query = BDEv.sp_GuardarYTerminarEvaluacion(No_emp, Periodo, int.Parse(No_Evaluador),"");
-            var query2 = BDEv.sp_ApruebaRH(No_emp);
+            int idEv = int.Parse(idEvaluacion);
+             var query = BDEv.sp_GuardarYTerminarEvaluacion(No_emp, Periodo, int.Parse(No_Evaluador),"",idEv);
+            var query2 = BDEv.sp_ApruebaRH(No_emp, idEv);
             return Json(true);
+            //comentario de cambio
         }
 
 
         //Revisar el id del periodo...
         [HttpPost]
-        public ActionResult CargarEvaluacionPendienteDeAprobacion(int No_Emp, string Operacion)
+        public ActionResult CargarEvaluacionPendienteDeAprobacion(int No_Emp, string Operacion, int idEvaluacion)
         {
             //Aqui se cargan los datos del empleado al que se revisara la ev.
             try
@@ -160,8 +165,8 @@ namespace SistemaEvaluacionDesempeno.Controllers
 
                 //    Session["ID_ReEvaluacion"] = (from tbl in BDEv.Re_Evaluacion where tbl.No_Emp == No_Emp select tbl.ID_ReEvaluacion).ToList().Last();
                 //}
-                
-                Session["ID_ReEvaluacion"] = (from tbl in BDEv.Re_Evaluacion where tbl.No_Emp == No_Emp select tbl.ID_ReEvaluacion).ToList().Last();
+
+                Session["ID_ReEvaluacion"] = idEvaluacion.ToString(); //(from tbl in BDEv.Re_Evaluacion where tbl.No_Emp == No_Emp select tbl.ID_ReEvaluacion).ToList().Last();
                 return Json(TipoEmpleado);
             }
             catch (Exception e)
@@ -194,25 +199,25 @@ namespace SistemaEvaluacionDesempeno.Controllers
 
         //Aprobacion De Evaluacion Por Parte De RH.
         [HttpPost]
-        public JsonResult revision(int No_Emp, string Comentario, int No_Evaluador)
+        public JsonResult revision(int No_Emp, string Comentario, int No_Evaluador, int idEvaluacion)
         {
             int Periodo = int.Parse(Session["IDPeriodo"].ToString());
             string TipoEmpleado = Session["TipoEmpleado"].ToString();
             
             if (TipoEmpleado == "PlantManager")
             {
-               var query = BDEv.sp_GuardarYTerminarEvaluacion(No_Emp, Periodo, No_Evaluador, Comentario);
-                var qu = BDEv.sp_FinalizaPM(No_Emp);
+               var query = BDEv.sp_GuardarYTerminarEvaluacion(No_Emp, Periodo, No_Evaluador, Comentario, idEvaluacion);
+                var qu = BDEv.sp_FinalizaPM(No_Emp, idEvaluacion);
             }
             
             else
             {
-               var  query = BDEv.sp_GuardarYTerminarEvaluacion(No_Emp, Periodo, No_Evaluador, Comentario);
-                //var query2 = BDEv.sp_ApruebaRH(No_Emp);
-                var que = BDEv.sp_FinalizaPM(No_Emp);
+               var  query = BDEv.sp_GuardarYTerminarEvaluacion(No_Emp, Periodo, No_Evaluador, Comentario, idEvaluacion);
+               // var query2 = BDEv.sp_ApruebaRH(No_Emp);
+                var que = BDEv.sp_FinalizaPM(No_Emp, idEvaluacion);
             }
 
-            BDEv.sp_AprobarEv(No_Emp, Comentario, TipoEmpleado);
+            BDEv.sp_AprobarEv(No_Emp, Comentario, TipoEmpleado, idEvaluacion);
            // var query = BDEv.sp_GuardarYTerminarEvaluacion(No_Emp, Periodo, No_Evaluador, Comentario);
             //var query = BDEv.sp_validaRecursos(No_Emp, Comentario);
             
@@ -260,8 +265,9 @@ namespace SistemaEvaluacionDesempeno.Controllers
 
 
         [HttpPost]
-        public JsonResult MarcarComoImpresa(int No_Emp)
+        public JsonResult MarcarComoImpresa(int No_Emp, string idEvaluacion)
         {
+            int idEv = int.Parse(idEvaluacion);
             int Periodo = int.Parse(Session["IDPeriodo"].ToString());
             Session["EmpPendImp"] = No_Emp;
             Session["EmpReporte"] = No_Emp;
@@ -272,7 +278,7 @@ namespace SistemaEvaluacionDesempeno.Controllers
 
 
             BDEv.sp_EvImpresa(No_Emp);//Reminder
-            BDEv.sp_GuardarYTerminarEvaluacion(No_Emp, Periodo,0,"");//Estado
+            BDEv.sp_GuardarYTerminarEvaluacion(No_Emp, Periodo,0,"", idEv);//Estado
             string TipoEmpleado = (from tbl in BDEv.Emp where tbl.No_Emp == No_Emp select tbl.TipoEmpleado).ToList()[0].ToString();
             return Json(TipoEmpleado);
         }
@@ -300,11 +306,12 @@ namespace SistemaEvaluacionDesempeno.Controllers
         }
 
         [HttpPost]
-        public JsonResult FinalizarEvaluacion(int No_Emp)
+        public JsonResult FinalizarEvaluacion(int No_Emp, string idEvaluacion)
         {
+            int idEv = int.Parse(idEvaluacion);
             int Periodo = int.Parse(Session["IDPeriodo"].ToString());
             var query = BDEv.sp_FinEvaluacion(No_Emp);
-            var query2 = BDEv.sp_GuardarYTerminarEvaluacion(No_Emp, Periodo,47,"");
+            var query2 = BDEv.sp_GuardarYTerminarEvaluacion(No_Emp, Periodo,47,"", idEv);
             return Json(true);
         }
 

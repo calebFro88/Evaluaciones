@@ -221,6 +221,7 @@
     <script type="text/javascript">
     var NumeroEmpleado = @Session["NumEmpleadoConEvPendiente"];
     var Periodo =  @Session["IDPeriodo"];
+    var idreEvaluacion = @Session["ID_ReEvaluacion"];
 
     var IDCompetencias = [];
     var strComentarios = [];
@@ -238,12 +239,13 @@
 
     function getEstatusGeneralDeCompetencia()
     {
+       // var idEva = idreEvaluacion;
         $("#EstadoDeCompetenciasGeneral").removeClass();
-
+        var idreEvaluacion2 = @Session["ID_ReEvaluacion"];
         $.ajax({
             type: "POST",
             async: false,
-            data: "{ No_Emp: '" + NumeroEmpleado + "', Periodo: " + Periodo +" }",
+            data: "{ No_Emp: '" + NumeroEmpleado + "', Periodo: " + Periodo +", idEvaluacion: "+idreEvaluacion2+" }",
             url: "@Url.Action("getEstadoTotalDeCompetencias", "Competencias")",
                 contentType: "application/json; charset=utf-8;",
                 success: function (datos) {
@@ -286,7 +288,7 @@
         function getCargarPlantilla(competencieType)
         {
             var arrayCompetencia;
-
+            var idEv = idreEvaluacion;
             $.ajax({
                 type: "POST",
                 async: false,
@@ -308,6 +310,7 @@
     function getCargarDatosCompentenciasGuardadas(TipoCompetencia)
     {
         var opcion = TipoCompetencia;
+        var idEv  = idreEvaluacion;
 
         var TipoDeComp;
         if(TipoCompetencia == 'Rend')
@@ -315,11 +318,12 @@
         if(TipoCompetencia == 'Extras')
             TipoDeComp = 'EXTRAS';
 
+        //aqui deben de cargarse las competencias guardadas dependiendo de ID de la evaluacion.
         opcion = TipoCompetencia;
         $.ajax({
             type: "POST",
             async: false,
-            data: "{TipoDeCompetencia: '" + TipoDeComp + "', No_emp: " + NumeroEmpleado + ", IDPeriodo: " + Periodo + "}",
+            data: "{TipoDeCompetencia: '" + TipoDeComp + "', No_emp: " + NumeroEmpleado + ", IDPeriodo: " + Periodo + ", idEvaluacion: "+idreEvaluacion+"}",
             url: "@Url.Action("CargarCompetenciasGuardadas", "Competencias")",
             contentType: "application/json; charset=utf-8;",
             success: function(datos){
@@ -328,7 +332,7 @@
                     console.log(datos);
                     for (var i = 0; i < IDCompetencias.length; i++) {
                         $("#txtComentarios_" + opcion + "_" + IDCompetencias[i]).val(datos[i].ComentariosJefe);
-                        
+
                         if(TipoCompetencia != "Extras")
                         $("#califEmp_" + datos[i].ID_PlantillaEvaluacionExcempt + "_" + (i+1)).data('kendoDropDownList').value(datos[i].CalificacionJefe);
 
@@ -418,13 +422,13 @@
             getCargarDatosCompentenciasGuardadas("Extras");
         }
     });
-        
+
 
       $("#btnGuardarYterminarEv").click(function(e){
           document.getElementsByName("comentarioAprob").value = "";
           $("#mensajes").modal("toggle");
       });
-      
+
       $("#btnRechazar").click(function(e){
           document.getElementsByName("comentarioRech").value = "";
           $("#RechazarEv").modal("toggle");
@@ -433,7 +437,7 @@
       function guardarYEnviarEvaluacion(txtComentariosRh)
       {
           var coment;
-
+          var idreEvaluacion = @Session["ID_ReEvaluacion"];
           if(txtComentariosRh.value == "")
               coment = '';
           else
@@ -447,11 +451,11 @@
                       dangerMode: true,
                   }).then((willDelete) => {
                       if (willDelete)
-                      {                         
+                      {
                                       $.ajax({
                                           type: "post",
                                       async: false,
-                                      data: "{ No_Emp: " + NumeroEmpleado + ", Comentario: '" + coment + "', No_Evaluador:" +  @Session["No_Empleado"] +"}",
+                                      data: "{ No_Emp: " + NumeroEmpleado + ", Comentario: '" + coment + "', No_Evaluador:" +  @Session["No_Empleado"] +", idEvaluacion: "+idreEvaluacion+"}",
                                       url: "@Url.Action("revision", "competencias")",
                                       contentType: "application/json; charset=utf-8;",
                                       success: function (datos) {
@@ -468,9 +472,10 @@
         }
 
 
-        
+
         function RechazarEvaluacion(txtComentariosRhRech)
         {
+            var idreEvaluacion = @Session["ID_ReEvaluacion"];
             var evaluador =@Session["No_Empleado"].ToString();
             //$("#mensajes").modal("toggle");
             var coment;
@@ -488,11 +493,11 @@
                     dangerMode: true,
                 }).then((willDelete) => {
                     if (willDelete)
-                    { 
+                    {
                             $.ajax({
                                 type: "post",
                                 async: false,
-                                data: "{ No_Emp: " + NumeroEmpleado + ", Comentario: '" + coment + "',Evaluador: '"+evaluador+"'}",
+                                data: "{ No_Emp: " + NumeroEmpleado + ", Comentario: '" + coment + "',Evaluador: '"+evaluador+"', idEvaluacion: "+idreEvaluacion+"}",
                                 url: "@Url.Action("rechaza", "competencias")",
                                 contentType: "application/json; charset=utf-8;",
                                 success: function (datos) {

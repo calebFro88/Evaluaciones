@@ -169,13 +169,14 @@
             </div>
 
         </div>
-    </div>
-</div>
+   
+
 
 @section scripts{
     <script type="text/javascript">
         var NumeroEmpleado = @Session["NumEmpleadoConEvPendiente"];
         var Periodo =  @Session["IDPeriodo"];
+        var idEvaluacion  =  @Session["ID_ReEvaluacion"];
 
         var IDCompetencias = [];
         var strComentarios = [];
@@ -298,7 +299,7 @@
             $.ajax({
                 type: "POST",
                 async: false,
-                data: "{ No_Emp: '" + NumeroEmpleado + "', Periodo: " + Periodo +" }",
+                data: "{ No_Emp: '" + NumeroEmpleado + "', Periodo: " + Periodo +", idEvaluacion: "+idEvaluacion+" }",
                 url: "@Url.Action("getEstadoTotalDeCompetencias", "Competencias")",
                 contentType: "application/json; charset=utf-8;",
                 success: function (datos) {
@@ -363,6 +364,7 @@
         function getCargarDatosCompentenciasGuardadas(TipoCompetencia)
         {
             var opcion = TipoCompetencia;
+            var idRev = idEvaluacion;
 
             var TipoDeComp;
             if(TipoCompetencia == 'Rend')
@@ -374,7 +376,7 @@
             $.ajax({
                 type: "POST",
                 async: false,
-                data: "{TipoDeCompetencia: '" + TipoDeComp + "', No_emp: " + NumeroEmpleado + ", IDPeriodo: " + Periodo + "}",
+                data: "{TipoDeCompetencia: '" + TipoDeComp + "', No_emp: " + NumeroEmpleado + ", IDPeriodo: " + Periodo + ",idEvaluacion:"+idRev+"}",
                 url: "@Url.Action("CargarCompetenciasGuardadas", "Competencias")",
                 contentType: "application/json; charset=utf-8;",
                 success: function(datos){
