@@ -562,7 +562,7 @@
                         $.ajax({
                 type: "POST",
             async: false,
-            data: "{ No_emp: " + NumeroEmpleado + ", Periodo: " + Periodo + ", No_Evaluador: " + @Session["No_Empleado"] + "}",
+            data: "{ No_emp: " + NumeroEmpleado + ", Periodo: " + Periodo + ", No_Evaluador: " + @Session["No_Empleado"] + ", idEvaluacion: "+idEvaluacion+"}",
             url: "@Url.Action("GuardarYEnviarMiEvaluacionParaRevision", "Competencias")",
             contentType: "application/json; charset=utf-8;",
             success: function (datos) {

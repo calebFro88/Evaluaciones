@@ -215,147 +215,147 @@ namespace SistemaEvaluacionDesempeno.Controllers
                 //Esta seccion se encuentra comentada exclusivamente para hacer pruebas sin autenticacion en el sistema.
                 #region ValidacionTemporal
                 // VALIDACION TEMPORAL
-                //var datos = BDEv.sp_ValidarNombreDeUsuario(NombreUsuario).ToList();
+                var datos = BDEv.sp_ValidarNombreDeUsuario(NombreUsuario).ToList();
 
-                //if (NombreUsuario == "AACALD" || NombreUsuario == "AABARR" || NombreUsuario == "VMCRIS")
-                //{
-                //    Session["Nombre"] = datos[0].NombreAD.ToString();
-                //    Session["Apellido"] = datos[0].ApellidoAD.ToString();
-                //}
-                //else
-                //{
-                //    Session["Nombre"] = datos[0].Nombre.ToString();
-                //    Session["Apellido"] = datos[0].Apellido.ToString();
-                //}
-                //Session["Estado"] = true;
-                //Session["user"] = datos[0].userName.ToString();//NombreUsuario;
-                //Session["IDPeriodo"] = int.Parse(BDEv.sp_ObtenerUltimoPeriodo().ToList()[0].ToString());
-                //Session["yearFiscal"] = int.Parse(BDEv.yearFiscal().ToList()[0].ToString());
-
-
-                //int numEmp;
-                //numEmp = datos[0].No_Emp;//int.Parse((from tbl in BDEv.ACTIVE_DIRECTORY where tbl.userName == "AABARR" select tbl.userNumber).ToList()[0].ToString());
-
-                //var tipoUsuario = BDEv.sp_ValidarUsuario(NombreUsuario).ToList();
-                //if (tipoUsuario[0] == "RecursosHumanos")
-                //{
-                //    Session["TipoEmpleado"] = "RecursosHumanos";
-                //    Session["No_Empleado"] = numEmp;//numEmp;
-                //    Session["Jefe"] = datos[0].JEFE.ToString();
-                //    Session["rol"] = "RH";
-                //}
-                //else if (tipoUsuario[0] == "PM")//Plant Manager
-                //{
-                //    Session["TipoEmpleado"] = "PlantManager";
-                //    Session["No_Empleado"] = numEmp; //numEmp;
-                //    Session["Jefe"] = datos[0].JEFE.ToString();
-                //    //Session["MisEmpleados"] 
-                //    Session["rol"] = "No";
-                //}
-                //else if (tipoUsuario[0] == "Gerente")
-                //{
-                //    Session["TipoEmpleado"] = "Gerente";
-                //    Session["No_Empleado"] = numEmp;
-                //    Session["Jefe"] = datos[0].JEFE.ToString();
-                //    Session["rol"] = "No";
-                //}
-                //else if (tipoUsuario[0] == "Supervisor")
-                //{
-                //    Session["TipoEmpleado"] = "Supervisor";
-                //    Session["No_Empleado"] = numEmp;
-                //    Session["Jefe"] = datos[0].JEFE.ToString();
-                //    Session["rol"] = "No";
-                //}
-                //else
-                //{
-                //    Session["TipoEmpleado"] = "Empleado";
-                //    Session["No_Empleado"] = numEmp;
-                //    Session["Jefe"] = datos[0].JEFE.ToString();
-                //    Session["rol"] = "No";
-                //}
-                //return Json(true);
-                #endregion
-                #region Active_Directory
-                DirectoryEntry entry = new DirectoryEntry();
-                DirectorySearcher buscarUsuario = new DirectorySearcher(entry);
-                buscarUsuario.Filter = "(&(objectClass=user)(anr=" + NombreUsuario + "))";
-                buscarUsuario.PropertiesToLoad.Add("department");
-                buscarUsuario.PropertiesToLoad.Add("givenName");
-                buscarUsuario.PropertiesToLoad.Add("sn");
-
-                SearchResult result = buscarUsuario.FindOne();
-                if (result != null)
+                if (NombreUsuario == "AACALD" || NombreUsuario == "AABARR" || NombreUsuario == "VMCRIS")
                 {
-                    using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, "emrsn"))
-                    {
-                        bool isValid = pc.ValidateCredentials(NombreUsuario, Password);
-                        if (isValid)
-                        {
-                            var datos = BDEv.sp_ValidarNombreDeUsuario(NombreUsuario).ToList();
-                            Session["Estado"] = true;
-                            Session["user"] = datos[0].userName.ToString();//NombreUsuario;
-                            Session["IDPeriodo"] = int.Parse(BDEv.sp_ObtenerUltimoPeriodo().ToList()[0].ToString());
-
-                            if (NombreUsuario == "AACALD" || NombreUsuario == "AABARR" || NombreUsuario == "VMCRIS")
-                            {
-                                Session["Nombre"] = datos[0].NombreAD.ToString();
-                                Session["Apellido"] = datos[0].ApellidoAD.ToString();
-                            }
-                            else
-                            {
-                                Session["Nombre"] = datos[0].Nombre.ToString();
-                                Session["Apellido"] = datos[0].Apellido.ToString();
-                            }
-
-                            int numEmp;
-                            numEmp = datos[0].No_Emp;//int.Parse((from tbl in BDEv.ACTIVE_DIRECTORY where tbl.userName == "AABARR" select tbl.userNumber).ToList()[0].ToString());
-                            var tipoUsuario = BDEv.sp_ValidarUsuario(NombreUsuario).ToList();
-
-                            if (tipoUsuario[0] == "RecursosHumanos")
-                            {
-                                Session["TipoEmpleado"] = "RecursosHumanos";
-                                Session["rol"] = "RH";
-                            }
-                            else if (tipoUsuario[0] == "PM")//Plant Manager
-                            {
-                                Session["TipoEmpleado"] = "PlantManager";
-                                Session["rol"] = "No";
-
-                            }
-                            else if (tipoUsuario[0] == "Gerente")
-                            {
-                                Session["TipoEmpleado"] = "Gerente";
-                                Session["rol"] = "No";
-
-                            }
-                            else if (tipoUsuario[0] == "Supervisor")
-                            {
-                                Session["TipoEmpleado"] = "Supervisor";
-                                Session["rol"] = "No";
-
-                            }
-                            else
-                            {
-                                Session["TipoEmpleado"] = "Empleado";
-                                Session["rol"] = "No";
-                            }
-
-                            Session["No_Empleado"] = numEmp; //numEmp;
-                            Session["Jefe"] = datos[0].JEFE.ToString();
-
-
-                            return Json(true);
-                        }
-                        else
-                        {
-                            return Json("Usuario y/o Contraseña Incorrectos");
-                        }
-                    }
+                    Session["Nombre"] = datos[0].NombreAD.ToString();
+                    Session["Apellido"] = datos[0].ApellidoAD.ToString();
                 }
                 else
                 {
-                    return Json("Usuario y/o Contraseña Incorrectos");
+                    Session["Nombre"] = datos[0].Nombre.ToString();
+                    Session["Apellido"] = datos[0].Apellido.ToString();
                 }
+                Session["Estado"] = true;
+                Session["user"] = datos[0].userName.ToString();//NombreUsuario;
+                Session["IDPeriodo"] = int.Parse(BDEv.sp_ObtenerUltimoPeriodo().ToList()[0].ToString());
+                Session["yearFiscal"] = int.Parse(BDEv.yearFiscal().ToList()[0].ToString());
+
+
+                int numEmp;
+                numEmp = datos[0].No_Emp;//int.Parse((from tbl in BDEv.ACTIVE_DIRECTORY where tbl.userName == "AABARR" select tbl.userNumber).ToList()[0].ToString());
+
+                var tipoUsuario = BDEv.sp_ValidarUsuario(NombreUsuario).ToList();
+                if (tipoUsuario[0] == "RecursosHumanos")
+                {
+                    Session["TipoEmpleado"] = "RecursosHumanos";
+                    Session["No_Empleado"] = numEmp;//numEmp;
+                    Session["Jefe"] = datos[0].JEFE.ToString();
+                    Session["rol"] = "RH";
+                }
+                else if (tipoUsuario[0] == "PM")//Plant Manager
+                {
+                    Session["TipoEmpleado"] = "PlantManager";
+                    Session["No_Empleado"] = numEmp; //numEmp;
+                    Session["Jefe"] = datos[0].JEFE.ToString();
+                    //Session["MisEmpleados"] 
+                    Session["rol"] = "No";
+                }
+                else if (tipoUsuario[0] == "Gerente")
+                {
+                    Session["TipoEmpleado"] = "Gerente";
+                    Session["No_Empleado"] = numEmp;
+                    Session["Jefe"] = datos[0].JEFE.ToString();
+                    Session["rol"] = "No";
+                }
+                else if (tipoUsuario[0] == "Supervisor")
+                {
+                    Session["TipoEmpleado"] = "Supervisor";
+                    Session["No_Empleado"] = numEmp;
+                    Session["Jefe"] = datos[0].JEFE.ToString();
+                    Session["rol"] = "No";
+                }
+                else
+                {
+                    Session["TipoEmpleado"] = "Empleado";
+                    Session["No_Empleado"] = numEmp;
+                    Session["Jefe"] = datos[0].JEFE.ToString();
+                    Session["rol"] = "No";
+                }
+                return Json(true);
+                #endregion
+                #region Active_Directory
+                //DirectoryEntry entry = new DirectoryEntry();
+                //DirectorySearcher buscarUsuario = new DirectorySearcher(entry);
+                //buscarUsuario.Filter = "(&(objectClass=user)(anr=" + NombreUsuario + "))";
+                //buscarUsuario.PropertiesToLoad.Add("department");
+                //buscarUsuario.PropertiesToLoad.Add("givenName");
+                //buscarUsuario.PropertiesToLoad.Add("sn");
+
+                //SearchResult result = buscarUsuario.FindOne();
+                //if (result != null)
+                //{
+                //    using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, "emrsn"))
+                //    {
+                //        bool isValid = pc.ValidateCredentials(NombreUsuario, Password);
+                //        if (isValid)
+                //        {
+                //            var datos = BDEv.sp_ValidarNombreDeUsuario(NombreUsuario).ToList();
+                //            Session["Estado"] = true;
+                //            Session["user"] = datos[0].userName.ToString();//NombreUsuario;
+                //            Session["IDPeriodo"] = int.Parse(BDEv.sp_ObtenerUltimoPeriodo().ToList()[0].ToString());
+
+                //            if (NombreUsuario == "AACALD" || NombreUsuario == "AABARR" || NombreUsuario == "VMCRIS")
+                //            {
+                //                Session["Nombre"] = datos[0].NombreAD.ToString();
+                //                Session["Apellido"] = datos[0].ApellidoAD.ToString();
+                //            }
+                //            else
+                //            {
+                //                Session["Nombre"] = datos[0].Nombre.ToString();
+                //                Session["Apellido"] = datos[0].Apellido.ToString();
+                //            }
+
+                //            int numEmp;
+                //            numEmp = datos[0].No_Emp;//int.Parse((from tbl in BDEv.ACTIVE_DIRECTORY where tbl.userName == "AABARR" select tbl.userNumber).ToList()[0].ToString());
+                //            var tipoUsuario = BDEv.sp_ValidarUsuario(NombreUsuario).ToList();
+
+                //            if (tipoUsuario[0] == "RecursosHumanos")
+                //            {
+                //                Session["TipoEmpleado"] = "RecursosHumanos";
+                //                Session["rol"] = "RH";
+                //            }
+                //            else if (tipoUsuario[0] == "PM")//Plant Manager
+                //            {
+                //                Session["TipoEmpleado"] = "PlantManager";
+                //                Session["rol"] = "No";
+
+                //            }
+                //            else if (tipoUsuario[0] == "Gerente")
+                //            {
+                //                Session["TipoEmpleado"] = "Gerente";
+                //                Session["rol"] = "No";
+
+                //            }
+                //            else if (tipoUsuario[0] == "Supervisor")
+                //            {
+                //                Session["TipoEmpleado"] = "Supervisor";
+                //                Session["rol"] = "No";
+
+                //            }
+                //            else
+                //            {
+                //                Session["TipoEmpleado"] = "Empleado";
+                //                Session["rol"] = "No";
+                //            }
+
+                //            Session["No_Empleado"] = numEmp; //numEmp;
+                //            Session["Jefe"] = datos[0].JEFE.ToString();
+
+
+                //            return Json(true);
+                //        }
+                //        else
+                //        {
+                //            return Json("Usuario y/o Contraseña Incorrectos");
+                //        }
+                //    }
+                //}
+                //else
+                //{
+                //    return Json("Usuario y/o Contraseña Incorrectos");
+                //}
                 #endregion
             }
             catch (Exception X)
@@ -868,7 +868,7 @@ namespace SistemaEvaluacionDesempeno.Controllers
             int numeroJefe = int.Parse(Session["No_Empleado"].ToString());
 
 
-            if ((nivelJefe == 2)) //&& numeroJefe == 29) || numeroJefe != 39 || (numeroJefe != 1685 || numeroJefe != 2199 || numeroJefe != 2266))
+            if ((nivelJefe == 2) || (nivelJefe == 4)) //&& numeroJefe == 29) || numeroJefe != 39 || (numeroJefe != 1685 || numeroJefe != 2199 || numeroJefe != 2266))
             {
                 if (numeroJefe == 29 || numeroJefe == 39 || numeroJefe == 1685 || numeroJefe == 2199 || numeroJefe == 2266)
                 {

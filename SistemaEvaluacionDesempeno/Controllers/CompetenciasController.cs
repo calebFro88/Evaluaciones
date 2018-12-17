@@ -225,7 +225,7 @@ namespace SistemaEvaluacionDesempeno.Controllers
         }
 
         [HttpPost]
-        public JsonResult rechaza(int No_Emp, string Comentario,string Evaluador)
+        public JsonResult rechaza(int No_Emp, string Comentario,string Evaluador, int idEvaluacion)
         {
             string TipoEmp = Session["TipoEmpleado"].ToString();
             if (TipoEmp == "RecursosHumanos")
@@ -243,7 +243,7 @@ namespace SistemaEvaluacionDesempeno.Controllers
                 var query = BDEv.sp_RechazaRH(No_Emp);
             }
 
-            BDEv.sp_RetroalimentarEv(No_Emp, Comentario, TipoEmp,Evaluador);
+            BDEv.sp_RetroalimentarEv(No_Emp, Comentario, TipoEmp,Evaluador,idEvaluacion);
             return Json(true);
         }
 

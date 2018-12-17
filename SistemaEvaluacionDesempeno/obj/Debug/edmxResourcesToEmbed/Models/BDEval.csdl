@@ -487,6 +487,7 @@
       <Parameter Name="Comentarios" Mode="In" Type="String" />
       <Parameter Name="TipoEmpleado" Mode="In" Type="String" />
       <Parameter Name="Evaluador" Mode="In" Type="String" />
+      <Parameter Name="idEvaluacion" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_CargarComentariosReporte" ReturnType="Collection(EvaluacionModel.sp_CargarComentariosReporte_Result)">
       <Parameter Name="NumEmp" Mode="In" Type="Int32" />

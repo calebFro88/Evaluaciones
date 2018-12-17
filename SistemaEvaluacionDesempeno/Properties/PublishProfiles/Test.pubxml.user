@@ -6,7 +6,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>\\mxnl-ws02\c$\inetpub\wwwroot\EvaluacionDL</_PublishTargetUrl>
+    <_PublishTargetUrl>\\mxnl-ws02\c$\inetpub\wwwroot\EvTesting</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
@@ -184,10 +184,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/13/2017 17:01:20</publishTime>
     </File>
     <File Include="bin/SistemaEvaluacionDesempeno.dll">
-      <publishTime>12/12/2018 15:21:49</publishTime>
+      <publishTime>12/14/2018 17:08:13</publishTime>
     </File>
     <File Include="bin/SistemaEvaluacionDesempeno.pdb">
-      <publishTime>12/12/2018 15:21:49</publishTime>
+      <publishTime>12/14/2018 17:08:13</publishTime>
     </File>
     <File Include="bin/sk-SK/Kendo.Mvc.resources.dll">
       <publishTime>09/13/2017 17:01:20</publishTime>
@@ -751,7 +751,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>08/13/2018 11:35:29</publishTime>
     </File>
     <File Include="Views/Home/EvaluacionDeEmpleadoHourly.cshtml">
-      <publishTime>12/11/2018 15:47:47</publishTime>
+      <publishTime>12/14/2018 15:05:10</publishTime>
     </File>
     <File Include="Views/Home/EvaluacionDeEmpleadoSalary.cshtml">
       <publishTime>12/12/2018 11:23:30</publishTime>

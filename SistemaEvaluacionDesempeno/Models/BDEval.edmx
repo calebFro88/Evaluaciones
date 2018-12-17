@@ -639,6 +639,7 @@ warning 6002: The table/view 'Evaluacion.dbo.Emp' does not have a primary key de
           <Parameter Name="Comentarios" Type="varchar(max)" Mode="In" />
           <Parameter Name="TipoEmpleado" Type="varchar" Mode="In" />
           <Parameter Name="Evaluador" Type="varchar" Mode="In" />
+          <Parameter Name="idEvaluacion" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_RevisionObjetivosTerminados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NumEmp" Type="int" Mode="In" />
@@ -1285,6 +1286,7 @@ warning 6002: The table/view 'Evaluacion.dbo.Emp' does not have a primary key de
             <Parameter Name="Comentarios" Mode="In" Type="String" />
             <Parameter Name="TipoEmpleado" Mode="In" Type="String" />
             <Parameter Name="Evaluador" Mode="In" Type="String" />
+            <Parameter Name="idEvaluacion" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_CargarComentariosReporte" ReturnType="Collection(EvaluacionModel.sp_CargarComentariosReporte_Result)">
           <Parameter Name="NumEmp" Mode="In" Type="Int32" />

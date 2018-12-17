@@ -732,7 +732,7 @@ namespace SistemaEvaluacionDesempeno.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_AprobarEv", noEmpParameter, comentariosParameter, tipoEmpleadoParameter, idEvParameter);
         }
     
-        public virtual int sp_RetroalimentarEv(Nullable<int> noEmp, string comentarios, string tipoEmpleado, string evaluador)
+        public virtual int sp_RetroalimentarEv(Nullable<int> noEmp, string comentarios, string tipoEmpleado, string evaluador, Nullable<int> idEvaluacion)
         {
             var noEmpParameter = noEmp.HasValue ?
                 new ObjectParameter("NoEmp", noEmp) :
@@ -750,7 +750,11 @@ namespace SistemaEvaluacionDesempeno.Models
                 new ObjectParameter("Evaluador", evaluador) :
                 new ObjectParameter("Evaluador", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_RetroalimentarEv", noEmpParameter, comentariosParameter, tipoEmpleadoParameter, evaluadorParameter);
+            var idEvaluacionParameter = idEvaluacion.HasValue ?
+                new ObjectParameter("idEvaluacion", idEvaluacion) :
+                new ObjectParameter("idEvaluacion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_RetroalimentarEv", noEmpParameter, comentariosParameter, tipoEmpleadoParameter, evaluadorParameter, idEvaluacionParameter);
         }
     
         public virtual ObjectResult<sp_CargarComentariosReporte_Result> sp_CargarComentariosReporte(Nullable<int> numEmp)
