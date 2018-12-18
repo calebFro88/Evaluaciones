@@ -277,6 +277,7 @@ namespace SistemaEvaluacionDesempeno.Controllers
                 return Json(true);
                 #endregion
                 #region Active_Directory
+                //test gitHub
                 //DirectoryEntry entry = new DirectoryEntry();
                 //DirectorySearcher buscarUsuario = new DirectorySearcher(entry);
                 //buscarUsuario.Filter = "(&(objectClass=user)(anr=" + NombreUsuario + "))";
@@ -757,7 +758,7 @@ namespace SistemaEvaluacionDesempeno.Controllers
 
             if ((nivelJefe == 2)) //&& numeroJefe == 29) || numeroJefe != 39 || (numeroJefe != 1685 || numeroJefe != 2199 || numeroJefe != 2266))
             {
-                if ((numeroJefe == 29 && numberRep != 2781) || numeroJefe == 39 || numeroJefe == 1685 || numeroJefe == 2199 || numeroJefe == 2266)
+                if ((numeroJefe == 29 && numberRep != 2781) || numeroJefe == 39 || numeroJefe == 1685 || numeroJefe == 2199 || numeroJefe == 2266  || numeroJefe == 3795)
                 {
                     typeReportSource.TypeName = typeof(Hourly).AssemblyQualifiedName;
                 }
@@ -871,7 +872,7 @@ namespace SistemaEvaluacionDesempeno.Controllers
 
             if ((nivelJefe == 2) || (nivelJefe == 4)) //&& numeroJefe == 29) || numeroJefe != 39 || (numeroJefe != 1685 || numeroJefe != 2199 || numeroJefe != 2266))
             {
-                if (numeroJefe == 29 || numeroJefe == 39 || numeroJefe == 1685 || numeroJefe == 2199 || numeroJefe == 2266)
+                if (numeroJefe == 29 || numeroJefe == 39 || numeroJefe == 1685 || numeroJefe == 2199 || numeroJefe == 2266  || numeroJefe == 3795)
                 {
                     typeReportSource.TypeName = typeof(Hourly).AssemblyQualifiedName;
                 }

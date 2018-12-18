@@ -184,10 +184,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/13/2017 17:01:20</publishTime>
     </File>
     <File Include="bin/SistemaEvaluacionDesempeno.dll">
-      <publishTime>12/14/2018 17:08:13</publishTime>
+      <publishTime>12/18/2018 08:46:33</publishTime>
     </File>
     <File Include="bin/SistemaEvaluacionDesempeno.pdb">
-      <publishTime>12/14/2018 17:08:13</publishTime>
+      <publishTime>12/18/2018 08:46:33</publishTime>
     </File>
     <File Include="bin/sk-SK/Kendo.Mvc.resources.dll">
       <publishTime>09/13/2017 17:01:20</publishTime>
@@ -790,7 +790,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>08/13/2018 11:22:17</publishTime>
     </File>
     <File Include="Views/Home/ReporteGeneral.cshtml">
-      <publishTime>10/02/2018 10:36:00</publishTime>
+      <publishTime>12/17/2018 08:17:21</publishTime>
     </File>
     <File Include="Views/Home/ReporteHourly.cshtml">
       <publishTime>05/07/2018 13:10:44</publishTime>
@@ -895,7 +895,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>08/14/2017 15:22:12</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/11/2018 16:09:14</publishTime>
+      <publishTime>12/18/2018 08:35:27</publishTime>
     </File>
   </ItemGroup>
 </Project>
