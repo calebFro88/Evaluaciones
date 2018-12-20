@@ -200,7 +200,7 @@
                                                         <th>Apellido</th>
                                                         <th>Depto.</th>
                                                         <th>Tpo. Empleado</th>
-                                                        <th>Rept PDF</th>
+                                                        <th>Tipo</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="tblListaDeEvaluacionesTerminadas" style="font-size:small;font-family:Arial;font-style:normal;"></tbody>
@@ -734,17 +734,16 @@
                             var estilo = 'success';
                             Detalles = 'FinalizarEvaluacion';
                             tr = $("<tr id = '" + datos[i].No_Emp + "' class='" + estilo + "'>");
-                            //$("#contenido-tabla").append("<tr>");
                             tr.append("<td>" + datos[i].No_Emp + "</td>");
                             tr.append("<td>" + datos[i].Nombre + "</td>");
                             tr.append("<td>" + datos[i].Apellido + "</td>");
                             tr.append("<td>" + datos[i].Departamento + "</td>");
                             tr.append("<td>" + datos[i].TipoEmpleado + "</td>");
-                            tr.append('<td><button class="btn btn-default"  onclick="MostrarReporteDeEvaluacion(' + datos[i].No_Emp + ')"><span class="glyphicon glyphicon-book"></span></button></td></tr>');
+                            tr.append("<td>" + datos[i].TipoEvaluacion + "</td></tr>");
+                           // tr.append('<td><button class="btn btn-default"  onclick="MostrarReporteDeEvaluacion(' + datos[i].No_Emp + ')"><span class="glyphicon glyphicon-book"></span></button></td></tr>');
 
                             $("#tblListaDeEvaluacionesTerminadas").append(tr);
                         }
-                        //console.log(datos);
                     }
                     else {
                         //$("#contenidoPendientesDeAprobacion").hide();

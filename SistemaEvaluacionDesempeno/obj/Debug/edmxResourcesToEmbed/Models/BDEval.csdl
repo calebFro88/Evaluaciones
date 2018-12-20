@@ -890,7 +890,10 @@
     <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="ComentariosGer" Nullable="true" />
     <Property Type="String" Name="Recordatorio" Nullable="true" />
-    <Property Type="Int32" Name="id_Reminder" Nullable="true" />
+    <Property Type="String" Name="EstadoObj" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="ID_Periodo" Nullable="true" />
+    <Property Type="String" Name="TipoEvaluacion" Nullable="true" />
+    <Property Type="Int32" Name="ID_ReEvaluacion" Nullable="true" />
   </ComplexType>
   <ComplexType Name="sp_ListarCursosAsistidos_Result">
     <Property Type="String" Name="Codigo" Nullable="true" MaxLength="15" />

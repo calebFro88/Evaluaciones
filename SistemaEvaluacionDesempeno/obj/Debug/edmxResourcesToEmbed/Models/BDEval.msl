@@ -556,7 +556,10 @@
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="ComentariosGer" ColumnName="ComentariosGer" />
           <ScalarProperty Name="Recordatorio" ColumnName="Recordatorio" />
-          <ScalarProperty Name="id_Reminder" ColumnName="id_Reminder" />
+          <ScalarProperty Name="EstadoObj" ColumnName="EstadoObj" />
+          <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+          <ScalarProperty Name="TipoEvaluacion" ColumnName="TipoEvaluacion" />
+          <ScalarProperty Name="ID_ReEvaluacion" ColumnName="ID_ReEvaluacion" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

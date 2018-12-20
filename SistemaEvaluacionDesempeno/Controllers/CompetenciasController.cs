@@ -268,6 +268,7 @@ namespace SistemaEvaluacionDesempeno.Controllers
         public JsonResult MarcarComoImpresa(int No_Emp, string idEvaluacion)
         {
             int idEv = int.Parse(idEvaluacion);
+            Session["ID_ReEvaluacion"] = idEv;
             int Periodo = int.Parse(Session["IDPeriodo"].ToString());
             Session["EmpPendImp"] = No_Emp;
             Session["EmpReporte"] = No_Emp;

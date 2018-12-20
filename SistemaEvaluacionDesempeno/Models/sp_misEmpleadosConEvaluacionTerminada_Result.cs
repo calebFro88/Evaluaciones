@@ -23,6 +23,9 @@ namespace SistemaEvaluacionDesempeno.Models
         public string Estado { get; set; }
         public string ComentariosGer { get; set; }
         public string Recordatorio { get; set; }
-        public Nullable<int> id_Reminder { get; set; }
+        public string EstadoObj { get; set; }
+        public Nullable<int> ID_Periodo { get; set; }
+        public string TipoEvaluacion { get; set; }
+        public Nullable<int> ID_ReEvaluacion { get; set; }
     }
 }

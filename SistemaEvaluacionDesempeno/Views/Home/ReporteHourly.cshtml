@@ -64,40 +64,15 @@
 
 
 <script>
+    var idreEvaluacion = @Session["ID_ReEvaluacion"];
 
     $(document).ready(function () {
-        @*var minumemp = @Session["EmpPendImp"];
-                            $("#reportViewer1")
-                                .telerik_ReportViewer({
-                                    reportServer: {
-                                        //  url: "http://mxnl-jebern:83",
-                                        url: "http://mxnl-ejcant:83",
-                                        username: null,
-                                        password: null
-                                    },
-                                    reportSource: {
-                                        // The report value should contain the Category and ReportName in the following format
-                                        // {Category/ReportName}
-                                        //este lo abajo lo comente //
-                                         report: "ReportesEvaluacion/Reporte Hourly3",
-                                       // report: "../Reports/Reporte Hourly.trdp",
-                                        parameters: { NumEmp: minumemp }
-                                    },
-                                    viewMode: telerikReportViewer.ViewModes.INTERACTIVE,
-                                    scaleMode: telerikReportViewer.ScaleModes.SPECIFIC,
-                                    scale: 1.0,
-                                    enableAccessibility: true,
-                                    ready: function () {
-                                    },*@
-     // window.location.href = '@Url.Action("CarcharHly", "Home")';
-
-
        cache: false;
         try{
             $.ajax({
                 type: "POST",
                 async: true,
-                data: "{ }",
+                data: "{idEvaluacion: "+idreEvaluacion+" }",
                 url: "@Url.Action("CarcharHly", "Home")",
                 contentType: "application/json; charset=utf-8;",
             success: function (datos) {

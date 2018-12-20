@@ -1689,7 +1689,10 @@ warning 6002: The table/view 'Evaluacion.dbo.Emp' does not have a primary key de
           <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ComentariosGer" Nullable="true" />
           <Property Type="String" Name="Recordatorio" Nullable="true" />
-          <Property Type="Int32" Name="id_Reminder" Nullable="true" />
+          <Property Type="String" Name="EstadoObj" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID_Periodo" Nullable="true" />
+          <Property Type="String" Name="TipoEvaluacion" Nullable="true" />
+          <Property Type="Int32" Name="ID_ReEvaluacion" Nullable="true" />
         </ComplexType>
         <ComplexType Name="sp_ListarCursosAsistidos_Result">
           <Property Type="String" Name="Codigo" Nullable="true" MaxLength="15" />
@@ -2456,7 +2459,10 @@ warning 6002: The table/view 'Evaluacion.dbo.Emp' does not have a primary key de
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="ComentariosGer" ColumnName="ComentariosGer" />
                 <ScalarProperty Name="Recordatorio" ColumnName="Recordatorio" />
-                <ScalarProperty Name="id_Reminder" ColumnName="id_Reminder" />
+                <ScalarProperty Name="EstadoObj" ColumnName="EstadoObj" />
+                <ScalarProperty Name="ID_Periodo" ColumnName="ID_Periodo" />
+                <ScalarProperty Name="TipoEvaluacion" ColumnName="TipoEvaluacion" />
+                <ScalarProperty Name="ID_ReEvaluacion" ColumnName="ID_ReEvaluacion" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

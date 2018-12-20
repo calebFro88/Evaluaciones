@@ -1810,3 +1810,9 @@ C:\Users\ccalam\Documents\GitHub\EvaluacionDesempeño\Evaluaciones\SistemaEvalua
 C:\Users\ccalam\Documents\GitHub\EvaluacionDesempeño\Evaluaciones\SistemaEvaluacionDesempeno\obj\Debug\SistemaEvaluacionDesempeno.dll.licenses
 C:\Users\ccalam\Documents\GitHub\EvaluacionDesempeño\Evaluaciones\SistemaEvaluacionDesempeno\obj\Debug\SistemaEvaluacionDesempeno.dll
 C:\Users\ccalam\Documents\GitHub\EvaluacionDesempeño\Evaluaciones\SistemaEvaluacionDesempeno\obj\Debug\SistemaEvaluacionDesempeno.pdb
+C:\Users\ccalam\Documents\GitHub\EvaluacionDesempeño\Evaluaciones\SistemaEvaluacionDesempeno\obj\Debug\SistemaEvaluacionDesempeno.Hourly2.resources
+C:\Users\ccalam\Documents\GitHub\EvaluacionDesempeño\Evaluaciones\SistemaEvaluacionDesempeno\obj\Debug\SistemaEvaluacionDesempeno.HourlyRasSup2.resources
+C:\Users\ccalam\Documents\GitHub\EvaluacionDesempeño\Evaluaciones\SistemaEvaluacionDesempeno\obj\Debug\SistemaEvaluacionDesempeno.HourlySup2.resources
+C:\Users\ccalam\Documents\GitHub\EvaluacionDesempeño\Evaluaciones\SistemaEvaluacionDesempeno\obj\Debug\SistemaEvaluacionDesempeno.HourlyRas2.resources
+C:\Users\ccalam\Documents\GitHub\EvaluacionDesempeño\Evaluaciones\SistemaEvaluacionDesempeno\obj\Debug\SistemaEvaluacionDesempeno.Salary2.resources
+C:\Users\ccalam\Documents\GitHub\EvaluacionDesempeño\Evaluaciones\SistemaEvaluacionDesempeno\obj\Debug\SistemaEvaluacionDesempeno.SalarySup2.resources

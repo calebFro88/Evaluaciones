@@ -6,7 +6,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>\\mxnl-ws02\c$\inetpub\wwwroot\EvTesting</_PublishTargetUrl>
+    <_PublishTargetUrl>\\mxnl-ws02\c$\inetpub\wwwroot\EvaluacionDL</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
@@ -184,10 +184,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/13/2017 17:01:20</publishTime>
     </File>
     <File Include="bin/SistemaEvaluacionDesempeno.dll">
-      <publishTime>12/18/2018 08:46:33</publishTime>
+      <publishTime>12/20/2018 15:01:28</publishTime>
     </File>
     <File Include="bin/SistemaEvaluacionDesempeno.pdb">
-      <publishTime>12/18/2018 08:46:33</publishTime>
+      <publishTime>12/20/2018 15:01:28</publishTime>
     </File>
     <File Include="bin/sk-SK/Kendo.Mvc.resources.dll">
       <publishTime>09/13/2017 17:01:20</publishTime>
@@ -754,7 +754,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/14/2018 15:05:10</publishTime>
     </File>
     <File Include="Views/Home/EvaluacionDeEmpleadoSalary.cshtml">
-      <publishTime>12/12/2018 11:23:30</publishTime>
+      <publishTime>12/20/2018 10:28:06</publishTime>
     </File>
     <File Include="Views/Home/EvaluacionesTerminadas.cshtml">
       <publishTime>10/02/2018 10:36:00</publishTime>
@@ -763,7 +763,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/10/2018 11:50:37</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>12/12/2018 12:35:08</publishTime>
+      <publishTime>12/18/2018 16:06:11</publishTime>
     </File>
     <File Include="Views/Home/LogIn.cshtml">
       <publishTime>01/19/2018 15:09:40</publishTime>
@@ -781,7 +781,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/25/2018 16:43:03</publishTime>
     </File>
     <File Include="Views/Home/OpenPDF.cshtml">
-      <publishTime>10/04/2018 16:40:41</publishTime>
+      <publishTime>12/20/2018 10:46:35</publishTime>
     </File>
     <File Include="Views/Home/OpenPERMISOS.cshtml">
       <publishTime>10/16/2018 10:02:46</publishTime>
@@ -793,16 +793,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/17/2018 08:17:21</publishTime>
     </File>
     <File Include="Views/Home/ReporteHourly.cshtml">
-      <publishTime>05/07/2018 13:10:44</publishTime>
+      <publishTime>12/20/2018 08:29:48</publishTime>
     </File>
     <File Include="Views/Home/ReporteHourlySup.cshtml">
-      <publishTime>05/08/2018 07:50:00</publishTime>
+      <publishTime>12/20/2018 08:44:55</publishTime>
     </File>
     <File Include="Views/Home/ReporteSalarySup.cshtml">
       <publishTime>05/07/2018 14:55:45</publishTime>
     </File>
     <File Include="Views/Home/ReportSalary.cshtml">
-      <publishTime>10/05/2018 09:18:58</publishTime>
+      <publishTime>12/20/2018 09:46:15</publishTime>
     </File>
     <File Include="Views/Home/RevisarObjetivos.cshtml">
       <publishTime>09/13/2018 16:35:06</publishTime>

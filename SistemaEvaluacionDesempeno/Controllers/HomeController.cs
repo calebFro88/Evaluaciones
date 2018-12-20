@@ -232,7 +232,7 @@ namespace SistemaEvaluacionDesempeno.Controllers
                 Session["user"] = datos[0].userName.ToString();//NombreUsuario;
                 Session["IDPeriodo"] = int.Parse(BDEv.sp_ObtenerUltimoPeriodo().ToList()[0].ToString());
                 Session["yearFiscal"] = int.Parse(BDEv.yearFiscal().ToList()[0].ToString());
-
+                Session["anterior"] = "";
 
                 int numEmp;
                 numEmp = datos[0].No_Emp;//int.Parse((from tbl in BDEv.ACTIVE_DIRECTORY where tbl.userName == "AABARR" select tbl.userNumber).ToList()[0].ToString());
@@ -344,7 +344,7 @@ namespace SistemaEvaluacionDesempeno.Controllers
 
                 //            Session["No_Empleado"] = numEmp; //numEmp;
                 //            Session["Jefe"] = datos[0].JEFE.ToString();
-
+                //            Session["anterior"] = "";
 
                 //            return Json(true);
                 //        }
@@ -373,7 +373,7 @@ namespace SistemaEvaluacionDesempeno.Controllers
             var dato = "";
             return Json(dato);
         }
-        //Para el reporte telerik...
+        //Para el reporte telerik...prueba de gitHub
         [HttpPost]
         public JsonResult cargarMisParametros()
         {
@@ -400,7 +400,7 @@ namespace SistemaEvaluacionDesempeno.Controllers
         {
            // Session["No_EmpleadoPDF"] = No_Emp;
             var pendnumemp = @Session["NumEmpleadoConEvPendiente"];
-
+            Session["anterior"] = "Si";
             return View();
         }
 
@@ -742,124 +742,203 @@ namespace SistemaEvaluacionDesempeno.Controllers
             var ListaCursos = BDEv.sp_ListarCursosAsistidos(int.Parse(Session["No_EmpleadoPDF"].ToString()));
             return Json(ListaCursos);
         }
-         public JsonResult carcharHly()
+         public JsonResult carcharHly(int idEvaluacion)
         {
-
-       
-                int numberRep = int.Parse(Session["EmpReporte"].ToString());
-                 int nivelJefe = int.Parse(Session["NivelJefe"].ToString());
+            int numberRep = int.Parse(Session["EmpReporte"].ToString());
+            int nivelJefe = int.Parse(Session["NivelJefe"].ToString());
             var reportProcessor = new Telerik.Reporting.Processing.ReportProcessor();
-                var typeReportSource = new Telerik.Reporting.TypeReportSource();
-              
-
-            //validar aqui .....
+            var typeReportSource = new Telerik.Reporting.TypeReportSource();
             int numeroJefe = int.Parse(Session["No_Empleado"].ToString());
 
-
-            if ((nivelJefe == 2)) //&& numeroJefe == 29) || numeroJefe != 39 || (numeroJefe != 1685 || numeroJefe != 2199 || numeroJefe != 2266))
+            if (Session["anterior"].ToString() == "Si")
             {
-                if ((numeroJefe == 29 && numberRep != 2781) || numeroJefe == 39 || numeroJefe == 1685 || numeroJefe == 2199 || numeroJefe == 2266  || numeroJefe == 3795)
+                if ((nivelJefe == 2)) //&& numeroJefe == 29) || numeroJefe != 39 || (numeroJefe != 1685 || numeroJefe != 2199 || numeroJefe != 2266))
                 {
-                    typeReportSource.TypeName = typeof(Hourly).AssemblyQualifiedName;
+                    if ((numeroJefe == 29 && numberRep != 2781) || numeroJefe == 39 || numeroJefe == 1685 || numeroJefe == 2199 || numeroJefe == 2266 || numeroJefe == 3795)
+                    {
+                        typeReportSource.TypeName = typeof(Hourly).AssemblyQualifiedName;
+                    }
+                    else
+                    {
+                        typeReportSource.TypeName = typeof(HourlySup).AssemblyQualifiedName;
+                    }
+
                 }
-                else
+                else if (nivelJefe == 4)
                 {
                     typeReportSource.TypeName = typeof(HourlySup).AssemblyQualifiedName;
                 }
-               
+                else
+                {
+                    if (numeroJefe == 114)
+                    {
+                        typeReportSource.TypeName = typeof(HourlySup).AssemblyQualifiedName;
+                    }
+                    else if (numeroJefe == 641 || numeroJefe == 1697 || numeroJefe == 2175 || numeroJefe == 2224 || numeroJefe == 2943 || numeroJefe == 2947 || numeroJefe == 2994 || numeroJefe == 3040)
+                    {
+                        typeReportSource.TypeName = typeof(HourlyRas).AssemblyQualifiedName;
+                    }
+                    else if ((numeroJefe == 2175 && numberRep == 2700))
+                    {
+                        typeReportSource.TypeName = typeof(HourlyRasSup).AssemblyQualifiedName;
+                    }
+                    else
+                    {
+                        typeReportSource.TypeName = typeof(Hourly).AssemblyQualifiedName;
+                    }
+
+                }
             }
             else
             {
-                if(numeroJefe == 114 )
+                if ((nivelJefe == 2)) //&& numeroJefe == 29) || numeroJefe != 39 || (numeroJefe != 1685 || numeroJefe != 2199 || numeroJefe != 2266))
                 {
-                    typeReportSource.TypeName = typeof(HourlySup).AssemblyQualifiedName;
+                    if ((numeroJefe == 29 && numberRep != 2781) || numeroJefe == 39 || numeroJefe == 1685 || numeroJefe == 2199 || numeroJefe == 2266 || numeroJefe == 3795)
+                    {
+                        typeReportSource.TypeName = typeof(Hourly2).AssemblyQualifiedName;
+                    }
+                    else
+                    {
+                        typeReportSource.TypeName = typeof(HourlySup2).AssemblyQualifiedName;
+                    }
+
                 }
-                else if(numeroJefe == 641 || numeroJefe == 1697 || numeroJefe == 2175 || numeroJefe == 2224 || numeroJefe == 2943 || numeroJefe == 2947 || numeroJefe == 2994 || numeroJefe == 3040)
+                else if (nivelJefe == 4)
                 {
-                    typeReportSource.TypeName = typeof(HourlyRas).AssemblyQualifiedName;
-                }
-                else if((numeroJefe == 2175 && numberRep == 2700))
-                {
-                    typeReportSource.TypeName = typeof(HourlyRasSup).AssemblyQualifiedName;
+                    typeReportSource.TypeName = typeof(HourlySup2).AssemblyQualifiedName;
                 }
                 else
                 {
-                    typeReportSource.TypeName = typeof(Hourly).AssemblyQualifiedName;
+                    if (numeroJefe == 114)
+                    {
+                        typeReportSource.TypeName = typeof(HourlySup2).AssemblyQualifiedName;
+                    }
+                    else if (numeroJefe == 641 || numeroJefe == 1697 || numeroJefe == 2175 || numeroJefe == 2224 || numeroJefe == 2943 || numeroJefe == 2947 || numeroJefe == 2994 || numeroJefe == 3040)
+                    {
+                        typeReportSource.TypeName = typeof(HourlyRas2).AssemblyQualifiedName;
+                    }
+                    else if ((numeroJefe == 2175 && numberRep == 2700))
+                    {
+                        typeReportSource.TypeName = typeof(HourlyRasSup2).AssemblyQualifiedName;
+                    }
+                    else
+                    {
+                        typeReportSource.TypeName = typeof(Hourly2).AssemblyQualifiedName;
+                    }
+
                 }
-               
             }
-                // reportToExport is the Assembly Qualified Name of the report
-           
+               
+                   
+            if(Session["anterior"].ToString() == "Si")
+             {
                 typeReportSource.Parameters.Add(name: "NumEmp", value: numberRep);
-                var deviceInfo = new System.Collections.Hashtable();
+            }
+            else
+            {
+                typeReportSource.Parameters.Add(name: "NumEmp", value: numberRep);
+                typeReportSource.Parameters.Add(name: "idEvaluacion", value: idEvaluacion);
+            }
+            var deviceInfo = new System.Collections.Hashtable();
                // deviceInfo["JavaScript"] = "this.print({bUI: true, bSilent: false, bShrinkToFit: true});";
                 var result = reportProcessor.RenderReport("PDF", typeReportSource, deviceInfo);
 
                 HttpContext.Response.AddHeader("content-disposition", "inline; filename=MyFile.pdf");
-
-            // byte[] pdfEv;
-            //pdfEv = System.IO.File.ReadAllBytes(result.DocumentBytes.ToString());
             string fileString = System.Convert.ToBase64String(result.DocumentBytes);
-           // string Dato = System.Convert.ToBase64String(fileString);
-            //return File(result.DocumentBytes, "application/pdf");
-
+            Session["anterior"] = "No";
             return Json(fileString);
         }
 
 
 
         public JsonResult CarcharSalarySup()
-        //public FileContentResult CarcharHly()
         {
-
-
+            int idEvaluacion = int.Parse(Session["ID_ReEvaluacion"].ToString());
             int numberRep = int.Parse(Session["EmpReporte"].ToString());
             var reportProcessor = new Telerik.Reporting.Processing.ReportProcessor();
             var typeReportSource = new Telerik.Reporting.TypeReportSource();
-
-            // reportToExport is the Assembly Qualified Name of the report
-            typeReportSource.TypeName = typeof(SalarySup).AssemblyQualifiedName;
-            typeReportSource.Parameters.Add(name: "NumEmp", value: numberRep);
-            var deviceInfo = new System.Collections.Hashtable();
-            // deviceInfo["JavaScript"] = "this.print({bUI: true, bSilent: false, bShrinkToFit: true});";
-            var result = reportProcessor.RenderReport("PDF", typeReportSource, deviceInfo);
-
-            HttpContext.Response.AddHeader("content-disposition", "inline; filename=MyFile.pdf");
-
-            // byte[] pdfEv;
-            //pdfEv = System.IO.File.ReadAllBytes(result.DocumentBytes.ToString());
-            string fileString = System.Convert.ToBase64String(result.DocumentBytes);
-            // string Dato = System.Convert.ToBase64String(fileString);
-            //return File(result.DocumentBytes, "application/pdf");
-
-            return Json(fileString);
-        }
-
-
-        public JsonResult CarcharSalary()
-        {
-           int numberRep = int.Parse(Session["EmpReporte"].ToString());
-            int nivelJefe = int.Parse(Session["NivelJefe"].ToString());
-            var reportProcessor = new Telerik.Reporting.Processing.ReportProcessor();
-            var typeReportSource = new Telerik.Reporting.TypeReportSource();
-            if (nivelJefe == 2)
+            if (Session["anterior"].ToString() == "Si")
             {
                 typeReportSource.TypeName = typeof(SalarySup).AssemblyQualifiedName;
             }
             else
             {
-                typeReportSource.TypeName = typeof(Salary).AssemblyQualifiedName;
+                typeReportSource.TypeName = typeof(SalarySup2).AssemblyQualifiedName;
             }
-         
-            typeReportSource.Parameters.Add(name: "NumEmp", value: numberRep);
+
+            if (Session["anterior"].ToString() == "Si")
+            {
+                typeReportSource.Parameters.Add(name: "NumEmp", value: numberRep);
+            }
+            else
+            {
+                typeReportSource.Parameters.Add(name: "NumEmp", value: numberRep);
+                typeReportSource.Parameters.Add(name: "idEvaluacion", value: idEvaluacion);
+            }
+
+             
+            var deviceInfo = new System.Collections.Hashtable();
+            var result = reportProcessor.RenderReport("PDF", typeReportSource, deviceInfo);
+            HttpContext.Response.AddHeader("content-disposition", "inline; filename=MyFile.pdf");
+            string fileString = System.Convert.ToBase64String(result.DocumentBytes);
+            Session["anterior"] = "No";
+            return Json(fileString);
+        }
+
+
+        public JsonResult CarcharSalary(int idEvaluacion)
+        {
+           int numberRep = int.Parse(Session["EmpReporte"].ToString());
+            int nivelJefe = int.Parse(Session["NivelJefe"].ToString());
+            var reportProcessor = new Telerik.Reporting.Processing.ReportProcessor();
+            var typeReportSource = new Telerik.Reporting.TypeReportSource();
+            if (Session["anterior"].ToString() == "Si")
+            {
+                if (nivelJefe == 2)
+                {
+                    typeReportSource.TypeName = typeof(SalarySup).AssemblyQualifiedName;
+                }
+                else
+                {
+                    typeReportSource.TypeName = typeof(Salary).AssemblyQualifiedName;
+                }
+            }
+            else
+            {
+                if (nivelJefe == 2)
+                {
+                    typeReportSource.TypeName = typeof(SalarySup2).AssemblyQualifiedName;
+                }
+                else
+                {
+                    typeReportSource.TypeName = typeof(Salary2).AssemblyQualifiedName;
+                }
+            }
+
+
+            if (Session["anterior"].ToString() == "Si")
+            {
+                typeReportSource.Parameters.Add(name: "NumEmp", value: numberRep);
+            }
+            else
+            {
+                typeReportSource.Parameters.Add(name: "NumEmp", value: numberRep);
+                typeReportSource.Parameters.Add(name: "idEvaluacion", value: idEvaluacion);
+            }
+
+             
+           
             var deviceInfo = new System.Collections.Hashtable();
             var result = reportProcessor.RenderReport("PDF", typeReportSource, deviceInfo);
 
             HttpContext.Response.AddHeader("content-disposition", "inline; filename=MyFile.pdf");
             string fileString = System.Convert.ToBase64String(result.DocumentBytes);
+            Session["anterior"] = "No";
             return Json(fileString);
         }
-        public JsonResult CarcharHrlySup()
+
+
+        public JsonResult CarcharHrlySup(int idEvaluacion)
         {
             int numberRep = int.Parse(Session["EmpReporte"].ToString());
             int nivelJefe = int.Parse(Session["NivelJefe"].ToString());
@@ -869,46 +948,71 @@ namespace SistemaEvaluacionDesempeno.Controllers
             //validar aqui .....
             int numeroJefe = int.Parse(Session["No_Empleado"].ToString());
 
-
-            if ((nivelJefe == 2) || (nivelJefe == 4)) //&& numeroJefe == 29) || numeroJefe != 39 || (numeroJefe != 1685 || numeroJefe != 2199 || numeroJefe != 2266))
+            if(Session["anterior"].ToString() == "Si")
             {
-                if (numeroJefe == 29 || numeroJefe == 39 || numeroJefe == 1685 || numeroJefe == 2199 || numeroJefe == 2266  || numeroJefe == 3795)
+                if ((nivelJefe == 2) || (nivelJefe == 4)) //&& numeroJefe == 29) || numeroJefe != 39 || (numeroJefe != 1685 || numeroJefe != 2199 || numeroJefe != 2266))
                 {
-                    typeReportSource.TypeName = typeof(Hourly).AssemblyQualifiedName;
-                }
-                else if(numeroJefe == 2700 || numeroJefe == 2175 || numeroJefe == 2224)
-                {
-                    typeReportSource.TypeName = typeof(HourlyRasSup).AssemblyQualifiedName;
+                    if (numeroJefe == 29 || numeroJefe == 39 || numeroJefe == 1685 || numeroJefe == 2199 || numeroJefe == 2266 || numeroJefe == 3795)
+                    {
+                        typeReportSource.TypeName = typeof(Hourly).AssemblyQualifiedName;
+                    }
+                    else if (numeroJefe == 2700 || numeroJefe == 2175 || numeroJefe == 2224)
+                    {
+                        typeReportSource.TypeName = typeof(HourlyRasSup).AssemblyQualifiedName;
+                    }
+                    else
+                    {
+                        typeReportSource.TypeName = typeof(HourlySup).AssemblyQualifiedName;
+                    }
+
                 }
                 else
                 {
-                    typeReportSource.TypeName = typeof(HourlySup).AssemblyQualifiedName;
+                    typeReportSource.TypeName = typeof(Hourly).AssemblyQualifiedName;
                 }
-
             }
             else
             {
-                typeReportSource.TypeName = typeof(Hourly).AssemblyQualifiedName;
+                if ((nivelJefe == 2) || (nivelJefe == 4)) //&& numeroJefe == 29) || numeroJefe != 39 || (numeroJefe != 1685 || numeroJefe != 2199 || numeroJefe != 2266))
+                {
+                    if (numeroJefe == 29 || numeroJefe == 39 || numeroJefe == 1685 || numeroJefe == 2199 || numeroJefe == 2266 || numeroJefe == 3795)
+                    {
+                        typeReportSource.TypeName = typeof(Hourly2).AssemblyQualifiedName;
+                    }
+                    else if (numeroJefe == 2700 || numeroJefe == 2175 || numeroJefe == 2224)
+                    {
+                        typeReportSource.TypeName = typeof(HourlyRasSup2).AssemblyQualifiedName;
+                    }
+                    else
+                    {
+                        typeReportSource.TypeName = typeof(HourlySup2).AssemblyQualifiedName;
+                    }
+
+                }
+                else
+                {
+                    typeReportSource.TypeName = typeof(Hourly2).AssemblyQualifiedName;
+                }
             }
-            // reportToExport is the Assembly Qualified Name of the report
-           // typeReportSource.TypeName = typeof(HourlySup).AssemblyQualifiedName;
-            typeReportSource.Parameters.Add(name: "NumEmp", value: numberRep);
 
 
-
+            if (Session["anterior"].ToString() == "Si")
+            {
+                typeReportSource.Parameters.Add(name: "NumEmp", value: numberRep);
+            }
+            else
+            {
+                typeReportSource.Parameters.Add(name: "NumEmp", value: numberRep);
+                typeReportSource.Parameters.Add(name: "idEvaluacion", value: idEvaluacion);
+            }
 
             var deviceInfo = new System.Collections.Hashtable();
             // deviceInfo["JavaScript"] = "this.print({bUI: true, bSilent: false, bShrinkToFit: true});";
             var result = reportProcessor.RenderReport("PDF", typeReportSource, deviceInfo);
 
             HttpContext.Response.AddHeader("content-disposition", "inline; filename=MyFile.pdf");
-
-            // byte[] pdfEv;
-            //pdfEv = System.IO.File.ReadAllBytes(result.DocumentBytes.ToString());
             string fileString = System.Convert.ToBase64String(result.DocumentBytes);
-            // string Dato = System.Convert.ToBase64String(fileString);
-            //return File(result.DocumentBytes, "application/pdf");
-
+            Session["anterior"] = "No";
             return Json(fileString);
         }
 

@@ -572,17 +572,41 @@
     <Compile Include="Hourly.Designer.cs">
       <DependentUpon>Hourly.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hourly2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Hourly2.Designer.cs">
+      <DependentUpon>Hourly2.cs</DependentUpon>
+    </Compile>
     <Compile Include="HourlyRas.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="HourlyRas.Designer.cs">
       <DependentUpon>HourlyRas.cs</DependentUpon>
     </Compile>
+    <Compile Include="HourlyRas2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="HourlyRas2.Designer.cs">
+      <DependentUpon>HourlyRas2.cs</DependentUpon>
+    </Compile>
     <Compile Include="HourlyRasSup.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="HourlyRasSup.Designer.cs">
       <DependentUpon>HourlyRasSup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HourlyRasSup2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="HourlyRasSup2.Designer.cs">
+      <DependentUpon>HourlyRasSup2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HourlySup2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="HourlySup2.Designer.cs">
+      <DependentUpon>HourlySup2.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoriaObjetivos.cs">
       <DependentUpon>BDEval.tt</DependentUpon>
@@ -775,11 +799,23 @@
     <Compile Include="Salary.Designer.cs">
       <DependentUpon>Salary.cs</DependentUpon>
     </Compile>
+    <Compile Include="Salary2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Salary2.Designer.cs">
+      <DependentUpon>Salary2.cs</DependentUpon>
+    </Compile>
     <Compile Include="SalarySup.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SalarySup.Designer.cs">
       <DependentUpon>SalarySup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalarySup2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SalarySup2.Designer.cs">
+      <DependentUpon>SalarySup2.cs</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1034,14 +1070,26 @@
     <EmbeddedResource Include="Hourly.resx">
       <DependentUpon>Hourly.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Hourly2.resx">
+      <DependentUpon>Hourly2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HourlyRas.resx">
       <DependentUpon>HourlyRas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HourlyRas2.resx">
+      <DependentUpon>HourlyRas2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HourlyRasSup.resx">
       <DependentUpon>HourlyRasSup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HourlyRasSup2.resx">
+      <DependentUpon>HourlyRasSup2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HourlySup.resx">
       <DependentUpon>HourlySup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HourlySup2.resx">
+      <DependentUpon>HourlySup2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\ReporteHourly.resx">
@@ -1050,8 +1098,14 @@
     <EmbeddedResource Include="Salary.resx">
       <DependentUpon>Salary.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Salary2.resx">
+      <DependentUpon>Salary2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SalarySup.resx">
       <DependentUpon>SalarySup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalarySup2.resx">
+      <DependentUpon>SalarySup2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
