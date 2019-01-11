@@ -98,23 +98,15 @@
                 toolbar: ["excel"],
                  excel: {
                     fileName: "ReporteGeneral.xlsx",
-                //     proxyURL: "https://demos.telerik.com/kendo-ui/service/export",
                        filterable: true
                 },
                 dataSource: {
                     transport: {
                         read: {
-                            //Direccion del metodo en controlador..
                             url: "@Url.Action("getEmpleados", "ReporteGeneral")",
-                            //Tipo de solicitud al controller..
                             type: "post",
-                            //Tipo de dato que retorna la url.
                             dataType: "json",
-                          
-                            //data: {
-                            //    //Parametros a enviar...
-                            //    Dato1: 2
-                            //}
+
                         }
                     },
                     schema: {
@@ -124,33 +116,20 @@
                         }
                     },
                     pageSize: 15,
-                    //serverPaging: true,
-                    //serverFiltering: true
                 },
                 height: 750,
-                //filterable: {
-                //    mode: "row"
-                //},
                 groupable: true,
-                //sortable: true,
                 filterable: {
                 },
-                //selectable: "multiple",
                 pageable: {
-                    refresh: true,
-                    //pageSize: 50,
                     pageSizes: true,
                     buttonCount: 5
                 },
                 persistSelection: true,
                 change: onChange,
-  
                 columns: [
                  
                     {
-                        //template: "<div class='customer-photo'" +
-                        //             "style='background-image: url(@Url.Content("~/Content/icon.png"));'></div>" +
-                        //        "<div class='customer-name'>#: NombreCompleto #</div>",
                         field: "NombreCompleto",
                         title: "Nombre Completo",
                         width: 275,
@@ -167,8 +146,7 @@
                     }, {
                         field: "Departamento",
                         title: "Departamento",
-                        width: 100,
-                        filterable: { ui: Lista_Dpts }
+                        width: 100, filterable: { ui: Lista_Dpts }
                     }, {
                         field: "Descripcion",
                         title: "Descripcion",
@@ -176,13 +154,11 @@
                     }, {
                         field: "TipoEmpleado",
                         title: "TipoEmpleado",
-                        width: 100,
-                        filterable: { ui: Lista_Tipos }
+                        width: 100,filterable: { ui: Lista_Tipos }
                     }, {
                         field: "Jefe",
                         title: "Jefe",
-                        width: 100,
-                        filterable: { ui: Lista_Jefes }
+                        width: 100, filterable: { ui: Lista_Jefes }
                     }, {
                         field: "Gerente",
                         title: "Gerente",

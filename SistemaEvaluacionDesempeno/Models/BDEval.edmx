@@ -415,6 +415,7 @@ warning 6002: The table/view 'Evaluacion.dbo.Emp' does not have a primary key de
         <Function Name="sp_CargaDepartamentos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_CargaEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_CargaEmpleadosReporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_CargaEmpleadosReportePP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_CargaEmpleadosSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_CargaJefes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_CargarCompetenciasGuardadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1420,6 +1421,7 @@ warning 6002: The table/view 'Evaluacion.dbo.Emp' does not have a primary key de
             <Parameter Name="idObjetivo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="yearFiscal" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="sp_CargaEmpleadosReportePP" ReturnType="Collection(EvaluacionModel.sp_CargaEmpleadosReportePP_Result)" />
         </EntityContainer>
         <ComplexType Name="sp_CargaEmpleados_Result">
           <Property Type="Int32" Name="No_Emp" Nullable="false" />
@@ -1897,6 +1899,20 @@ warning 6002: The table/view 'Evaluacion.dbo.Emp' does not have a primary key de
           <Property Type="String" Name="CompletadoQ2" Nullable="true" />
           <Property Type="String" Name="CompletadoQ3" Nullable="true" />
           <Property Type="String" Name="CompletadoQ4" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_CargaEmpleadosReportePP_Result">
+          <Property Type="Int32" Name="No_Emp" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="61" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="Jefe" Nullable="true" />
+          <Property Type="String" Name="Gerente" Nullable="true" />
+          <Property Type="String" Name="Area" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="FechaReminder" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="48" />
+          <Property Type="String" Name="Tipo" Nullable="true" />
+          <Property Type="String" Name="yearFiscal" Nullable="true" MaxLength="10" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2668,6 +2684,24 @@ warning 6002: The table/view 'Evaluacion.dbo.Emp' does not have a primary key de
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_ActualizaMetaEdit" FunctionName="EvaluacionModel.Store.sp_ActualizaMetaEdit" />
           <FunctionImportMapping FunctionImportName="yearFiscal" FunctionName="EvaluacionModel.Store.yearFiscal" />
+          <FunctionImportMapping FunctionImportName="sp_CargaEmpleadosReportePP" FunctionName="EvaluacionModel.Store.sp_CargaEmpleadosReportePP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EvaluacionModel.sp_CargaEmpleadosReportePP_Result">
+                <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+                <ScalarProperty Name="Jefe" ColumnName="Jefe" />
+                <ScalarProperty Name="Gerente" ColumnName="Gerente" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="FechaReminder" ColumnName="FechaReminder" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="yearFiscal" ColumnName="yearFiscal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

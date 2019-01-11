@@ -690,6 +690,9 @@
     <Compile Include="Models\Re_Objetivo.cs">
       <DependentUpon>BDEval.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_CargaEmpleadosReportePP_Result.cs">
+      <DependentUpon>BDEval.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sp_CargaEmpleadosReporte_Result.cs">
       <DependentUpon>BDEval.tt</DependentUpon>
     </Compile>
@@ -1048,6 +1051,7 @@
     <Content Include="Views\Home\EnviarObjetivos.cshtml" />
     <Content Include="Views\Home\EstatusObjetivos.cshtml" />
     <Content Include="Views\Home\RevisarObjetivos2.cshtml" />
+    <Content Include="Views\Home\ReporteGeneralPP.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

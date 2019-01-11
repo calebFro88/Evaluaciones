@@ -765,5 +765,23 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_ActualizaMetaEdit" FunctionName="EvaluacionModel.Store.sp_ActualizaMetaEdit" />
     <FunctionImportMapping FunctionImportName="yearFiscal" FunctionName="EvaluacionModel.Store.yearFiscal" />
+    <FunctionImportMapping FunctionImportName="sp_CargaEmpleadosReportePP" FunctionName="EvaluacionModel.Store.sp_CargaEmpleadosReportePP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EvaluacionModel.sp_CargaEmpleadosReportePP_Result">
+          <ScalarProperty Name="No_Emp" ColumnName="No_Emp" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="TipoEmpleado" ColumnName="TipoEmpleado" />
+          <ScalarProperty Name="Jefe" ColumnName="Jefe" />
+          <ScalarProperty Name="Gerente" ColumnName="Gerente" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="FechaReminder" ColumnName="FechaReminder" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="yearFiscal" ColumnName="yearFiscal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

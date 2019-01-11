@@ -184,10 +184,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/13/2017 17:01:20</publishTime>
     </File>
     <File Include="bin/SistemaEvaluacionDesempeno.dll">
-      <publishTime>12/20/2018 15:01:28</publishTime>
+      <publishTime>01/11/2019 15:54:49</publishTime>
     </File>
     <File Include="bin/SistemaEvaluacionDesempeno.pdb">
-      <publishTime>12/20/2018 15:01:28</publishTime>
+      <publishTime>01/11/2019 15:54:49</publishTime>
     </File>
     <File Include="bin/sk-SK/Kendo.Mvc.resources.dll">
       <publishTime>09/13/2017 17:01:20</publishTime>
@@ -718,7 +718,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>08/14/2017 15:22:12</publishTime>
     </File>
     <File Include="Views/Home/Competencias.cshtml">
-      <publishTime>12/12/2018 09:41:09</publishTime>
+      <publishTime>12/26/2018 15:21:08</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>08/14/2017 15:22:12</publishTime>
@@ -790,7 +790,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>08/13/2018 11:22:17</publishTime>
     </File>
     <File Include="Views/Home/ReporteGeneral.cshtml">
-      <publishTime>12/17/2018 08:17:21</publishTime>
+      <publishTime>01/11/2019 14:32:15</publishTime>
+    </File>
+    <File Include="Views/Home/ReporteGeneralPP.cshtml">
+      <publishTime>01/11/2019 15:19:42</publishTime>
     </File>
     <File Include="Views/Home/ReporteHourly.cshtml">
       <publishTime>12/20/2018 08:29:48</publishTime>
@@ -880,7 +883,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>08/14/2017 15:22:22</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/12/2018 15:20:41</publishTime>
+      <publishTime>01/11/2019 15:03:05</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>09/20/2017 14:26:34</publishTime>

@@ -1125,5 +1125,10 @@ namespace SistemaEvaluacionDesempeno.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("yearFiscal");
         }
+    
+        public virtual ObjectResult<sp_CargaEmpleadosReportePP_Result> sp_CargaEmpleadosReportePP()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CargaEmpleadosReportePP_Result>("sp_CargaEmpleadosReportePP");
+        }
     }
 }

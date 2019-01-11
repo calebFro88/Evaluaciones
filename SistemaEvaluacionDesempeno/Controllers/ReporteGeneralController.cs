@@ -25,5 +25,14 @@ namespace SistemaEvaluacionDesempeno.Controllers
             else
                 return Json(false);
         }
+
+        public JsonResult getEmpleadospp()
+        {
+            var query = (BDEv.sp_CargaEmpleadosReportePP().ToList());
+            if (query.Count >= 1)
+                return Json(query);
+            else
+                return Json(false);
+        }
     }
 }

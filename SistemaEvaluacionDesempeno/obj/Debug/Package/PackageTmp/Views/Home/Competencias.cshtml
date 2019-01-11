@@ -316,7 +316,7 @@
                                     {
                                         tabEmp = 1;
 
-                                        <li role="presentation" class="disabledTab4" id="tabbtnManagerial">
+                                        <li role="presentation" class="disabledTab4" id="tabbtnManagerial"><!---->
                                             <!-- <a href="#tab_content4" role="tab" id="tbManagerial" data-toggle="tab" aria-expanded="false">COMPETENCIAS DE SUPERVISOR / GERENTE</a>-->
                                             <a href="#tab_content4" role="tab" id="tbManagerial" data-toggle="tab" aria-expanded="false">SECCION IV.</a>
                                         </li>
@@ -1050,7 +1050,7 @@
                             arrayCompetencia = datos;
                             swal("¡Operación completada!","Se han guardado los avances de su evaluación.", "success");
 
-                            if(TipoEmpleado == "Gerente" || TipoEmpleado == "Recursoshumanos" || TipoEmpleado == "Plantmanager" || TipoEmpleado == "Supervisor")
+                            if(TipoEmpleado == "Gerente" || TipoEmpleado == "RecursosHumanos" || TipoEmpleado == "Plantmanager" || TipoEmpleado == "Supervisor")
                             {
                                 if(cantTabs == 5){ //Quiere decir que estan todas sin cambios...
                                     $("#tabbtnCore").removeClass("disabledTab2"); //Se desactiva el segundo tab...

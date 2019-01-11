@@ -621,6 +621,7 @@
       <Parameter Name="idObjetivo" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="yearFiscal" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="sp_CargaEmpleadosReportePP" ReturnType="Collection(EvaluacionModel.sp_CargaEmpleadosReportePP_Result)" />
   </EntityContainer>
   <ComplexType Name="sp_CargaEmpleados_Result">
     <Property Type="Int32" Name="No_Emp" Nullable="false" />
@@ -1098,5 +1099,19 @@
     <Property Type="String" Name="CompletadoQ2" Nullable="true" />
     <Property Type="String" Name="CompletadoQ3" Nullable="true" />
     <Property Type="String" Name="CompletadoQ4" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_CargaEmpleadosReportePP_Result">
+    <Property Type="Int32" Name="No_Emp" Nullable="false" />
+    <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="61" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Departamento" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="TipoEmpleado" Nullable="false" MaxLength="11" />
+    <Property Type="String" Name="Jefe" Nullable="true" />
+    <Property Type="String" Name="Gerente" Nullable="true" />
+    <Property Type="String" Name="Area" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="FechaReminder" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="48" />
+    <Property Type="String" Name="Tipo" Nullable="true" />
+    <Property Type="String" Name="yearFiscal" Nullable="true" MaxLength="10" />
   </ComplexType>
 </Schema>

@@ -394,7 +394,11 @@ namespace SistemaEvaluacionDesempeno.Controllers
         {
             return View();
         }
-        
+
+        public ActionResult ReporteGeneralPP()
+        {
+            return View();
+        }
         //REPORTES PDF ==================================================================================================================
         public ActionResult OpenPDF(int No_Emp)
         {

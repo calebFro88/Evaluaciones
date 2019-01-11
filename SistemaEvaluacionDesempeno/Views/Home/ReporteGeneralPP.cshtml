@@ -1,0 +1,346 @@
+﻿
+@{
+    ViewBag.Title = "ReporteGeneralPP";
+    if (Session["Estado"] == null)
+    {
+        Response.Redirect(Url.Action("LogIn", "Home"));
+    }
+}
+
+
+<style type="text/css">
+    .customer-photo {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-size: 32px 35px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 32px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-left: 5px;
+    }
+
+    .customer-name {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 32px;
+        padding-left: 3px;
+    }
+</style>
+
+
+<div class="right_col" role="main">
+    <div class="">
+
+        <div role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3> Reporte General Periodo De Prueba</h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <label>Periodo: </label><label>&nbsp;@Session["yearFiscal"]</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+
+                            <div class="x_content">
+                                <!--Aqui es donde va el dropdown con los reminders pre cargados-->
+                                <!-- Modal -->
+                                <div id="myModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Fecha De Envio De Notificacion</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>@DateTime.Now.ToShortDateString()</p>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div id="tblListadoEmpleados"></div>
+                                <!--<button class="btn btn-primary pull-right" onclick="EnviaReminder()"><span class="glyphicon glyphicon-send"></span> Empezar Evaluacion</button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+
+            var tblListadoEmpleados = $("#tblListadoEmpleados").kendoGrid({
+                toolbar: ["excel"],
+                 excel: {
+                    fileName: "ReporteGeneral.xlsx",
+                       filterable: true
+                },
+                dataSource: {
+                    transport: {
+                        read: {
+                            url: "@Url.Action("getEmpleadospp", "ReporteGeneral")",
+                            type: "post",
+                            dataType: "json",
+
+                        }
+                    },
+                    schema: {
+                        model: {
+                            id: "No_Emp",
+                            Departamento: "Departamento"
+                        }
+                    },
+                    pageSize: 15,
+                },
+                height: 750,
+                groupable: true,
+                filterable: {
+                },
+                pageable: {
+                    pageSizes: true,
+                    buttonCount: 5
+                },
+                persistSelection: true,
+                change: onChange,
+                columns: [
+
+                    {
+                        field: "NombreCompleto",
+                        title: "Nombre Completo",
+                        width: 275,
+                        filterable: {
+                            cell: {
+                                operator: "contains",
+                                suggestionOperator: "contains"
+                            }
+                        }
+                    }, {
+                        field: "No_Emp",
+                        title: "#",
+                        width: 75,
+                    }, {
+                        field: "Departamento",
+                        title: "Departamento",
+                        width: 100, filterable: { ui: Lista_Dpts }
+                    }, {
+                        field: "Descripcion",
+                        title: "Descripcion",
+                        width: 100
+                    }, {
+                        field: "TipoEmpleado",
+                        title: "TipoEmpleado",
+                        width: 100,filterable: { ui: Lista_Tipos }
+                    }, {
+                        field: "Jefe",
+                        title: "Jefe",
+                        width: 100, filterable: { ui: Lista_Jefes }
+                    }, {
+                        field: "Gerente",
+                        title: "Gerente",
+                        width: 100
+                    }, {
+                        field: "Area",
+                        title: "Area",
+                        width: 100
+                    },
+                    //{
+                    //    field: "valorCorto",
+                    //    title: "Rem. Enviado",
+                    //    width: 100
+                    //},
+                    {
+                        field: "FechaReminder",
+                        title: "Fecha Envio",
+                        width: 100
+                    },
+                    {
+                        field: "Estado",
+                        title: "Estatus",
+                        width: 100
+                    },
+                    {
+                        field: "Tipo",
+                        title: "Tipo Evaluacion",
+                        width: 100
+                    },
+                    {
+                        field: "yearFiscal",
+                        title: "yearFiscal",
+                        width: 100
+                    }
+
+                ]
+            });
+            //console.log(tblListadoEmpleados);
+      //  });
+        function Lista_Tipos(e) {
+            e.kendoDropDownList({
+                type: "odata",
+                dataSource: {
+                    serverFiltering: true,
+                    transport: {
+                        read: {
+                            url: "@Url.Action("LoadTipos", "Reminders")",
+                            //Tipo de solicitud al controller..
+                            type: "post",
+                            //Tipo de dato que retorna la url.
+                            dataType: "json"
+                        }
+                    }
+                },
+                ///////
+                optionLabel: "--Select Value--"
+            });
+        }
+
+        //conesta funcion llenamos el combo para que liste los departamentos y jefes
+        function Lista_Dpts(e) {
+            e.kendoDropDownList({
+                type: "odata",
+                dataSource: {
+                    serverFiltering: true,
+                    transport: {
+                        read: {
+                            url: "@Url.Action("LoadDpts", "Reminders")",
+                            //Tipo de solicitud al controller..
+                            type: "post",
+                            //Tipo de dato que retorna la url.
+                            dataType: "json"
+                        }
+                    }
+                },
+                ///////
+                optionLabel: "--Select Value--"
+            });
+        }
+        //////////////////////////////////////////////////////////////////////////////
+        function Lista_Jefes(e) {
+            e.kendoDropDownList({
+                type: "odata",
+                dataSource: {
+                    serverFiltering: true,
+                    transport: {
+                        read: {
+                            url: "@Url.Action("LoadJefes", "Reminders")",
+                            //Tipo de solicitud al controller..
+                            type: "post",
+                            //Tipo de dato que retorna la url.
+                            dataType: "json"
+                        }
+                    }
+                },
+                ///////
+                optionLabel: "--Select Value--"
+            });
+        }
+        //-------------------------------------------------------------------------->
+        //esta funcion sirve para deselecccionar  los radios //
+        function uncheckRadio(rbutton) {
+            rbutton.checked = (rbutton.checked) ? false : true;
+        }
+        //------------------------------------------------->
+        function FechaObjetivo() {
+            $("#myModal").modal();
+        }
+
+
+
+        function onChange(arg) {
+            ids = (this.selectedKeyNames());
+            // console.log(ids);
+            //console.log(this.selectedKeyNames());
+            // EmpleadosPendientes = this.selectedKeyNames();
+
+        }
+
+        function EnviarRecordatorio() {
+            if (EmpleadosPendientes != null || EmpleadosPendientes != undefined) {
+                if (EmpleadosPendientes.length != 0) {
+                    if (confirm("Desea enviar un recordatorio para formular objetivos\na los empleados seleccionados?")) {
+                        EnviaReminder();
+                    }
+                } else {
+                    alert("Seleccione por lo menos un empleado");
+                }
+            } else {
+                alert("Seleccione por lo menos un empleado");
+            }
+        }
+
+        function EnviaReminder() {
+
+            if (reminders != "") {
+                var idsNums = '';
+                $.each(ids, function (ind, elem) {
+                    idsNums += ids[ind] + ',';
+                });
+                //console.log(idsNums);
+                //console.log(idsNums);
+                var NUMS = {
+                    Num_Empleado: idsNums,
+                    Reminder: reminders
+                }
+                //console.log(NUMS);
+                //console.log(reminders);
+
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    data: JSON.stringify({ 'NUMS': NUMS }),// "{ Nombre: 'Edgar Ramirez'}",
+                    url: "@Url.Action("EnvioReminders", "Reminders")",
+                    contentType: "application/json; charset=utf-8;",
+                    success: function (datos) {
+                        if (datos != false) {
+                            alert(datos);
+                            alert("Se ha enviado recordatorio");
+                        } else {
+                            alert("false");
+                        }
+                    }
+                });
+                //////////////////////////////////////////////////
+                var grid = $("#tblListadoEmpleados").data("kendoGrid");
+                //grid.dataSource.remove();
+                grid.dataSource.read();
+                /////////////////////////////////////////////
+            }
+            else {
+                alert("Favor de escojer un mensaje");
+            }
+        }
+
+    </script>
+}
+
+
+
+
+
+
+
+
